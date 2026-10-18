@@ -153,12 +153,19 @@ class World {
   }
 
   Output run() {
-    for (int s = 0; s < NSVC; ++s) boot(s, false);
+    // Services have been up for a long time before the window opens: no boot log inside it.
+    for (int s = 0; s < NSVC; ++s) {
+      st_[s].boots = 1;
+      st_[s].boot_t = -static_cast<int64_t>(rng_.uni(600, 36000)) * kSec;
+    }
+    ops_offset_us_ = static_cast<int64_t>(rng_.uni(-150, 150) * kMs);
     schedule_faults();
     schedule_noise();
     schedule_load();
-    for (int s = 0; s < NSVC; ++s)
-      for (int64_t t = 5 * kSec; t <= kDurationUs; t += 5 * kSec) at(t, [this, s] { tick(s); });
+    for (int s = 0; s < NSVC; ++s) {
+      const int64_t phase = static_cast<int64_t>(rng_.uni(0, 5) * kSec);  // each exporter has its own tick phase
+      for (int64_t t = 5 * kSec + phase; t <= kDurationUs; t += 5 * kSec) at(t, [this, s] { tick(s); });
+    }
     while (!pq_.empty()) {
       Ev e = pq_.top();
       pq_.pop();
@@ -265,7 +272,7 @@ class World {
   void ops(const char* type, int svc, const std::string& detail, double p = 1.0) {
     if (!logrng_.chance(p)) return;
     Obj o;
-    o.s("id", "ops-E" + hex(++ops_n_, 4)).i("ts_us", spec_.epoch_us + now_).s("source", "ops").s("type", type).s("service", kSvcName[svc]).raw("detail", detail);
+    o.s("id", "ops-E" + hex(++ops_n_, 4)).i("ts_us", spec_.epoch_us + now_ + ops_offset_us_).s("source", "ops").s("type", type).s("service", kSvcName[svc]).raw("detail", detail);
     events_ += o.str() + "\n";
   }
   void span(int svc, const std::string& trace, const std::string& sid, const std::string& parent, const char* kind,
@@ -550,7 +557,7 @@ class World {
       case GATEWAY:
         after(d, guard(svc, gen, [=, this] {
           if (fail) { fin(fail, code); return; }
-          call(GATEWAY, ORDERS, "create_order", r.trace, sspan, r.poison, [=, this](int s, const std::string& e) {
+          call(GATEWAY, ORDERS, "create_order", r.trace, sspan, r.poison, [=](int s, const std::string& e) {
             if (s == 200) fin(200, ""); else fin(map_status(s), s == 0 ? "upstream_timeout" : e);
           });
         }));
@@ -626,6 +633,7 @@ class World {
   SvcState st_[NSVC];
   uint64_t mcount_[NSVC] = {0, 0, 0, 0};
   uint64_t ops_n_ = 0;
+  int64_t ops_offset_us_ = 0;
   std::string events_;
   std::vector<std::pair<int64_t, int>> gw_;
 };

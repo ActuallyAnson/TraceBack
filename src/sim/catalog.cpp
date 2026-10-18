@@ -14,8 +14,8 @@ const FaultKind kBase[] = {FaultKind::SlowDependency, FaultKind::RetryStorm,    
 int pick(Rng& r, std::initializer_list<int> v) { return *(v.begin() + r.range(0, static_cast<int64_t>(v.size()) - 1)); }
 
 Fault make_true(FaultKind k, Rng& r) {
-  Fault f{k, 0, r.range(45, 65) * kSec, 0};
-  const int64_t dur = r.range(35, 55) * kSec;
+  Fault f{k, 0, r.range(45, 64) * kSec + r.range(0, 999999), 0};
+  const int64_t dur = r.range(35, 55) * kSec + r.range(0, 999999);
   f.t1 = f.t0 + dur;
   switch (k) {
     case FaultKind::SlowDependency:
@@ -48,7 +48,7 @@ Fault make_true(FaultKind k, Rng& r) {
       break;
     case FaultKind::CrashRestart:
       f.svc = pick(r, {INVENTORY, PAYMENTS, ORDERS});
-      f.t1 = f.t0 + r.range(8, 16) * kSec;
+      f.t1 = f.t0 + r.range(8, 16) * kSec + r.range(0, 999999);
       break;
     case FaultKind::CapacityReduction:
       f.svc = pick(r, {ORDERS, PAYMENTS, INVENTORY});
@@ -66,8 +66,8 @@ Fault make_decoy(const Fault& cause, Rng& r) {
   static const FaultKind d[] = {FaultKind::HarmlessDeploy, FaultKind::MildLatency, FaultKind::CosmeticErrors};
   Fault f{d[r.range(0, 2)], 0, 0, 0};
   do { f.svc = static_cast<int>(r.range(0, NSVC - 1)); } while (f.svc == cause.svc);
-  f.t0 = std::clamp<int64_t>(cause.t0 + r.range(-25, 15) * kSec, 10 * kSec, 80 * kSec);
-  f.t1 = f.t0 + r.range(30, 60) * kSec;
+  f.t0 = std::clamp<int64_t>(cause.t0 + r.range(-25, 15) * kSec + r.range(0, 999999), 10 * kSec, 80 * kSec);
+  f.t1 = f.t0 + r.range(30, 60) * kSec + r.range(0, 999999);
   f.p1 = r.uni(15, 40);
   return f;
 }
