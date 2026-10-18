@@ -16,6 +16,7 @@ using namespace tb::sim;
 namespace fs = std::filesystem;
 
 constexpr uint64_t kMasterSeed = 20261019;
+constexpr uint64_t kVariantSeed = 7770001;  // unseen variants have their own RNG stream
 
 namespace {
 
@@ -68,7 +69,9 @@ int main(int argc, char** argv) {
 
   std::vector<std::string> lines;
   int bad = 0;
-  for (const Spec& s0 : build_catalog(kMasterSeed)) {
+  std::vector<Spec> catalog = build_catalog(kMasterSeed);
+  for (auto& v : build_variants(kVariantSeed, catalog.size())) catalog.push_back(v);
+  for (const Spec& s0 : catalog) {
     if (!only.empty() && s0.id != only) continue;
     int attempts = 0;
     Built b = build(s0, &attempts);
@@ -90,7 +93,18 @@ int main(int argc, char** argv) {
 
   std::string joined;
   for (auto& l : lines) joined += l + "\n";
-  if (cmd == "lock") {
+  if (cmd == "lock" && std::string(arg(argc, argv, "--append", "no")) != "no") {
+    // Append mode: every existing line must be unchanged; only new incidents may be added.
+    std::ifstream f(manifest);
+    std::string line;
+    size_t n = 0;
+    while (std::getline(f, line)) {
+      if (n >= lines.size() || lines[n] != line) { std::fprintf(stderr, "refusing: existing locked line %zu changed\n", n + 1); return 1; }
+      ++n;
+    }
+    write(manifest, joined);
+    std::printf("appended %zu new incidents (%zu locked before) -> %s\n", lines.size() - n, n, manifest.c_str());
+  } else if (cmd == "lock") {
     if (fs::exists(manifest)) { std::fprintf(stderr, "%s exists; refusing to overwrite a locked split\n", manifest.c_str()); return 1; }
     write(manifest, joined);
     std::printf("locked %zu incidents -> %s\n", lines.size(), manifest.c_str());

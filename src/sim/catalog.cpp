@@ -123,4 +123,73 @@ std::vector<Spec> build_catalog(uint64_t master_seed) {
   return out;
 }
 
+
+namespace {
+Fault make_variant(FaultKind k, Rng& r) {
+  Fault f{k, 0, r.range(45, 64) * kSec + r.range(0, 999999), 0};
+  f.t1 = f.t0 + r.range(35, 55) * kSec + r.range(0, 999999);
+  switch (k) {
+    case FaultKind::NetworkPartition:  // svc = callee, i1 = caller
+      f.svc = pick(r, {PAYMENTS, INVENTORY});
+      f.i1 = ORDERS;
+      f.p2 = r.uni(0.85, 1.0);
+      break;
+    case FaultKind::DnsFailure:  // svc = caller, i1 = callee
+      f.svc = ORDERS;
+      f.i1 = pick(r, {PAYMENTS, INVENTORY});
+      f.p2 = r.uni(0.6, 0.8);
+      break;
+    case FaultKind::CrashLoop:
+      f.svc = pick(r, {INVENTORY, PAYMENTS});
+      f.t1 = f.t0 + 3 * 14 * kSec;
+      break;
+    case FaultKind::SilentRegression:
+      f.svc = pick(r, {PAYMENTS, INVENTORY});
+      f.p1 = r.uni(0.5, 0.7);
+      break;
+    case FaultKind::SlowSubset:
+      f.svc = INVENTORY;
+      f.p1 = r.uni(1000, 1600);
+      break;
+    case FaultKind::GradualDegradation:
+      f.svc = INVENTORY;
+      f.p1 = 80;
+      f.t1 = kDurationUs;
+      break;
+    default: break;
+  }
+  return f;
+}
+}  // namespace
+
+// Fault types that are not in the original catalog. Own RNG: base incidents cannot move.
+std::vector<Spec> build_variants(uint64_t seed, size_t first_index) {
+  Rng r(seed);
+  struct V { FaultKind k; bool decoy, skew; };
+  const V plan[] = {
+      {FaultKind::NetworkPartition, false, false}, {FaultKind::NetworkPartition, true, false},
+      {FaultKind::DnsFailure, false, false},       {FaultKind::DnsFailure, false, true},
+      {FaultKind::CrashLoop, false, false},        {FaultKind::CrashLoop, true, false},
+      {FaultKind::SilentRegression, false, false}, {FaultKind::SilentRegression, true, false},
+      {FaultKind::SlowSubset, false, false},       {FaultKind::GradualDegradation, false, false},
+  };
+  std::vector<Spec> out;
+  size_t i = first_index;
+  for (const V& v : plan) {
+    Spec s;
+    s.group = "unseen";
+    s.split = "test";
+    s.faults.push_back(make_variant(v.k, r));
+    if (v.decoy) s.faults.push_back(make_decoy(s.faults[0], r));
+    if (v.skew) add_skew(s, r);
+    char id[16];
+    std::snprintf(id, sizeof id, "inc-%03zu", ++i);
+    s.id = id;
+    s.seed = r.next();
+    s.epoch_us = 1760000000LL * kSec + static_cast<int64_t>(i - 1) * 1000 * kSec;
+    out.push_back(s);
+  }
+  return out;
+}
+
 }  // namespace tb::sim

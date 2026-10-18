@@ -25,6 +25,13 @@ enum class FaultKind {
   HarmlessDeploy,
   MildLatency,
   CosmeticErrors,
+  // Variants outside the original catalog (held-out test only, group "unseen").
+  NetworkPartition,     // calls on one edge silently vanish; both endpoints are healthy
+  DnsFailure,           // caller cannot resolve the callee; fails before any packet is sent
+  CrashLoop,            // service flaps: several short crashes
+  SilentRegression,     // errors and slowdown with no deploy/config event at all
+  SlowSubset,           // only a subset of requests is slow (e.g. a hot key)
+  GradualDegradation,   // latency ramps up slowly instead of stepping
 };
 const char* kind_name(FaultKind k);
 
@@ -61,5 +68,8 @@ uint64_t fnv1a(const std::string& s, uint64_t h = 1469598103934665603ULL);
 uint64_t content_hash(const Output& o);
 
 std::vector<Spec> build_catalog(uint64_t master_seed);
+// Unseen-variant incidents (test split only), ids continue after the base catalog. Uses its own RNG
+// so adding or changing them cannot move any base incident.
+std::vector<Spec> build_variants(uint64_t seed, size_t first_index);
 
 }  // namespace tb::sim

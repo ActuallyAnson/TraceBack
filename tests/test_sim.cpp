@@ -14,6 +14,11 @@ int main() {
   int test = 0;
   for (auto& s : cat) test += s.split == "test";
   CHECK(test >= 15);
+  auto var = build_variants(7770001, cat.size());
+  CHECK(var.size() >= 8);
+  for (auto& v : var) { CHECK(v.split == "test"); CHECK(v.group == "unseen"); }
+  // base catalog is independent of variants (own RNG streams)
+  CHECK(build_catalog(20261019)[5].seed == cat[5].seed);
 
   // Deterministic: same spec -> byte-identical observable output.
   Output a = simulate(cat[0]), b = simulate(cat[0]);
@@ -21,7 +26,7 @@ int main() {
 
   // Observable files must not leak labels (fault names, decoys, skew values).
   for (auto& [name, body] : a.files) {
-    for (const char* leak : {"root_cause", "decoy", "slow_dependency", "retry_storm", "bad_deploy", "crash_restart", "capacity_reduction", "masked_downstream", "mild_latency", "cosmetic_errors", "clock_skew"})
+    for (const char* leak : {"root_cause", "decoy", "slow_dependency", "retry_storm", "bad_deploy", "crash_restart", "capacity_reduction", "masked_downstream", "mild_latency", "cosmetic_errors", "clock_skew", "network_partition", "dns_failure", "crash_loop", "silent_regression", "slow_subset", "gradual_degradation"})
       CHECK(body.find(leak) == std::string::npos);
   }
   // Removing the true cause changes the output.
