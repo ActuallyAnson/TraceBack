@@ -155,7 +155,12 @@ std::string traceback_user(Incident& inc, const json& rep, json& meta) {
   std::ostringstream o;
   const auto& sym = rep["symptom"];
   o << "INCIDENT: " << sym["traces"] << " traces, " << sym["failed_traces"] << " failed at the entry service";
-  if (sym["failed_traces"].get<int>() > 0) o << " (first failure " << secs(sym["first_failure_t_us"].get<int64_t>() - t0) << ", record " << sym["first_failure_id"].get<std::string>() << ")";
+  if (sym["failed_traces"].get<int>() > 0) {
+    if (sym["sustained_burst_found"].get<bool>())
+      o << "; the sustained burst of failures starts at " << secs(sym["sustained_onset_us"].get<int64_t>() - t0) << " (record " << sym["sustained_onset_id"].get<std::string>() << "); " << sym["failures_before_burst"] << " isolated failures occurred before it (background noise)";
+    else
+      o << " (first failure " << secs(sym["first_failure_t_us"].get<int64_t>() - t0) << ", record " << sym["first_failure_id"].get<std::string>() << ")";
+  }
   o << ".\nTimes below are on one aligned clock (seconds since the first span). Reference clock: " << rep["clock"]["reference_service"].get<std::string>() << "; estimated offsets (ms):";
   for (auto& [k, v] : rep["clock"]["offsets_us"].items()) o << " " << k << "=" << std::round(v.get<double>() / 100) / 10;
   o << "\n\nDEPENDENCY GRAPH (calls, failed, timeouts, refused, 5xx errors, retried attempts):\n";

@@ -4,7 +4,7 @@
 The analyzer is run as a subprocess on runs/incidents/<id>/ only. Labels are read here,
 never passed to the analyzer. Default split is dev; test requires --confirm-test and is logged.
 """
-import argparse, collections, datetime, json, pathlib, subprocess, sys, time
+import argparse, collections, concurrent.futures, datetime, json, os, pathlib, subprocess, sys, time
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 # label type -> analyzer categories that count as correct (see SCORING.md)
@@ -48,6 +48,68 @@ def judge(label, rep):
     return right(top), loc(top), any(right(h) for h in hyps[:3])
 
 
+
+def run_llm(iid, system):
+    """Run tb_reason on one incident; raw result cached to runs/results/<system>/<id>.json."""
+    out_dir = ROOT / "runs/results" / system
+    out_dir.mkdir(parents=True, exist_ok=True)
+    cache = ROOT / "runs/llm_cache"
+    t = time.time()
+    p = subprocess.run([str(ROOT / "build/tb_reason"), str(ROOT / "runs/incidents" / iid), "--system", system, "--cache", str(cache)],
+                       capture_output=True, text=True)
+    if p.returncode != 0:
+        return {"incident_id": iid, "system": system, "answer": None, "accepted": False, "error": p.stderr.strip()[:300], "meta": {"attempts": []}}
+    res = json.loads(p.stdout)
+    (out_dir / f"{iid}.json").write_text(json.dumps(res, indent=1))
+    return res
+
+
+def record_index(iid):
+    """id -> service for every record in the incident (scorer-side, used for existence/relevance)."""
+    idx = {}
+    d = ROOT / "runs/incidents" / iid
+    for fn in ("logs.jsonl", "spans.jsonl", "metrics.jsonl", "events.jsonl"):
+        for line in (d / fn).read_text().splitlines():
+            if line.strip():
+                j = json.loads(line)
+                idx[j["id"]] = j.get("service", "")
+    return idx
+
+
+def llm_as_report(res):
+    """View an LLM answer as a ranked hypothesis list so judge() can score all systems alike."""
+    a = res.get("answer")
+    if not a:
+        return {"hypotheses": [{"category": "none", "service": "none"}], "confidence": "none"}
+    hyps = [{"category": a["root_cause"]["category"], "service": a["root_cause"]["service"]}]
+    for alt in a.get("alternatives", []):
+        hyps.append({"category": alt.get("category", ""), "service": alt.get("service", "")})
+    return {"hypotheses": hyps, "confidence": a.get("confidence", "low")}
+
+
+def cite_stats(res, label, idx):
+    a = res.get("answer")
+    if not a:
+        return None
+    rc = label["root_cause"]
+    names = {rc["service"]} | ({rc["edge"]["from"], rc["edge"]["to"]} if rc.get("edge") else set())
+    cites = []
+    for part in (a.get("causal_chain", []) + a.get("alternatives", [])):
+        for c in part.get("cites", []):
+            cites.append(c.strip("[] "))
+    exist = [c for c in cites if c in idx]
+    relevant = [c for c in exist if idx[c] in names]
+    sup = None
+    if res.get("analyzer_support"):
+        ans = (a["root_cause"]["category"], a["root_cause"]["service"])
+        sets = [set(h["support_ids"]) for h in res["analyzer_support"] if (h["category"], h["service"]) == ans]
+        allowed = sets[0] if sets else set().union(*[set(h["support_ids"]) for h in res["analyzer_support"]])
+        sup = sum(1 for c in exist if c in allowed)
+    first = (res["meta"]["attempts"] or [{}])[0]
+    return dict(total=len(cites), exist=len(exist), relevant=len(relevant), support=sup,
+                first_total=first.get("cites_total", 0), first_invalid=len(first.get("cites_invalid", [])))
+
+
 def summarize(rows, title):
     n = len(rows)
     if not n:
@@ -66,7 +128,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--split", default="dev", choices=["dev", "test", "all"])
     ap.add_argument("--confirm-test", action="store_true", help="required to score the held-out test split")
-    ap.add_argument("--system", default="analyzer", choices=["analyzer"])
+    ap.add_argument("--system", default="analyzer", choices=["analyzer", "baseline", "traceback"])
+    ap.add_argument("--workers", type=int, default=3)
     ap.add_argument("--verbose", action="store_true")
     a = ap.parse_args()
     if a.split != "dev" and not a.confirm_test:
@@ -77,22 +140,38 @@ def main():
         with open(ROOT / "eval/test_runs.log", "a") as f:
             f.write(f"{datetime.datetime.now(datetime.timezone.utc).isoformat()} split={a.split} system={a.system} commit={head}{'+dirty' if dirty else ''}\n")
 
+    ids = load_split(a.split)
+    labels = {i: json.loads((ROOT / "runs/labels" / f"{i}.json").read_text()) for i in ids}
+    llm_res = {}
+    if a.system in ("baseline", "traceback"):
+        with concurrent.futures.ThreadPoolExecutor(max_workers=a.workers) as ex:
+            for iid, res in zip(ids, ex.map(lambda i: run_llm(i, a.system), ids)):
+                llm_res[iid] = res
     rows = []
-    for iid in load_split(a.split):
-        label = json.loads((ROOT / "runs/labels" / f"{iid}.json").read_text())
-        rep, secs = run_analyzer(iid)
+    for iid in ids:
+        label = labels[iid]
+        skew_err = None
+        res = llm_res.get(iid)
+        if a.system == "analyzer":
+            rep, secs = run_analyzer(iid)
+        else:
+            rep, secs = llm_as_report(res), res["meta"].get("latency_s", 0.0)
         top1, svc, top3 = judge(label, rep)
         top = rep["hypotheses"][0]
-        skew_err = None
-        if label["complications"]:
+        if a.system == "analyzer" and label["complications"]:
             inj = {c["service"]: c["offset_us"] for c in label["complications"]}
             est = rep["clock"]["offsets_us"]
-            # compare pairwise differences; base jitter (<= +-3ms per service) is unknown to both
-            svcs = list(est)
-            skew_err = max(abs((est[a] - est[b]) - (inj.get(a, 0) - inj.get(b, 0))) for a in svcs for b in svcs) / 1000.0
-        rows.append(dict(skew_err=skew_err, id=iid, group=label["group"], type=label["root_cause"]["type"], svc_true=label["root_cause"]["service"],
-                         top1=top1, svc=svc, top3=top3, conf=rep["confidence"], top=f'{top["category"]}/{top["service"]}',
-                         alts=[f'{h["category"]}/{h["service"]}' for h in rep["hypotheses"][1:3]], secs=secs))
+            names = list(est)
+            skew_err = max(abs((est[x] - est[y]) - (inj.get(x, 0) - inj.get(y, 0))) for x in names for y in names) / 1000.0
+        row = dict(skew_err=skew_err, id=iid, group=label["group"], type=label["root_cause"]["type"], svc_true=label["root_cause"]["service"],
+                   top1=top1, svc=svc, top3=top3, conf=rep["confidence"], top=f'{top["category"]}/{top["service"]}',
+                   alts=[f'{h["category"]}/{h["service"]}' for h in rep["hypotheses"][1:3]], secs=secs)
+        if res is not None:
+            m = res["meta"]
+            row.update(cost=m.get("cost_usd", 0.0), ptok=m.get("prompt_tokens", 0), ctok=m.get("completion_tokens", 0), accepted=res.get("accepted", False),
+                       attempts=len(m["attempts"]), cites=cite_stats(res, label, record_index(iid)),
+                       truncated=m.get("baseline", {}).get("truncated"), kept=m.get("baseline", {}).get("kept_fraction"))
+        rows.append(row)
     print(f"system={a.system} split={a.split}")
     summarize(rows, "ALL")
     summarize([r for r in rows if r["group"] != "unseen"], "catalog types (category+svc)")
@@ -104,7 +183,23 @@ def main():
     errs = [r["skew_err"] for r in rows if r["skew_err"] is not None]
     if errs:
         print(f"clock-offset recovery on {len(errs)} skewed incidents: max error {max(errs):.1f} ms, mean {sum(errs)/len(errs):.1f} ms (injected skews are 400-3000 ms)")
-    print(f"mean latency {sum(r['secs'] for r in rows)/len(rows)*1000:.0f} ms/incident, cost $0 (no LLM)")
+    if a.system == "analyzer":
+        print(f"mean latency {sum(r['secs'] for r in rows)/len(rows)*1000:.0f} ms/incident, cost $0 (no LLM)")
+    else:
+        n = len(rows)
+        cs = [r["cites"] for r in rows if r.get("cites")]
+        tot = sum(c["total"] for c in cs) or 1
+        print(f"answers accepted: {sum(r['accepted'] for r in rows)}/{n}; mean attempts {sum(r['attempts'] for r in rows)/n:.2f}")
+        print(f"citation existence: {sum(c['exist'] for c in cs)/tot:.1%} of {tot} cites exist; first-attempt invalid rate "
+              f"{sum(c['first_invalid'] for c in cs)/max(1, sum(c['first_total'] for c in cs)):.1%}; relevance (cited record in root-cause service/edge): {sum(c['relevant'] for c in cs)/tot:.1%}")
+        sup = [c for c in cs if c["support"] is not None]
+        if sup:
+            print(f"analyzer-support: {sum(c['support'] for c in sup)/max(1, sum(c['total'] for c in sup)):.1%} of cites are in the analyzer's support set")
+        print(f"mean prompt/completion tokens {sum(r['ptok'] for r in rows)/n:.0f}/{sum(r['ctok'] for r in rows)/n:.0f}; "
+              f"mean cost ${sum(r['cost'] for r in rows)/n:.4f}/incident (total ${sum(r['cost'] for r in rows):.2f}); mean latency {sum(r['secs'] for r in rows)/n:.1f} s")
+        tr = [r for r in rows if r.get("truncated") is not None]
+        if tr:
+            print(f"baseline input truncated for {sum(1 for r in tr if r['truncated'])}/{len(tr)} incidents")
     wrong = [r for r in rows if not r["top1"]]
     print(f"\nincorrect top-1 ({len(wrong)}):")
     for r in wrong:

@@ -571,10 +571,28 @@ class Analysis {
     json r;
     r["incident_id"] = inc_.id;
     r["clock"] = {{"reference_service", cm_.reference}, {"method", "median(server.start - client.start) over causal span pairs"}, {"offsets_us", cm_.offset_us}, {"edge_samples", cm_.edge_samples}, {"ops_clock_offset_us", cm_.ops_offset_us}, {"ops_clock_calibrated", cm_.ops_calibrated}};
+    // Isolated early failures are background noise. The symptom onset is the start of the first
+    // sustained burst of failing entry requests; the very first failure is reported separately.
     int64_t first_fail = INT64_MAX;
     std::string first_fail_id;
-    for (auto& tr : cor_.traces) if (tr.failed && tr.root >= 0 && S(tr.root).t < first_fail) { first_fail = S(tr.root).t; first_fail_id = S(tr.root).id; }
-    r["symptom"] = {{"traces", static_cast<int>(cor_.traces.size())}, {"failed_traces", n_failed_}, {"first_failure_t_us", n_failed_ ? first_fail : 0}, {"first_failure_id", first_fail_id}};
+    std::vector<std::pair<int64_t, std::string>> fails;
+    for (auto& tr : cor_.traces)
+      if (tr.failed && tr.root >= 0) fails.push_back({S(tr.root).t, S(tr.root).id});
+    std::sort(fails.begin(), fails.end());
+    if (!fails.empty()) { first_fail = fails.front().first; first_fail_id = fails.front().second; }
+    Times ft;
+    for (auto& f : fails) ft.push_back(f.first);
+    const Burst sb = find_burst(ft, 8);
+    int64_t onset = first_fail;
+    std::string onset_id = first_fail_id;
+    int before = 0;
+    if (sb.found) {
+      onset = sb.onset;
+      for (auto& f : fails) if (f.first == sb.onset) { onset_id = f.second; break; }
+      for (auto& f : fails) if (f.first < sb.onset) ++before;
+    }
+    r["symptom"] = {{"traces", static_cast<int>(cor_.traces.size())}, {"failed_traces", n_failed_}, {"first_failure_t_us", n_failed_ ? first_fail : 0}, {"first_failure_id", first_fail_id},
+                    {"sustained_burst_found", sb.found}, {"sustained_onset_us", n_failed_ ? onset : 0}, {"sustained_onset_id", onset_id}, {"failures_before_burst", before}};
     json edges = json::array();
     for (auto& e : graph_) edges.push_back({{"caller", e.caller}, {"callee", e.callee}, {"calls", e.calls}, {"failed", e.fail}, {"timeouts", e.timeouts}, {"refused", e.refused}, {"errors", e.errors}, {"retried_attempts", e.retries}});
     r["graph"] = edges;
@@ -615,7 +633,7 @@ class Analysis {
     struct TL { int64_t t; std::string id, kind, service, text; };
     std::vector<TL> tl;
     for (auto& c : changes_) tl.push_back({c.t, c.ids.back(), c.kind + "_change", c.service, c.kind + " event on " + c.service});
-    if (n_failed_) tl.push_back({first_fail, first_fail_id, "symptom_onset", cm_.reference, "first failing request at the entry service"});
+    if (n_failed_) tl.push_back({onset, onset_id, "symptom_onset", cm_.reference, std::string(sb.found ? "start of the sustained burst of failing entry requests" : "first failing entry request")});
     for (size_t k = 0; k < hs.size() && k < 4; ++k) {
       auto& h = hs[k];
       if (h.ev.empty() || h.category == "unexplained") continue;
