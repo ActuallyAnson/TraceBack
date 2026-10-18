@@ -36,10 +36,16 @@ def judge(label, rep):
     rc = label["root_cause"]
     ok_cat = MAP.get(rc["type"])
     hyps = rep["hypotheses"]
+    edge = rc.get("edge")
+    names = {rc["service"]} | ({edge["from"], edge["to"]} if edge else set())  # edge faults: either endpoint localizes
+    def loc(h):
+        return h["service"] in names or bool(h.get("edge") and {h["edge"]["from"], h["edge"]["to"]} & names and edge)
     def right(h):
-        return (ok_cat is not None and h["category"] in ok_cat and h["service"] == rc["service"])
+        if ok_cat is None:          # unseen type: only localization is scored (SCORING.md)
+            return loc(h)
+        return h["category"] in ok_cat and h["service"] == rc["service"]
     top = hyps[0]
-    return right(top), top["service"] == rc["service"], any(right(h) for h in hyps[:3])
+    return right(top), loc(top), any(right(h) for h in hyps[:3])
 
 
 def summarize(rows, title):
@@ -89,7 +95,9 @@ def main():
                          alts=[f'{h["category"]}/{h["service"]}' for h in rep["hypotheses"][1:3]], secs=secs))
     print(f"system={a.system} split={a.split}")
     summarize(rows, "ALL")
-    for g in ("base", "skew", "double"):
+    summarize([r for r in rows if r["group"] != "unseen"], "catalog types (category+svc)")
+    summarize([r for r in rows if r["group"] == "unseen"], "unseen types (svc only)")
+    for g in ("base", "skew", "double", "unseen"):
         summarize([r for r in rows if r["group"] == g], f"group={g}")
     for t in sorted({r["type"] for r in rows}):
         summarize([r for r in rows if r["type"] == t], f"type={t}")
