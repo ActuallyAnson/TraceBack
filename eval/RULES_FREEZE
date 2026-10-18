@@ -1,0 +1,7 @@
+# Analyzer rules frozen before unseen test variants were written.
+analyzer_last_commit=5311e1004ffadbc700d28cad770327ce3c7924b9
+e7504664944db1b8601d9132fd8a3d025359bc4452b23c0bc837219769f71d05  src/analyzer/correlate.cpp
+a97c72148454b1c025d6172a3bbf49ee55a29fe989f6e8335dbb31fc7c112595  src/analyzer/hypotheses.cpp
+4a948c27c6b5189df8c58ccec218cd8906f72d573e5bdd92a548b67f1143f632  src/analyzer/load.cpp
+aa1c3dca4214617af90503460f0cccaa50a78eec5b57226371b6dc126cb64636  src/analyzer/main.cpp
+1d46621b90bc9fd0f4fde8c8d98d59b679c43c51d16ac27df199dc1867ee8289  include/tb/analyzer.hpp

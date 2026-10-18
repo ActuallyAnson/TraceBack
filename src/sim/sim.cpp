@@ -27,6 +27,12 @@ const char* kind_name(FaultKind k) {
     case FaultKind::HarmlessDeploy: return "harmless_deploy";
     case FaultKind::MildLatency: return "mild_latency";
     case FaultKind::CosmeticErrors: return "cosmetic_errors";
+    case FaultKind::NetworkPartition: return "network_partition";
+    case FaultKind::DnsFailure: return "dns_failure";
+    case FaultKind::CrashLoop: return "crash_loop";
+    case FaultKind::SilentRegression: return "silent_regression";
+    case FaultKind::SlowSubset: return "slow_subset_requests";
+    case FaultKind::GradualDegradation: return "gradual_degradation";
   }
   return "?";
 }
@@ -196,6 +202,8 @@ class World {
       if (f.svc != svc) continue;
       if (f.kind == FaultKind::BadDeploy && active(f, now_) && now_ >= f.t0 + 4 * kSec) m *= 2.5;
       if (f.kind == FaultKind::CapacityReduction && active(f, now_)) m *= 8;
+      if (f.kind == FaultKind::SilentRegression && active(f, now_)) m *= 1.5;
+      if (f.kind == FaultKind::GradualDegradation && active(f, now_)) m *= 1 + (f.p1 - 1) * std::min(1.0, static_cast<double>(now_ - f.t0) / (30.0 * kSec));
     }
     const double since = static_cast<double>(now_ - st_[svc].boot_t) / kSec;
     if (since < 10) m *= 1 + 3 * (1 - since / 10);
@@ -220,6 +228,7 @@ class World {
       if (f.kind == FaultKind::BadDeploy && now_ >= f.t0 + 4 * kSec && rng_.chance(f.p1)) { code = "internal_error"; return 500; }
       if (f.kind == FaultKind::MaskedError && r.poison) { code = "stock_record_corrupt"; return 500; }
       if (f.kind == FaultKind::CosmeticErrors && rng_.chance(0.03)) { code = "rate_limited"; return 429; }
+      if (f.kind == FaultKind::SilentRegression && rng_.chance(f.p1)) { code = "internal_error"; return 500; }
     }
     for (auto& f : faults_)
       if (f.kind == FaultKind::RetryStorm && svc == PAYMENTS && now_ >= f.t0 && now_ <= f.t0 + 12 * kSec && rng_.chance(f.p2)) { code = "temporarily_unavailable"; return 503; }
@@ -254,6 +263,19 @@ class World {
       }
     }
     return c;
+  }
+
+  // Edge-level faults. Random numbers are drawn only while such a fault is active, so incidents
+  // without them are unaffected.
+  bool edge_fault(FaultKind k, int caller, int callee, double& p) const {
+    for (auto& f : faults_)
+      if (f.kind == k && f.svc == (k == FaultKind::DnsFailure ? caller : callee) && f.i1 == (k == FaultKind::DnsFailure ? callee : caller) && active(f, now_)) { p = f.p2; return true; }
+    return false;
+  }
+  double subset_extra_ms(int svc, const Req& r) {
+    for (auto& f : faults_)
+      if (f.kind == FaultKind::SlowSubset && f.svc == svc && r.poison && active(f, now_)) return f.p1 * rng_.lognormal(0.25);
+    return 0;
   }
 
   // ---------- emission ----------
@@ -373,6 +395,12 @@ class World {
           at(ff.t0, [this, s] { crash(s); });
           at(ff.t1, [this, s] { boot(s, true); });
           break;
+        case FaultKind::CrashLoop:
+          for (int k = 0; k < 3; ++k) {
+            at(ff.t0 + k * 14 * kSec, [this, s] { crash(s); });
+            at(ff.t0 + k * 14 * kSec + 3 * kSec, [this, s] { boot(s, true); });
+          }
+          break;
         case FaultKind::CapacityReduction:
           at(ff.t0, [this, s] { ops("resource_limit_change", s, Obj().s("resource", "cpu").s("action", "throttled").str(), 0.4); });
           at(ff.t1, [this, s] { try_start(s); });
@@ -440,11 +468,13 @@ class World {
       if (st_[c->caller].gen != c->caller_gen) return;
       const bool fail = status <= 0 || status >= 500;
       const std::string peer = kSvcName[c->callee];
-      const std::string code = status == 0 ? "timeout" : status == -1 ? "conn_refused" : err;
+      const std::string code = status == 0 ? "timeout" : status == -1 ? "conn_refused" : err;  // -3: dns
       span(c->caller, c->trace, cspan, c->parent, "client", c->op, peer, t_start, now_ - t_start, status, fail ? code : "", attempt, 0);
       if (status == 0) {
         log(c->caller, "warn", "upstream_timeout", pick({"upstream call timed out", "timeout calling dependency", "deadline exceeded waiting for response"}) + (logrng_.chance(0.5) ? " peer=" + peer : ""), c->trace,
             Obj().s("peer", peer).i("timeout_ms", cfg.timeout_us / kMs).i("attempt", attempt).str());
+      } else if (status == -3) {
+        log(c->caller, "error", "dns_lookup_failed", "name resolution failed for " + peer, c->trace, Obj().s("peer", peer).i("attempt", attempt).str());
       } else if (status == -1) {
         log(c->caller, "error", "conn_refused", "connection refused by " + peer, c->trace, Obj().s("peer", peer).i("attempt", attempt).str());
       } else if (status >= 500) {
@@ -460,6 +490,12 @@ class World {
       }
     };
     at(now_ + cfg.timeout_us, [finish] { finish(0, "timeout"); });
+    double p = 0;
+    if (edge_fault(FaultKind::DnsFailure, c->caller, c->callee, p) && rng_.chance(p)) {
+      after(2 * kMs, [finish] { finish(-3, "dns_resolution_failed"); });
+      return;
+    }
+    if (edge_fault(FaultKind::NetworkPartition, c->caller, c->callee, p) && rng_.chance(p)) return;  // packets vanish
     Req r;
     r.trace = c->trace;
     r.parent_span = cspan;
@@ -526,7 +562,7 @@ class World {
     }
   }
 
-  static int map_status(int s) { return s == 0 ? 504 : s == -1 ? 503 : s; }
+  static int map_status(int s) { return s == 0 ? 504 : s < 0 ? 503 : s; }
 
   void handle(int svc, Pending p) {
     const int gen = st_[svc].gen;
@@ -553,7 +589,7 @@ class World {
     const int fail = maybe_fail(svc, r, code);
     double ms = kBaseMs[svc] * rng_.lognormal(0.35) * lat_mult(svc);
     if (fail) ms *= 0.5;
-    ms += extra_ms(svc);
+    ms += extra_ms(svc) + subset_extra_ms(svc, r);
     const int64_t d = std::max<int64_t>(200, static_cast<int64_t>(ms * kMs));
 
     switch (svc) {
@@ -654,6 +690,8 @@ std::string label_json(const Spec& spec, const Output& real, const Output& cf) {
   root.s("type", kind_name(t.kind)).s("service", kSvcName[t.svc]).i("onset_us", spec.epoch_us + t.t0).i("end_us", spec.epoch_us + t.t1);
   if (t.kind == FaultKind::ConfigChange) root.s("target_dependency", kSvcName[t.i1]);
   if (t.kind == FaultKind::RetryStorm) root.s("trigger_service", kSvcName[PAYMENTS]);
+  if (t.kind == FaultKind::NetworkPartition) root.raw("edge", Obj().s("from", kSvcName[t.i1]).s("to", kSvcName[t.svc]).str());
+  if (t.kind == FaultKind::DnsFailure) root.raw("edge", Obj().s("from", kSvcName[t.svc]).s("to", kSvcName[t.i1]).str());
   std::string decoys = "[";
   for (size_t i = 1; i < spec.faults.size(); ++i) {
     if (i > 1) decoys += ",";

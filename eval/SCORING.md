@@ -25,6 +25,9 @@ The analyzer uses its own categories. The label-to-category map lives only in
 - **Top-3 accuracy**: the correct (category, service) appears in the top 3.
 - **Unseen-type incidents** (label types with no row above): only service localization is scored;
   category accuracy is reported as n/a. They are reported separately from catalog types.
+  For faults that live on a call edge (network partition, DNS failure) the label names the edge, and a
+  top-1 hypothesis naming either endpoint of that edge counts as localized. (Amendment, committed after the
+  analyzer freeze and before any variant or test result existed.)
 - **Confident**: confidence label `high`. **False-confidence rate** = incidents where the
   system said `high` and top-1 was wrong, divided by all incidents. Also reported: precision when `high`.
 - **Evidence validity** (LLM systems): share of cited IDs that exist in the incident, and share that
