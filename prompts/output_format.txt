@@ -1,0 +1,31 @@
+Return ONLY one JSON object, no prose before or after it, with exactly this shape:
+
+{
+  "root_cause": {"category": "<one of the categories below>", "service": "<service name>", "summary": "<one sentence>"},
+  "confidence": "high" | "medium" | "low",
+  "causal_chain": [
+    {"claim": "<one factual statement>", "status": "confirmed" | "uncertain", "cites": ["<record id>", "..."]}
+  ],
+  "alternatives": [
+    {"category": "<category>", "service": "<service name>", "why_less_likely": "<one sentence>", "cites": ["<record id>"]}
+  ]
+}
+
+Rules:
+- Every claim in causal_chain must cite at least one record id, copied exactly as it appears in the data. Never invent ids.
+- Use "confirmed" only when the cited records directly show the claim. Use "uncertain" for inferences and anything the records do not prove.
+- Order causal_chain from the earliest cause to the user-visible symptom.
+- "confidence" is your honest estimate that root_cause is right. Use "high" only if the evidence is strong and no alternative fits nearly as well.
+- If a fault sits on the call path between two services (network, name resolution), name the service whose calls fail.
+
+Categories (use exactly one for root_cause.category):
+- dependency_slow: a service's own processing became much slower than normal, so callers wait and time out.
+- retry_amplification: callers retry failing calls repeatedly with little or no backoff, multiplying load on the callee.
+- pool_exhaustion: a service ran out of database or connection-pool capacity.
+- deploy_regression: a deployment of a service was followed by errors or latency in that same service.
+- config_regression: a configuration change in a service made its own outbound calls fail (for example, timeouts too short).
+- process_crash: a service process died or restarted and refused connections.
+- capacity_saturation: a service lost serving capacity (fewer workers or less CPU) and requests queue.
+- internal_errors: a service itself returns errors with no change event or resource cause; callers surface them as generic errors.
+- edge_unreachable: calls between two services are lost or fail while both appear healthy (network or name-resolution problem).
+- other: none of the above fits.

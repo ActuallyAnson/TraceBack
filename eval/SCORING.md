@@ -30,9 +30,23 @@ The analyzer uses its own categories. The label-to-category map lives only in
   analyzer freeze and before any variant or test result existed.)
 - **Confident**: confidence label `high`. **False-confidence rate** = incidents where the
   system said `high` and top-1 was wrong, divided by all incidents. Also reported: precision when `high`.
-- **Evidence validity** (LLM systems): share of cited IDs that exist in the incident, and share that
-  are also in the evidence set the analyzer attached to the cited hypothesis ("support").
-- **Latency / cost** per incident from the run log (tokens x published price, wall clock).
+- **Evidence validity** (LLM systems), three numbers, all computed by the scorer:
+  1. *Existence*: share of cited IDs that exist in the incident (primary; objective, same for both LLM systems).
+  2. *Relevance*: share of cited records that belong to the labeled root-cause service or an endpoint of its
+     edge. Uses labels, computed identically for both systems. A rough proxy: symptom records in other services
+     are legitimately citable, so this is not expected to reach 100%.
+  3. *Analyzer support* (full Traceback only): share of cited IDs inside the analyzer's `support_ids` for the
+     hypothesis matching the answer, or in any hypothesis's support set if the answer matches none. n/a for the baseline.
+  Citation retries: the answer after retries is scored; the first-attempt invalid rate is also reported.
+- **Latency / cost** per incident from the run log (tokens x published price, wall clock). Model for both LLM
+  systems: `nvidia/nemotron-3-super-120b-a12b`, temperature 0, same output format and category list. Prices come
+  from the Token Factory `/v1/models` listing at run time ($0.30 / $0.90 per million input / output tokens when
+  written). The baseline prompt is `prompts/baseline_system.txt` plus the rendered telemetry; it was written once
+  before any LLM result existed and is not tuned on test.
+- **Baseline input**: warn/error/fatal logs and lifecycle logs (service_started, config_changed), all service
+  metrics and all ops events, logs ordered by raw timestamp and grouped by trace id, raw (unaligned) clocks. No spans
+  and no analyzer output. If the estimated token count exceeds the budget, warn/error logs are subsampled evenly
+  in time; the share of truncated incidents is reported.
 
 ## Process rules
 - Tuning uses `dev` only. `eval/score.py --split test` needs `--confirm-test` and appends a line
