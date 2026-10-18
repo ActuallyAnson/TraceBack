@@ -1,4 +1,4 @@
-.PHONY: build test data verify
+.PHONY: build test data verify eval-dev
 build:
 	cmake -S . -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build -j
 test: build
@@ -9,3 +9,6 @@ data: build
 # Fail if regenerated data differs from the frozen split/hashes in eval/split.json.
 verify: build
 	./build/tb_sim verify --manifest eval/split.json
+# Score the deterministic analyzer on the dev split (the only split used for tuning).
+eval-dev: data
+	python3 eval/score.py --split dev

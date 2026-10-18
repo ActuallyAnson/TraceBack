@@ -207,8 +207,10 @@ class World {
       if (f.svc != svc || !active(f, now_)) continue;
       if (f.kind == FaultKind::SlowDependency && rng_.chance(f.p2)) e += rng_.uni(0.7 * f.p1, 1.3 * f.p1);
       if (f.kind == FaultKind::MildLatency) e += rng_.uni(0.7 * f.p1, 1.3 * f.p1);
-      if (f.kind == FaultKind::RetryStorm && now_ <= f.t0 + 12 * kSec) e += f.p1 * rng_.lognormal(0.3);
     }
+    // Retry storm: the trigger is a short burst of degradation in payments (f.svc is the amplifier, orders).
+    for (auto& f : faults_)
+      if (f.kind == FaultKind::RetryStorm && svc == PAYMENTS && now_ >= f.t0 && now_ <= f.t0 + 12 * kSec) e += f.p1 * rng_.lognormal(0.3);
     return e;
   }
   // Returns status (0 = no failure) and sets code.
@@ -216,10 +218,11 @@ class World {
     for (auto& f : faults_) {
       if (f.svc != svc || !active(f, now_)) continue;
       if (f.kind == FaultKind::BadDeploy && now_ >= f.t0 + 4 * kSec && rng_.chance(f.p1)) { code = "internal_error"; return 500; }
-      if (f.kind == FaultKind::RetryStorm && now_ <= f.t0 + 12 * kSec && rng_.chance(f.p2)) { code = "temporarily_unavailable"; return 503; }
       if (f.kind == FaultKind::MaskedError && r.poison) { code = "stock_record_corrupt"; return 500; }
       if (f.kind == FaultKind::CosmeticErrors && rng_.chance(0.03)) { code = "rate_limited"; return 429; }
     }
+    for (auto& f : faults_)
+      if (f.kind == FaultKind::RetryStorm && svc == PAYMENTS && now_ >= f.t0 && now_ <= f.t0 + 12 * kSec && rng_.chance(f.p2)) { code = "temporarily_unavailable"; return 503; }
     if (rng_.chance(0.002)) { code = "internal_error"; return 500; }
     if (svc == GATEWAY && rng_.chance(0.01)) { code = "invalid_request"; return 400; }
     return 0;

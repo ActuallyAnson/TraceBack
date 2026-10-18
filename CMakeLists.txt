@@ -19,3 +19,12 @@ add_executable(test_sim tests/test_sim.cpp)
 target_link_libraries(test_sim tb_simlib)
 add_test(NAME sim_determinism COMMAND test_sim)
 add_test(NAME split_locked COMMAND tb_sim verify --manifest ${CMAKE_SOURCE_DIR}/eval/split.json)
+
+# Analyzer: reads observable incident files only. Does not link the simulator.
+add_library(tb_analyzer src/analyzer/load.cpp src/analyzer/correlate.cpp src/analyzer/hypotheses.cpp)
+add_executable(tb_analyze src/analyzer/main.cpp)
+target_link_libraries(tb_analyze tb_analyzer)
+
+add_executable(test_analyzer tests/test_analyzer.cpp)
+target_link_libraries(test_analyzer tb_analyzer)
+add_test(NAME analyzer_units COMMAND test_analyzer)
