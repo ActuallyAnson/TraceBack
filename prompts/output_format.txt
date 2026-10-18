@@ -12,7 +12,7 @@ Return ONLY one JSON object, no prose before or after it, with exactly this shap
 }
 
 Rules:
-- Every claim in causal_chain must cite at least one record id, copied exactly as it appears in the data. Never invent ids.
+- Every claim in causal_chain must cite at least one record id. A record id is the bracketed token at the start of a record: in `[orders-L0042] +1.2s ...` the id is `orders-L0042`. Cite only the id itself (no brackets, no timestamp, no rest of the line). Never invent ids.
 - Use "confirmed" only when the cited records directly show the claim. Use "uncertain" for inferences and anything the records do not prove.
 - Order causal_chain from the earliest cause to the user-visible symptom.
 - "confidence" is your honest estimate that root_cause is right. Use "high" only if the evidence is strong and no alternative fits nearly as well.

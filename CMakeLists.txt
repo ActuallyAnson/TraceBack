@@ -28,3 +28,10 @@ target_link_libraries(tb_analyze tb_analyzer)
 add_executable(test_analyzer tests/test_analyzer.cpp)
 target_link_libraries(test_analyzer tb_analyzer)
 add_test(NAME analyzer_units COMMAND test_analyzer)
+
+# LLM reasoner (libcurl client for the Nebius Token Factory endpoint) and raw-telemetry baseline.
+find_package(CURL REQUIRED)
+add_library(tb_llm src/llm/llm.cpp src/llm/reasoner.cpp)
+target_link_libraries(tb_llm tb_analyzer CURL::libcurl)
+add_executable(tb_reason src/llm/main.cpp)
+target_link_libraries(tb_reason tb_llm)
