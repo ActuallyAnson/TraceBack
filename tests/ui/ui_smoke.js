@@ -71,7 +71,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
   await ev(`document.querySelector('#to2').click()`); await sleep(300);
   check('story act2 verbatim', await ev(`[document.querySelector('.act:nth-of-type(2) .cat, .act .cat').textContent, document.querySelector('pre.raw').textContent.length > 200, !!document.querySelector('#check')].join(' | ')`));
   await ev(`document.querySelector('#check').click()`); await sleep(300);
-  check('story verdict', await ev(`document.querySelector('.truth').textContent.split(/[ \n]+/).join(' ').slice(0,260)`));
+  check('story verdict', await ev(`document.querySelector('.truth').textContent.slice(0,260)`));
   await ev(`document.querySelector('#to3').click()`); await sleep(300);
   check('story act3', await ev(`document.querySelectorAll('.stages li').length + ' stages | ' + (document.querySelector('.honest')?.textContent.slice(0,80) || 'no banner')`));
   await ev(`document.querySelector('#again').click()`); await sleep(2500);
