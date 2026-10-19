@@ -18,6 +18,7 @@ int main(int argc, char** argv) {
     else if (k == "--timeout") o.llm.timeout_s = std::stoi(v);
     else if (k == "--budget") o.token_budget = std::stoi(v);
     else if (k == "--prompts") o.prompts_dir = v;
+    else if (k == "--rules") o.rules = v;
     else if (k == "--prompt") o.prompt_name = v;
     else if (k == "--price-in") o.price_in = std::stod(v);
     else if (k == "--price-out") o.price_out = std::stod(v);
@@ -25,6 +26,9 @@ int main(int argc, char** argv) {
     else { std::fprintf(stderr, "unknown option %s\n", k.c_str()); return 2; }
   }
   if (o.system != "traceback" && o.system != "baseline") { std::fprintf(stderr, "--system must be traceback or baseline\n"); return 2; }
+  if (o.rules != "v1" && o.rules != "v2") { std::fprintf(stderr, "--rules must be v1 or v2\n"); return 2; }
+  if (o.rules == "v2" && o.system != "traceback") { std::fprintf(stderr, "--rules v2 applies to --system traceback only\n"); return 2; }
+  if (o.rules == "v2" && o.prompts_dir == "prompts") o.prompts_dir = "prompts_v2";
   try {
     tb::Incident inc = tb::load_incident(argv[1]);
     o.description = tb::read_description(argv[1]);

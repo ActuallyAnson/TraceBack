@@ -1,4 +1,4 @@
-.PHONY: live build test data verify eval-dev site serve results results-check demo topology2 topology2-check
+.PHONY: v2 v2-check v1-check live build test data verify eval-dev site serve results results-check demo topology2 topology2-check
 build:
 	cmake -S . -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build -j
 test: build
@@ -49,3 +49,12 @@ topology2: build
 topology2-check: build
 	./build/tb_sim2 generate --out runs/topo2 >/dev/null
 	python3 eval/topology2/report.py --check
+
+# v2 evaluation on the fresh sets (eval/v2/PLAN.md). Offline: model answers come from eval/llm_cache.
+v2: build
+	python3 eval/v2/report.py
+v2-check: build
+	python3 eval/v2/report.py --check
+# v1 results, locked splits, scoring protocol and frozen analyzer/prompts are unchanged since the v1 freeze.
+v1-check:
+	sh eval/v2/check_v1.sh

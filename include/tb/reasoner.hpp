@@ -14,6 +14,7 @@ struct ReasonOptions {
   std::string description;          // optional architecture sentence from the incident's meta.json; replaces the prompt's first paragraph
   std::string prompt_name;           // system prompt file prefix; defaults to `system` (e.g. "baseline_plus")
   std::string prompts_dir = "prompts";
+  std::string rules = "v1";          // "v1" (frozen) | "v2" (analyzer v2 + override rule; traceback only; see eval/v2/PLAN.md)
   LlmConfig llm;
   int token_budget = 225000;  // estimated prompt tokens for the baseline; above this warn/error logs are subsampled
   bool dry_run = false;       // build the prompts, call nothing
@@ -25,6 +26,8 @@ struct ReasonOptions {
 json extract_json(const std::string& text);  // tolerant: strips fences / surrounding prose; null if none
 std::string validate_answer_shape(const json& a);  // "" if OK, else a message for the model
 std::vector<Claim> claims_of(const json& a);
+// v2 override rule (eval/v2/PLAN.md): "" if `answer` may stand, else why it must be revised. `rep` is the analyzer report.
+std::string override_problem(const Incident& inc, const json& answer, const json& rep);
 
 // One-line rendering of a record (log/span/metric/ops) on the aligned clock; empty if the id is unknown.
 std::string render_record(const Incident& inc, const std::string& id, int64_t t0_us);

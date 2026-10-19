@@ -1,5 +1,7 @@
 #include "tb/reasoner.hpp"
 
+#include "tb/analyzer_v2.hpp"
+
 #include <algorithm>
 #include <cmath>
 #include <fstream>
@@ -269,6 +271,43 @@ std::vector<Claim> claims_of(const json& a) {
   return out;
 }
 
+
+// v2 override rule: the answer may differ from the analyzer's top candidate (H1) only by citing records that contradict it.
+// Mechanically, a contradicting record must exist, be about H1's own service (or an endpoint of its edge), fall inside H1's
+// time window, and not be part of H1's own supporting evidence. Returns "" if the answer is acceptable.
+std::string override_problem(const Incident& inc, const json& a, const json& rep) {
+  const auto& top = rep["hypotheses"][0];
+  const auto& rc = a["root_cause"];
+  if (rc["category"] == top["category"] && rc["service"] == top["service"]) return "";
+  const std::string chose = rc["category"].get<std::string>() + "/" + rc["service"].get<std::string>();
+  const std::string deflt = top["category"].get<std::string>() + "/" + top["service"].get<std::string>();
+  const std::string head = "You answered " + chose + " instead of the analysis layer's top candidate " + deflt + " (H1)";
+  if (!a.contains("override") || !a["override"].is_object() || !a["override"].contains("contradicting_records") || !a["override"]["contradicting_records"].is_array() || a["override"]["contradicting_records"].empty())
+    return head + " without an \"override\" field. Either confirm H1, or add \"override\": {\"contradicting_records\": [...], \"why\": \"...\"} listing records about H1's service that contradict H1";
+  std::set<std::string> sup, svcs = {top["service"].get<std::string>()};
+  for (auto& id : top["support_ids"]) sup.insert(id.get<std::string>());
+  if (!top["edge"].is_null()) { svcs.insert(top["edge"]["from"].get<std::string>()); svcs.insert(top["edge"]["to"].get<std::string>()); }
+  const int64_t t0 = top["onset_us"].get<int64_t>() - 5000000, t1 = top["end_us"].get<int64_t>() + 5000000;
+  auto where = [&](const std::string& id, std::string& svc, int64_t& t) {
+    for (auto& l : inc.logs) if (l.id == id) { svc = l.service; t = l.t; return true; }
+    for (auto& x : inc.spans) if (x.id == id) { svc = x.service; t = x.t; return true; }
+    for (auto& m : inc.metrics) if (m.id == id) { svc = m.service; t = m.t; return true; }
+    for (auto& o : inc.ops) if (o.id == id) { svc = o.service; t = o.t; return true; }
+    return false;
+  };
+  for (auto& jid : a["override"]["contradicting_records"]) {
+    if (!jid.is_string()) return head + ", but contradicting_records must be strings";
+    const std::string id = normalize_id(jid.get<std::string>());
+    if (sup.count(id)) return head + ", but " + id + " is part of H1's own supporting evidence, so it cannot contradict H1. Cite records about " + top["service"].get<std::string>() + " that contradict H1, or confirm H1";
+    std::string svc;
+    int64_t t = 0;
+    if (!where(id, svc, t)) continue;  // unknown ids are reported by the citation check
+    if (!svcs.count(svc)) return head + ", but " + id + " is a record of " + svc + ", not of H1's service " + top["service"].get<std::string>() + ". A record contradicts H1 only if it shows that H1's own service did not behave as H1 claims. Cite such records, or confirm H1";
+    if (t < t0 || t > t1) return head + ", but " + id + " lies outside the time window of H1. Cite records from H1's window, or confirm H1";
+  }
+  return "";
+}
+
 std::string read_description(const std::string& dir) {
   std::ifstream in(dir + "/meta.json");
   if (!in) return "";
@@ -290,7 +329,7 @@ json reason(Incident& inc, const ReasonOptions& opt) {
   json rep;
   std::string user;
   if (opt.system == "traceback") {
-    rep = analyze(inc);  // aligns clocks in place
+    rep = opt.rules == "v2" ? analyze_v2(inc) : analyze(inc);  // aligns clocks in place
     user = traceback_user(inc, rep, meta);
   } else {
     user = baseline_user(inc, opt.token_budget, meta);
@@ -320,7 +359,14 @@ json reason(Incident& inc, const ReasonOptions& opt) {
       at["problem"] = problem;
       feedback = "Your previous answer was rejected: " + problem + ". Answer again with only the JSON object in the required format.";
     } else {
-      CitationCheck cc = validate_citations(claims_of(a), valid, valid);
+      std::vector<Claim> claims = claims_of(a);
+      if (opt.rules == "v2" && a.contains("override") && a["override"].is_object() && a["override"].contains("contradicting_records") && a["override"]["contradicting_records"].is_array()) {
+        Claim oc;
+        oc.text = "override";
+        for (auto& id : a["override"]["contradicting_records"]) if (id.is_string()) oc.cites.push_back(normalize_id(id.get<std::string>()));
+        claims.push_back(oc);
+      }
+      CitationCheck cc = validate_citations(claims, valid, valid);
       at["cites_total"] = cc.total;
       at["cites_invalid"] = cc.invalid;
       if (!cc.ok()) {
@@ -328,6 +374,10 @@ json reason(Incident& inc, const ReasonOptions& opt) {
         for (auto& id : cc.invalid) ids += (ids.empty() ? "" : ", ") + id;
         feedback = "Your previous answer was rejected because it cites record ids that do not exist in the data: " + ids + ". Cite only ids exactly as they appear in the data, and re-answer with only the JSON object.";
         answer = a;  // keep the last well-formed answer in case retries run out
+      } else if (const std::string op = opt.rules == "v2" ? override_problem(inc, a, rep) : ""; !op.empty()) {
+        at["problem"] = op;
+        feedback = "Your previous answer was rejected: " + op + ". Answer again with only the JSON object in the required format.";
+        answer = a;  // kept in case retries run out; replaced by the analyzer's top candidate below
       } else {
         answer = a;
         accepted = true;
@@ -337,6 +387,14 @@ json reason(Incident& inc, const ReasonOptions& opt) {
     if (accepted) break;
     msgs.push_back({"assistant", r.content});
     msgs.push_back({"user", feedback});
+  }
+  if (opt.rules == "v2" && !answer.is_null() && !override_problem(inc, answer, rep).empty()) {
+    // The model kept differing from the analyzer without contradicting records: the analyzer's top candidate stands.
+    const auto& top = rep["hypotheses"][0];
+    out["override_rejected"] = {{"model_answer", answer["root_cause"]}, {"model_confidence", answer["confidence"]}, {"reason", override_problem(inc, answer, rep)}};
+    answer["root_cause"] = {{"category", top["category"]}, {"service", top["service"]}, {"summary", top["summary"]}};
+    answer["confidence"] = rep["confidence"];
+    accepted = true;
   }
   out["answer"] = answer;
   out["accepted"] = accepted;  // false: no attempt produced a well-formed answer with only existing ids
