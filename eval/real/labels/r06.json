@@ -1,0 +1,16 @@
+{
+ "id": "r06",
+ "source": "opentelemetry-demo 85c2cb2 (3.1.0)",
+ "window_start_us": 1792427574337410,
+ "window_end_us": 1792427694337410,
+ "kind": "fault",
+ "flag": "cartFailure",
+ "variant": "100%",
+ "flip_us": 1792427614343533,
+ "root_cause": {
+  "service": "cart",
+  "edge": null,
+  "summary": "cart EmptyCart calls go to a failing store",
+  "onset_us": 1792427614343533
+ }
+}
