@@ -129,7 +129,7 @@ int main(int argc, char** argv) {
   std::string replay, out = "runs/report";
   for (int i = 2; i + 1 < argc; i += 2) {
     const std::string k = argv[i], v = argv[i + 1];
-    if (k == "--replay") replay = v; else if (k == "--out") out = v; else if (k == "--cache") o.llm.cache_dir = v; else if (k == "--model") o.llm.model = v;
+    if (k == "--replay") replay = v; else if (k == "--out") out = v; else if (k == "--cache") o.llm.cache_dir = v; else if (k == "--cache-fallback") o.llm.fallback_cache_dir = v; else if (k == "--model") o.llm.model = v;
     else { std::fprintf(stderr, "unknown option %s\n", k.c_str()); return 2; }
   }
   try {

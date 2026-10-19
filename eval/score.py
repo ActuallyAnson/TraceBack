@@ -66,7 +66,7 @@ def run_llm(iid, system, variant="default"):
     """Run tb_reason on one incident; raw result cached to runs/results/<system>/<id>.json."""
     out_dir = ROOT / "runs/results" / (system if variant == "default" else f"{system}_{variant}")
     out_dir.mkdir(parents=True, exist_ok=True)
-    cache = ROOT / "runs/llm_cache"
+    cache = ROOT / "eval/llm_cache"
     t = time.time()
     p = subprocess.run([str(ROOT / "build/tb_reason"), str(ROOT / "runs/incidents" / iid), "--system", system, "--cache", str(cache)] + VARIANTS[variant],
                        capture_output=True, text=True)

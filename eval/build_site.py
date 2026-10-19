@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Build the static showcase site data (docs/data/*.json) from saved runs.
 
-Every number on the site comes from here: per-incident answers are read from runs/results (cached model
-answers), the analyzer is re-run, verification is re-computed, and summaries use the same judge() as score.py.
+Every number on the site comes from here: per-incident model answers come from the committed response cache (eval/llm_cache; no API key needed),
+the analyzer is re-run, verification is re-computed, and summaries use the same judge() as score.py.
 Run `make site` after `make data` and the evaluation runs.
 """
 import json, pathlib, re, subprocess, sys
@@ -102,7 +102,7 @@ def per_incident(iid, split):
     rep_dir = ROOT / "runs/site_tmp" / iid
     env = dict(**__import__("os").environ)
     sh([str(ROOT / "build/tb_investigate"), str(ROOT / "runs/incidents" / iid), "--replay", str(ROOT / "runs/replay" / f"{iid}.json"),
-        "--cache", str(ROOT / "runs/llm_cache"), "--out", str(rep_dir)])
+        "--cache", str(ROOT / "eval/llm_cache"), "--out", str(rep_dir)])
     rep = json.loads((rep_dir / "report.json").read_text())
     (ROOT / "docs" / "reports").mkdir(parents=True, exist_ok=True)
     (ROOT / "docs" / "reports" / f"{iid}.html").write_text((rep_dir / "report.html").read_text())
@@ -110,8 +110,8 @@ def per_incident(iid, split):
     t0 = rep["t0_us"]
     offsets = {k: int(v) for k, v in an["clock"]["offsets_us"].items()}
     ops_off = int(an["clock"]["ops_clock_offset_us"])
-    base_path = ROOT / "runs/results/baseline" / f"{iid}.json"
-    base = json.loads(base_path.read_text()) if base_path.exists() else None
+    # Baseline answer: served from the committed response cache (no API key needed); a miss would need a key.
+    base = json.loads(sh([str(ROOT / "build/tb_reason"), str(ROOT / "runs/incidents" / iid), "--system", "baseline", "--cache", str(ROOT / "eval/llm_cache")]))
 
     tb_top1, tb_svc, _ = score.judge(label, score.llm_as_report(rep))
     base_top1 = score.judge(label, score.llm_as_report(base))[0] if base else False
@@ -150,7 +150,7 @@ def per_incident(iid, split):
     ans = rep["answer"]
     sup_sets = [set(h["support_ids"]) for h in rep.get("analyzer_support", []) if (h["category"], h["service"]) == (ans["root_cause"]["category"], ans["root_cause"]["service"])]
     allowed = sup_sets[0] if sup_sets else set().union(*[set(h["support_ids"]) for h in rep.get("analyzer_support", [])]) if rep.get("analyzer_support") else set()
-    cite_flags = {c: dict(exists=c in all_ids, supported=c in allowed) for c in set(cites_of(ans))}
+    cite_flags = {c: dict(exists=c in all_ids, supported=c in allowed) for c in sorted(set(cites_of(ans)))}
     first = (rep["meta"]["attempts"] or [{}])[0]
     cite_summary = dict(total=len(cites_of(ans)), attempts=len(rep["meta"]["attempts"]), first_invalid=len(first.get("cites_invalid", [])), supported=sum(1 for f in cite_flags.values() if f["supported"]), unique=len(cite_flags))
     need = set(cites_of(rep["answer"])) | set(cites_of(base["answer"] if base else None))
@@ -207,9 +207,6 @@ def main():
     per = {}
     for m in manifest:
         iid = m["id"]
-        if not (ROOT / "runs/results/traceback" / f"{iid}.json").exists():
-            print("skip (no traceback result):", iid)
-            continue
         r = per_incident(iid, m["split"])
         index.append(r)
         per[iid] = json.loads((OUT / f"{iid}.json").read_text())
@@ -218,12 +215,16 @@ def main():
     for r in index:
         d = per[r["id"]]
         s = r["split"]
-        rows[s]["analyzer"].append(dict(ok=d["analyzer"]["correct"], conf=d["analyzer"]["confidence"], lat=0.05))
+        g = dict(group=d["group"])
+        rows[s]["analyzer"].append(dict(ok=d["analyzer"]["correct"], conf=d["analyzer"]["confidence"], lat=0.05, **g))
         if d["baseline"]:
-            rows[s]["baseline"].append(dict(ok=d["baseline"]["correct"], conf=d["baseline"]["answer"]["confidence"] if d["baseline"]["answer"] else "none", cost=d["baseline"]["cost"], lat=d["baseline"]["latency"]))
+            rows[s]["baseline"].append(dict(ok=d["baseline"]["correct"], conf=d["baseline"]["answer"]["confidence"] if d["baseline"]["answer"] else "none", cost=d["baseline"]["cost"], lat=d["baseline"]["latency"], **g))
         tb = d["traceback"]
-        rows[s]["traceback"].append(dict(ok=tb["correct"], conf=tb["final_confidence"], cost=tb["cost"], lat=tb["latency"]))
-        rows[s]["traceback_unverified"].append(dict(ok=tb["correct"], conf=tb["llm_confidence"], cost=tb["cost"], lat=tb["latency"]))
+        rows[s]["traceback"].append(dict(ok=tb["correct"], conf=tb["final_confidence"], cost=tb["cost"], lat=tb["latency"], **g))
+        rows[s]["traceback_unverified"].append(dict(ok=tb["correct"], conf=tb["llm_confidence"], cost=tb["cost"], lat=tb["latency"], **g))
+    # test split broken down into catalog vs unseen fault types
+    for part, keep in (("test_catalog", lambda g: g != "unseen"), ("test_unseen", lambda g: g == "unseen")):
+        rows[part] = {k: [r for r in v if keep(r["group"])] for k, v in rows["test"].items()}
     asrun = None
     p = ROOT / "eval/test_results/baseline.txt"
     if p.exists():

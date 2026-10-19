@@ -1,69 +1,186 @@
 # Traceback
 
-Incident investigator for a small multi-service backend. Given logs, events and
-traces from a failed or slow request, it reconstructs the timeline, ranks likely
-root causes with event-ID evidence, and separates confirmed facts from hypotheses.
+**Root-cause analysis you can check.** Traceback investigates a failed multi-service request: it rebuilds the
+timeline, ranks likely root causes, cites the exact log/span/metric records behind every claim, separates
+confirmed facts from hypotheses, and then **replays the incident with the suspected cause switched off** to see
+whether the failure goes away.
 
-Status: work in progress (Nebius x NVIDIA Global AI Hackathon entry).
-Design is deterministic-first: the LLM only ranks, explains and verifies
-hypotheses produced by a non-LLM analysis layer. Results are added once the
-evaluation harness has produced them; no numbers are claimed before then.
+Entry for the **Nebius × NVIDIA Global AI Hackathon**, track *Best Apps and Agents*.
+Model: `nvidia/nemotron-3-super-120b-a12b` on **Nebius Token Factory**.
 
-License: MIT.
+- **Live showcase (interactive):** https://actuallyanson.github.io/TraceBack/ (also `make serve` locally)
+- **One-command demo:** `make demo` (no API key needed; see below)
+
+## It is not a log summarizer
+
+| Layer | What it does | Uses an LLM? |
+|---|---|---|
+| Clock alignment | Estimates each service's clock offset from causal span pairs | no |
+| Correlator + dependency graph | Groups spans into traces, orders events, derives the call graph | no |
+| Hypothesis rules | Ranked candidate causes, each linked to evidence IDs; changes with no following distress are "ruled out" | no |
+| **LLM reasoner** | Ranks, explains and checks the candidates against their evidence; outputs a causal chain, a confidence label and *confirmed vs uncertain* per claim | **yes (Nemotron)** |
+| Citation validator | Every cited record ID must exist in the incident; otherwise the answer is rejected and the model is asked again | no |
+| Replay verifier | Re-runs the incident with the suspected cause disabled; reports whether the symptom disappears | no |
+
+The analysis layer works without any model and is measured on its own. The model never sees the raw firehose,
+only candidates and the records behind them. A **baseline** that feeds raw logs straight to the same model, with
+the same output format, is measured against it.
+
+## Architecture
+
+```mermaid
+flowchart LR
+  T["Telemetry<br/>logs · spans · metrics · deploy events"] --> C["Clock alignment<br/>(causal span pairs)"]
+  C --> G["Correlator +<br/>dependency graph"]
+  G --> H["Hypothesis rules<br/>ranked candidates + evidence IDs"]
+  H --> L["LLM reasoner<br/>Nemotron on Nebius Token Factory"]
+  L --> V{"Citation validator<br/>unknown ID → ask again"}
+  V --> R["Counterfactual replay<br/>verifier"]
+  R --> O["Incident report<br/>CLI · Markdown · HTML"]
+  B["Baseline: raw logs → same LLM"] -.compared against.-> L
+```
+
+## How Nemotron and Nebius Token Factory are used
+
+- The reasoner and the baseline call the Token Factory OpenAI-compatible chat endpoint
+  (`https://api.tokenfactory.nebius.com/v1/chat/completions`) from C++ with libcurl (`src/llm/`). The API key is read
+  from the `NEBIUS_API_KEY` environment variable only; it is never written to disk or committed.
+- Model: **`nvidia/nemotron-3-super-120b-a12b`** (NVIDIA Nemotron 3 Super) for every LLM result in this repo.
+- Where Token Factory helped: the 262k-token context window lets the raw-logs baseline be a real competitor; per-token
+  pricing made a full evaluation (every incident, both LLM systems, retries) cheap enough to rerun while iterating
+  (the generated notes below give the total); the OpenAI-compatible API meant a thin client with no SDK. Details and rough edges are in
+  `submission/FEEDBACK.md`.
+
+## Quick start
+
+Requirements: CMake ≥ 3.16, a C++20 compiler, libcurl, Python 3 (standard library only). Tested on macOS with Apple clang.
+
+```bash
+git clone https://github.com/ActuallyAnson/TraceBack && cd TraceBack
+make build test     # builds everything and runs the unit tests (incl. the frozen test-split check)
+make demo           # one incident end to end -> runs/demo/report.html and report.md
+make serve          # the interactive showcase at http://localhost:8000
+make data           # regenerate all 58 labeled incidents into runs/ (deterministic, ~5 s)
+make results        # regenerate every reported number and refresh the table below
+```
+
+`make demo` and `make results` run **offline with no API key**: the model's recorded answers for every incident
+used in the reported results are committed in `eval/llm_cache/` and are replayed by exact request match. To call the
+model live (for example for a new incident), export a key and point at a cache directory:
+
+```bash
+export NEBIUS_API_KEY=...        # keep it in your shell profile, never in the repo
+./build/tb_investigate runs/incidents/inc-009 --replay runs/replay/inc-009.json --cache eval/llm_cache
+```
+
+A cache miss (for example on another platform if prompt text differs, or after changing a prompt) makes a live call and
+therefore needs the key.
+
+## Results
+
+All numbers are generated by `make results` (`eval/build_site.py` + `eval/make_results.py`) from saved runs; CI-style check:
+`make results-check`. Scoring rules were committed before the first run (`eval/SCORING.md`). "Confidently wrong" =
+answers the system labeled *high* confidence that were wrong, over all incidents. Test = held-out, locked before any model ran on it.
+
+<!-- RESULTS:START (generated by eval/make_results.py; do not edit by hand) -->
+
+**Held-out test split (headline)** (n=26)
+
+| System | Top-1 | Precision when “high” | Confidently wrong | Cost / incident | Latency |
+|---|---:|---:|---:|---:|---:|
+| Raw logs → LLM (baseline) | 92.3% | 92.0% (25) | 7.7% | $0.048 | 20.3 s |
+| Analyzer only (no LLM) | 96.2% | 100.0% (16) | 0.0% | $0 | <0.1 s |
+| Analyzer + LLM (no verifier) | 96.2% | 100.0% (20) | 0.0% | $0.0038 | 13.8 s |
+| **Full Traceback** (analyzer + LLM + verifier) | 96.2% | 100.0% (18) | 0.0% | $0.0038 | 13.8 s |
+
+Top-1 by kind of test incident:
+
+| System | Catalog fault types (n=16) | Unseen fault types (n=10, service localization only) |
+|---|---:|---:|
+| Raw logs → LLM (baseline) | 87.5% | 100.0% |
+| Analyzer only (no LLM) | 100.0% | 90.0% |
+| Analyzer + LLM (no verifier) | 93.8% | 100.0% |
+| **Full Traceback** (analyzer + LLM + verifier) | 93.8% | 100.0% |
+
+**Dev split (used for tuning; optimistic)** (n=32)
+
+| System | Top-1 | Precision when “high” | Confidently wrong | Cost / incident | Latency |
+|---|---:|---:|---:|---:|---:|
+| Raw logs → LLM (baseline) | 81.2% | 83.9% (31) | 15.6% | $0.046 | 20.7 s |
+| Analyzer only (no LLM) | 96.9% | 100.0% (24) | 0.0% | $0 | <0.1 s |
+| Analyzer + LLM (no verifier) | 90.6% | 93.3% (30) | 6.2% | $0.0039 | 15.0 s |
+| **Full Traceback** (analyzer + LLM + verifier) | 90.6% | 100.0% (28) | 0.0% | $0.0039 | 15.0 s |
+
+Notes:
+
+- Baseline as first run on test: 88.5%; one incident crashed the reply parser (a tool bug). After the fix and a re-run of that incident: 92.3% (shown above). See `eval/test_results/NOTES.md`.
+- Baseline given the same prompt principles as Traceback: 88.5% top-1, 11.5% confidently wrong (test, n=26).
+- Baseline on a 1M-context model for the 5 incidents whose input was truncated: 80.0% correct (thin evidence).
+- Model usage behind every number in the main comparison (all 118 recorded calls, both LLM systems, all 58 incidents, retries included): 8.8M prompt + 0.32M completion tokens, about $2.94 at the listed Nemotron 3 Super price.
+- Baseline input exceeded the model's context window and was sampled by trace for 5 of 26 test incidents and 13 of 32 dev incidents.
+
+<!-- RESULTS:END -->
+
+How to read this honestly:
+
+- The held-out test set has **26 incidents**. A one-incident difference is 3.8 percentage points, so the accuracy gaps
+  between systems are **not statistically meaningful**. The differences that hold up are confident-but-wrong answers,
+  cost, and the checkability of the evidence.
+- The LLM stage did **not** improve on the analyzer's accuracy; it adds a causal chain with cited evidence and
+  confirmed/uncertain labels, and on dev it sometimes overrode a correct analyzer answer. The replay verifier lowers
+  confidence on answers it cannot reproduce; it never changes an answer.
+- "Unseen" fault types are scored on locating the right service only (see `eval/SCORING.md`), which is lenient.
+- Traceback's prompt was tuned on the dev split over three iterations; the baseline prompt was written once. An ablation
+  gives the baseline the same prompt principles.
 
 ## Evaluation data: a simulator (what that does and doesn't prove)
 
-Evaluation incidents come from a deterministic discrete-event simulator of four
-services (gateway, orders, inventory, payments) in `src/sim/`. It emits only
-structured JSON logs, spans, metrics and ops events. Ground truth goes to a
-separate `runs/labels/` directory that the analyzer never reads, and the
-simulator shares no code with the analyzer.
+Incidents come from a deterministic discrete-event simulator of one small backend (`src/sim/`): gateway → orders →
+inventory / payments, with worker queues, connection pools, timeouts and retries. It emits only structured JSON logs,
+spans, metrics and ops events. Ground truth is written to a separate directory the analyzer never reads, and the simulator
+shares no code with the analyzer. The data includes background noise, dropped log lines and spans, missing trace IDs,
+clock skew, misleading symptoms (the error surfaces in one service, the cause is in another) and decoy faults.
 
-Seeded fault types: slow dependency, retry storm, connection-pool exhaustion,
-bad deploy, config change, crash/restart, capacity reduction, and a masked
-downstream error (symptom in orders/gateway, cause in inventory). 48 incidents:
-each type plain (x4), with injected clock skew (x1), and with a harmless decoy
-fault present (x1). The data includes background noise, dropped log lines and
-spans, missing trace IDs and absent event codes.
+- 58 labeled incidents: 8 catalog fault types × (4 plain + 1 with clock skew + 1 with a decoy), plus 10 incidents of 6
+  fault types outside the catalog (network partition, DNS failure, crash loop, silent regression, slow subset of requests,
+  gradual degradation) that went to the test split only, after the analyzer rules were frozen.
+- 32 dev incidents (used for tuning) and 26 held-out test incidents, frozen in `eval/split.json` with content hashes;
+  `make verify` fails if regenerated data drifts. Every change to the lock is in `eval/LOCK_HISTORY.md`.
+- Every incident is kept only if the symptom is visible **and** removing the true cause makes it disappear.
 
-Each incident is only kept if the symptom is visible and removing the true cause
-makes it disappear (a counterfactual rerun), so labels are causally correct.
+What this proves: the pipeline handles the failure patterns, noise and clock skew modeled here, scored against exact
+ground truth. What it does not prove: that it works on real production telemetry, other architectures or other log formats.
+There is exactly one simulated topology; a generalization check on a second topology is tracked separately.
 
-16 incidents are frozen as the held-out test set (2 per fault type) in
-`eval/split.json` with content hashes; `make verify` fails if regenerated data
-drifts. More unseen fault variants will be added to the test set after the
-analyzer rules are written.
+## Honest limitations
 
-What this proves: the analysis pipeline handles the failure patterns, noise and
-skew modelled here, measured against exact ground truth. What it does not prove:
-that it works on real production telemetry, whose failure modes, log formats and
-noise are broader than this model.
+- One simulated four-service topology; no real production data (see above).
+- The verifier needs a replayable environment (in production: a canary or feature-flag rollback). On a single-fault
+  incident its manifest has one condition, so a matching hypothesis passing is partly by construction; the informative
+  cases are double faults and wrong-service answers.
+- The raw-logs baseline's input exceeded the model's context window for some incidents and was sampled by trace group
+  (counts in the notes above); a larger-context sensitivity check on the truncated test incidents showed no accuracy change but is thin.
+- Model output is not fully deterministic at temperature 0; committed answers are what the results were computed from.
+- Rules use domain conventions (event names such as `pool_exhausted`, `retry_scheduled`) and may need adapting to other log schemas.
 
-## Build
+## Repository layout
 
-    make build     # cmake build
-    make test      # unit tests + frozen-split check
-    make data      # regenerate runs/incidents and runs/labels
+```
+src/sim/        simulator, fault catalog, ground truth, replay environment
+src/analyzer/   loader, clock estimator, correlator, dependency graph, hypothesis rules  (no LLM, no labels)
+src/llm/        libcurl client + response cache, reasoner, raw-telemetry baseline
+src/verify/     counterfactual replay verifier
+src/report/     tb_investigate: analysis -> LLM -> verification -> report (CLI, Markdown, HTML)
+prompts/        system prompts and output format (written before results; see eval/SCORING.md)
+eval/           scoring protocol, split lock, harness, results generator, committed model-answer cache, test-run log
+docs/           interactive showcase site (static; data generated by eval/build_site.py)
+tests/          unit tests (C++) and a UI smoke test (tests/ui)
+submission/     hackathon checklist, Devpost description, video outline, product feedback
+```
 
-## Deterministic analyzer (`src/analyzer/`)
+Tests: `make test` (simulator determinism and label-leak check, analyzer clock-skew/correlator/citation tests, verifier tests,
+frozen-split check). Third-party code: `third_party/nlohmann/json.hpp` (MIT).
 
-`tb_analyze <incident_dir>` reads only an incident's logs, spans, metrics and ops events and prints
-a JSON report. It never sees labels and does not link the simulator.
+## License
 
-1. **Clock alignment.** Per-service offsets come only from causal span pairs: a callee's server span
-   starts a sub-millisecond network hop after its parent client span, so the median of
-   `server.start - client.start` over an edge is that edge's clock difference. Offsets are chained from the
-   entry service. The ops system's clock is anchored to events services also log (config reload, post-deploy start).
-2. **Correlation.** Spans are grouped by trace, ordered on the aligned clock and linked parent to child. If a
-   parent span was lost, a server span is attached to the tightest enclosing server span of another service.
-3. **Dependency graph.** Edges with call, timeout, refusal, error and retry counts, derived from client spans.
-4. **Hypotheses.** Rules over generic signals: where failures originate in each failing trace, the callee's own
-   service time vs. queueing vs. pool waiting, worker-limit and restart metrics, retry depth and backoff,
-   and whether a deploy/config change precedes distress in the same service. Each hypothesis carries ranked score,
-   evidence IDs and a `support_ids` set. Effects of a slow service (queueing, pool saturation, load shedding)
-   are demoted when service time itself inflated first. Changes with no following distress are listed as
-   ruled out.
-
-Run `make eval-dev` to score the analyzer on the dev split. `python3 eval/score.py --split test --confirm-test`
-scores the held-out split and appends to `eval/test_runs.log`. Scoring is defined in `eval/SCORING.md` and
-every change to the locked split is recorded in `eval/LOCK_HISTORY.md`.
+MIT, see `LICENSE`.
