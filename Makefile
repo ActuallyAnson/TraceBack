@@ -1,4 +1,4 @@
-.PHONY: build test data verify eval-dev
+.PHONY: build test data verify eval-dev site serve
 build:
 	cmake -S . -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build -j
 test: build
@@ -12,3 +12,9 @@ verify: build
 # Score the deterministic analyzer on the dev split (the only split used for tuning).
 eval-dev: data
 	python3 eval/score.py --split dev
+# Rebuild the showcase site data (docs/data) from saved runs and cached model answers; no new API calls.
+site: build
+	python3 eval/build_site.py
+# Preview the showcase site at http://localhost:8000
+serve:
+	python3 -m http.server 8000 -d docs
