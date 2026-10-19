@@ -59,3 +59,7 @@ add_executable(test_verify tests/test_verify.cpp)
 target_link_libraries(test_verify tb_verify)
 add_test(NAME verifier COMMAND test_verify)
 add_test(NAME topology2_locked COMMAND tb_sim2 verify --manifest ${CMAKE_SOURCE_DIR}/eval/topology2/manifest.json)
+
+# v2 fresh evaluation sets (eval/v2/PLAN.md): locked before any system ran on them.
+add_test(NAME v2_fresh_t1_locked COMMAND tb_sim verify --set v2fresh --manifest ${CMAKE_SOURCE_DIR}/eval/v2/fresh/manifest_t1.json)
+add_test(NAME v2_fresh_t2_locked COMMAND tb_sim2 verify --set v2fresh --manifest ${CMAKE_SOURCE_DIR}/eval/v2/fresh/manifest_t2.json)

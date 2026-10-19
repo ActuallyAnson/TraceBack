@@ -1,0 +1,1 @@
+{"id":"f2-23","group":"plain","split":"fresh","topology":"fanout","seed":5629530862463989368,"root_cause":{"type":"crash_restart","service":"billing","onset_us":1800022053356955,"end_us":1800022068855454},"decoys":[],"complications":[],"symptom_service":"api","err_rate_baseline":0.009,"err_rate_incident":0.686,"err_rate_incident_without_cause":0.003}

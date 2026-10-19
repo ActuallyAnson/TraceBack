@@ -1,0 +1,1 @@
+{"id":"f1-04","group":"plain","split":"fresh","seed":-7718716768665455340,"root_cause":{"type":"config_change","service":"orders","onset_us":1790003050036870,"end_us":1790003120000000,"target_dependency":"payments"},"decoys":[],"complications":[],"symptom_service":"gateway","err_rate_baseline":0.002,"err_rate_incident":0.987,"err_rate_incident_without_cause":0.002}

@@ -1,0 +1,1 @@
+{"id":"f1-11","group":"plain","split":"fresh","seed":-2484458328298096824,"root_cause":{"type":"crash_restart","service":"inventory","onset_us":1790010062928207,"end_us":1790010077948237},"decoys":[],"complications":[],"symptom_service":"gateway","err_rate_baseline":0.003,"err_rate_incident":0.717,"err_rate_incident_without_cause":0.009}

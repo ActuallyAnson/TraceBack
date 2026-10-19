@@ -1,0 +1,1 @@
+{"id":"f1-03","group":"plain","split":"fresh","seed":3347848747320587054,"root_cause":{"type":"bad_deploy","service":"orders","onset_us":1790002059810493,"end_us":1790002102341422},"decoys":[],"complications":[],"symptom_service":"gateway","err_rate_baseline":0.002,"err_rate_incident":0.464,"err_rate_incident_without_cause":0.005}

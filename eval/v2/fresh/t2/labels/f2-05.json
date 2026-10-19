@@ -1,0 +1,1 @@
+{"id":"f2-05","group":"plain","split":"fresh","topology":"fanout","seed":4418551940241149273,"root_cause":{"type":"slow_dependency","service":"billing","onset_us":1800004052028059,"end_us":1800004098671456},"decoys":[],"complications":[],"symptom_service":"api","err_rate_baseline":0.007,"err_rate_incident":0.903,"err_rate_incident_without_cause":0.009}
