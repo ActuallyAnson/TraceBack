@@ -659,6 +659,7 @@ class World {
       return n ? static_cast<double>(e) / n : 0.0;
     };
     o.err_overall = rate(0, kDurationUs);
+    for (int64_t a = 0; a < kDurationUs; a += 5 * kSec) o.err_series5.push_back(rate(a, a + 5 * kSec));
     for (int64_t a = 0; a + 30 * kSec <= kDurationUs; a += 5 * kSec) {
       int n = 0, e = 0;
       for (auto& [t, st] : gw_) if (t >= a && t < a + 30 * kSec) { ++n; if (st >= 500 || st <= 0) ++e; }
@@ -723,7 +724,7 @@ std::string replay_env_json(const Spec& spec) {
   return Obj().s("id", spec.id).i("seed", static_cast<int64_t>(spec.seed)).i("epoch_us", spec.epoch_us).raw("skew_s", skew).raw("conditions", conds).str() + "\n";
 }
 
-double replay_error_rate(const ReplayEnv& env, const std::vector<bool>& enabled) {
+static Spec spec_from(const ReplayEnv& env, const std::vector<bool>& enabled) {
   Spec s;
   s.id = env.id;
   s.seed = env.seed;
@@ -734,8 +735,12 @@ double replay_error_rate(const ReplayEnv& env, const std::vector<bool>& enabled)
     const Condition& c = env.conditions[i];
     s.faults.push_back(Fault{static_cast<FaultKind>(c.kind), c.svc, c.t0, c.t1, c.p1, c.p2, c.i1});
   }
-  return simulate(s, false).err_peak30;
+  return s;
 }
+
+std::vector<double> replay_failure_series(const ReplayEnv& env, const std::vector<bool>& enabled) { return simulate(spec_from(env, enabled), false).err_series5; }
+
+double replay_error_rate(const ReplayEnv& env, const std::vector<bool>& enabled) { return simulate(spec_from(env, enabled), false).err_peak30; }
 
 std::string label_json(const Spec& spec, const Output& real, const Output& cf) {
   const Fault& t = spec.faults[0];

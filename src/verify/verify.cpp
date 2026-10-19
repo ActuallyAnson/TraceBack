@@ -78,6 +78,8 @@ VerifyResult verify_hypothesis(const std::string& path, double observed, const s
     return r;
   }
   r.rate_disabled = sim::replay_error_rate(env, off);
+  r.series_all = sim::replay_failure_series(env, all);
+  r.series_disabled = sim::replay_failure_series(env, off);
   const bool cleared = r.rate_disabled <= 0.04 && r.rate_disabled <= 0.3 * r.rate_all;
   r.status = cleared ? "passed" : "failed";
   r.reason = cleared ? "disabling the matching condition(s) makes the incident disappear" : "the incident persists with the matching condition(s) disabled";

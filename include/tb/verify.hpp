@@ -14,6 +14,7 @@ struct VerifyResult {
   std::string reason;
   std::vector<std::string> matched;  // "class@service" conditions that were disabled
   double rate_observed = 0, rate_all = 0, rate_disabled = 0;
+  std::vector<double> series_all, series_disabled;  // per-5 s failure rate of the two replays (empty if not replayed)
 };
 
 // Which condition classes can express a hypothesis category (the environment's controllable knobs).

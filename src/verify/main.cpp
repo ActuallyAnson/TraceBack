@@ -21,7 +21,7 @@ int main(int argc, char** argv) {
     for (auto& h : hyps) {
       const auto p = h.find(':');
       auto r = tb::verify_hypothesis(replay, observed, h.substr(0, p), p == std::string::npos ? "" : h.substr(p + 1));
-      out.push_back({{"hypothesis", h}, {"status", r.status}, {"reason", r.reason}, {"matched", r.matched}, {"rate_observed", r.rate_observed}, {"rate_all_enabled", r.rate_all}, {"rate_disabled", r.rate_disabled}});
+      out.push_back({{"hypothesis", h}, {"status", r.status}, {"reason", r.reason}, {"matched", r.matched}, {"rate_observed", r.rate_observed}, {"rate_all_enabled", r.rate_all}, {"rate_disabled", r.rate_disabled}, {"series_all", r.series_all}, {"series_disabled", r.series_disabled}});
     }
     std::cout << out.dump(1) << "\n";
   } catch (const std::exception& e) {

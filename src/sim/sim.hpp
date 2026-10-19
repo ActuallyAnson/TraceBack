@@ -60,6 +60,7 @@ struct Output {
   double err_baseline = 0, err_incident = 0;  // gateway 5xx/timeout rate
   double err_overall = 0;                     // gateway failure rate over the whole window
   double err_peak30 = 0;                      // highest gateway failure rate over any 30 s window
+  std::vector<double> err_series5;            // gateway failure rate per 5 s bin (not part of the observable files)
 };
 
 constexpr int64_t kDurationUs = 120LL * 1000000;
@@ -81,6 +82,7 @@ struct ReplayEnv {
 const char* condition_class(int kind);  // coarse class shared by harmful and harmless variants
 std::string replay_env_json(const Spec& spec);  // conditions shuffled by a hash of the id
 double replay_error_rate(const ReplayEnv& env, const std::vector<bool>& enabled);  // peak 30 s gateway failure rate
+std::vector<double> replay_failure_series(const ReplayEnv& env, const std::vector<bool>& enabled);  // per-5 s failure rate
 
 std::vector<Spec> build_catalog(uint64_t master_seed);
 // Unseen-variant incidents (test split only), ids continue after the base catalog. Uses its own RNG

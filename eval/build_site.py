@@ -47,6 +47,43 @@ def records_for(iid, ids, offsets, ops_off, t0):
     return out
 
 
+def raw_info(iid, timeline, t_onset_abs):
+    """Counts, a few raw telemetry lines, and the raw (own-clock) time of each timeline record."""
+    d = ROOT / "runs/incidents" / iid
+    meta = json.loads((d / "meta.json").read_text())
+    ws = meta["window_start_us"]
+    logs = [json.loads(l) for l in (d / "logs.jsonl").read_text().splitlines()]
+    spans = (d / "spans.jsonl").read_text().splitlines()
+    metrics = (d / "metrics.jsonl").read_text().splitlines()
+    ops = [json.loads(l) for l in (d / "events.jsonl").read_text().splitlines() if l.strip()]
+    ts = {}
+    for l in logs:
+        ts[l["id"]] = l["ts_us"]
+    for l in ops:
+        ts[l["id"]] = l["ts_us"]
+    for l in spans:
+        j = json.loads(l); ts[j["id"]] = j["start_us"]
+    for l in metrics:
+        j = json.loads(l); ts[j["id"]] = j["ts_us"]
+    raw_t = {e["id"]: (ts[e["id"]] - ws) / 1e6 for e in timeline if e["id"] in ts}
+    errs = [l for l in logs if l["level"] in ("error", "fatal")]
+    errs.sort(key=lambda l: l["ts_us"])
+    pick = []
+    seen = set()
+    for l in errs:
+        if l["service"] not in seen:
+            seen.add(l["service"]); pick.append(l)
+        if len(pick) == 3:
+            break
+    samples = [json.dumps(l, separators=(",", ":")) for l in pick]
+    samples.append(spans[len(spans) // 2])
+    samples.append(metrics[len(metrics) // 3])
+    if ops:
+        samples.append(json.dumps(ops[0], separators=(",", ":")))
+    counts = dict(logs=len(logs), spans=len(spans), metrics=len(metrics), ops=len(ops), warn_error=sum(1 for l in logs if l["level"] in ("warn", "error", "fatal")))
+    return counts, [x if len(x) < 330 else x[:327] + "..." for x in samples], raw_t
+
+
 def norm(c):
     return c.strip("[] ")
 
@@ -67,6 +104,8 @@ def per_incident(iid, split):
     sh([str(ROOT / "build/tb_investigate"), str(ROOT / "runs/incidents" / iid), "--replay", str(ROOT / "runs/replay" / f"{iid}.json"),
         "--cache", str(ROOT / "runs/llm_cache"), "--out", str(rep_dir)])
     rep = json.loads((rep_dir / "report.json").read_text())
+    (ROOT / "docs" / "reports").mkdir(parents=True, exist_ok=True)
+    (ROOT / "docs" / "reports" / f"{iid}.html").write_text((rep_dir / "report.html").read_text())
     an = rep["analyzer"]
     t0 = rep["t0_us"]
     offsets = {k: int(v) for k, v in an["clock"]["offsets_us"].items()}
@@ -87,6 +126,33 @@ def per_incident(iid, split):
     for v in series.values():
         v.sort(key=lambda x: x["t"])
 
+    counts, samples, raw_t = raw_info(iid, an["timeline"], 0)
+    # counterfactual replay for every top candidate, with failure-rate curves
+    hyp_specs = [f'{h["category"]}:{h["service"]}' for h in an["hypotheses"][:6]]
+    args = [str(ROOT / "build/tb_verify"), str(ROOT / "runs/incidents" / iid), "--replay", str(ROOT / "runs/replay" / f"{iid}.json")]
+    for h in hyp_specs:
+        args += ["--hyp", h]
+    replays = json.loads(sh(args))
+    ans_spec = f'{rep["answer"]["root_cause"]["category"]}:{rep["answer"]["root_cause"]["service"]}'
+    if ans_spec not in hyp_specs:
+        args2 = args[:5] + ["--hyp", ans_spec]
+        replays += json.loads(sh(args2))
+        hyp_specs.append(ans_spec)
+    replay_by = {h: dict(status=r["status"], reason=r["reason"], matched=r["matched"], rate_observed=r["rate_observed"], rate_all=r["rate_all_enabled"],
+                         rate_disabled=r["rate_disabled"], series_all=[round(x, 4) for x in r["series_all"]], series_disabled=[round(x, 4) for x in r["series_disabled"]])
+                 for h, r in zip(hyp_specs, replays)}
+    # citation bookkeeping (existence is checked against the incident; support against the analyzer's evidence sets)
+    all_ids = set()
+    for fn in ("logs.jsonl", "spans.jsonl", "metrics.jsonl", "events.jsonl"):
+        for line in (ROOT / "runs/incidents" / iid / fn).read_text().splitlines():
+            if line.strip():
+                all_ids.add(json.loads(line)["id"])
+    ans = rep["answer"]
+    sup_sets = [set(h["support_ids"]) for h in rep.get("analyzer_support", []) if (h["category"], h["service"]) == (ans["root_cause"]["category"], ans["root_cause"]["service"])]
+    allowed = sup_sets[0] if sup_sets else set().union(*[set(h["support_ids"]) for h in rep.get("analyzer_support", [])]) if rep.get("analyzer_support") else set()
+    cite_flags = {c: dict(exists=c in all_ids, supported=c in allowed) for c in set(cites_of(ans))}
+    first = (rep["meta"]["attempts"] or [{}])[0]
+    cite_summary = dict(total=len(cites_of(ans)), attempts=len(rep["meta"]["attempts"]), first_invalid=len(first.get("cites_invalid", [])), supported=sum(1 for f in cite_flags.values() if f["supported"]), unique=len(cite_flags))
     need = set(cites_of(rep["answer"])) | set(cites_of(base["answer"] if base else None))
     for h in an["hypotheses"][:6]:
         need |= {e["id"] for e in h["evidence"]}
@@ -105,9 +171,9 @@ def per_incident(iid, split):
         id=iid, split=split, group=label["group"], truth=truth,
         symptom=dict(traces=sym["traces"], failed=sym["failed_traces"], onset=(sym["sustained_onset_us"] - t0) / 1e6 if sym["failed_traces"] else None, before=sym["failures_before_burst"]),
         graph=an["graph"], hypotheses=hyps, ruled_out=[dict(change=r["change"], service=r["service"], reason=r["reason"], t=(r["t_us"] - t0) / 1e6) for r in an["ruled_out"]],
-        timeline=[dict(t=e["t_rel_s"], id=e["id"], kind=e["kind"], service=e["service"], text=e["text"]) for e in an["timeline"]],
+        timeline=[dict(t=e["t_rel_s"], raw=raw_t.get(e["id"]), id=e["id"], kind=e["kind"], service=e["service"], text=e["text"]) for e in an["timeline"]],
         clock=dict(reference=an["clock"]["reference_service"], offsets={k: v / 1e6 for k, v in offsets.items()}, injected=comp, ops_calibrated=an["clock"]["ops_clock_calibrated"], samples=an["clock"]["edge_samples"]),
-        series=series, records=recs,
+        series=series, records=recs, counts=counts, samples=samples, replays=replay_by, answer_spec=ans_spec, cite_flags=cite_flags, cite_summary=cite_summary,
         traceback=dict(answer=rep["answer"], accepted=rep["accepted"], llm_confidence=rep["answer"]["confidence"], final_confidence=rep["final_confidence"], verification=rep["verification"],
                        correct=tb_top1, tokens=[rep["meta"]["prompt_tokens"], rep["meta"]["completion_tokens"]], attempts=len(rep["meta"]["attempts"]), cost=rep["meta"]["cost_usd"], latency=rep["meta"]["latency_s"]),
         baseline=(dict(answer=base["answer"], accepted=base["accepted"], correct=base_top1, tokens=[base["meta"]["prompt_tokens"], base["meta"]["completion_tokens"]], attempts=len(base["meta"]["attempts"]), cost=base["meta"]["cost_usd"], latency=base["meta"]["latency_s"],
