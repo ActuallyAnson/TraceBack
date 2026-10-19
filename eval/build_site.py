@@ -97,21 +97,25 @@ def cites_of(ans):
     return ids
 
 
-def per_incident(iid, split):
+def per_incident(iid, split, out=None, llm_args=None, write_report=True):
+    """llm_args: cache/timeout flags for tb_investigate and tb_reason (default: the committed response cache)."""
+    out = out or OUT
+    llm_args = llm_args if llm_args is not None else ["--cache", str(ROOT / "eval/llm_cache")]
     label = json.loads((ROOT / f"runs/labels/{iid}.json").read_text())
     rep_dir = ROOT / "runs/site_tmp" / iid
     env = dict(**__import__("os").environ)
     sh([str(ROOT / "build/tb_investigate"), str(ROOT / "runs/incidents" / iid), "--replay", str(ROOT / "runs/replay" / f"{iid}.json"),
-        "--cache", str(ROOT / "eval/llm_cache"), "--out", str(rep_dir)])
+        *llm_args, "--out", str(rep_dir)])
     rep = json.loads((rep_dir / "report.json").read_text())
-    (ROOT / "docs" / "reports").mkdir(parents=True, exist_ok=True)
-    (ROOT / "docs" / "reports" / f"{iid}.html").write_text((rep_dir / "report.html").read_text())
+    if write_report:
+        (ROOT / "docs" / "reports").mkdir(parents=True, exist_ok=True)
+        (ROOT / "docs" / "reports" / f"{iid}.html").write_text((rep_dir / "report.html").read_text())
     an = rep["analyzer"]
     t0 = rep["t0_us"]
     offsets = {k: int(v) for k, v in an["clock"]["offsets_us"].items()}
     ops_off = int(an["clock"]["ops_clock_offset_us"])
     # Baseline answer: served from the committed response cache (no API key needed); a miss would need a key.
-    base = json.loads(sh([str(ROOT / "build/tb_reason"), str(ROOT / "runs/incidents" / iid), "--system", "baseline", "--cache", str(ROOT / "eval/llm_cache")]))
+    base = json.loads(sh([str(ROOT / "build/tb_reason"), str(ROOT / "runs/incidents" / iid), "--system", "baseline", *llm_args]))
 
     tb_top1, tb_svc, _ = score.judge(label, score.llm_as_report(rep))
     base_top1 = score.judge(label, score.llm_as_report(base))[0] if base else False
@@ -177,10 +181,11 @@ def per_incident(iid, split):
         traceback=dict(answer=rep["answer"], accepted=rep["accepted"], llm_confidence=rep["answer"]["confidence"], final_confidence=rep["final_confidence"], verification=rep["verification"],
                        correct=tb_top1, tokens=[rep["meta"]["prompt_tokens"], rep["meta"]["completion_tokens"]], attempts=len(rep["meta"]["attempts"]), cost=rep["meta"]["cost_usd"], latency=rep["meta"]["latency_s"]),
         baseline=(dict(answer=base["answer"], accepted=base["accepted"], correct=base_top1, tokens=[base["meta"]["prompt_tokens"], base["meta"]["completion_tokens"]], attempts=len(base["meta"]["attempts"]), cost=base["meta"]["cost_usd"], latency=base["meta"]["latency_s"],
+                       raw=(base["meta"]["attempts"][-1].get("raw") or "").strip(), first_invalid=len((base["meta"]["attempts"][0] or {}).get("cites_invalid", [])),
                        truncated=base["meta"].get("baseline", {}).get("truncated"), kept=base["meta"].get("baseline", {}).get("kept_fraction")) if base else None),
         analyzer=dict(correct=an_top1, confidence=an["confidence"]),
     )
-    (OUT / f"{iid}.json").write_text(json.dumps(detail, separators=(",", ":")))
+    (out / f"{iid}.json").write_text(json.dumps(detail, separators=(",", ":")))
     return dict(id=iid, split=split, group=label["group"], type=label["root_cause"]["type"], service=label["root_cause"]["service"],
                 failed=sym["failed_traces"], traces=sym["traces"], tb_ok=tb_top1, base_ok=base_top1, an_ok=an_top1,
                 tb_conf=rep["final_confidence"], base_conf=(base["answer"]["confidence"] if base and base["answer"] else "none"), vstatus=rep["verification"]["status"],

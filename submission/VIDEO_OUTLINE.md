@@ -1,19 +1,18 @@
 # Demo video outline (target 2:40, hard limit 3:00)
 
 Record your screen (browser + one terminal) with your own voice. No music, no logos. Keep the site zoomed so text is readable.
-Use the incident **inc-026** (opens by default): the raw-logs baseline got it wrong, Traceback got it right and the replay verified it.
-Everything below works offline; nothing needs a live API call.
+Use the **The outage** tab (opens by default). Run `make live` before recording so the label reads SIMULATED · RUN LIVE, or record the hosted site where it reads RECORDED REPLAY: either is fine, but keep the label visible and say which it is.
+Tour pick 1 is inc-026 (baseline wrong, Traceback right); pick 2 is inc-003 (Traceback wrong but uncertain). Do not skip the second: it is the honest part.
+Everything works offline; nothing needs a live API call.
 
 | Time | Screen | Say (adapt in your own words) |
 |---|---|---|
-| 0:00–0:15 | Site, Investigate view, inc-026 | "When a request fails across services, the error shows up in one place and the cause is somewhere else. Traceback finds the cause and shows its evidence." |
-| 0:15–0:35 | Step 1 Telemetry | "This is what the system starts from: thousands of log lines and spans, noisy, with no labels." |
-| 0:35–0:55 | Step 2 Clocks, toggle raw vs aligned | "Each service's clock disagrees. Traceback estimates the offsets only from parent/child span pairs, so the events line up." |
-| 0:55–1:15 | Steps 3–4 Graph, candidates | "Deterministic rules turn this into ranked candidate causes, each with the exact records behind it. No model yet." |
-| 1:15–1:50 | Step 5 LLM, then switch to the baseline | "Now NVIDIA Nemotron, served on Nebius Token Factory, ranks and explains. Every claim cites record IDs. For comparison, the same model reading raw logs gets this wrong and says it is highly confident." (Show claims, click a chip to open a record.) |
-| 1:50–2:05 | Step 6 Citations | "Each cited ID is checked against the data. Invented IDs are rejected and the model is asked again." |
-| 2:05–2:30 | Step 7 Replay, click a wrong candidate | "The verifier replays the incident with the suspected cause switched off: the failures vanish. Click a wrong candidate and the incident persists. This only lowers confidence, it never changes the answer." |
-| 2:30–2:50 | Scoreboard tab; terminal `make demo` | "On a held-out test set it is as accurate as the best system, was never confidently wrong in this run, and costs about a tenth per incident. The gaps in accuracy are within one incident, so we don't claim more. One command reproduces every number; it is all open source." |
+| 0:00–0:20 | **The outage** tab, press "Trigger an outage" (tour pick 1, inc-026). Keep the "SIMULATED" label in frame | "This is a simulated outage in a four-service backend. Checkout failures jump, and the loudest dashboard is payments. Where would you look?" |
+| 0:20–0:45 | Act 2: the raw-logs answer, open "the model's actual reply, verbatim", then press "Check against ground truth" | "The obvious tool: paste the logs into the same Nemotron model on Nebius Token Factory. It answers payments, high confidence, with a neat explanation. The simulator knows the truth: it was a retry storm in orders. Confident and wrong." |
+| 0:45–1:25 | Act 3: Traceback's answer and its five stages; click "Walk through the evidence step by step", show Clocks, Candidates and a cited record chip | "Traceback does deterministic analysis first: clock alignment, correlation, ranked candidates with evidence IDs. The model only ranks and explains, and every claim cites a record that has to exist." |
+| 1:25–1:50 | Replay step, click a wrong candidate | "Then it replays the incident with the suspected cause switched off. The failures vanish for the right cause and persist for the wrong one. An answer the replay can't reproduce can't say high confidence." |
+| 1:50–2:25 | Back to **The outage**, "Next outage in the tour" (inc-003) | "It is not always right. Here Traceback is wrong: the analyzer had the right answer and the model overruled it. But the replay was inconclusive, so it reported medium confidence instead of high. That is the point: it tells you when not to trust it." |
+| 2:25–2:50 | Scoreboard; mention `make live` | "On the second topology, the raw-logs baseline and Traceback tie on accuracy. What differs: zero confidently wrong answers versus about one in five, about a thirteenth of the cost, and every citation valid. This is a simulator, so it shows the method, not production accuracy. One command reproduces every number." |
 
 Must show: the project working, and how Token Factory and Nemotron are used (say the model name and show the scoreboard cost column).
 Upload to YouTube as **Public**. Check the duration reads under 3:00.

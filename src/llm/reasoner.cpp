@@ -314,7 +314,7 @@ json reason(Incident& inc, const ReasonOptions& opt) {
     if (!r.ok) { attempts.push_back({{"error", r.error}}); out["error"] = r.error; break; }
     json a = extract_json(r.content);
     std::string problem = a.is_null() ? "your reply did not contain a valid JSON object" : validate_answer_shape(a);
-    json at = {{"cached", r.cached}, {"prompt_tokens", r.prompt_tokens}, {"completion_tokens", r.completion_tokens}};
+    json at = {{"cached", r.cached}, {"prompt_tokens", r.prompt_tokens}, {"completion_tokens", r.completion_tokens}, {"raw", r.content}};
     std::string feedback;
     if (!problem.empty()) {
       at["problem"] = problem;

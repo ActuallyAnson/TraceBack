@@ -8,8 +8,21 @@ whether the failure goes away.
 Entry for the **Nebius × NVIDIA Global AI Hackathon**, track *Best Apps and Agents*.
 Model: `nvidia/nemotron-3-super-120b-a12b` on **Nebius Token Factory**.
 
-- **Live showcase (interactive):** https://actuallyanson.github.io/TraceBack/ (also `make serve` locally)
+- **Live showcase (interactive):** https://actuallyanson.github.io/TraceBack/ (opens on a failing system; `make serve` locally, or `make live` to run the simulator and pipeline for real)
 - **One-command demo:** `make demo` (no API key needed; see below)
+
+## What Traceback claims, and what it doesn't
+
+**Claimed: the answer is checkable and calibrated.** Every claim cites record IDs that exist, the suspected cause is replayed
+switched-off, and an answer the replay cannot reproduce is not allowed to say "high" confidence. Measured against a raw-logs
+baseline on the same model (tables below): **0% confidently wrong with the verifier versus 21.4% for the baseline on the second
+topology** (7.7% on the first topology's held-out test set), at **about 1/13 of the cost** ($0.0043 versus $0.055 per incident
+on the second topology), with every cited ID valid.
+
+**Not claimed: higher accuracy.** On the first topology's held-out set the accuracy gaps are within one incident (n=26). On the
+second topology (n=14) Full Traceback and the raw-logs baseline **tie at 78.6%**. The language-model stage did not improve on the
+deterministic analyzer overall: on the second topology it helped once and hurt twice, and the replay verifier is what keeps
+those wrong answers from being confident. All evaluation data comes from simulators.
 
 ## It is not a log summarizer
 
@@ -59,7 +72,8 @@ Requirements: CMake ≥ 3.16, a C++20 compiler, libcurl, Python 3 (standard libr
 git clone https://github.com/ActuallyAnson/TraceBack && cd TraceBack
 make build test     # builds everything and runs the unit tests (incl. the frozen test-split check)
 make demo           # one incident end to end -> runs/demo/report.html and report.md
-make serve          # the interactive showcase at http://localhost:8000
+make serve          # the interactive showcase at http://localhost:8000 (recorded replays, labeled as such)
+make live           # same UI, but "Trigger an outage" runs the simulator, analyzer and verifier for real
 make data           # regenerate all 58 labeled incidents into runs/ (deterministic, ~5 s)
 make results        # regenerate every reported number and refresh the table below
 ```
@@ -206,20 +220,41 @@ Baseline input exceeded the context window and was sampled by trace for 4 of 14 
 
 What this shows (my reading; n=14, so treat it as qualitative):
 
-- **Accuracy dropped for every system** relative to the first topology, and Full Traceback's accuracy advantage over the raw-logs
-  baseline did not carry over: they tie. The pipeline transfers partially, not cleanly.
+- **Accuracy dropped for every system** relative to the first topology. Full Traceback has **no accuracy advantage** over the raw-logs
+  baseline here: they tie at 78.6% (n=14, a one-incident gap is 7 points). The pipeline transfers partially, not cleanly.
 - **Analyzer: perfect on the 11 plain incidents, 0 of 2 on the decoy incidents.** Two specific flaws, both new failure modes:
   (1) a decoy deploy on the fire-and-forget notifier produces errors that never reach users but appear inside many failing traces, which inflates the
   analyzer's "share of failed traces touched" score and lets the decoy outrank the real cause (fan-02);
   (2) a harmless deploy on the *entry* service looks like a regression because every user-visible failure surfaces there (fan-12).
   The coverage score checks that an anomaly is *present* in a failing trace, not that it is on the path that failed. I did not fix this (no tuning); it is the obvious next improvement.
-- **The LLM stage helped once and hurt twice.** It fixed fan-12, but overruled correct analyzer answers on fan-08 (a throttled broker became "edge unreachable at ingest") and
+- **The LLM stage helped once and hurt twice, and the verifier is what keeps wrong answers from being confident.** It fixed fan-12, but overruled correct analyzer answers on fan-08 (a throttled broker became "edge unreachable at ingest") and
   fan-09 (a retry storm named by its billing trigger; the same trigger-versus-amplifier ambiguity as on the first topology).
 - **The raw-logs baseline repeats a first-topology mistake**: it blames pool exhaustion when the pool is saturated *because* the service got slow (fan-01, fan-02).
 - **What did hold up:** with the replay verifier, no answer was confidently wrong (all three wrong answers were capped to medium confidence because the replay had no matching condition),
   against roughly one in five for the baseline and for the unverified LLM; the model cost per incident stayed about an order of magnitude lower than the baseline's;
   every cited record ID existed; and clock skew on the one skewed incident was recovered to a few milliseconds.
 - The verifier is conservative rather than clever here: a wrong answer was never *rejected* by a failed replay, only left unverified.
+
+## The interactive demo (failure first)
+
+The site opens on **The outage**: a simulated production failure, then the obvious approach (raw logs into the model, its actual
+recorded reply shown verbatim), then the same incident through Traceback. It is deliberately not a highlight reel: the guided tour
+includes `inc-003`, where Traceback is **wrong** and says it is not sure (the analyzer's top candidate was right and the model overruled it;
+the replay was inconclusive, so confidence was capped at medium). "Random held-out outage" draws uniformly from the 26 test incidents with no
+filtering, and a running tally counts the misses.
+
+Provenance is on screen at all times. On the static site (GitHub Pages) the label reads **SIMULATED · RECORDED REPLAY**: nothing runs in your
+browser. With `make live` it reads **SIMULATED · RUN LIVE**: the simulator generates the incident, then the analyzer, citation check and replay
+verifier run on your machine. Model answers are the recorded ones unless you tick "Call the model live" (needs `NEBIUS_API_KEY`); that call has a hard time
+limit (`TB_LIVE_MODEL_TIMEOUT`, default 60 s) and falls back to the recorded answer, clearly marked "RECORDED FALLBACK".
+
+## Future work
+
+- Fix the analyzer's coverage score so errors on fire-and-forget branches and harmless deploys on the entry service stop outranking real causes
+  (the two decoy failures on the second topology, fan-02 and fan-12). Deliberately not fixed here: the generalization check ran with no tuning.
+- Decide when the model should be allowed to overrule the analyzer (it hurt twice on the second topology and sometimes on the first).
+- Make the verifier able to reject, not only decline to confirm, wrong answers; today it never rejected one in the reported runs.
+- Adapters for real log schemas and replay against canary or feature-flag rollbacks.
 
 ## Honest limitations
 
