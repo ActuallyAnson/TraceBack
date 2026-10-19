@@ -1,4 +1,5 @@
-const { spawn } = require('child_process'); const WebSocket = require('ws')  // npm i ws (test-only dependency); const http = require('http');
+const { spawn } = require('child_process'); // ws is a test-only dependency: `npm i ws` in tests/ui
+const WebSocket = require('ws'); const http = require('http');
 const BASE = process.env.BASE || 'http://localhost:8000/';  // e.g. BASE=https://actuallyanson.github.io/TraceBack/
 const C = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 const chrome = spawn(C, ['--headless=new', '--disable-gpu', '--remote-debugging-port=9334', '--window-size=1400,1000', '--user-data-dir=/tmp/tb_ui_smoke_profile', 'about:blank'], { stdio: 'ignore' });
