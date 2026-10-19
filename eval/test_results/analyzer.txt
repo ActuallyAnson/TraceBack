@@ -1,0 +1,27 @@
+system=analyzer variant=default split=test n_incidents=26
+ALL                          n= 26 top1=96.2% svc=96.2% top3=100.0% high-conf=16 precision@high=100.0% false-confidence= 0.0%
+catalog types (category+svc) n= 16 top1=100.0% svc=100.0% top3=100.0% high-conf=13 precision@high=100.0% false-confidence= 0.0%
+unseen types (svc only)      n= 10 top1=90.0% svc=90.0% top3=100.0% high-conf= 3 precision@high=100.0% false-confidence= 0.0%
+group=base                   n=  8 top1=100.0% svc=100.0% top3=100.0% high-conf= 7 precision@high=100.0% false-confidence= 0.0%
+group=skew                   n=  4 top1=100.0% svc=100.0% top3=100.0% high-conf= 3 precision@high=100.0% false-confidence= 0.0%
+group=double                 n=  4 top1=100.0% svc=100.0% top3=100.0% high-conf= 3 precision@high=100.0% false-confidence= 0.0%
+group=unseen                 n= 10 top1=90.0% svc=90.0% top3=100.0% high-conf= 3 precision@high=100.0% false-confidence= 0.0%
+type=bad_deploy              n=  2 top1=100.0% svc=100.0% top3=100.0% high-conf= 2 precision@high=100.0% false-confidence= 0.0%
+type=capacity_reduction      n=  2 top1=100.0% svc=100.0% top3=100.0% high-conf= 2 precision@high=100.0% false-confidence= 0.0%
+type=config_change           n=  2 top1=100.0% svc=100.0% top3=100.0% high-conf= 2 precision@high=100.0% false-confidence= 0.0%
+type=connection_pool_exhaustion n=  2 top1=100.0% svc=100.0% top3=100.0% high-conf= 2 precision@high=100.0% false-confidence= 0.0%
+type=crash_loop              n=  2 top1=100.0% svc=100.0% top3=100.0% high-conf= 2 precision@high=100.0% false-confidence= 0.0%
+type=crash_restart           n=  2 top1=100.0% svc=100.0% top3=100.0% high-conf= 2 precision@high=100.0% false-confidence= 0.0%
+type=dns_failure             n=  2 top1=100.0% svc=100.0% top3=100.0% high-conf= 0 precision@high= nan% false-confidence= 0.0%
+type=gradual_degradation     n=  1 top1=100.0% svc=100.0% top3=100.0% high-conf= 0 precision@high= nan% false-confidence= 0.0%
+type=masked_downstream_error n=  2 top1=100.0% svc=100.0% top3=100.0% high-conf= 2 precision@high=100.0% false-confidence= 0.0%
+type=network_partition       n=  2 top1=100.0% svc=100.0% top3=100.0% high-conf= 0 precision@high= nan% false-confidence= 0.0%
+type=retry_storm             n=  2 top1=100.0% svc=100.0% top3=100.0% high-conf= 1 precision@high=100.0% false-confidence= 0.0%
+type=silent_regression       n=  2 top1=100.0% svc=100.0% top3=100.0% high-conf= 1 precision@high=100.0% false-confidence= 0.0%
+type=slow_dependency         n=  2 top1=100.0% svc=100.0% top3=100.0% high-conf= 0 precision@high= nan% false-confidence= 0.0%
+type=slow_subset_requests    n=  1 top1= 0.0% svc= 0.0% top3=100.0% high-conf= 0 precision@high= nan% false-confidence= 0.0%
+clock-offset recovery on 5 skewed incidents: max error 4.2 ms, mean 2.6 ms (injected skews are 400-3000 ms)
+mean latency 48 ms/incident, cost $0 (no LLM)
+
+incorrect top-1 (1):
+  inc-057 [unseen] truth=slow_subset_requests/inventory  top=dependency_slow/orders conf=medium  next=['pool_exhaustion/inventory', 'capacity_saturation/orders']

@@ -1,0 +1,30 @@
+system=baseline variant=default split=test n_incidents=26
+ALL                          n= 26 top1=92.3% svc=96.2% top3=96.2% high-conf=25 precision@high=92.0% false-confidence= 7.7%
+catalog types (category+svc) n= 16 top1=87.5% svc=93.8% top3=93.8% high-conf=16 precision@high=87.5% false-confidence=12.5%
+unseen types (svc only)      n= 10 top1=100.0% svc=100.0% top3=100.0% high-conf= 9 precision@high=100.0% false-confidence= 0.0%
+group=base                   n=  8 top1=75.0% svc=87.5% top3=87.5% high-conf= 8 precision@high=75.0% false-confidence=25.0%
+group=skew                   n=  4 top1=100.0% svc=100.0% top3=100.0% high-conf= 4 precision@high=100.0% false-confidence= 0.0%
+group=double                 n=  4 top1=100.0% svc=100.0% top3=100.0% high-conf= 4 precision@high=100.0% false-confidence= 0.0%
+group=unseen                 n= 10 top1=100.0% svc=100.0% top3=100.0% high-conf= 9 precision@high=100.0% false-confidence= 0.0%
+type=bad_deploy              n=  2 top1=100.0% svc=100.0% top3=100.0% high-conf= 2 precision@high=100.0% false-confidence= 0.0%
+type=capacity_reduction      n=  2 top1=100.0% svc=100.0% top3=100.0% high-conf= 2 precision@high=100.0% false-confidence= 0.0%
+type=config_change           n=  2 top1=100.0% svc=100.0% top3=100.0% high-conf= 2 precision@high=100.0% false-confidence= 0.0%
+type=connection_pool_exhaustion n=  2 top1=100.0% svc=100.0% top3=100.0% high-conf= 2 precision@high=100.0% false-confidence= 0.0%
+type=crash_loop              n=  2 top1=100.0% svc=100.0% top3=100.0% high-conf= 2 precision@high=100.0% false-confidence= 0.0%
+type=crash_restart           n=  2 top1=100.0% svc=100.0% top3=100.0% high-conf= 2 precision@high=100.0% false-confidence= 0.0%
+type=dns_failure             n=  2 top1=100.0% svc=100.0% top3=100.0% high-conf= 1 precision@high=100.0% false-confidence= 0.0%
+type=gradual_degradation     n=  1 top1=100.0% svc=100.0% top3=100.0% high-conf= 1 precision@high=100.0% false-confidence= 0.0%
+type=masked_downstream_error n=  2 top1=100.0% svc=100.0% top3=100.0% high-conf= 2 precision@high=100.0% false-confidence= 0.0%
+type=network_partition       n=  2 top1=100.0% svc=100.0% top3=100.0% high-conf= 2 precision@high=100.0% false-confidence= 0.0%
+type=retry_storm             n=  2 top1=50.0% svc=50.0% top3=100.0% high-conf= 2 precision@high=50.0% false-confidence=50.0%
+type=silent_regression       n=  2 top1=100.0% svc=100.0% top3=100.0% high-conf= 2 precision@high=100.0% false-confidence= 0.0%
+type=slow_dependency         n=  2 top1=50.0% svc=100.0% top3=50.0% high-conf= 2 precision@high=50.0% false-confidence=50.0%
+type=slow_subset_requests    n=  1 top1=100.0% svc=100.0% top3=100.0% high-conf= 1 precision@high=100.0% false-confidence= 0.0%
+answers accepted: 26/26; mean attempts 1.04
+citation existence: 100.0% of 183 cites exist; first-attempt invalid rate 0.5%; relevance (cited record in root-cause service/edge): 43.2%
+mean prompt/completion tokens 150003/2884; mean cost $0.0476/incident (total $1.24); mean latency 20.3 s
+baseline input truncated for 5/26 incidents
+
+incorrect top-1 (2):
+  inc-003 [base] truth=slow_dependency/payments  top=capacity_saturation/payments conf=high  next=['dependency_slow/orders']
+  inc-026 [base] truth=retry_storm/orders  top=dependency_slow/payments conf=high  next=['retry_amplification/orders']

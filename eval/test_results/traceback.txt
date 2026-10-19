@@ -1,0 +1,38 @@
+system=traceback variant=default split=test n_incidents=26
+ALL                          n= 26 top1=96.2% svc=96.2% top3=100.0% high-conf=20 precision@high=100.0% false-confidence= 0.0%
+catalog types (category+svc) n= 16 top1=93.8% svc=93.8% top3=100.0% high-conf=13 precision@high=100.0% false-confidence= 0.0%
+unseen types (svc only)      n= 10 top1=100.0% svc=100.0% top3=100.0% high-conf= 7 precision@high=100.0% false-confidence= 0.0%
+group=base                   n=  8 top1=87.5% svc=87.5% top3=100.0% high-conf= 7 precision@high=100.0% false-confidence= 0.0%
+group=skew                   n=  4 top1=100.0% svc=100.0% top3=100.0% high-conf= 3 precision@high=100.0% false-confidence= 0.0%
+group=double                 n=  4 top1=100.0% svc=100.0% top3=100.0% high-conf= 3 precision@high=100.0% false-confidence= 0.0%
+group=unseen                 n= 10 top1=100.0% svc=100.0% top3=100.0% high-conf= 7 precision@high=100.0% false-confidence= 0.0%
+type=bad_deploy              n=  2 top1=100.0% svc=100.0% top3=100.0% high-conf= 2 precision@high=100.0% false-confidence= 0.0%
+type=capacity_reduction      n=  2 top1=100.0% svc=100.0% top3=100.0% high-conf= 2 precision@high=100.0% false-confidence= 0.0%
+type=config_change           n=  2 top1=100.0% svc=100.0% top3=100.0% high-conf= 2 precision@high=100.0% false-confidence= 0.0%
+type=connection_pool_exhaustion n=  2 top1=100.0% svc=100.0% top3=100.0% high-conf= 1 precision@high=100.0% false-confidence= 0.0%
+type=crash_loop              n=  2 top1=100.0% svc=100.0% top3=100.0% high-conf= 2 precision@high=100.0% false-confidence= 0.0%
+type=crash_restart           n=  2 top1=100.0% svc=100.0% top3=100.0% high-conf= 2 precision@high=100.0% false-confidence= 0.0%
+type=dns_failure             n=  2 top1=100.0% svc=100.0% top3=100.0% high-conf= 1 precision@high=100.0% false-confidence= 0.0%
+type=gradual_degradation     n=  1 top1=100.0% svc=100.0% top3=100.0% high-conf= 1 precision@high=100.0% false-confidence= 0.0%
+type=masked_downstream_error n=  2 top1=100.0% svc=100.0% top3=100.0% high-conf= 2 precision@high=100.0% false-confidence= 0.0%
+type=network_partition       n=  2 top1=100.0% svc=100.0% top3=100.0% high-conf= 1 precision@high=100.0% false-confidence= 0.0%
+type=retry_storm             n=  2 top1=100.0% svc=100.0% top3=100.0% high-conf= 1 precision@high=100.0% false-confidence= 0.0%
+type=silent_regression       n=  2 top1=100.0% svc=100.0% top3=100.0% high-conf= 2 precision@high=100.0% false-confidence= 0.0%
+type=slow_dependency         n=  2 top1=50.0% svc=50.0% top3=100.0% high-conf= 1 precision@high=100.0% false-confidence= 0.0%
+type=slow_subset_requests    n=  1 top1=100.0% svc=100.0% top3=100.0% high-conf= 0 precision@high= nan% false-confidence= 0.0%
+
+--- FULL TRACEBACK = analyzer + LLM + verifier (confidence per pre-registered policy; answers unchanged) ---
+ALL (with verifier)          n= 26 top1=96.2% svc=96.2% top3=100.0% high-conf=18 precision@high=100.0% false-confidence= 0.0%
+group=base (with verifier)   n=  8 top1=87.5% svc=87.5% top3=100.0% high-conf= 7 precision@high=100.0% false-confidence= 0.0%
+group=skew (with verifier)   n=  4 top1=100.0% svc=100.0% top3=100.0% high-conf= 3 precision@high=100.0% false-confidence= 0.0%
+group=double (with verifier) n=  4 top1=100.0% svc=100.0% top3=100.0% high-conf= 3 precision@high=100.0% false-confidence= 0.0%
+group=unseen (with verifier) n= 10 top1=100.0% svc=100.0% top3=100.0% high-conf= 5 precision@high=100.0% false-confidence= 0.0%
+  answers that are CORRECT (n=25): passed 22, failed 0, inconclusive 3
+  answers that are WRONG   (n=1): passed 0, failed 0, inconclusive 1
+answers accepted: 26/26; mean attempts 1.04
+citation existence: 100.0% of 257 cites exist; first-attempt invalid rate 0.0%; relevance (cited record in root-cause service/edge): 54.1%
+analyzer-support: 47.5% of cites are in the analyzer's support set
+mean prompt/completion tokens 4403/2708; mean cost $0.0038/incident (total $0.10); mean latency 13.8 s
+
+incorrect top-1 (1):
+  inc-003 [base] truth=slow_dependency/payments  top=capacity_saturation/orders conf=medium  next=['dependency_slow/payments']

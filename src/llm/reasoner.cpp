@@ -211,6 +211,10 @@ json extract_json(const std::string& text) {
   return j.is_discarded() ? json(nullptr) : j;
 }
 
+namespace {
+std::string sget(const json& j, const char* k) { return j.is_object() && j.contains(k) && j[k].is_string() ? j[k].get<std::string>() : ""; }
+}  // namespace
+
 std::string validate_answer_shape(const json& a) {
   if (!a.is_object()) return "the answer is not a JSON object";
   if (!a.contains("root_cause") || !a["root_cause"].is_object()) return "missing object root_cause";
@@ -224,6 +228,17 @@ std::string validate_answer_shape(const json& a) {
     if (!c.contains("status") || !c["status"].is_string() || !std::set<std::string>{"confirmed", "uncertain"}.count(c["status"].get<std::string>())) return "each claim needs status confirmed or uncertain";
     if (!c.contains("cites") || !c["cites"].is_array() || c["cites"].empty()) return "each claim must cite at least one record id";
     for (auto& id : c["cites"]) if (!id.is_string()) return "cites must be strings";
+  }
+  if (a.contains("alternatives")) {
+    if (!a["alternatives"].is_array()) return "alternatives must be an array";
+    for (auto& c : a["alternatives"]) {
+      if (!c.is_object()) return "each alternative must be an object";
+      for (const char* k : {"category", "service", "why_less_likely"}) if (c.contains(k) && !c[k].is_string()) return std::string("alternative field ") + k + " must be a string";
+      if (c.contains("cites")) {
+        if (!c["cites"].is_array()) return "alternative cites must be an array";
+        for (auto& id : c["cites"]) if (!id.is_string()) return "cites must be strings";
+      }
+    }
   }
   return "";
 }
@@ -240,12 +255,12 @@ std::vector<Claim> claims_of(const json& a) {
   auto add = [&](const json& c, const std::string& text) {
     Claim cl;
     cl.text = text;
-    cl.status = c.value("status", "uncertain");
+    cl.status = sget(c, "status").empty() ? "uncertain" : sget(c, "status");
     if (c.contains("cites") && c["cites"].is_array()) for (auto& id : c["cites"]) if (id.is_string()) cl.cites.push_back(normalize_id(id.get<std::string>()));
     out.push_back(cl);
   };
-  if (a.contains("causal_chain") && a["causal_chain"].is_array()) for (auto& c : a["causal_chain"]) if (c.is_object()) add(c, c.value("claim", ""));
-  if (a.contains("alternatives") && a["alternatives"].is_array()) for (auto& c : a["alternatives"]) if (c.is_object()) add(c, c.value("why_less_likely", ""));
+  if (a.contains("causal_chain") && a["causal_chain"].is_array()) for (auto& c : a["causal_chain"]) if (c.is_object()) add(c, sget(c, "claim"));
+  if (a.contains("alternatives") && a["alternatives"].is_array()) for (auto& c : a["alternatives"]) if (c.is_object()) add(c, sget(c, "why_less_likely"));
   return out;
 }
 

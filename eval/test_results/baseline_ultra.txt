@@ -1,0 +1,15 @@
+system=baseline variant=ultra split=test n_incidents=5
+ALL                          n=  5 top1=80.0% svc=80.0% top3=80.0% high-conf= 4 precision@high=100.0% false-confidence= 0.0%
+catalog types (category+svc) n=  5 top1=80.0% svc=80.0% top3=80.0% high-conf= 4 precision@high=100.0% false-confidence= 0.0%
+group=base                   n=  3 top1=66.7% svc=66.7% top3=66.7% high-conf= 2 precision@high=100.0% false-confidence= 0.0%
+group=double                 n=  2 top1=100.0% svc=100.0% top3=100.0% high-conf= 2 precision@high=100.0% false-confidence= 0.0%
+type=bad_deploy              n=  1 top1= 0.0% svc= 0.0% top3= 0.0% high-conf= 0 precision@high= nan% false-confidence= 0.0%
+type=config_change           n=  2 top1=100.0% svc=100.0% top3=100.0% high-conf= 2 precision@high=100.0% false-confidence= 0.0%
+type=slow_dependency         n=  2 top1=100.0% svc=100.0% top3=100.0% high-conf= 2 precision@high=100.0% false-confidence= 0.0%
+answers accepted: 2/5; mean attempts 2.40
+citation existence: 84.3% of 178 cites exist; first-attempt invalid rate 0.0%; relevance (cited record in root-cause service/edge): 19.1%
+mean prompt/completion tokens 709385/16959; mean cost $0.7603/incident (total $3.80); mean latency 222.4 s
+baseline input truncated for 0/5 incidents
+
+incorrect top-1 (1):
+  inc-019 [base] truth=bad_deploy/inventory  top=none/none conf=none  next=[]
