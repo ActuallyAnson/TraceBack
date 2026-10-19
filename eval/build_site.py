@@ -102,7 +102,7 @@ def per_incident(iid, split):
     rep_dir = ROOT / "runs/site_tmp" / iid
     env = dict(**__import__("os").environ)
     sh([str(ROOT / "build/tb_investigate"), str(ROOT / "runs/incidents" / iid), "--replay", str(ROOT / "runs/replay" / f"{iid}.json"),
-        "--cache", str(ROOT / "runs/llm_cache"), "--out", str(rep_dir)])
+        "--cache", str(ROOT / "eval/llm_cache"), "--out", str(rep_dir)])
     rep = json.loads((rep_dir / "report.json").read_text())
     (ROOT / "docs" / "reports").mkdir(parents=True, exist_ok=True)
     (ROOT / "docs" / "reports" / f"{iid}.html").write_text((rep_dir / "report.html").read_text())
@@ -218,12 +218,16 @@ def main():
     for r in index:
         d = per[r["id"]]
         s = r["split"]
-        rows[s]["analyzer"].append(dict(ok=d["analyzer"]["correct"], conf=d["analyzer"]["confidence"], lat=0.05))
+        g = dict(group=d["group"])
+        rows[s]["analyzer"].append(dict(ok=d["analyzer"]["correct"], conf=d["analyzer"]["confidence"], lat=0.05, **g))
         if d["baseline"]:
-            rows[s]["baseline"].append(dict(ok=d["baseline"]["correct"], conf=d["baseline"]["answer"]["confidence"] if d["baseline"]["answer"] else "none", cost=d["baseline"]["cost"], lat=d["baseline"]["latency"]))
+            rows[s]["baseline"].append(dict(ok=d["baseline"]["correct"], conf=d["baseline"]["answer"]["confidence"] if d["baseline"]["answer"] else "none", cost=d["baseline"]["cost"], lat=d["baseline"]["latency"], **g))
         tb = d["traceback"]
-        rows[s]["traceback"].append(dict(ok=tb["correct"], conf=tb["final_confidence"], cost=tb["cost"], lat=tb["latency"]))
-        rows[s]["traceback_unverified"].append(dict(ok=tb["correct"], conf=tb["llm_confidence"], cost=tb["cost"], lat=tb["latency"]))
+        rows[s]["traceback"].append(dict(ok=tb["correct"], conf=tb["final_confidence"], cost=tb["cost"], lat=tb["latency"], **g))
+        rows[s]["traceback_unverified"].append(dict(ok=tb["correct"], conf=tb["llm_confidence"], cost=tb["cost"], lat=tb["latency"], **g))
+    # test split broken down into catalog vs unseen fault types
+    for part, keep in (("test_catalog", lambda g: g != "unseen"), ("test_unseen", lambda g: g == "unseen")):
+        rows[part] = {k: [r for r in v if keep(r["group"])] for k, v in rows["test"].items()}
     asrun = None
     p = ROOT / "eval/test_results/baseline.txt"
     if p.exists():

@@ -38,7 +38,10 @@ LlmResult chat(const LlmConfig& cfg, const Messages& msgs) {
   std::string cache_path;
   if (!cfg.cache_dir.empty()) {
     std::filesystem::create_directories(cfg.cache_dir);
-    cache_path = cfg.cache_dir + "/" + cache_key(cfg, body) + ".json";
+    const std::string key = cache_key(cfg, body);
+    cache_path = cfg.cache_dir + "/" + key + ".json";
+    if (!cfg.fallback_cache_dir.empty() && !std::filesystem::exists(cache_path) && std::filesystem::exists(cfg.fallback_cache_dir + "/" + key + ".json"))
+      std::filesystem::copy_file(cfg.fallback_cache_dir + "/" + key + ".json", cache_path);
     std::ifstream in(cache_path);
     if (in) {
       json c = json::parse(in, nullptr, false);

@@ -1,4 +1,4 @@
-.PHONY: build test data verify eval-dev site serve
+.PHONY: build test data verify eval-dev site serve results results-check demo
 build:
 	cmake -S . -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build -j
 test: build
@@ -18,3 +18,22 @@ site: build
 # Preview the showcase site at http://localhost:8000
 serve:
 	python3 -m http.server 8000 -d docs
+
+# Regenerate every reported number from saved runs (offline: model answers come from eval/llm_cache) and refresh README.
+results: build
+	python3 eval/build_site.py
+	python3 eval/make_results.py
+# Fail if the README table differs from what the saved runs produce.
+results-check: build
+	python3 eval/build_site.py >/dev/null
+	python3 eval/make_results.py --check
+
+# One-command demo: build, generate one incident, run the full investigation, write the report.
+# Uses the recorded model answer in eval/llm_cache, so it needs no API key. To call the model live
+# for an incident that is not cached, set NEBIUS_API_KEY.
+DEMO_INC ?= inc-026
+demo: build
+	@./build/tb_sim generate --out runs --only $(DEMO_INC) | tail -1
+	@./build/tb_investigate runs/incidents/$(DEMO_INC) --replay runs/replay/$(DEMO_INC).json --cache eval/llm_cache --out runs/demo
+	@echo
+	@echo "Open runs/demo/report.html (or report.md). Same pipeline powers the web UI: make serve"

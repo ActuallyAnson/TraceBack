@@ -13,6 +13,7 @@ struct LlmConfig {
   double temperature = 0;
   int max_tokens = 16000;  // the model spends part of this on hidden reasoning tokens
   std::string cache_dir;   // if set, identical requests are served from disk (cost/latency recorded from the original call)
+  std::string fallback_cache_dir;  // read-only second cache; hits are copied into cache_dir
   int timeout_s = 600;
 };
 
