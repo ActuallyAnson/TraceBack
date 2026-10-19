@@ -1,0 +1,23 @@
+system=traceback split=dev
+ALL                          n= 32 top1=90.6% svc=90.6% top3=96.9% high-conf=30 precision@high=93.3% false-confidence= 6.2%
+catalog types (category+svc) n= 32 top1=90.6% svc=90.6% top3=96.9% high-conf=30 precision@high=93.3% false-confidence= 6.2%
+group=base                   n= 24 top1=91.7% svc=91.7% top3=95.8% high-conf=22 precision@high=95.5% false-confidence= 4.2%
+group=skew                   n=  4 top1=100.0% svc=100.0% top3=100.0% high-conf= 4 precision@high=100.0% false-confidence= 0.0%
+group=double                 n=  4 top1=75.0% svc=75.0% top3=100.0% high-conf= 4 precision@high=75.0% false-confidence=25.0%
+type=bad_deploy              n=  4 top1=100.0% svc=100.0% top3=100.0% high-conf= 4 precision@high=100.0% false-confidence= 0.0%
+type=capacity_reduction      n=  4 top1=100.0% svc=100.0% top3=100.0% high-conf= 4 precision@high=100.0% false-confidence= 0.0%
+type=config_change           n=  4 top1=100.0% svc=100.0% top3=100.0% high-conf= 4 precision@high=100.0% false-confidence= 0.0%
+type=connection_pool_exhaustion n=  4 top1=100.0% svc=100.0% top3=100.0% high-conf= 4 precision@high=100.0% false-confidence= 0.0%
+type=crash_restart           n=  4 top1=100.0% svc=100.0% top3=100.0% high-conf= 4 precision@high=100.0% false-confidence= 0.0%
+type=masked_downstream_error n=  4 top1=100.0% svc=100.0% top3=100.0% high-conf= 4 precision@high=100.0% false-confidence= 0.0%
+type=retry_storm             n=  4 top1=25.0% svc=25.0% top3=75.0% high-conf= 3 precision@high=33.3% false-confidence=50.0%
+type=slow_dependency         n=  4 top1=100.0% svc=100.0% top3=100.0% high-conf= 3 precision@high=100.0% false-confidence= 0.0%
+answers accepted: 32/32; mean attempts 1.00
+citation existence: 100.0% of 280 cites exist; first-attempt invalid rate 0.0%; relevance (cited record in root-cause service/edge): 48.2%
+analyzer-support: 44.6% of cites are in the analyzer's support set
+mean prompt/completion tokens 4402/2902; mean cost $0.0039/incident (total $0.13); mean latency 15.0 s
+
+incorrect top-1 (3):
+  inc-020 [base] truth=retry_storm/orders  top=internal_errors/payments conf=high  next=['capacity_saturation/orders']
+  inc-022 [double] truth=retry_storm/orders  top=deploy_regression/payments conf=high  next=['retry_amplification/orders', 'capacity_saturation/orders']
+  inc-042 [base] truth=retry_storm/orders  top=internal_errors/payments conf=medium  next=['retry_amplification/orders', 'capacity_saturation/orders']

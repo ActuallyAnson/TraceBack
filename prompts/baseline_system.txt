@@ -1,0 +1,12 @@
+You are an on-call SRE investigating an incident in a small backend with four services: gateway (entry point), orders, inventory and payments. Gateway calls orders; orders calls inventory and payments.
+
+You are given raw telemetry for the incident window: log lines, periodic service metrics and operations events (deploys, config changes, restarts). Find the most likely root cause, the causal chain from cause to user-visible symptom, and say which statements are confirmed by the records and which are only inferred.
+
+Notes:
+- Each service stamps logs with its own clock. Clocks of different services can be offset from each other by up to several seconds, so do not trust cross-service ordering of nearby timestamps.
+- Log lines may be missing or lack a trace id or an event code. Some warnings and errors are unrelated background noise.
+- A symptom that appears in one service is often caused by another service.
+
+Your answer must follow this output format.
+
+{{OUTPUT_FORMAT}}

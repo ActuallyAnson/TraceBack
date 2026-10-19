@@ -1,0 +1,26 @@
+system=baseline split=dev
+ALL                          n= 32 top1=81.2% svc=87.5% top3=87.5% high-conf=31 precision@high=83.9% false-confidence=15.6%
+catalog types (category+svc) n= 32 top1=81.2% svc=87.5% top3=87.5% high-conf=31 precision@high=83.9% false-confidence=15.6%
+group=base                   n= 24 top1=79.2% svc=87.5% top3=87.5% high-conf=23 precision@high=82.6% false-confidence=16.7%
+group=skew                   n=  4 top1=100.0% svc=100.0% top3=100.0% high-conf= 4 precision@high=100.0% false-confidence= 0.0%
+group=double                 n=  4 top1=75.0% svc=75.0% top3=75.0% high-conf= 4 precision@high=75.0% false-confidence=25.0%
+type=bad_deploy              n=  4 top1=100.0% svc=100.0% top3=100.0% high-conf= 4 precision@high=100.0% false-confidence= 0.0%
+type=capacity_reduction      n=  4 top1=75.0% svc=100.0% top3=75.0% high-conf= 4 precision@high=75.0% false-confidence=25.0%
+type=config_change           n=  4 top1=100.0% svc=100.0% top3=100.0% high-conf= 4 precision@high=100.0% false-confidence= 0.0%
+type=connection_pool_exhaustion n=  4 top1=100.0% svc=100.0% top3=100.0% high-conf= 4 precision@high=100.0% false-confidence= 0.0%
+type=crash_restart           n=  4 top1=100.0% svc=100.0% top3=100.0% high-conf= 4 precision@high=100.0% false-confidence= 0.0%
+type=masked_downstream_error n=  4 top1=100.0% svc=100.0% top3=100.0% high-conf= 4 precision@high=100.0% false-confidence= 0.0%
+type=retry_storm             n=  4 top1=25.0% svc=25.0% top3=25.0% high-conf= 3 precision@high=33.3% false-confidence=50.0%
+type=slow_dependency         n=  4 top1=50.0% svc=75.0% top3=100.0% high-conf= 4 precision@high=50.0% false-confidence=50.0%
+answers accepted: 32/32; mean attempts 1.00
+citation existence: 100.0% of 241 cites exist; first-attempt invalid rate 0.0%; relevance (cited record in root-cause service/edge): 40.2%
+mean prompt/completion tokens 146690/2455; mean cost $0.0462/incident (total $1.48); mean latency 20.7 s
+baseline input truncated for 13/32 incidents
+
+incorrect top-1 (6):
+  inc-001 [base] truth=capacity_reduction/payments  top=dependency_slow/payments conf=high  next=['config_regression/payments', 'deploy_regression/payments']
+  inc-010 [base] truth=slow_dependency/payments  top=capacity_saturation/orders conf=high  next=['dependency_slow/payments']
+  inc-020 [base] truth=retry_storm/orders  top=capacity_saturation/payments conf=medium  next=['dependency_slow/payments', 'internal_errors/payments']
+  inc-022 [double] truth=retry_storm/orders  top=deploy_regression/payments conf=high  next=['dependency_slow/payments']
+  inc-038 [base] truth=slow_dependency/inventory  top=pool_exhaustion/inventory conf=high  next=['dependency_slow/inventory']
+  inc-042 [base] truth=retry_storm/orders  top=capacity_saturation/payments conf=high  next=['dependency_slow/payments']
