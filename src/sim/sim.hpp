@@ -58,6 +58,8 @@ struct Spec {
 struct Output {
   std::map<std::string, std::string> files;  // observable files only
   double err_baseline = 0, err_incident = 0;  // gateway 5xx/timeout rate
+  double err_overall = 0;                     // gateway failure rate over the whole window
+  double err_peak30 = 0;                      // highest gateway failure rate over any 30 s window
 };
 
 constexpr int64_t kDurationUs = 120LL * 1000000;
@@ -66,6 +68,19 @@ Output simulate(const Spec& spec, bool drop_true_cause = false);
 std::string label_json(const Spec& spec, const Output& real, const Output& counterfactual);
 uint64_t fnv1a(const std::string& s, uint64_t h = 1469598103934665603ULL);
 uint64_t content_hash(const Output& o);
+
+// ---- replay environment (used by the verifier; derived from a Spec but hides which condition is causal) ----
+struct Condition { int kind; int svc; int64_t t0, t1; double p1, p2; int i1; };  // kind is an opaque code
+struct ReplayEnv {
+  std::string id;
+  uint64_t seed = 1;
+  int64_t epoch_us = 0;
+  double skew_s[NSVC] = {0, 0, 0, 0};
+  std::vector<Condition> conditions;
+};
+const char* condition_class(int kind);  // coarse class shared by harmful and harmless variants
+std::string replay_env_json(const Spec& spec);  // conditions shuffled by a hash of the id
+double replay_error_rate(const ReplayEnv& env, const std::vector<bool>& enabled);  // peak 30 s gateway failure rate
 
 std::vector<Spec> build_catalog(uint64_t master_seed);
 // Unseen-variant incidents (test split only), ids continue after the base catalog. Uses its own RNG

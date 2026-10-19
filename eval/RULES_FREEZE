@@ -5,3 +5,13 @@ a97c72148454b1c025d6172a3bbf49ee55a29fe989f6e8335dbb31fc7c112595  src/analyzer/h
 4a948c27c6b5189df8c58ccec218cd8906f72d573e5bdd92a548b67f1143f632  src/analyzer/load.cpp
 aa1c3dca4214617af90503460f0cccaa50a78eec5b57226371b6dc126cb64636  src/analyzer/main.cpp
 1d46621b90bc9fd0f4fde8c8d98d59b679c43c51d16ac27df199dc1867ee8289  include/tb/analyzer.hpp
+
+# Update (before any test-split run, informed by dev LLM results only): the analyzer REPORT's symptom field now
+# reports the start of the sustained failure burst (isolated early failures are background noise) and the
+# verifier uses a peak-30s failure rate. Hypothesis rules and scoring of the analyzer alone are unchanged
+# (dev top-1 stayed 96.9%). Current hashes:
+e7504664944db1b8601d9132fd8a3d025359bc4452b23c0bc837219769f71d05  src/analyzer/correlate.cpp
+f277b70272a6a33137e719e3bd59fd796097ec7cc32ee06c909308592ae0bb0d  src/analyzer/hypotheses.cpp
+4a948c27c6b5189df8c58ccec218cd8906f72d573e5bdd92a548b67f1143f632  src/analyzer/load.cpp
+aa1c3dca4214617af90503460f0cccaa50a78eec5b57226371b6dc126cb64636  src/analyzer/main.cpp
+1d46621b90bc9fd0f4fde8c8d98d59b679c43c51d16ac27df199dc1867ee8289  include/tb/analyzer.hpp

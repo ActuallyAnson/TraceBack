@@ -652,12 +652,18 @@ class World {
     o.files["metrics.jsonl"] = metrics;
     o.files["events.jsonl"] = events_;
     // gateway error rates around the true cause window
-    const Fault& tf = spec_.faults[0];
+    const Fault tf = spec_.faults.empty() ? Fault{FaultKind::HarmlessDeploy, 0, 0, 0} : spec_.faults[0];
     auto rate = [&](int64_t a, int64_t b) {
       int n = 0, e = 0;
       for (auto& [t, s] : gw_) if (t >= a && t < b) { ++n; if (s >= 500 || s <= 0) ++e; }
       return n ? static_cast<double>(e) / n : 0.0;
     };
+    o.err_overall = rate(0, kDurationUs);
+    for (int64_t a = 0; a + 30 * kSec <= kDurationUs; a += 5 * kSec) {
+      int n = 0, e = 0;
+      for (auto& [t, st] : gw_) if (t >= a && t < a + 30 * kSec) { ++n; if (st >= 500 || st <= 0) ++e; }
+      if (n >= 100) o.err_peak30 = std::max(o.err_peak30, static_cast<double>(e) / n);
+    }
     o.err_baseline = rate(2 * kSec, tf.t0);
     o.err_incident = rate(tf.t0 + 3 * kSec, std::min(kDurationUs, tf.t1 + 5 * kSec));
     return o;
@@ -682,6 +688,53 @@ class World {
 Output simulate(const Spec& spec, bool drop_true_cause) {
   World w(spec, drop_true_cause);
   return w.run();
+}
+
+const char* condition_class(int kind) {
+  switch (static_cast<FaultKind>(kind)) {
+    case FaultKind::BadDeploy: case FaultKind::HarmlessDeploy: return "deploy";
+    case FaultKind::ConfigChange: return "config_change";
+    case FaultKind::CrashRestart: case FaultKind::CrashLoop: return "restart";
+    case FaultKind::CapacityReduction: return "resource_limit";
+    case FaultKind::RetryStorm: return "retry_policy";
+    case FaultKind::PoolExhaustion: return "db_pool";
+    case FaultKind::SlowDependency: case FaultKind::MildLatency: case FaultKind::SlowSubset: case FaultKind::GradualDegradation: return "slowdown";
+    case FaultKind::MaskedError: case FaultKind::CosmeticErrors: case FaultKind::SilentRegression: return "errors";
+    case FaultKind::NetworkPartition: case FaultKind::DnsFailure: return "network";
+  }
+  return "unknown";
+}
+
+std::string replay_env_json(const Spec& spec) {
+  std::vector<Fault> fs = spec.faults;
+  // Deterministic shuffle keyed on the id so position carries no information about causality.
+  Rng r(fnv1a(spec.id) ^ 0x9e3779b97f4a7c15ULL);
+  for (size_t i = fs.size(); i > 1; --i) std::swap(fs[i - 1], fs[r.range(0, static_cast<int64_t>(i) - 1)]);
+  std::string conds = "[";
+  for (size_t i = 0; i < fs.size(); ++i) {
+    if (i) conds += ",";
+    conds += Obj().s("class", condition_class(static_cast<int>(fs[i].kind))).i("kind", static_cast<int>(fs[i].kind)).s("service", kSvcName[fs[i].svc]).i("svc", fs[i].svc)
+                  .i("t0_us", fs[i].t0).i("t1_us", fs[i].t1).d("p1", fs[i].p1).d("p2", fs[i].p2).i("i1", fs[i].i1).str();
+  }
+  conds += "]";
+  std::string skew = "[";
+  for (int s = 0; s < NSVC; ++s) { if (s) skew += ","; char b[32]; std::snprintf(b, sizeof b, "%.6f", spec.skew_s[s]); skew += b; }
+  skew += "]";
+  return Obj().s("id", spec.id).i("seed", static_cast<int64_t>(spec.seed)).i("epoch_us", spec.epoch_us).raw("skew_s", skew).raw("conditions", conds).str() + "\n";
+}
+
+double replay_error_rate(const ReplayEnv& env, const std::vector<bool>& enabled) {
+  Spec s;
+  s.id = env.id;
+  s.seed = env.seed;
+  s.epoch_us = env.epoch_us;
+  for (int i = 0; i < NSVC; ++i) s.skew_s[i] = env.skew_s[i];
+  for (size_t i = 0; i < env.conditions.size(); ++i) {
+    if (!enabled[i]) continue;
+    const Condition& c = env.conditions[i];
+    s.faults.push_back(Fault{static_cast<FaultKind>(c.kind), c.svc, c.t0, c.t1, c.p1, c.p2, c.i1});
+  }
+  return simulate(s, false).err_peak30;
 }
 
 std::string label_json(const Spec& spec, const Output& real, const Output& cf) {

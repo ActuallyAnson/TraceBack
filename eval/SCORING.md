@@ -54,3 +54,25 @@ The analyzer uses its own categories. The label-to-category map lives only in
 - Unseen variants are added to the test split only, after the analyzer rule commit is recorded in
   `eval/RULES_FREEZE`.
 - Failures are reported, not filtered.
+
+## Verifier and the "Full Traceback" system (pre-registered before any test run)
+- The verifier replays the incident with the conditions matching a hypothesis (class + service) disabled and
+  compares the peak 30 s entry-request failure rate (same measure on the observed incident and on replays; a whole-window
+  rate hid short incidents, changed before any test run) against a replay with everything enabled. It reads a replay manifest
+  (`runs/replay/<id>.json`): shuffled conditions with opaque classes (`deploy`, `config_change`, `restart`,
+  `resource_limit`, `retry_policy`, `db_pool`, `slowdown`, `errors`, `network`). The manifest does not mark which
+  condition is causal or harmless. A class holds both harmful and harmless variants.
+- Status per hypothesis: `passed` (replay reproduces the incident and disabling the matching conditions clears the
+  symptom: failure rate <= 4% and <= 30% of the all-on replay), `failed` (matching condition exists, symptom persists),
+  `inconclusive` (no matching replayable condition, or the all-on replay does not reproduce the incident).
+- **Full Traceback = analyzer + LLM + verifier.** The answer (top-1) is the LLM's answer; the verifier never changes it.
+  Confidence policy: `passed` keeps the LLM's confidence; `failed` forces `low`; `inconclusive` caps at `medium`.
+  False-confidence for the full system uses this final confidence. The unverified LLM row is reported too as an ablation.
+- Also reported: how often verification passes for correct answers and fails for wrong ones.
+
+## Baseline ablations (defined before any test run; reported next to the main table, never replacing it)
+- **baseline+principles**: the baseline system prompt plus the same "General principles" paragraph the Traceback prompt
+  uses (`prompts/baseline_plus_system.txt`), so prompt engineering is not what separates the systems. Everything else is identical.
+- **baseline on a 1M-context model** (`nvidia/Nemotron-3-Ultra-550b-a55b`, $1 / $3 per million tokens), run only on test
+  incidents whose baseline input was truncated for the main model, with no truncation. This checks whether truncation
+  changed the baseline's result. Different model, so it is a sensitivity analysis, not part of the main comparison.

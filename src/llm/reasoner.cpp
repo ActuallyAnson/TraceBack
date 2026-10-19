@@ -21,7 +21,7 @@ std::string slurp(const std::string& path) {
 }
 
 std::string system_prompt(const ReasonOptions& o) {
-  std::string s = slurp(o.prompts_dir + "/" + o.system + "_system.txt");
+  std::string s = slurp(o.prompts_dir + "/" + (o.prompt_name.empty() ? o.system : o.prompt_name) + "_system.txt");
   const std::string fmt = slurp(o.prompts_dir + "/output_format.txt");
   const std::string tag = "{{OUTPUT_FORMAT}}";
   const auto p = s.find(tag);
@@ -211,6 +211,10 @@ json extract_json(const std::string& text) {
   return j.is_discarded() ? json(nullptr) : j;
 }
 
+namespace {
+std::string sget(const json& j, const char* k) { return j.is_object() && j.contains(k) && j[k].is_string() ? j[k].get<std::string>() : ""; }
+}  // namespace
+
 std::string validate_answer_shape(const json& a) {
   if (!a.is_object()) return "the answer is not a JSON object";
   if (!a.contains("root_cause") || !a["root_cause"].is_object()) return "missing object root_cause";
@@ -224,6 +228,17 @@ std::string validate_answer_shape(const json& a) {
     if (!c.contains("status") || !c["status"].is_string() || !std::set<std::string>{"confirmed", "uncertain"}.count(c["status"].get<std::string>())) return "each claim needs status confirmed or uncertain";
     if (!c.contains("cites") || !c["cites"].is_array() || c["cites"].empty()) return "each claim must cite at least one record id";
     for (auto& id : c["cites"]) if (!id.is_string()) return "cites must be strings";
+  }
+  if (a.contains("alternatives")) {
+    if (!a["alternatives"].is_array()) return "alternatives must be an array";
+    for (auto& c : a["alternatives"]) {
+      if (!c.is_object()) return "each alternative must be an object";
+      for (const char* k : {"category", "service", "why_less_likely"}) if (c.contains(k) && !c[k].is_string()) return std::string("alternative field ") + k + " must be a string";
+      if (c.contains("cites")) {
+        if (!c["cites"].is_array()) return "alternative cites must be an array";
+        for (auto& id : c["cites"]) if (!id.is_string()) return "cites must be strings";
+      }
+    }
   }
   return "";
 }
@@ -240,13 +255,22 @@ std::vector<Claim> claims_of(const json& a) {
   auto add = [&](const json& c, const std::string& text) {
     Claim cl;
     cl.text = text;
-    cl.status = c.value("status", "uncertain");
+    cl.status = sget(c, "status").empty() ? "uncertain" : sget(c, "status");
     if (c.contains("cites") && c["cites"].is_array()) for (auto& id : c["cites"]) if (id.is_string()) cl.cites.push_back(normalize_id(id.get<std::string>()));
     out.push_back(cl);
   };
-  if (a.contains("causal_chain") && a["causal_chain"].is_array()) for (auto& c : a["causal_chain"]) if (c.is_object()) add(c, c.value("claim", ""));
-  if (a.contains("alternatives") && a["alternatives"].is_array()) for (auto& c : a["alternatives"]) if (c.is_object()) add(c, c.value("why_less_likely", ""));
+  if (a.contains("causal_chain") && a["causal_chain"].is_array()) for (auto& c : a["causal_chain"]) if (c.is_object()) add(c, sget(c, "claim"));
+  if (a.contains("alternatives") && a["alternatives"].is_array()) for (auto& c : a["alternatives"]) if (c.is_object()) add(c, sget(c, "why_less_likely"));
   return out;
+}
+
+std::string render_record(const Incident& inc, const std::string& id, int64_t t0) {
+  Renderer R{inc, true, t0};
+  for (auto& l : inc.logs) if (l.id == id) return R.log(l);
+  for (auto& x : inc.spans) if (x.id == id) return R.span(x);
+  for (auto& m : inc.metrics) if (m.id == id) return R.metric(m);
+  for (auto& o : inc.ops) if (o.id == id) return R.ops(o);
+  return "";
 }
 
 json reason(Incident& inc, const ReasonOptions& opt) {
@@ -306,6 +330,10 @@ json reason(Incident& inc, const ReasonOptions& opt) {
   out["accepted"] = accepted;  // false: no attempt produced a well-formed answer with only existing ids
   if (opt.system == "traceback" && !answer.is_null()) {
     for (auto& h : rep["hypotheses"]) for (auto& id : h["support_ids"]) support.insert(id.get<std::string>());
+    int64_t t0 = INT64_MAX;
+    for (auto& sp : inc.spans) t0 = std::min(t0, sp.t);
+    out["t0_us"] = t0;
+    out["analyzer"] = rep;
     out["analyzer_top"] = {{"category", rep["hypotheses"][0]["category"]}, {"service", rep["hypotheses"][0]["service"]}, {"confidence", rep["confidence"]}};
     json sup = json::array();
     for (auto& h : rep["hypotheses"]) sup.push_back({{"category", h["category"]}, {"service", h["service"]}, {"support_ids", h["support_ids"]}});

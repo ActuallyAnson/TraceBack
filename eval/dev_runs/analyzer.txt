@@ -1,4 +1,4 @@
-system=analyzer split=dev
+system=analyzer variant=default split=dev n_incidents=32
 ALL                          n= 32 top1=96.9% svc=96.9% top3=100.0% high-conf=24 precision@high=100.0% false-confidence= 0.0%
 catalog types (category+svc) n= 32 top1=96.9% svc=96.9% top3=100.0% high-conf=24 precision@high=100.0% false-confidence= 0.0%
 group=base                   n= 24 top1=100.0% svc=100.0% top3=100.0% high-conf=18 precision@high=100.0% false-confidence= 0.0%
@@ -13,7 +13,7 @@ type=masked_downstream_error n=  4 top1=100.0% svc=100.0% top3=100.0% high-conf=
 type=retry_storm             n=  4 top1=75.0% svc=75.0% top3=100.0% high-conf= 0 precision@high= nan% false-confidence= 0.0%
 type=slow_dependency         n=  4 top1=100.0% svc=100.0% top3=100.0% high-conf= 0 precision@high= nan% false-confidence= 0.0%
 clock-offset recovery on 4 skewed incidents: max error 5.1 ms, mean 3.5 ms (injected skews are 400-3000 ms)
-mean latency 48 ms/incident, cost $0 (no LLM)
+mean latency 60 ms/incident, cost $0 (no LLM)
 
 incorrect top-1 (1):
   inc-022 [double] truth=retry_storm/orders  top=deploy_regression/payments conf=medium  next=['retry_amplification/orders', 'capacity_saturation/orders']

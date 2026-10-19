@@ -16,6 +16,9 @@ int main(int argc, char** argv) {
     else if (k == "--cache") o.llm.cache_dir = v;
     else if (k == "--budget") o.token_budget = std::stoi(v);
     else if (k == "--prompts") o.prompts_dir = v;
+    else if (k == "--prompt") o.prompt_name = v;
+    else if (k == "--price-in") o.price_in = std::stod(v);
+    else if (k == "--price-out") o.price_out = std::stod(v);
     else if (k == "--dry-run") o.dry_run = v == "yes";
     else { std::fprintf(stderr, "unknown option %s\n", k.c_str()); return 2; }
   }

@@ -1,4 +1,4 @@
-system=baseline split=dev
+system=baseline variant=default split=dev n_incidents=32
 ALL                          n= 32 top1=81.2% svc=87.5% top3=87.5% high-conf=31 precision@high=83.9% false-confidence=15.6%
 catalog types (category+svc) n= 32 top1=81.2% svc=87.5% top3=87.5% high-conf=31 precision@high=83.9% false-confidence=15.6%
 group=base                   n= 24 top1=79.2% svc=87.5% top3=87.5% high-conf=23 precision@high=82.6% false-confidence=16.7%
