@@ -11,6 +11,7 @@ namespace tb {
 
 struct ReasonOptions {
   std::string system = "traceback";  // "traceback" | "baseline"
+  std::string description;          // optional architecture sentence from the incident's meta.json; replaces the prompt's first paragraph
   std::string prompt_name;           // system prompt file prefix; defaults to `system` (e.g. "baseline_plus")
   std::string prompts_dir = "prompts";
   LlmConfig llm;
@@ -27,6 +28,9 @@ std::vector<Claim> claims_of(const json& a);
 
 // One-line rendering of a record (log/span/metric/ops) on the aligned clock; empty if the id is unknown.
 std::string render_record(const Incident& inc, const std::string& id, int64_t t0_us);
+
+// Reads the optional "description" field of <incident_dir>/meta.json (empty if absent).
+std::string read_description(const std::string& incident_dir);
 
 json reason(Incident& inc, const ReasonOptions& opt);
 

@@ -26,6 +26,11 @@ std::string system_prompt(const ReasonOptions& o) {
   const std::string tag = "{{OUTPUT_FORMAT}}";
   const auto p = s.find(tag);
   if (p != std::string::npos) s.replace(p, tag.size(), fmt);
+  // The first paragraph describes the system. If the incident supplies its own architecture description, use it instead.
+  if (!o.description.empty()) {
+    const auto e = s.find("\n\n");
+    if (e != std::string::npos) s.replace(0, e, "You are an on-call SRE investigating an incident in " + o.description);
+  }
   return s;
 }
 
@@ -262,6 +267,13 @@ std::vector<Claim> claims_of(const json& a) {
   if (a.contains("causal_chain") && a["causal_chain"].is_array()) for (auto& c : a["causal_chain"]) if (c.is_object()) add(c, sget(c, "claim"));
   if (a.contains("alternatives") && a["alternatives"].is_array()) for (auto& c : a["alternatives"]) if (c.is_object()) add(c, sget(c, "why_less_likely"));
   return out;
+}
+
+std::string read_description(const std::string& dir) {
+  std::ifstream in(dir + "/meta.json");
+  if (!in) return "";
+  json m = json::parse(in, nullptr, false);
+  return m.is_object() && m.contains("description") && m["description"].is_string() ? m["description"].get<std::string>() : "";
 }
 
 std::string render_record(const Incident& inc, const std::string& id, int64_t t0) {

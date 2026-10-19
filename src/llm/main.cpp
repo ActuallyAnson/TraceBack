@@ -26,6 +26,7 @@ int main(int argc, char** argv) {
   if (o.system != "traceback" && o.system != "baseline") { std::fprintf(stderr, "--system must be traceback or baseline\n"); return 2; }
   try {
     tb::Incident inc = tb::load_incident(argv[1]);
+    o.description = tb::read_description(argv[1]);
     std::cout << tb::reason(inc, o).dump(1) << "\n";
   } catch (const std::exception& e) {
     std::fprintf(stderr, "error: %s\n", e.what());
