@@ -1,0 +1,6 @@
+# The v2 fresh sets (24 incidents per topology) were locked in this commit, before any system was run on them.
+lock_commit=67e97294e5552bb5f3fd24361746ce3c5cc3b135
+locked_at=2026-10-19T12:31:49Z
+# Nothing below may change; the simulator test targets v2_fresh_t1_locked / v2_fresh_t2_locked check the hashes.
+cd684af91301e38f86c6b767d4d045e8f69af47314c53a9a81f5da9ba5ec0462  eval/v2/fresh/manifest_t1.json
+5e802fd00e7164c9209cd6b80024124b0647ab2ec0f0ca3dd5df43cfd9ea608c  eval/v2/fresh/manifest_t2.json
