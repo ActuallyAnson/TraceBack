@@ -42,7 +42,7 @@ function setHash() {
 }
 function applyHash() {
   const h = location.hash.slice(1);
-  if (h === 'score' || h === 'how' || h === 'out' || h === '') { showView(h === '' ? 'out' : h); return null; }
+  if (h === 'score' || h === 'how' || h === 'topo2' || h === 'out' || h === '') { showView(h === '' ? 'out' : h); return null; }
   const m = h.match(/^(inc-\d+)(?:\/(\d))?$/);
   showView('inv');
   if (m && state.idx.incidents.some(r => r.id === m[1])) return { id: m[1], step: m[2] ? +m[2] - 1 : state.step };
