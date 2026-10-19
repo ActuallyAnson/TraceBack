@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Build the static showcase site data (docs/data/*.json) from saved runs.
 
-Every number on the site comes from here: per-incident answers are read from runs/results (cached model
-answers), the analyzer is re-run, verification is re-computed, and summaries use the same judge() as score.py.
+Every number on the site comes from here: per-incident model answers come from the committed response cache (eval/llm_cache; no API key needed),
+the analyzer is re-run, verification is re-computed, and summaries use the same judge() as score.py.
 Run `make site` after `make data` and the evaluation runs.
 """
 import json, pathlib, re, subprocess, sys
@@ -150,7 +150,7 @@ def per_incident(iid, split):
     ans = rep["answer"]
     sup_sets = [set(h["support_ids"]) for h in rep.get("analyzer_support", []) if (h["category"], h["service"]) == (ans["root_cause"]["category"], ans["root_cause"]["service"])]
     allowed = sup_sets[0] if sup_sets else set().union(*[set(h["support_ids"]) for h in rep.get("analyzer_support", [])]) if rep.get("analyzer_support") else set()
-    cite_flags = {c: dict(exists=c in all_ids, supported=c in allowed) for c in set(cites_of(ans))}
+    cite_flags = {c: dict(exists=c in all_ids, supported=c in allowed) for c in sorted(set(cites_of(ans)))}
     first = (rep["meta"]["attempts"] or [{}])[0]
     cite_summary = dict(total=len(cites_of(ans)), attempts=len(rep["meta"]["attempts"]), first_invalid=len(first.get("cites_invalid", [])), supported=sum(1 for f in cite_flags.values() if f["supported"]), unique=len(cite_flags))
     need = set(cites_of(rep["answer"])) | set(cites_of(base["answer"] if base else None))
