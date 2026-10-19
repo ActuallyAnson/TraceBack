@@ -62,3 +62,12 @@ explain: build
 	python3 eval/explain/run.py --set fresh
 explain-check: build
 	python3 eval/explain/run.py --set fresh --check
+# Real telemetry (OpenTelemetry Demo): the converted incidents are committed as tarballs; raw OTLP files are not.
+real-data:
+	mkdir -p eval/real/v0 eval/real/v1
+	[ -d eval/real/v0/incidents ] || tar -xzf eval/real/incidents_v0.tgz -C eval/real/v0
+	[ -d eval/real/v1/incidents ] || tar -xzf eval/real/incidents_v1.tgz -C eval/real/v1
+real: build real-data
+	python3 eval/real/evaluate.py
+real-check: build real-data
+	python3 eval/real/evaluate.py --check
