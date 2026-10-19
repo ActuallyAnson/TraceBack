@@ -86,6 +86,7 @@ int main(int argc, char** argv) {
     if (cmd == "generate") {
       for (auto& [name, body] : b.real.files) write(fs::path(out) / "incidents" / b.spec.id / name, body);
       write(fs::path(out) / "labels" / (b.spec.id + ".json"), label_json(b.spec, b.real, b.cf));
+      write(fs::path(out) / "replay" / (b.spec.id + ".json"), replay_env_json(b.spec));  // verifier input: no causal marker
       std::printf("%s group=%-6s split=%-4s attempts=%d err=%.2f cf_err=%.2f\n", b.spec.id.c_str(), b.spec.group.c_str(), b.spec.split.c_str(), attempts, b.real.err_incident, b.cf.err_incident);
     }
   }

@@ -1,4 +1,4 @@
-system=traceback split=dev
+system=traceback variant=default split=dev n_incidents=32
 ALL                          n= 32 top1=90.6% svc=90.6% top3=96.9% high-conf=30 precision@high=93.3% false-confidence= 6.2%
 catalog types (category+svc) n= 32 top1=90.6% svc=90.6% top3=96.9% high-conf=30 precision@high=93.3% false-confidence= 6.2%
 group=base                   n= 24 top1=91.7% svc=91.7% top3=95.8% high-conf=22 precision@high=95.5% false-confidence= 4.2%
@@ -12,6 +12,14 @@ type=crash_restart           n=  4 top1=100.0% svc=100.0% top3=100.0% high-conf=
 type=masked_downstream_error n=  4 top1=100.0% svc=100.0% top3=100.0% high-conf= 4 precision@high=100.0% false-confidence= 0.0%
 type=retry_storm             n=  4 top1=25.0% svc=25.0% top3=75.0% high-conf= 3 precision@high=33.3% false-confidence=50.0%
 type=slow_dependency         n=  4 top1=100.0% svc=100.0% top3=100.0% high-conf= 3 precision@high=100.0% false-confidence= 0.0%
+
+--- FULL TRACEBACK = analyzer + LLM + verifier (confidence per pre-registered policy; answers unchanged) ---
+ALL (with verifier)          n= 32 top1=90.6% svc=90.6% top3=96.9% high-conf=28 precision@high=100.0% false-confidence= 0.0%
+group=base (with verifier)   n= 24 top1=91.7% svc=91.7% top3=95.8% high-conf=21 precision@high=100.0% false-confidence= 0.0%
+group=skew (with verifier)   n=  4 top1=100.0% svc=100.0% top3=100.0% high-conf= 4 precision@high=100.0% false-confidence= 0.0%
+group=double (with verifier) n=  4 top1=75.0% svc=75.0% top3=100.0% high-conf= 3 precision@high=100.0% false-confidence= 0.0%
+  answers that are CORRECT (n=29): passed 29, failed 0, inconclusive 0
+  answers that are WRONG   (n=3): passed 0, failed 1, inconclusive 2
 answers accepted: 32/32; mean attempts 1.00
 citation existence: 100.0% of 280 cites exist; first-attempt invalid rate 0.0%; relevance (cited record in root-cause service/edge): 48.2%
 analyzer-support: 44.6% of cites are in the analyzer's support set

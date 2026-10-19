@@ -35,3 +35,17 @@ add_library(tb_llm src/llm/llm.cpp src/llm/reasoner.cpp)
 target_link_libraries(tb_llm tb_analyzer CURL::libcurl)
 add_executable(tb_reason src/llm/main.cpp)
 target_link_libraries(tb_reason tb_llm)
+
+# Verifier: counterfactual replay. Links the simulator as the replay environment, never the analyzer's rules.
+add_library(tb_verify src/verify/verify.cpp)
+target_link_libraries(tb_verify tb_analyzer tb_simlib)
+add_executable(tb_verify_cli src/verify/main.cpp)
+set_target_properties(tb_verify_cli PROPERTIES OUTPUT_NAME tb_verify)
+target_link_libraries(tb_verify_cli tb_verify)
+
+add_executable(tb_investigate src/report/investigate.cpp)
+target_link_libraries(tb_investigate tb_llm tb_verify)
+
+add_executable(test_verify tests/test_verify.cpp)
+target_link_libraries(test_verify tb_verify)
+add_test(NAME verifier COMMAND test_verify)

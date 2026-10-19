@@ -11,6 +11,7 @@ namespace tb {
 
 struct ReasonOptions {
   std::string system = "traceback";  // "traceback" | "baseline"
+  std::string prompt_name;           // system prompt file prefix; defaults to `system` (e.g. "baseline_plus")
   std::string prompts_dir = "prompts";
   LlmConfig llm;
   int token_budget = 225000;  // estimated prompt tokens for the baseline; above this warn/error logs are subsampled
@@ -23,6 +24,9 @@ struct ReasonOptions {
 json extract_json(const std::string& text);  // tolerant: strips fences / surrounding prose; null if none
 std::string validate_answer_shape(const json& a);  // "" if OK, else a message for the model
 std::vector<Claim> claims_of(const json& a);
+
+// One-line rendering of a record (log/span/metric/ops) on the aligned clock; empty if the id is unknown.
+std::string render_record(const Incident& inc, const std::string& id, int64_t t0_us);
 
 json reason(Incident& inc, const ReasonOptions& opt);
 

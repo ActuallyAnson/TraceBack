@@ -21,7 +21,7 @@ std::string slurp(const std::string& path) {
 }
 
 std::string system_prompt(const ReasonOptions& o) {
-  std::string s = slurp(o.prompts_dir + "/" + o.system + "_system.txt");
+  std::string s = slurp(o.prompts_dir + "/" + (o.prompt_name.empty() ? o.system : o.prompt_name) + "_system.txt");
   const std::string fmt = slurp(o.prompts_dir + "/output_format.txt");
   const std::string tag = "{{OUTPUT_FORMAT}}";
   const auto p = s.find(tag);
@@ -249,6 +249,15 @@ std::vector<Claim> claims_of(const json& a) {
   return out;
 }
 
+std::string render_record(const Incident& inc, const std::string& id, int64_t t0) {
+  Renderer R{inc, true, t0};
+  for (auto& l : inc.logs) if (l.id == id) return R.log(l);
+  for (auto& x : inc.spans) if (x.id == id) return R.span(x);
+  for (auto& m : inc.metrics) if (m.id == id) return R.metric(m);
+  for (auto& o : inc.ops) if (o.id == id) return R.ops(o);
+  return "";
+}
+
 json reason(Incident& inc, const ReasonOptions& opt) {
   json meta = json::object();
   json rep;
@@ -306,6 +315,10 @@ json reason(Incident& inc, const ReasonOptions& opt) {
   out["accepted"] = accepted;  // false: no attempt produced a well-formed answer with only existing ids
   if (opt.system == "traceback" && !answer.is_null()) {
     for (auto& h : rep["hypotheses"]) for (auto& id : h["support_ids"]) support.insert(id.get<std::string>());
+    int64_t t0 = INT64_MAX;
+    for (auto& sp : inc.spans) t0 = std::min(t0, sp.t);
+    out["t0_us"] = t0;
+    out["analyzer"] = rep;
     out["analyzer_top"] = {{"category", rep["hypotheses"][0]["category"]}, {"service", rep["hypotheses"][0]["service"]}, {"confidence", rep["confidence"]}};
     json sup = json::array();
     for (auto& h : rep["hypotheses"]) sup.push_back({{"category", h["category"]}, {"service", h["service"]}, {"support_ids", h["support_ids"]}});
