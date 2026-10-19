@@ -134,6 +134,7 @@ int main(int argc, char** argv) {
   }
   try {
     Incident inc = load_incident(argv[1]);
+    o.description = read_description(argv[1]);
     json res = reason(inc, o);
     if (res["answer"].is_null()) { std::fprintf(stderr, "no valid answer from the model: %s\n", res.value("error", "malformed output").c_str()); return 1; }
     Report r{res["incident_id"], res["model"], res["answer"]["root_cause"]["category"], res["answer"]["root_cause"]["service"], res["answer"]["root_cause"]["summary"], res["answer"]["confidence"], "", "", "", res["answer"], res["analyzer"], json::object(), res["meta"], &inc, res["t0_us"]};

@@ -1,0 +1,35 @@
+system=traceback variant=default split=test n_incidents=14
+ALL                          n= 14 top1=78.6% svc=85.7% top3=92.9% high-conf=13 precision@high=76.9% false-confidence=21.4%
+mapped types (category+svc)  n= 10 top1=70.0% svc=80.0% top3=90.0% high-conf= 9 precision@high=66.7% false-confidence=30.0%
+unmapped types (svc only)    n=  4 top1=100.0% svc=100.0% top3=100.0% high-conf= 4 precision@high=100.0% false-confidence= 0.0%
+group=decoy                  n=  2 top1=50.0% svc=100.0% top3=50.0% high-conf= 2 precision@high=50.0% false-confidence=50.0%
+group=plain                  n= 11 top1=81.8% svc=81.8% top3=100.0% high-conf=10 precision@high=80.0% false-confidence=18.2%
+group=skew                   n=  1 top1=100.0% svc=100.0% top3=100.0% high-conf= 1 precision@high=100.0% false-confidence= 0.0%
+type=bad_deploy              n=  2 top1=100.0% svc=100.0% top3=100.0% high-conf= 2 precision@high=100.0% false-confidence= 0.0%
+type=capacity_reduction      n=  1 top1= 0.0% svc= 0.0% top3=100.0% high-conf= 1 precision@high= 0.0% false-confidence=100.0%
+type=config_change           n=  1 top1=100.0% svc=100.0% top3=100.0% high-conf= 1 precision@high=100.0% false-confidence= 0.0%
+type=connection_pool_exhaustion n=  1 top1=100.0% svc=100.0% top3=100.0% high-conf= 1 precision@high=100.0% false-confidence= 0.0%
+type=crash_loop              n=  1 top1=100.0% svc=100.0% top3=100.0% high-conf= 1 precision@high=100.0% false-confidence= 0.0%
+type=crash_restart           n=  1 top1=100.0% svc=100.0% top3=100.0% high-conf= 1 precision@high=100.0% false-confidence= 0.0%
+type=masked_downstream_error n=  1 top1=100.0% svc=100.0% top3=100.0% high-conf= 0 precision@high= nan% false-confidence= 0.0%
+type=network_partition       n=  2 top1=100.0% svc=100.0% top3=100.0% high-conf= 2 precision@high=100.0% false-confidence= 0.0%
+type=retry_storm             n=  1 top1= 0.0% svc= 0.0% top3=100.0% high-conf= 1 precision@high= 0.0% false-confidence=100.0%
+type=silent_regression       n=  1 top1=100.0% svc=100.0% top3=100.0% high-conf= 1 precision@high=100.0% false-confidence= 0.0%
+type=slow_dependency         n=  2 top1=50.0% svc=100.0% top3=50.0% high-conf= 2 precision@high=50.0% false-confidence=50.0%
+
+--- FULL TRACEBACK = analyzer + LLM + verifier (confidence per pre-registered policy; answers unchanged) ---
+ALL (with verifier)          n= 14 top1=78.6% svc=85.7% top3=92.9% high-conf=10 precision@high=100.0% false-confidence= 0.0%
+group=decoy (with verifier)  n=  2 top1=50.0% svc=100.0% top3=50.0% high-conf= 1 precision@high=100.0% false-confidence= 0.0%
+group=plain (with verifier)  n= 11 top1=81.8% svc=81.8% top3=100.0% high-conf= 8 precision@high=100.0% false-confidence= 0.0%
+group=skew (with verifier)   n=  1 top1=100.0% svc=100.0% top3=100.0% high-conf= 1 precision@high=100.0% false-confidence= 0.0%
+  answers that are CORRECT (n=11): passed 11, failed 0, inconclusive 0
+  answers that are WRONG   (n=3): passed 0, failed 0, inconclusive 3
+answers accepted: 14/14; mean attempts 1.00
+citation existence: 100.0% of 169 cites exist; first-attempt invalid rate 0.0%; relevance (cited record in root-cause service/edge): 46.2%
+analyzer-support: 36.1% of cites are in the analyzer's support set
+mean prompt/completion tokens 4402/3313; mean cost $0.0043/incident (total $0.06); mean latency 16.5 s
+
+incorrect top-1 (3):
+  fan-02 [decoy] truth=slow_dependency/billing  top=internal_errors/billing conf=high  next=['deploy_regression/notifier']
+  fan-08 [plain] truth=capacity_reduction/broker  top=edge_unreachable/ingest conf=high  next=['capacity_saturation/broker', 'capacity_saturation/api']
+  fan-09 [plain] truth=retry_storm/broker  top=internal_errors/billing conf=high  next=['capacity_saturation/ingest', 'retry_amplification/broker']

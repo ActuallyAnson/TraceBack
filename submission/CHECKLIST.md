@@ -38,7 +38,8 @@ Legend: ✅ done in the repo · 🧑 you must do it (cannot be done by code) · 
 | Test set locked before tuning; never edited after results | ✅ | `eval/LOCK_HISTORY.md`, `eval/test_runs.log` |
 | No secrets in the repo | ✅ | key is only read from `NEBIUS_API_KEY`; see "Before you submit" |
 | License file and architecture diagram in the README | ✅ | `LICENSE`, mermaid diagram |
-| Honest limitations in the README | ✅ | README sections on results and limitations |
+| Honest limitations in the README | ✅ | README sections on results, generalization check and limitations |
+| Generalization check on a second topology, no tuning | ✅ | `eval/topology2/PLAN.md` (pre-registered), `make topology2`, README section |
 
 ## Before you submit (about 30 minutes)
 

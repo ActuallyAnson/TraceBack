@@ -7,6 +7,9 @@ never passed to the analyzer. Default split is dev; test requires --confirm-test
 import argparse, collections, concurrent.futures, datetime, json, os, pathlib, subprocess, sys, time
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
+DATA = ROOT / "runs"                       # topology 1 data root; --topology2 points it at runs/topo2
+SPLIT_FILE = ROOT / "eval/split.json"
+RUN_LOG = ROOT / "eval/test_runs.log"
 # label type -> analyzer categories that count as correct (see SCORING.md)
 MAP = {
     "slow_dependency": {"dependency_slow"},
@@ -21,13 +24,13 @@ MAP = {
 
 
 def load_split(split):
-    rows = [json.loads(l) for l in (ROOT / "eval/split.json").read_text().splitlines() if l.strip()]
+    rows = [json.loads(l) for l in SPLIT_FILE.read_text().splitlines() if l.strip()]
     return [r["id"] for r in rows if split == "all" or r["split"] == split]
 
 
 def run_analyzer(iid):
     t = time.time()
-    out = subprocess.run([str(ROOT / "build/tb_analyze"), str(ROOT / "runs/incidents" / iid)], capture_output=True, text=True, check=True)
+    out = subprocess.run([str(ROOT / "build/tb_analyze"), str(DATA / "incidents" / iid)], capture_output=True, text=True, check=True)
     return json.loads(out.stdout), time.time() - t
 
 
@@ -58,17 +61,17 @@ VARIANTS = {
 
 
 def baseline_truncated(iid):
-    p = subprocess.run([str(ROOT / "build/tb_reason"), str(ROOT / "runs/incidents" / iid), "--system", "baseline", "--dry-run", "yes"], capture_output=True, text=True, check=True)
+    p = subprocess.run([str(ROOT / "build/tb_reason"), str(DATA / "incidents" / iid), "--system", "baseline", "--dry-run", "yes"], capture_output=True, text=True, check=True)
     return json.loads(p.stdout)["meta"]["baseline"]["truncated"]
 
 
 def run_llm(iid, system, variant="default"):
     """Run tb_reason on one incident; raw result cached to runs/results/<system>/<id>.json."""
-    out_dir = ROOT / "runs/results" / (system if variant == "default" else f"{system}_{variant}")
+    out_dir = DATA / "results" / (system if variant == "default" else f"{system}_{variant}")
     out_dir.mkdir(parents=True, exist_ok=True)
     cache = ROOT / "eval/llm_cache"
     t = time.time()
-    p = subprocess.run([str(ROOT / "build/tb_reason"), str(ROOT / "runs/incidents" / iid), "--system", system, "--cache", str(cache)] + VARIANTS[variant],
+    p = subprocess.run([str(ROOT / "build/tb_reason"), str(DATA / "incidents" / iid), "--system", system, "--cache", str(cache)] + VARIANTS[variant],
                        capture_output=True, text=True)
     if p.returncode != 0:
         return {"incident_id": iid, "system": system, "answer": None, "accepted": False, "error": p.stderr.strip()[:300], "meta": {"attempts": []}}
@@ -80,7 +83,7 @@ def run_llm(iid, system, variant="default"):
 def record_index(iid):
     """id -> service for every record in the incident (scorer-side, used for existence/relevance)."""
     idx = {}
-    d = ROOT / "runs/incidents" / iid
+    d = DATA / "incidents" / iid
     for fn in ("logs.jsonl", "spans.jsonl", "metrics.jsonl", "events.jsonl"):
         for line in (d / fn).read_text().splitlines():
             if line.strip():
@@ -129,7 +132,7 @@ def run_verify(iid, res):
     if not a:
         return "inconclusive"
     hyp = f'{a["root_cause"]["category"]}:{a["root_cause"]["service"]}'
-    p = subprocess.run([str(ROOT / "build/tb_verify"), str(ROOT / "runs/incidents" / iid), "--replay", str(ROOT / "runs/replay" / f"{iid}.json"), "--hyp", hyp],
+    p = subprocess.run([str(ROOT / "build/tb_verify"), str(DATA / "incidents" / iid), "--replay", str(DATA / "replay" / f"{iid}.json"), "--hyp", hyp],
                        capture_output=True, text=True)
     if p.returncode != 0:
         return "inconclusive"
@@ -165,15 +168,20 @@ def main():
     ap.add_argument("--confirm-test", action="store_true", help="required to score the held-out test split")
     ap.add_argument("--system", default="analyzer", choices=["analyzer", "baseline", "traceback"])
     ap.add_argument("--workers", type=int, default=3)
+    ap.add_argument("--topology2", action="store_true", help="score the second-topology generalization incidents (eval/topology2)")
     ap.add_argument("--variant", default="default", choices=list(VARIANTS), help="baseline ablations; see SCORING.md")
     ap.add_argument("--verbose", action="store_true")
     a = ap.parse_args()
+    global DATA, SPLIT_FILE, RUN_LOG
+    if a.topology2:
+        DATA, SPLIT_FILE, RUN_LOG = ROOT / "runs/topo2", ROOT / "eval/topology2/manifest.json", ROOT / "eval/topology2/runs.log"
+        a.split = a.split if a.split != "dev" else "test"
     if a.split != "dev" and not a.confirm_test:
         sys.exit("refusing to score %r without --confirm-test (held-out data; every run is logged)" % a.split)
     if a.split != "dev":
         head = subprocess.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True, cwd=ROOT).stdout.strip()
         dirty = bool(subprocess.run(["git", "status", "--porcelain", "--", "src", "include", "eval"], capture_output=True, text=True, cwd=ROOT).stdout.strip())
-        with open(ROOT / "eval/test_runs.log", "a") as f:
+        with open(RUN_LOG, "a") as f:
             f.write(f"{datetime.datetime.now(datetime.timezone.utc).isoformat()} split={a.split} system={a.system} variant={a.variant} commit={head}{'+dirty' if dirty else ''}\n")
 
     ids = load_split(a.split)
@@ -181,7 +189,7 @@ def main():
         sys.exit("variants apply to the baseline only")
     if a.variant == "ultra":  # sensitivity check: only incidents the main-model baseline had to truncate
         ids = [i for i in ids if baseline_truncated(i)]
-    labels = {i: json.loads((ROOT / "runs/labels" / f"{i}.json").read_text()) for i in ids}
+    labels = {i: json.loads((DATA / "labels" / f"{i}.json").read_text()) for i in ids}
     llm_res = {}
     if a.system in ("baseline", "traceback"):
         with concurrent.futures.ThreadPoolExecutor(max_workers=a.workers) as ex:
@@ -217,9 +225,9 @@ def main():
         rows.append(row)
     print(f"system={a.system} variant={a.variant} split={a.split} n_incidents={len(rows)}")
     summarize(rows, "ALL")
-    summarize([r for r in rows if r["group"] != "unseen"], "catalog types (category+svc)")
-    summarize([r for r in rows if r["group"] == "unseen"], "unseen types (svc only)")
-    for g in ("base", "skew", "double", "unseen"):
+    summarize([r for r in rows if r["type"] in MAP], "mapped types (category+svc)")
+    summarize([r for r in rows if r["type"] not in MAP], "unmapped types (svc only)")
+    for g in sorted({r["group"] for r in rows}):
         summarize([r for r in rows if r["group"] == g], f"group={g}")
     for t in sorted({r["type"] for r in rows}):
         summarize([r for r in rows if r["type"] == t], f"type={t}")
@@ -230,7 +238,7 @@ def main():
         print("\n--- FULL TRACEBACK = analyzer + LLM + verifier (confidence per pre-registered policy; answers unchanged) ---")
         full = [dict(r, conf=r["conf_full"]) for r in rows]
         summarize(full, "ALL (with verifier)")
-        for g in ("base", "skew", "double", "unseen"):
+        for g in sorted({r["group"] for r in rows}):
             summarize([r for r in full if r["group"] == g], f"group={g} (with verifier)")
         cnt = collections.Counter((r["top1"], r["vstatus"]) for r in rows)
         for ok in (True, False):

@@ -1,4 +1,4 @@
-.PHONY: build test data verify eval-dev site serve results results-check demo
+.PHONY: build test data verify eval-dev site serve results results-check demo topology2 topology2-check
 build:
 	cmake -S . -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build -j
 test: build
@@ -37,3 +37,12 @@ demo: build
 	@./build/tb_investigate runs/incidents/$(DEMO_INC) --replay runs/replay/$(DEMO_INC).json --cache eval/llm_cache --out runs/demo
 	@echo
 	@echo "Open runs/demo/report.html (or report.md). Same pipeline powers the web UI: make serve"
+
+# Generalization check on the second topology (fan-out with a broker). Offline: model answers come from eval/llm_cache.
+topology2: build
+	./build/tb_sim2 generate --out runs/topo2 | tail -1
+	./build/tb_sim2 verify --manifest eval/topology2/manifest.json
+	python3 eval/topology2/report.py
+topology2-check: build
+	./build/tb_sim2 generate --out runs/topo2 >/dev/null
+	python3 eval/topology2/report.py --check
