@@ -237,8 +237,14 @@ def main():
             m = re.search(r"^ALL\s+n=\s*(\d+) top1=\s*([\d.]+)%.*?false-confidence=\s*([\d.]+)%", p.read_text(), re.M)
             if m:
                 abl[name] = dict(n=int(m.group(1)), top1=float(m.group(2)) / 100, fc=float(m.group(3)) / 100)
+    usage = dict(calls=0, prompt=0, completion=0)
+    for r in index:
+        for sysname in ("traceback", "baseline"):
+            x = per[r["id"]][sysname]
+            if x:
+                usage["calls"] += x.get("attempts", 1); usage["prompt"] += x["tokens"][0]; usage["completion"] += x["tokens"][1]
     trunc = {s: sum(1 for r in index if r["split"] == s and per[r["id"]]["baseline"] and per[r["id"]]["baseline"]["truncated"]) for s in ("dev", "test")}
-    (OUT / "index.json").write_text(json.dumps(dict(incidents=index, summary=summary(rows), baseline_asrun_test_top1=asrun, ablations=abl, truncated_baseline=trunc,
+    (OUT / "index.json").write_text(json.dumps(dict(incidents=index, summary=summary(rows), baseline_asrun_test_top1=asrun, ablations=abl, truncated_baseline=trunc, usage=usage,
                                                     model="nvidia/nemotron-3-super-120b-a12b"), separators=(",", ":")))
     print("incidents:", len(index))
 

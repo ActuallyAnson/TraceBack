@@ -31,6 +31,10 @@ On the held-out test set Full Traceback matched the best accuracy, never answere
 an order of magnitude less per incident than the raw-logs baseline. The accuracy gaps are within one incident (n=26) and not statistically
 meaningful, and the LLM stage did not improve on the analyzer's accuracy; what it adds is the cited, checkable explanation.
 
+## Generalization check
+We built a second simulated topology (event-driven fan-out with a message broker) with the analyzer and prompts frozen. Accuracy dropped for every system and our advantage over the raw-logs
+baseline vanished; the checkable-evidence, confident-but-wrong and cost advantages held. We report it, failures included, in the README.
+
 ## Challenges
 - Models invent IDs and latch onto the first error they see: we added hard citation validation with retry, and a symptom-onset field that ignores isolated early noise.
 - Short incidents were invisible to a whole-window failure rate in the verifier; we switched to a peak 30-second rate.
@@ -45,7 +49,7 @@ Deterministic structure plus a model that is forced to cite evidence beats askin
 accuracy on a simulator is not accuracy on production. Replay verification is only possible in a controllable environment.
 
 ## What's next
-A generalization check on a second simulated topology (fan-out/messaging), adapters for real log schemas, and replay against canary/feature-flag rollbacks.
+Fixing the analyzer's coverage score so decoys on fire-and-forget branches stop outranking real causes (found by our second-topology check), adapters for real log schemas, and replay against canary/feature-flag rollbacks.
 
 ## Built with
 C++20, CMake, libcurl, nlohmann/json, Python, vanilla JavaScript, NVIDIA Nemotron 3 Super (`nvidia/nemotron-3-super-120b-a12b`), Nebius Token Factory.

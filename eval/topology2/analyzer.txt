@@ -1,0 +1,24 @@
+system=analyzer variant=default split=test n_incidents=14
+ALL                          n= 14 top1=85.7% svc=85.7% top3=100.0% high-conf= 8 precision@high=100.0% false-confidence= 0.0%
+mapped types (category+svc)  n= 10 top1=90.0% svc=90.0% top3=100.0% high-conf= 6 precision@high=100.0% false-confidence= 0.0%
+unmapped types (svc only)    n=  4 top1=75.0% svc=75.0% top3=100.0% high-conf= 2 precision@high=100.0% false-confidence= 0.0%
+group=decoy                  n=  2 top1= 0.0% svc= 0.0% top3=100.0% high-conf= 0 precision@high= nan% false-confidence= 0.0%
+group=plain                  n= 11 top1=100.0% svc=100.0% top3=100.0% high-conf= 7 precision@high=100.0% false-confidence= 0.0%
+group=skew                   n=  1 top1=100.0% svc=100.0% top3=100.0% high-conf= 1 precision@high=100.0% false-confidence= 0.0%
+type=bad_deploy              n=  2 top1=100.0% svc=100.0% top3=100.0% high-conf= 2 precision@high=100.0% false-confidence= 0.0%
+type=capacity_reduction      n=  1 top1=100.0% svc=100.0% top3=100.0% high-conf= 0 precision@high= nan% false-confidence= 0.0%
+type=config_change           n=  1 top1=100.0% svc=100.0% top3=100.0% high-conf= 1 precision@high=100.0% false-confidence= 0.0%
+type=connection_pool_exhaustion n=  1 top1=100.0% svc=100.0% top3=100.0% high-conf= 1 precision@high=100.0% false-confidence= 0.0%
+type=crash_loop              n=  1 top1=100.0% svc=100.0% top3=100.0% high-conf= 1 precision@high=100.0% false-confidence= 0.0%
+type=crash_restart           n=  1 top1=100.0% svc=100.0% top3=100.0% high-conf= 1 precision@high=100.0% false-confidence= 0.0%
+type=masked_downstream_error n=  1 top1=100.0% svc=100.0% top3=100.0% high-conf= 1 precision@high=100.0% false-confidence= 0.0%
+type=network_partition       n=  2 top1=50.0% svc=50.0% top3=100.0% high-conf= 0 precision@high= nan% false-confidence= 0.0%
+type=retry_storm             n=  1 top1=100.0% svc=100.0% top3=100.0% high-conf= 0 precision@high= nan% false-confidence= 0.0%
+type=silent_regression       n=  1 top1=100.0% svc=100.0% top3=100.0% high-conf= 1 precision@high=100.0% false-confidence= 0.0%
+type=slow_dependency         n=  2 top1=50.0% svc=50.0% top3=100.0% high-conf= 0 precision@high= nan% false-confidence= 0.0%
+clock-offset recovery on 1 skewed incidents: max error 4.0 ms, mean 4.0 ms (injected skews are 400-3000 ms)
+mean latency 72 ms/incident, cost $0 (no LLM)
+
+incorrect top-1 (2):
+  fan-02 [decoy] truth=slow_dependency/billing  top=deploy_regression/notifier conf=medium  next=['dependency_slow/billing', 'internal_errors/billing']
+  fan-12 [decoy] truth=network_partition/billing  top=deploy_regression/api conf=medium  next=['dependency_slow/broker', 'internal_errors/ingest']

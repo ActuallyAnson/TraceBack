@@ -40,10 +40,8 @@ def block():
         notes.append(f"Baseline given the same prompt principles as Traceback: {pc(a['baseline_plus_principles']['top1'])} top-1, {pc(a['baseline_plus_principles']['fc'])} confidently wrong (test, n={a['baseline_plus_principles']['n']}).")
     if "baseline_ultra_truncated_only" in a:
         notes.append(f"Baseline on a 1M-context model for the {a['baseline_ultra_truncated_only']['n']} incidents whose input was truncated: {pc(a['baseline_ultra_truncated_only']['top1'])} correct (thin evidence).")
-    cache = list((ROOT / "eval/llm_cache").glob("*.json"))
-    tin = sum(json.loads(f.read_text()).get("prompt_tokens", 0) for f in cache)
-    tout = sum(json.loads(f.read_text()).get("completion_tokens", 0) for f in cache)
-    notes.append(f"Model usage behind every number in the main comparison (all {len(cache)} recorded calls, both LLM systems, all {S['test']['traceback']['n'] + S['dev']['traceback']['n']} incidents, retries included): {tin/1e6:.1f}M prompt + {tout/1e6:.2f}M completion tokens, about ${tin*0.0000003 + tout*0.0000009:.2f} at the listed Nemotron 3 Super price.")
+    u = idx["usage"]
+    notes.append(f"Model usage behind every number in the main comparison (all {u['calls']} recorded calls, both LLM systems, all {S['test']['traceback']['n'] + S['dev']['traceback']['n']} incidents, retries included): {u['prompt']/1e6:.1f}M prompt + {u['completion']/1e6:.2f}M completion tokens, about ${u['prompt']*0.0000003 + u['completion']*0.0000009:.2f} at the listed Nemotron 3 Super price.")
     notes.append(f"Baseline input exceeded the model's context window and was sampled by trace for {idx['truncated_baseline']['test']} of {S['test']['baseline']['n']} test incidents and {idx['truncated_baseline']['dev']} of {S['dev']['baseline']['n']} dev incidents.")
     L += ["Notes:", ""] + [f"- {n}" for n in notes] + ["", "<!-- RESULTS:END -->"]
     return "\n".join(L)
