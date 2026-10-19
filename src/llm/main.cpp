@@ -26,12 +26,13 @@ int main(int argc, char** argv) {
     else { std::fprintf(stderr, "unknown option %s\n", k.c_str()); return 2; }
   }
   if (o.system != "traceback" && o.system != "baseline") { std::fprintf(stderr, "--system must be traceback or baseline\n"); return 2; }
-  if (o.rules != "v1" && o.rules != "v2") { std::fprintf(stderr, "--rules must be v1 or v2\n"); return 2; }
-  if (o.rules == "v2" && o.system != "traceback") { std::fprintf(stderr, "--rules v2 applies to --system traceback only\n"); return 2; }
-  if (o.rules == "v2" && o.prompts_dir == "prompts") o.prompts_dir = "prompts_v2";
+  if (o.rules != "v1" && o.rules != "v2" && o.rules != "v3") { std::fprintf(stderr, "--rules must be v1, v2 or v3\n"); return 2; }
+  if (o.rules != "v1" && o.system != "traceback") { std::fprintf(stderr, "--rules v2/v3 apply to --system traceback only\n"); return 2; }
+  if (o.rules != "v1" && o.prompts_dir == "prompts") o.prompts_dir = "prompts_v2";
   try {
     tb::Incident inc = tb::load_incident(argv[1]);
     o.description = tb::read_description(argv[1]);
+    o.incident_dir = argv[1];
     std::cout << tb::reason(inc, o).dump(1) << "\n";
   } catch (const std::exception& e) {
     std::fprintf(stderr, "error: %s\n", e.what());

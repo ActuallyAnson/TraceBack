@@ -34,11 +34,15 @@ add_library(tb_analyzer_v2 src/analyzer_v2/rerank.cpp)
 target_link_libraries(tb_analyzer_v2 tb_analyzer)
 add_executable(tb_analyze2 src/analyzer_v2/main.cpp)
 target_link_libraries(tb_analyze2 tb_analyzer_v2)
+add_library(tb_analyzer_v3 src/analyzer_v3/rerank.cpp)
+target_link_libraries(tb_analyzer_v3 tb_analyzer_v2)
+add_executable(tb_analyze3 src/analyzer_v3/main.cpp)
+target_link_libraries(tb_analyze3 tb_analyzer_v3)
 
 # LLM reasoner (libcurl client for the Nebius Token Factory endpoint) and raw-telemetry baseline.
 find_package(CURL REQUIRED)
 add_library(tb_llm src/llm/llm.cpp src/llm/reasoner.cpp)
-target_link_libraries(tb_llm tb_analyzer tb_analyzer_v2 CURL::libcurl)
+target_link_libraries(tb_llm tb_analyzer tb_analyzer_v2 tb_analyzer_v3 CURL::libcurl)
 add_executable(tb_reason src/llm/main.cpp)
 target_link_libraries(tb_reason tb_llm)
 

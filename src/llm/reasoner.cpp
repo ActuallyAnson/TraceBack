@@ -1,6 +1,7 @@
 #include "tb/reasoner.hpp"
 
 #include "tb/analyzer_v2.hpp"
+#include "tb/analyzer_v3.hpp"
 
 #include <algorithm>
 #include <cmath>
@@ -329,7 +330,7 @@ json reason(Incident& inc, const ReasonOptions& opt) {
   json rep;
   std::string user;
   if (opt.system == "traceback") {
-    rep = opt.rules == "v2" ? analyze_v2(inc) : analyze(inc);  // aligns clocks in place
+    rep = opt.rules == "v3" ? analyze_v3(inc, opt.incident_dir) : opt.rules == "v2" ? analyze_v2(inc) : analyze(inc);  // aligns clocks in place
     user = traceback_user(inc, rep, meta);
   } else {
     user = baseline_user(inc, opt.token_budget, meta);
@@ -360,7 +361,7 @@ json reason(Incident& inc, const ReasonOptions& opt) {
       feedback = "Your previous answer was rejected: " + problem + ". Answer again with only the JSON object in the required format.";
     } else {
       std::vector<Claim> claims = claims_of(a);
-      if (opt.rules == "v2" && a.contains("override") && a["override"].is_object() && a["override"].contains("contradicting_records") && a["override"]["contradicting_records"].is_array()) {
+      if (opt.rules != "v1" && a.contains("override") && a["override"].is_object() && a["override"].contains("contradicting_records") && a["override"]["contradicting_records"].is_array()) {
         Claim oc;
         oc.text = "override";
         for (auto& id : a["override"]["contradicting_records"]) if (id.is_string()) oc.cites.push_back(normalize_id(id.get<std::string>()));
@@ -374,7 +375,7 @@ json reason(Incident& inc, const ReasonOptions& opt) {
         for (auto& id : cc.invalid) ids += (ids.empty() ? "" : ", ") + id;
         feedback = "Your previous answer was rejected because it cites record ids that do not exist in the data: " + ids + ". Cite only ids exactly as they appear in the data, and re-answer with only the JSON object.";
         answer = a;  // keep the last well-formed answer in case retries run out
-      } else if (const std::string op = opt.rules == "v2" ? override_problem(inc, a, rep) : ""; !op.empty()) {
+      } else if (const std::string op = opt.rules != "v1" ? override_problem(inc, a, rep) : ""; !op.empty()) {
         at["problem"] = op;
         feedback = "Your previous answer was rejected: " + op + ". Answer again with only the JSON object in the required format.";
         answer = a;  // kept in case retries run out; replaced by the analyzer's top candidate below
@@ -388,7 +389,7 @@ json reason(Incident& inc, const ReasonOptions& opt) {
     msgs.push_back({"assistant", r.content});
     msgs.push_back({"user", feedback});
   }
-  if (opt.rules == "v2" && !answer.is_null() && !override_problem(inc, answer, rep).empty()) {
+  if (opt.rules != "v1" && !answer.is_null() && !override_problem(inc, answer, rep).empty()) {
     // The model kept differing from the analyzer without contradicting records: the analyzer's top candidate stands.
     const auto& top = rep["hypotheses"][0];
     out["override_rejected"] = {{"model_answer", answer["root_cause"]}, {"model_confidence", answer["confidence"]}, {"reason", override_problem(inc, answer, rep)}};
