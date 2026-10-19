@@ -27,7 +27,7 @@ deterministic simulator of a four-service backend with background noise, lost li
 Scoring rules were committed before the first run.
 
 ## Results (see the repo README for the generated table)
-Traceback's value is that its answers are **checkable and calibrated**, not that it is more accurate. On the held-out test set (n=26) the accuracy gaps between systems are within one incident, and the LLM stage did not improve on the deterministic analyzer's accuracy; what it adds is a cited, checkable explanation. Full Traceback was never confidently wrong in this run (the raw-logs baseline was 7.7%), at about a tenth of the cost per incident.
+Traceback's value is that its answers are **checkable and calibrated**, not that it is more accurate. On the held-out test set (n=26) the accuracy gaps between systems are within one incident, and the LLM stage did not improve on the deterministic analyzer's accuracy; what it adds is a cited, checkable explanation. Full Traceback was never confidently wrong in this run (the raw-logs baseline was 7.7%), at about 1/13 of the cost per incident.
 
 ## Generalization check
 We built a second simulated topology (event-driven fan-out with a message broker, 14 incidents) with the analyzer and prompts frozen. Accuracy dropped for every system and Full Traceback has no accuracy advantage there: it ties the raw-logs baseline at 78.6%. The LLM stage helped once and hurt twice. What held up: with the replay verifier **0% of answers were confidently wrong versus 21.4% for the baseline**, cost was about 1/13 of the baseline's, and every cited ID was valid. The analyzer failed on both decoy incidents; the fix is listed as future work, not tuned in. We report it, failures included, in the README.
