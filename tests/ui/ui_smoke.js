@@ -1,4 +1,5 @@
 const { spawn } = require('child_process'); const WebSocket = require('ws')  // npm i ws (test-only dependency); const http = require('http');
+const BASE = process.env.BASE || 'http://localhost:8000/';  // e.g. BASE=https://actuallyanson.github.io/TraceBack/
 const C = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 const chrome = spawn(C, ['--headless=new', '--disable-gpu', '--remote-debugging-port=9334', '--window-size=1400,1000', '--user-data-dir=/tmp/tb_ui_smoke_profile', 'about:blank'], { stdio: 'ignore' });
 const get = u => new Promise(r => http.get(u, res => { let d = ''; res.on('data', c => d += c); res.on('end', () => r(JSON.parse(d))); }));
@@ -14,7 +15,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
   const key = async k => { await send('Input.dispatchKeyEvent', { type: 'keyDown', key: k, code: k }); await send('Input.dispatchKeyEvent', { type: 'keyUp', key: k, code: k }); };
   await send('Runtime.enable'); await send('Page.enable');
   const out = {}; const check = (n, v) => { out[n] = v; };
-  await send('Page.navigate', { url: 'http://localhost:8000/?reveal=0#inc-009/1' }); await sleep(2500);
+  await send('Page.navigate', { url: BASE + '?reveal=0#inc-009/1' }); await sleep(2500);
   check('1 landing', await ev(`[document.querySelector('.view.on').id, document.querySelectorAll('#inc-list li[data-id]').length, document.querySelector('.step.on').textContent, document.querySelector('#work-head h2').textContent].join(' | ')`));
   check('1 counters', await ev(`[...document.querySelectorAll('.counter b')].map(b=>b.textContent).join(',')`));
   for (let i = 2; i <= 8; i++) {
