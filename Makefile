@@ -71,3 +71,10 @@ real: build real-data
 	python3 eval/real/evaluate.py
 real-check: build real-data
 	python3 eval/real/evaluate.py --check
+real2-data:
+	mkdir -p eval/real2/data
+	[ -d eval/real2/data/incidents ] || tar -xzf eval/real2/incidents.tgz -C eval/real2/data
+real2: build real2-data
+	python3 eval/real2/evaluate.py
+real2-check: build real2-data real-data
+	python3 eval/real2/evaluate.py --check
