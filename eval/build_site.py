@@ -110,8 +110,8 @@ def per_incident(iid, split):
     t0 = rep["t0_us"]
     offsets = {k: int(v) for k, v in an["clock"]["offsets_us"].items()}
     ops_off = int(an["clock"]["ops_clock_offset_us"])
-    base_path = ROOT / "runs/results/baseline" / f"{iid}.json"
-    base = json.loads(base_path.read_text()) if base_path.exists() else None
+    # Baseline answer: served from the committed response cache (no API key needed); a miss would need a key.
+    base = json.loads(sh([str(ROOT / "build/tb_reason"), str(ROOT / "runs/incidents" / iid), "--system", "baseline", "--cache", str(ROOT / "eval/llm_cache")]))
 
     tb_top1, tb_svc, _ = score.judge(label, score.llm_as_report(rep))
     base_top1 = score.judge(label, score.llm_as_report(base))[0] if base else False
@@ -207,9 +207,6 @@ def main():
     per = {}
     for m in manifest:
         iid = m["id"]
-        if not (ROOT / "runs/results/traceback" / f"{iid}.json").exists():
-            print("skip (no traceback result):", iid)
-            continue
         r = per_incident(iid, m["split"])
         index.append(r)
         per[iid] = json.loads((OUT / f"{iid}.json").read_text())
