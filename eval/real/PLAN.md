@@ -28,3 +28,7 @@ Systems: raw-logs baseline, analyzer v2, Full Traceback v2 (existing binaries an
   The category of the answer is reported, not scored.
 - Clean runs: no root cause exists. Reported: whether the system gave "high" or "medium" confidence (false alarm); and what the top answer was.
 - 7 fault + 3 clean incidents: no significance claims. Every wrong answer is listed.
+
+## Amendment 1 (after the first scored run; see CONVERTER_NOTES.md)
+The first run (converter v0) exposed a data-model mismatch: the load generator puts a whole user session into one trace, our analyzer assumes one trace per request. Converter v1 re-keys traces per entry request.
+Both runs are reported side by side, unchanged otherwise (same incidents, labels, systems, scoring). 4xx responses are not mapped to failures. No further converter or system changes will be made.

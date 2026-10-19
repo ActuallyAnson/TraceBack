@@ -6,6 +6,7 @@
 Never reads labels. The analyzer, prompts and reasoner are not touched."""
 import collections, json, pathlib, re, sys
 
+REKEY = "--session-traces" not in sys.argv  # converter v1 (default); --session-traces reproduces converter v0
 DROP = {"load-generator", "frontend-web"}  # traffic source and browser: external clients, not part of the system under investigation
 GRPC = {0: 200, 4: 504, 14: 503}
 LEVEL = {"TRACE": "info", "DEBUG": "info", "INFO": "info", "WARN": "warn", "ERROR": "error", "FATAL": "fatal"}
@@ -69,6 +70,17 @@ def status_of(s):
 def convert_window(spans_all, logs_path, iid, w0, w1, out):
     spans = [s for s in spans_all if w0 <= s["start"] < w1]
     ids = {s["sid"] for s in spans}
+    rootof = {}
+    if REKEY:  # converter v1: one trace per entry request (the load generator sends a whole user session as one OTLP trace)
+        par = {s["sid"]: s["parent"] for s in spans}
+        def root(x):
+            n = 0
+            while par.get(x) in ids and n < 64:
+                x, n = par[x], n + 1
+            return x
+        for s in spans:
+            s["trace"] = root(s["sid"])
+        rootof = {s["sid"]: s["trace"] for s in spans}
     services = sorted({s["svc"] for s in spans})
     child_svc = {}
     for s in spans:
@@ -133,7 +145,10 @@ def convert_window(spans_all, logs_path, iid, w0, w1, out):
         if lr.get("eventName"):
             r["event"] = lr["eventName"]
         r["msg"] = str(body)[:300]
-        if lr.get("traceId"):
+        if REKEY:
+            if lr.get("spanId") in rootof:
+                r["trace_id"] = rootof[lr["spanId"]]
+        elif lr.get("traceId"):
             r["trace_id"] = lr["traceId"]
         f = attrs(lr.get("attributes"))
         if f:
@@ -146,7 +161,7 @@ def convert_window(spans_all, logs_path, iid, w0, w1, out):
 
 
 def main():
-    raw, sched, out = map(pathlib.Path, sys.argv[1:4])
+    raw, sched, out = map(pathlib.Path, [a for a in sys.argv[1:] if not a.startswith("--")][:3])
     sc = json.loads(sched.read_text())
     lo, hi = min(s["start_us"] for s in sc), max(s["end_us"] for s in sc)
     spans = load_spans(raw / "traces.jsonl", lo, hi)
