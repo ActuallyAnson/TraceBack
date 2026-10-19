@@ -165,3 +165,13 @@ svg text{font-family:system-ui,sans-serif;fill:var(--mut);font-size:11px}svg .la
 .honest{margin-top:12px;border:1.5px solid var(--warn);background:var(--warn-soft);border-radius:10px;padding:10px 14px}.honest.ok{border-color:var(--ok);background:var(--ok-soft)}
 .story-err{color:var(--bad);font-weight:600}.tally{font-size:14px;color:var(--mut);max-width:860px}.empty-card{max-width:760px}
 @media(max-width:860px){.story-top{grid-template-columns:1fr}.minis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* ---- Second topology view ---- */
+.t2top{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:16px;margin:16px 0}
+.t2r{fill:var(--surface2);stroke:var(--line);stroke-width:1.5}.t2r.truthbox{stroke:var(--warn);stroke-width:3}.t2n text{font:600 14px system-ui;fill:var(--fg)}
+.t2e{stroke:var(--mut);stroke-width:1.6}.t2c{font:12px system-ui;fill:var(--mut)}.t2m{font:700 12px system-ui}.t2m.truth{fill:var(--warn)}.t2m.ok{fill:var(--ok)}.t2m.bad{fill:var(--bad)}
+.t2tab,.t2inc{width:100%;border-collapse:collapse;font-size:14px}.t2tab th,.t2tab td,.t2inc th,.t2inc td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:left}.t2tab .num{text-align:right}
+.t2inc tbody tr{cursor:pointer}.t2inc tbody tr:hover,.t2inc tbody tr.sel{background:var(--accent-soft)}
+.t2ansrow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.t2ans{border:1px solid var(--line);border-radius:10px;padding:8px 12px}.t2ans b:first-child{display:block;font-size:13px;color:var(--mut);margin-bottom:3px}
+.t2dia{margin-top:10px;max-width:640px}#t2detail{margin:14px 0 18px}
+@media(max-width:860px){.t2top,.t2ansrow{grid-template-columns:1fr}}

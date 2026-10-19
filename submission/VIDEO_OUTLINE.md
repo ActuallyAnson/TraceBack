@@ -1,6 +1,6 @@
 # Demo video outline (target 2:40, hard limit 3:00)
 
-Record your screen (browser + one terminal) with your own voice. No music, no logos. Keep the site zoomed so text is readable.
+The checked-in cut (`submission/traceback_demo.mp4`, not tracked; ~2:58) is a real screen recording of the live UI with a synthetic Kokoro `af_heart` narration, so say so when uploading and check the Devpost rules on AI-generated voice. To redo it with your own voice, record the browser and read the script below. No music, no logos. Keep the site zoomed so text is readable. The cut also shows the Second topology tab (14 incidents, fan-out diagram).
 Use the **The outage** tab (opens by default). Run `make live` before recording so the label reads SIMULATED · RUN LIVE, or record the hosted site where it reads RECORDED REPLAY: either is fine, but keep the label visible and say which it is.
 Tour pick 1 is inc-026 (baseline wrong, Traceback right); pick 2 is inc-003 (Traceback wrong but uncertain). Do not skip the second: it is the honest part.
 Everything works offline; nothing needs a live API call.

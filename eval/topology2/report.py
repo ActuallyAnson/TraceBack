@@ -74,14 +74,31 @@ n_trunc = sum(1 for r in rows if r["trunc"])
 L += ["", f"Baseline input exceeded the context window and was sampled by trace for {n_trunc} of {len(rows)} incidents. Unmapped fault types (network partition, crash loop, silent regression) are scored on service localization only, as in the first topology.", "",
       "<!-- TOPOLOGY2:END -->"]
 block = "\n".join(L)
+# Data for the site's "Second topology" view (docs/data/topology2.json); same rows as the tables above.
+def sysrow(name, v):
+    return dict(name=name, top1=v["top1"], high=v["high"], prec=v["prec"], fc=v["fc"], cost=v["cost"], lat=v["lat"])
+site_rows = []
+for r in rows:
+    tbr_, vs_ = r["tb"][1], r["tb"][3]
+    rc = r["label"]["root_cause"]
+    site_rows.append(dict(
+        id=r["id"], group=r["group"], truth=dict(type=rc["type"], service=rc["service"], edge=rc.get("edge"), decoys=r["label"]["decoys"]),
+        an=dict(ok=r["an"][0], cat=r["an"][1]["category"], svc=r["an"][1]["service"], conf=r["an"][2]),
+        bl=dict(ok=r["bl"][0], cat=r["bl"][1]["category"], svc=r["bl"][1]["service"], conf=r["bl"][2], cost=r["cost_bl"], trunc=bool(r["trunc"])),
+        tb=dict(ok=r["tb"][0], cat=tbr_["category"], svc=tbr_["service"], llm_conf=r["tb"][2], final_conf=r["tb"][4], replay=vs_ if isinstance(vs_, str) else (vs_.get("status") if isinstance(vs_, dict) else str(vs_)), cost=r["cost_tb"])))
+site_json = json.dumps(dict(n=len(rows), systems=[sysrow(n, v) for n, v in systems], incidents=site_rows), separators=(",", ":"), sort_keys=True)
+SITE = ROOT / "docs/data/topology2.json"
 readme = ROOT / "README.md"
 txt = readme.read_text()
 a, b = txt.find("<!-- TOPOLOGY2:START"), txt.find("<!-- TOPOLOGY2:END -->")
 if "--check" in sys.argv:
     if a < 0 or b < 0 or txt[a:b + len("<!-- TOPOLOGY2:END -->")] != block:
         sys.exit("README.md topology-2 block is missing or out of date; run `make topology2`")
-    print("README topology-2 block matches the generated table")
+    if not SITE.exists() or SITE.read_text() != site_json:
+        sys.exit("docs/data/topology2.json is missing or out of date; run `make topology2`")
+    print("README topology-2 block and docs/data/topology2.json match the generated results")
     sys.exit(0)
+SITE.write_text(site_json)
 (ROOT / "eval/topology2/RESULTS.md").write_text("# Topology-2 results (generated)\n\n" + block + "\n")
 if a >= 0 and b >= 0:
     readme.write_text(txt[:a] + block + txt[b + len("<!-- TOPOLOGY2:END -->"):])
