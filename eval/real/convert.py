@@ -6,6 +6,7 @@
 Never reads labels. The analyzer, prompts and reasoner are not touched."""
 import collections, json, pathlib, re, sys
 
+ERRFLAG = "--err-flag" in sys.argv  # converter v2 (second real-telemetry batch): carry the instrumentation's own error flag as "err": true
 REKEY = "--session-traces" not in sys.argv  # converter v1 (default); --session-traces reproduces converter v0
 DROP = {"load-generator", "frontend-web"}  # traffic source and browser: external clients, not part of the system under investigation
 GRPC = {0: 200, 4: 504, 14: 503}
@@ -108,6 +109,8 @@ def convert_window(spans_all, logs_path, iid, w0, w1, out):
             r["attempt"] = 1
             if st >= 500 and not s["a"].get("http.response.status_code") and "refused" in (s["msg"] + str(s["a"])).lower():
                 r["status"], r["error"] = -1, "conn_refused"
+        if ERRFLAG and s["code"] == 2:
+            r["err"] = True
         if r["status"] >= 500 or r["status"] <= 0:
             r["error"] = r.get("error") or (s["msg"][:80] or "error")
         rows.append(r)

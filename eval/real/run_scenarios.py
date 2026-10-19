@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Drive the running OpenTelemetry Demo through eval/real/scenarios.json (see PLAN.md) and record the window timestamps.
-Usage: run_scenarios.py <otel-demo checkout> <out schedule.json>"""
+Usage: run_scenarios.py <otel-demo checkout> <out schedule.json> [scenarios.json]"""
 import json, pathlib, sys, time
 
 demo = pathlib.Path(sys.argv[1])
@@ -25,7 +25,7 @@ def all_off():
 
 
 now_us = lambda: int(time.time() * 1e6)
-for sc in json.loads((pathlib.Path(__file__).parent / "scenarios.json").read_text()):
+for sc in json.loads((pathlib.Path(sys.argv[3]) if len(sys.argv) > 3 else pathlib.Path(__file__).parent / "scenarios.json").read_text()):
     all_off(); time.sleep(15)
     start = now_us(); time.sleep(40)
     flip = None

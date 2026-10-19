@@ -1,0 +1,15 @@
+[
+ {"id":"n01","kind":"clean"},
+ {"id":"n02","kind":"fault","flag":"paymentFailure","variant":"100%","root_service":"payment","edge":null,"summary":"payment fails every charge request (repeat of r02)"},
+ {"id":"n03","kind":"fault","flag":"paymentFailure","variant":"50%","root_service":"payment","edge":null,"summary":"payment fails half of charge requests (new variant)"},
+ {"id":"n04","kind":"fault","flag":"paymentUnreachable","variant":"on","root_service":"payment","edge":{"from":"checkout","to":"payment"},"summary":"checkout pointed at a bad payment address (repeat of r03)"},
+ {"id":"n05","kind":"fault","flag":"productCatalogFailure","variant":"on","root_service":"product-catalog","edge":null,"summary":"GetProduct fails for one product id (repeat of r04)"},
+ {"id":"n06","kind":"clean"},
+ {"id":"n07","kind":"fault","flag":"adFailure","variant":"on","root_service":"ad","edge":null,"summary":"GetAds errors about 1 in 10 calls (repeat of r07)"},
+ {"id":"n08","kind":"fault","flag":"intlShippingSlowdown","variant":"5sec","root_service":"shipping","edge":null,"summary":"non-US shipping delayed 5 s (new variant)"},
+ {"id":"n09","kind":"fault","flag":"productCatalogLockContention","variant":"on","root_service":"product-catalog","edge":null,"summary":"lock on catalog.products (repeat of r09)"},
+ {"id":"n10","kind":"fault","flag":"cartFailure","variant":"100%","root_service":"cart","edge":null,"summary":"cart EmptyCart goes to a failing store (repeat of r06)"},
+ {"id":"n11","kind":"fault","flag":"adHighCpu","variant":"on","root_service":"ad","edge":null,"summary":"high CPU load in the ad service (new flag)"},
+ {"id":"n12","kind":"fault","flag":"recommendationCacheFailure","variant":"on","root_service":"recommendation","edge":null,"summary":"recommendation cache grows and leaks memory (new flag)"},
+ {"id":"n13","kind":"clean"}
+]
