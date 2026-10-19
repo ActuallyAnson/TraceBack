@@ -1,0 +1,1 @@
+{"tokens": [455, 505], "verdict": "partial", "why": "The log record shows a pool_exhausted event, but the metric record indicates pool_in_use_max=4 while the pool size is 8, so it does not show all pool slots in use."}

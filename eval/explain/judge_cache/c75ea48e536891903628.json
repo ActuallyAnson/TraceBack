@@ -1,0 +1,1 @@
+{"tokens": [340, 210], "verdict": "partial", "why": "The record shows workers_limit=1 for the inventory service, but it does not provide evidence that the limit previously was higher or that it dropped to this value."}

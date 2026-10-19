@@ -1,0 +1,1 @@
+{"tokens": [558, 550], "verdict": "supported", "why": "The records show a timeout calling the orders service, an upstream_timeout resulting in a 504 error, and latency metrics (p99 ~2503\u202fms) indicating elevated response times."}

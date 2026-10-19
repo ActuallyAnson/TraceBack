@@ -1,0 +1,1 @@
+{"tokens": [385, 439], "verdict": "partial", "why": "The record confirms API calls timed out with upstream_timeout, but its queue time is 77796\u202f\u00b5s (~0.078\u202fs), not the claimed +52.278\u202fs."}

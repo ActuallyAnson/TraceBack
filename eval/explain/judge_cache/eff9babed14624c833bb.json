@@ -1,0 +1,1 @@
+{"tokens": [527, 454], "verdict": "partial", "why": "The records show the broker failed to reach shipping (connection refused) and the API returned a 503 error, but there is no evidence of an ingest service or that the broker failure propagated through ingest to cause the API error."}

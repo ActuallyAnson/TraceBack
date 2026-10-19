@@ -1,0 +1,1 @@
+{"tokens": [538, 607], "verdict": "supported", "why": "The broker span shows a 1200\u202fms timeout on its call to billing, and the billing span shows a duration of ~2249\u202fms (>1200\u202fms), matching the statement."}

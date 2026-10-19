@@ -1,0 +1,1 @@
+{"tokens": [455, 299], "verdict": "partial", "why": "The records confirm the gateway observed upstream_timeout (504) errors, but they contain no information linking these errors to delayed order processing."}

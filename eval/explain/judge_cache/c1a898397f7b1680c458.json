@@ -1,0 +1,1 @@
+{"tokens": [383, 241], "verdict": "unsupported", "why": "The quoted record gives only a single snapshot of queue wait time and processing duration, with no evidence of growth over time or a slowdown compared to a prior state."}

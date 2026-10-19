@@ -1,0 +1,1 @@
+{"tokens": [366, 268], "verdict": "partial", "why": "The quoted record shows the API returning a 500 error, but it does not show any 504 errors or indicate that this error marks the start of a sustained failure burst."}

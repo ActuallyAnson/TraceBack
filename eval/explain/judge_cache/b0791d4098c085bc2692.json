@@ -1,0 +1,1 @@
+{"tokens": [638, 278], "verdict": "partial", "why": "The records show API requests with upstream_timeout errors and elevated queue latency, but they do not provide evidence that workers are pinned waiting for ingest."}

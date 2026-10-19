@@ -1,0 +1,1 @@
+{"tokens": [389, 276], "verdict": "supported", "why": "The record shows a gateway client call to orders (service: gateway, kind: client, peer: orders) with status 500 and error: internal_error, matching the statement."}

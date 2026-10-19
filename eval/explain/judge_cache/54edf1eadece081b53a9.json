@@ -1,0 +1,1 @@
+{"tokens": [671, 368], "verdict": "supported", "why": "The gateway logs record upstream_timeout errors with peer=orders, and the gateway metrics show elevated latency (p99 \u2248\u202f2500\u202fms), matching the statement."}

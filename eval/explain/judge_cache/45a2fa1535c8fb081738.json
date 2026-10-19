@@ -1,0 +1,1 @@
+{"tokens": [301, 376], "verdict": "partial", "why": "The record confirms an ops event that throttled inventory CPU, but it does not explicitly show the timestamp offset of +48.963s, so the time detail cannot be verified from the quoted data."}

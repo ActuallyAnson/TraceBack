@@ -1,0 +1,1 @@
+{"tokens": [680, 340], "verdict": "supported", "why": "The broker spans show timeout errors when calling shipping, indicating shipping did not receive or record these calls."}

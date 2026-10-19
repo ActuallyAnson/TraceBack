@@ -1,0 +1,1 @@
+{"tokens": [400, 274], "verdict": "partial", "why": "The record confirms that an ingest request waited in queue before being served, but it provides no information about broker retry load or that such load caused the queue delay."}

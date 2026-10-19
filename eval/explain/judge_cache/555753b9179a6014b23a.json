@@ -1,0 +1,1 @@
+{"tokens": [438, 193], "verdict": "supported", "why": "The api logs contain error entries (upstream_error and upstream_timeout) that explicitly note the dependency ingest returned a 504 status, showing api reported errors while ingest was failing."}

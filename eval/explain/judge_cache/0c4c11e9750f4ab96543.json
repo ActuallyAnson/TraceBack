@@ -1,0 +1,1 @@
+{"tokens": [363, 217], "verdict": "partial", "why": "The record shows the API service encountered a delivery_failed error, but it does not indicate that this error resulted from broker shipping failures."}

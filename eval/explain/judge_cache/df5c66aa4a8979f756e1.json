@@ -1,0 +1,1 @@
+{"tokens": [360, 223], "verdict": "unsupported", "why": "The quoted record only shows a retry scheduled warning for the broker calling billing; it does not state that the broker failed to complete the delivery step or returned an upstream error."}

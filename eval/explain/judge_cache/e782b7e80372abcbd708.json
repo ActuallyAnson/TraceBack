@@ -1,0 +1,1 @@
+{"tokens": [359, 228], "verdict": "partial", "why": "The record confirms a gateway call timed out due to an upstream timeout, but it does not indicate that the call was specifically to the orders service."}

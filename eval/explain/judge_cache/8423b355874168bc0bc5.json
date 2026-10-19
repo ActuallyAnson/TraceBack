@@ -1,0 +1,1 @@
+{"tokens": [471, 559], "verdict": "supported", "why": "The orders log shows a retry of the inventory call with a 50\u202fms backoff, and the gateway log shows it received a 503 response from orders, indicating orders began returning 503 errors."}

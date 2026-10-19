@@ -1,0 +1,1 @@
+{"tokens": [349, 236], "verdict": "partial", "why": "The record shows orders returning a 504 error to the gateway, but it does not indicate that this was due to failed payment calls."}

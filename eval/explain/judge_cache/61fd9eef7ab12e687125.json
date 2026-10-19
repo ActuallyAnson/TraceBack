@@ -1,0 +1,1 @@
+{"tokens": [578, 334], "verdict": "partial", "why": "The records show Orders latency and queue size increasing over time, but they do not provide evidence that retries or payment failures caused these changes."}

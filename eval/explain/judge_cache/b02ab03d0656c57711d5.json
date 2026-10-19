@@ -1,0 +1,1 @@
+{"tokens": [460, 492], "verdict": "partial", "why": "The records show a gateway 500 error on checkout and an orders upstream timeout error, but they do not demonstrate that the gateway's failure was caused by or directly linked to the orders timeout."}

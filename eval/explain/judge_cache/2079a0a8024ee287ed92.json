@@ -1,0 +1,1 @@
+{"tokens": [495, 645], "verdict": "supported", "why": "The records show a growing request queue (queue_max=98, queue_us\u22481.38\u202fs), all workers pinned (busy_max=workers_limit=16), and increased latency (p50\u22482.9\u202fs, p99\u22483.9\u202fs)."}

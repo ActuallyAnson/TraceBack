@@ -1,0 +1,1 @@
+{"tokens": [528, 194], "verdict": "supported", "why": "The quoted records show billing service charge operations returning HTTP 503 with error=pool_exhausted, matching the statement."}

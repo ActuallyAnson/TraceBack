@@ -1,0 +1,1 @@
+{"tokens": [398, 384], "verdict": "partial", "why": "The record confirms a timeout after an immediate retry (attempt=2, error=timeout), but it does not provide evidence of increased load on inventory, slower responses, or the specific +53.562\u202fs onset mentioned in the statement."}

@@ -1,0 +1,1 @@
+{"tokens": [487, 395], "verdict": "partial", "why": "The quoted records show the payments service returning 503 errors with the temporarily_unavailable event, but they do not mention or indicate that these errors occurred under increased load."}

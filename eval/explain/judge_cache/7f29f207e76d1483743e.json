@@ -1,0 +1,1 @@
+{"tokens": [321, 319], "verdict": "partial", "why": "The record confirms Ops changed orders' timeout.payments_ms from 1200 to 5, but the quoted records do not provide enough information to verify the '+50.267s' timing."}

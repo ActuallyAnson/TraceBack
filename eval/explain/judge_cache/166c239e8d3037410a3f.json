@@ -1,0 +1,1 @@
+{"tokens": [366, 289], "verdict": "partial", "why": "The record shows increased err5xx in the gateway metrics, confirming the gateway returned 5xx responses, but it does not provide evidence that these errors were caused by upstream 503 errors from the orders service."}

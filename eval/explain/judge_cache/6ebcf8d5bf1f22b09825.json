@@ -1,0 +1,1 @@
+{"tokens": [509, 410], "verdict": "partial", "why": "The quoted records show a timeout when the API client calls ingest, but the internal\u2011error record does not indicate it occurred during an ingest call, so only part of the statement is directly supported."}

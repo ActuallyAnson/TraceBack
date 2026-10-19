@@ -1,0 +1,1 @@
+{"tokens": [333, 248], "verdict": "partial", "why": "The record shows the notifier service returned an internal error with status 500, supporting the error claim, but it does not mention that this occurred after a deployment."}

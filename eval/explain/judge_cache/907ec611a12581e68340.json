@@ -1,0 +1,1 @@
+{"tokens": [402, 194], "verdict": "unsupported", "why": "The quoted record only shows a successful ingest request with no indication of errors, retries, broker slowness, or resulting timeouts/failures."}

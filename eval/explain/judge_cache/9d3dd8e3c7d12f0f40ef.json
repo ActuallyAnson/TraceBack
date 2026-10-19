@@ -1,0 +1,1 @@
+{"tokens": [368, 327], "verdict": "partial", "why": "The record shows the gateway received a connection\u2011refused error and returned a 503 status, but it does not explicitly state that the refused call was to the orders service or that the request was an entry request."}

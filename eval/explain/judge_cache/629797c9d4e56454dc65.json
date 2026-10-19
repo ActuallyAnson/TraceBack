@@ -1,0 +1,1 @@
+{"tokens": [506, 332], "verdict": "partial", "why": "The records confirm that the orders service logged upstream timeout errors when calling inventory, but they do not mention or show that these errors occurred after a config change."}

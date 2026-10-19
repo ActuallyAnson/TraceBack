@@ -1,0 +1,1 @@
+{"tokens": [574, 448], "verdict": "partial", "why": "The records confirm the broker scheduled retries of shipping calls with zero backoff, but they do not explicitly state or show that this indicates retry amplification."}

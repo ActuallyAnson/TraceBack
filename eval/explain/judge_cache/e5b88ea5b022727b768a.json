@@ -1,0 +1,1 @@
+{"tokens": [336, 402], "verdict": "partial", "why": "The record confirms the broker logged an error that dependency shipping returned 500 for broker-L00061, but it does not contain the +62.215s timestamp referenced in the statement."}

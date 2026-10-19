@@ -1,0 +1,1 @@
+{"tokens": [453, 168], "verdict": "supported", "why": "The records show an ingest warning about an upstream call timing out after 2500\u202fms to broker and an error indicating upstream_timeout, matching the statement."}

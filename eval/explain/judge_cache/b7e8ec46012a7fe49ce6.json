@@ -1,0 +1,1 @@
+{"tokens": [457, 294], "verdict": "supported", "why": "The quoted log entry records an error 'upstream_timeout' with status 504, and the quoted span shows status 504 and error 'upstream_timeout', confirming the API returned upstream_timeout errors to clients as shown in both logs and spans."}

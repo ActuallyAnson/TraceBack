@@ -1,0 +1,1 @@
+{"tokens": [689, 253], "verdict": "supported", "why": "The quoted broker spans show calls to shipping with dur_us=6312\u202f\u00b5s (~6.3\u202fms) and error='timeout', matching the claim of approximately 6\u202fms timeouts."}

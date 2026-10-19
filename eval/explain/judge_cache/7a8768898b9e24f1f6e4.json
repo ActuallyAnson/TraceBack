@@ -1,0 +1,1 @@
+{"tokens": [405, 287], "verdict": "partial", "why": "The record shows the broker received a 503/temporarily_unavailable response from billing, but it does not provide the +44.504\u202fs timing information mentioned in the statement."}

@@ -1,0 +1,1 @@
+{"tokens": [390, 292], "verdict": "partial", "why": "The quoted record shows a shipping span with a temporarily_unavailable error at the given timestamp, but it provides no evidence of internal_error errors or the +49.409s offset mentioned in the statement."}

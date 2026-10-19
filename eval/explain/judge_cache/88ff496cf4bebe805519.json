@@ -1,0 +1,1 @@
+{"tokens": [354, 161], "verdict": "supported", "why": "The record shows the API service returning a 504 status with error 'upstream_timeout', which means the API timed out while waiting for its upstream (ingest) service."}

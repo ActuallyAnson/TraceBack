@@ -1,0 +1,1 @@
+{"tokens": [298, 157], "verdict": "unsupported", "why": "The quoted record confirms a payments container restart but does not provide the '+55.143s' timing information."}

@@ -1,0 +1,1 @@
+{"tokens": [377, 244], "verdict": "partial", "why": "The record confirms that the shipping service returned an internal_error response, but it does not include any information about a deployment or the timing relative to it, so the claim about occurring shortly after the deploy cannot be verified."}

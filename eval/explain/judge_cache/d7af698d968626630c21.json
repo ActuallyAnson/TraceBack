@@ -1,0 +1,1 @@
+{"tokens": [380, 328], "verdict": "partial", "why": "The record confirms the payments service returned an internal_error, supporting the claim of internal errors, but it does not show that these errors were communicated as 'temporarily_unavailable' to callers."}

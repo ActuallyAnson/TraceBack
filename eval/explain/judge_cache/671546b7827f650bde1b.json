@@ -1,0 +1,1 @@
+{"tokens": [355, 324], "verdict": "partial", "why": "The orders log shows a deadline\u2011exceeded timeout when calling payments, confirming the timeout, but it does not state that increased latency caused the timeout."}

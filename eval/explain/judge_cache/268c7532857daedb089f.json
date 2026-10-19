@@ -1,0 +1,1 @@
+{"tokens": [382, 368], "verdict": "partial", "why": "The record confirms the upstream_timeout error on the API call, but contains no evidence about Ingest\u2019s inability to forward orders to broker being the cause."}

@@ -1,0 +1,1 @@
+{"tokens": [381, 556], "verdict": "supported", "why": "The span records a timeout when the api client attempted to contact ingest, showing that ingest was not responding/reachable from the client\u2019s perspective."}

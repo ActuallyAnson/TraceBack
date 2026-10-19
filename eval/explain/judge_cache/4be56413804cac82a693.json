@@ -1,0 +1,1 @@
+{"tokens": [342, 283], "verdict": "partial", "why": "The record shows the inventory service returned an internal error with a 500 status, but it does not specify the error type as stock_record_corrupt."}

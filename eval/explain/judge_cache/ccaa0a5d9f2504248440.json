@@ -1,0 +1,1 @@
+{"tokens": [356, 247], "verdict": "partial", "why": "The record shows that api received a 504 from ingest, but it does not indicate that the broker's 504s caused ingest to return that status."}

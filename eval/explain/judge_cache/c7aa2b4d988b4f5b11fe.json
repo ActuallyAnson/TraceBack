@@ -1,0 +1,1 @@
+{"tokens": [349, 399], "verdict": "partial", "why": "The record shows current broker latency and a workers_limit of 1, but it does not show a prior latency value or a worker count reduction event, so the claim of a sharp rise after reduction cannot be confirmed."}

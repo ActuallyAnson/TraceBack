@@ -1,0 +1,1 @@
+{"tokens": [448, 336], "verdict": "partial", "why": "The broker logged an upstream error and a retry scheduled that references shipping, but the error record does not explicitly state the error came from shipping."}

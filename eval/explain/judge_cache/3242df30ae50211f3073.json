@@ -1,0 +1,1 @@
+{"tokens": [365, 196], "verdict": "partial", "why": "The record shows the gateway request returned 503 with a connection\u2011refused error, but it does not specify that the error originated from the orders service."}

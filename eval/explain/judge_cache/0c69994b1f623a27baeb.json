@@ -1,0 +1,1 @@
+{"tokens": [370, 453], "verdict": "partial", "why": "The record shows a spike in err5xx (48 out of 53 requests) supporting the claim of increased 5xx errors, but it does not provide evidence of gateway timeouts causing them or of internal error logs."}

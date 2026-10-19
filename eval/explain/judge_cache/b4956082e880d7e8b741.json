@@ -1,0 +1,1 @@
+{"tokens": [513, 480], "verdict": "supported", "why": "The quoted records include a shipping span (service: shipping, error: label_record_invalid) and an api span (service: api, error: delivery_failed) that both share the trace_id beginning with 160651ed, confirming the statement."}

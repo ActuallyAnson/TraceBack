@@ -1,0 +1,1 @@
+{"tokens": [354, 296], "verdict": "supported", "why": "The record shows the API received a 504 timeout from ingest, logging an upstream error, indicating the API treated ingest as failing due to a timeout."}

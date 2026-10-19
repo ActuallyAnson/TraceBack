@@ -1,0 +1,1 @@
+{"tokens": [350, 676], "verdict": "partial", "why": "The record shows the broker had only 1 worker and a queue of up to 12 requests, indicating too few workers caused queuing, but it does not explicitly state that serving capacity was lost."}

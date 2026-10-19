@@ -1,0 +1,1 @@
+{"tokens": [363, 443], "verdict": "partial", "why": "The record confirms the broker's workers_limit is 1 at the given timestamp, but it does not show a prior value of 24 or the specific time offset +62.268s, so the claim of a drop from 24 to 1 at that moment is not fully supported."}

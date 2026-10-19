@@ -1,0 +1,1 @@
+{"tokens": [364, 355], "verdict": "partial", "why": "The record shows elevated latency and many 5xx errors for the gateway, but contains no information about order timeouts causing them."}

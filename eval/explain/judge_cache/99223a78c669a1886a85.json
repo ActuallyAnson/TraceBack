@@ -1,0 +1,1 @@
+{"tokens": [333, 229], "verdict": "supported", "why": "The record shows the API service logged an upstream_timeout error with HTTP status 504, indicating a user\u2011visible 504 response."}

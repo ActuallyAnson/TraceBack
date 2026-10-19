@@ -1,0 +1,1 @@
+{"tokens": [340, 189], "verdict": "supported", "why": "The record shows the shipping service logged an error event 'label_record_invalid' with a 500 status, indicating internal errors caused by that issue."}

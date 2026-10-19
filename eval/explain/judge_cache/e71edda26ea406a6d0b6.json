@@ -1,0 +1,1 @@
+{"tokens": [356, 333], "verdict": "supported", "why": "The record shows API request latency around 3\u202fseconds (p50\u22483002\u202fms, p99\u22483112\u202fms) and 87\u202f5xx errors out of 102 requests, confirming high latency and 5xx errors."}

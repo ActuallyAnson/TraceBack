@@ -1,0 +1,1 @@
+{"tokens": [463, 1676], "verdict": "partial", "why": "The records show a broker zero\u2011backoff retry and a billing pool exhaustion, but the time difference between them is about 5.2\u202fseconds, not +57.345\u202fs, and no explicit causal link is provided."}

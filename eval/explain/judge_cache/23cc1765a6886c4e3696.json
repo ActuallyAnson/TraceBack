@@ -1,0 +1,1 @@
+{"tokens": [586, 293], "verdict": "partial", "why": "The records show broker retries to billing with zero backoff, but they do not indicate that these retries were triggered by receiving 503 temporarily_unavailable responses."}

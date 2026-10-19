@@ -1,0 +1,1 @@
+{"tokens": [359, 320], "verdict": "partial", "why": "The record shows shipping had err5xx=1, indicating some internal errors, but it does not demonstrate a rise from 0 to 9+ or confirm that this occurred after deployment."}

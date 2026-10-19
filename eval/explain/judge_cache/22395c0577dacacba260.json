@@ -1,0 +1,1 @@
+{"tokens": [433, 222], "verdict": "partial", "why": "The records show ingest reporting errors (upstream timeouts), but they do not mention or indicate that its dependency broker was failing."}

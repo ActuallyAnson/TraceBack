@@ -1,0 +1,1 @@
+{"tokens": [331, 166], "verdict": "unsupported", "why": "The quoted record indicates a generic upstream error (status 500) for the broker but does not specify a connection\u2011refused error or that the call was to billing."}

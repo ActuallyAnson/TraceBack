@@ -1,0 +1,1 @@
+{"tokens": [350, 235], "verdict": "partial", "why": "The record confirms the API saw an upstream timeout error from ingest (HTTP\u202f504), but it provides no information about broker or billing failures."}

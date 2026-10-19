@@ -1,0 +1,1 @@
+{"tokens": [515, 400], "verdict": "partial", "why": "The records confirm the API upstream timeout and a broker\u2011billing timeout, but they do not show ingest\u2019s inability to forward orders or that the broker timeout caused the API timeout."}

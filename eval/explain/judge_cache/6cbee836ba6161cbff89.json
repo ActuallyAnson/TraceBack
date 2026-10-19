@@ -1,0 +1,1 @@
+{"tokens": [384, 140], "verdict": "supported", "why": "The broker span indicates a timeout error during a charge operation with billing as the peer, matching the statement."}

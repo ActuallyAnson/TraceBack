@@ -1,0 +1,1 @@
+{"tokens": [369, 270], "verdict": "partial", "why": "The record shows the gateway returned a 503 error due to order_failed, supporting the error and its cause, but it does not indicate a surge of such errors."}

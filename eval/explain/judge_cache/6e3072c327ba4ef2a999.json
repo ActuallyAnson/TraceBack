@@ -1,0 +1,1 @@
+{"tokens": [583, 503], "verdict": "partial", "why": "The records show payments service returning 503 errors and a response duration, but they do not demonstrate increased load or a causal link between load and the observed slowness/errors."}

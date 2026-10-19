@@ -1,0 +1,1 @@
+{"tokens": [468, 349], "verdict": "partial", "why": "The records show increased latency in the later window but do not show queue buildup or indicate that the delay was caused by waiting for ingest to forward orders."}

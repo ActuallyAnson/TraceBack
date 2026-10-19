@@ -1,0 +1,1 @@
+{"tokens": [453, 335], "verdict": "supported", "why": "The log shows a pool_exhausted error and the metric shows pool_in_use_max equals the pool size (8), indicating all connections were in use, while err5xx > 0 reflects rising error rates."}

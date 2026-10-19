@@ -1,0 +1,1 @@
+{"tokens": [456, 209], "verdict": "supported", "why": "The log shows the gateway recorded an upstream error from the orders service returning status 500, and the metrics show a high count of 5xx responses (err5xx:47) served to users."}

@@ -1,0 +1,1 @@
+{"tokens": [396, 253], "verdict": "partial", "why": "The record confirms that the payments service returned a 503 error with 'temporarily_unavailable', but it does not provide any timestamp indicating when this started (+45.285\u202fs), so the timing claim is not shown."}

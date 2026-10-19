@@ -1,0 +1,1 @@
+{"tokens": [325, 238], "verdict": "partial", "why": "The record shows the API service logged an upstream_timeout error, but it does not mention that this occurred while waiting for ingest."}

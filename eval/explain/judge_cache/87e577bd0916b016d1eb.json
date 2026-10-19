@@ -1,0 +1,1 @@
+{"tokens": [343, 194], "verdict": "partial", "why": "The record confirms the billing service had a DB connection pool exhaustion, but it does not mention any temporarily_unavailable errors or increased latency."}

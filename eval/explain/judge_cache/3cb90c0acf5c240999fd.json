@@ -1,0 +1,1 @@
+{"tokens": [682, 274], "verdict": "supported", "why": "The quoted order spans show queue_us values exceeding 7\u202fmillion microseconds (over 7\u202fseconds), confirming that orders experienced request wait times above 7\u202fseconds."}

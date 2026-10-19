@@ -1,0 +1,1 @@
+{"tokens": [346, 136], "verdict": "supported", "why": "The record shows the gateway service logging an upstream_error where the dependency 'orders' returned status 504, matching the statement."}

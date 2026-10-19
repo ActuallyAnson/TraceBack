@@ -1,0 +1,1 @@
+{"tokens": [354, 214], "verdict": "partial", "why": "The record shows orders experiencing upstream timeouts when calling inventory, but it does not provide evidence that increased retry load caused those timeouts."}

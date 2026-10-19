@@ -1,0 +1,1 @@
+{"tokens": [979, 312], "verdict": "partial", "why": "The order spans show connection\u2011refused errors when calling payments, but the payment metrics still record non\u2011zero request counts, so the claim that metrics went silent is not demonstrated."}

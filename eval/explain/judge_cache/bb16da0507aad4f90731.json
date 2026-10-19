@@ -1,0 +1,1 @@
+{"tokens": [391, 232], "verdict": "partial", "why": "The record shows Orders had queued requests (queue_us) and an upstream timeout error, but it does not indicate that the timeout was due to waiting for payments."}

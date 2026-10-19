@@ -1,0 +1,1 @@
+{"tokens": [360, 182], "verdict": "supported", "why": "The record shows the gateway service handling POST /checkout returned status 500 with error internal_error, indicating a failed checkout request visible to the user."}

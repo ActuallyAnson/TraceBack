@@ -1,0 +1,1 @@
+{"tokens": [319, 262], "verdict": "partial", "why": "The record confirms the shipping service deployed to version v1.3.5 with a finished phase, but it does not provide the deployment finish time offset (+62.286s), so that part of the statement cannot be verified from the quoted records."}

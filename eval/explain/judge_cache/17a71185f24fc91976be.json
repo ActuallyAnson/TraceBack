@@ -1,0 +1,1 @@
+{"tokens": [349, 176], "verdict": "supported", "why": "The record shows the broker logged an upstream_error caused by the shipping service returning a 500 status, indicating the broker received upstream_error responses from shipping due to those errors."}

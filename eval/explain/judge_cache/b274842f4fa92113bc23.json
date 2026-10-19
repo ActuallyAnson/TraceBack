@@ -1,0 +1,1 @@
+{"tokens": [448, 533], "verdict": "partial", "why": "The payments record shows a high error rate and worker pool saturation, but there is no evidence in the quoted records that retry amplification caused the increased load."}

@@ -1,0 +1,1 @@
+{"tokens": [371, 353], "verdict": "partial", "why": "The record shows a failed API request (status 500 internal_error) supporting the 'failed entry requests' part, but provides no evidence that ingest queuing caused the failure or resulted in API timeouts."}

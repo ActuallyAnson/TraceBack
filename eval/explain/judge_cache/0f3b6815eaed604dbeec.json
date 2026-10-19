@@ -1,0 +1,1 @@
+{"tokens": [519, 344], "verdict": "partial", "why": "The records confirm API calls to ingest timed out, but they do not provide evidence that these timeouts caused entry\u2011service failures."}

@@ -1,0 +1,1 @@
+{"tokens": [385, 278], "verdict": "supported", "why": "The record shows a queue time of 73,735\u202f\u00b5s (~74\u202fms), i.e., tens of milliseconds, confirming that inventory requests waited tens of milliseconds before being served."}

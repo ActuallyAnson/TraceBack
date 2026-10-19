@@ -1,0 +1,1 @@
+{"tokens": [768, 455], "verdict": "supported", "why": "The broker logged shipping 500 errors (upstream error), recorded an error log for dependency shipping, and scheduled a retry with backoff_ms=100, showing retried shipping calls."}

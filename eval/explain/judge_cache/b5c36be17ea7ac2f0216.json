@@ -1,0 +1,1 @@
+{"tokens": [509, 658], "verdict": "unsupported", "why": "The quoted records show a maximum queue length of 62, not 211, and provide no reference point for the +53.377s offset, so the statement cannot be verified."}

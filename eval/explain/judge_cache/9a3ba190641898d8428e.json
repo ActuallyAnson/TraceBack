@@ -1,0 +1,1 @@
+{"tokens": [569, 190], "verdict": "supported", "why": "The quoted orders logs show multiple retry_scheduled events for calls to payments where backoff_ms is 0, indicating repeated retries without backoff."}

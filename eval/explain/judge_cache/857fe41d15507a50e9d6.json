@@ -1,0 +1,1 @@
+{"tokens": [465, 351], "verdict": "partial", "why": "The records show the broker has higher latency than ingest, indicating broker slowness, but they do not demonstrate that ingest's latency increased or that this increase was caused by the broker."}

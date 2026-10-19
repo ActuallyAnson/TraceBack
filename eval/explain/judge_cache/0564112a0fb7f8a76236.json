@@ -1,0 +1,1 @@
+{"tokens": [569, 196], "verdict": "supported", "why": "The quoted broker logs show retries to shipping with backoff_ms set to 0 across multiple entries, indicating repeated retries without backoff."}

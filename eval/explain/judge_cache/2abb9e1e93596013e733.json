@@ -1,0 +1,1 @@
+{"tokens": [332, 245], "verdict": "supported", "why": "The quoted record shows an ops\u2011recorded config change at the given timestamp, changing broker timeout.shipping_ms from 1000 to 4, matching every element of the statement."}

@@ -1,0 +1,1 @@
+{"tokens": [475, 443], "verdict": "partial", "why": "The records confirm Billing had a DB connection pool exhaustion event, but they do not explicitly show that this caused request processing to slow; they only provide a request duration without a causal link."}

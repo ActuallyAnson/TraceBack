@@ -1,0 +1,1 @@
+{"tokens": [374, 271], "verdict": "partial", "why": "The quoted record confirms a gateway order_failed error, but it does not show 500 such errors or that they occurred for the same traces."}

@@ -1,0 +1,1 @@
+{"tokens": [333, 150], "verdict": "unsupported", "why": "The quoted record only shows a broker request completing successfully (duration 22\u202fms) with no mention of a call to billing or a 503 response."}

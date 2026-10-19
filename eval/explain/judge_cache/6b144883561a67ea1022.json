@@ -1,0 +1,1 @@
+{"tokens": [355, 256], "verdict": "partial", "why": "The record shows elevated latency (high p99) and worker saturation (busy_max equals workers_limit), but provides no information about broker slowness as the cause."}

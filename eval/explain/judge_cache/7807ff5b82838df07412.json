@@ -1,0 +1,1 @@
+{"tokens": [350, 267], "verdict": "partial", "why": "The record shows an API upstream_timeout error with HTTP 504, confirming the error type and status, but it does not mention a 3000\u202fms timeout or that the call was to ingest."}

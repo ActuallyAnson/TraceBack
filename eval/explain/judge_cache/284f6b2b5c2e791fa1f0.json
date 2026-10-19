@@ -1,0 +1,1 @@
+{"tokens": [359, 299], "verdict": "partial", "why": "The record shows Ingest's request queue reached a maximum of 53, indicating queue buildup, but it provides no information about an inability to publish to a broker or that this caused the queue increase."}

@@ -1,0 +1,1 @@
+{"tokens": [357, 197], "verdict": "supported", "why": "The record shows the gateway service with err5xx=45 out of 96 requests, indicating 5xx errors were returned to users."}

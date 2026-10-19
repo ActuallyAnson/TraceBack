@@ -1,0 +1,1 @@
+{"tokens": [303, 96], "verdict": "supported", "why": "The broker log entry explicitly records a 'connection refused' error when attempting to contact the shipping service."}

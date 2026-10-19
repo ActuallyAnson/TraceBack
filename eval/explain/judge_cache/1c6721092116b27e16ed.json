@@ -1,0 +1,1 @@
+{"tokens": [358, 434], "verdict": "partial", "why": "The record shows the broker had elevated latency and high worker utilization, but it does not provide any information about retries or waiting for shipping as the cause."}

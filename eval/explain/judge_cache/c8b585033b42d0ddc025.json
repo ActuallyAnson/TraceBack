@@ -1,0 +1,1 @@
+{"tokens": [361, 308], "verdict": "partial", "why": "The record shows the gateway had err5xx errors and latency measurements, but it does not provide a prior baseline to confirm that these values represent an increase."}

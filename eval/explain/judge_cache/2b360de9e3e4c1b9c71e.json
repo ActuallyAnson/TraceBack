@@ -1,0 +1,1 @@
+{"tokens": [364, 275], "verdict": "partial", "why": "The record confirms an API request returned internal_error (status\u202f500), but it does not show that this marked the beginning of sustained failures."}

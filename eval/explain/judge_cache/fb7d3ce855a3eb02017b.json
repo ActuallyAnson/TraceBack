@@ -1,0 +1,1 @@
+{"tokens": [386, 120], "verdict": "supported", "why": "The broker span shows a client call to billing with error 'conn_refused', indicating the call was refused due to a connection\u2011refused error."}

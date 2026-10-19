@@ -1,0 +1,1 @@
+{"tokens": [353, 208], "verdict": "partial", "why": "The record shows ingest received a 503 from broker and logged an upstream_error, confirming the first part, but it does not explicitly state that ingest returned the upstream error to the API."}

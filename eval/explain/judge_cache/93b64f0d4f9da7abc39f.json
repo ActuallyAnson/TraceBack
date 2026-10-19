@@ -1,0 +1,1 @@
+{"tokens": [353, 225], "verdict": "partial", "why": "The record shows the orders service received a 500 response from inventory and logged an upstream_error, but it does not explicitly indicate that retries were scheduled."}

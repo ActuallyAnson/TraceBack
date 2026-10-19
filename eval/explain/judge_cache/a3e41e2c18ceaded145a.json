@@ -1,0 +1,1 @@
+{"tokens": [430, 261], "verdict": "supported", "why": "The api\u2011L00039 record shows an API error stating \"dependency ingest returned 503\", indicating the API reported an error while its dependency ingest was failing."}

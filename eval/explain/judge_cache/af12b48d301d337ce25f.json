@@ -1,0 +1,1 @@
+{"tokens": [346, 274], "verdict": "partial", "why": "The record shows the gateway received a 503 error when an order step failed, supporting the part about 503 errors and order failures, but it does not mention 504 errors, inventory failures, or timeouts, so those aspects of the statement are unsupported."}

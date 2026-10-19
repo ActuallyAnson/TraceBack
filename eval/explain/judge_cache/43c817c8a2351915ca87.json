@@ -1,0 +1,1 @@
+{"tokens": [452, 496], "verdict": "supported", "why": "The broker error log records a 503 status and the retry log shows a retry to shipping with zero backoff, both linked by the same trace ID."}

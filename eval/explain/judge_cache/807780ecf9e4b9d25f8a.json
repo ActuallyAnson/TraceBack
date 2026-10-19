@@ -1,0 +1,1 @@
+{"tokens": [357, 286], "verdict": "partial", "why": "The record confirms the broker retries billing with zero backoff, but it does not provide evidence that this amplifies load."}

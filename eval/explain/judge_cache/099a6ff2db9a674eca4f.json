@@ -1,0 +1,1 @@
+{"tokens": [452, 188], "verdict": "supported", "why": "The broker log shows an error indicating shipping returned 500 (detected failure) followed by a warn log scheduling a retry for attempt\u202f2, confirming both detection and retry."}

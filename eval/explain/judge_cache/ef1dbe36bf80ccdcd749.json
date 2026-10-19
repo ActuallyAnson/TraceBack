@@ -1,0 +1,1 @@
+{"tokens": [361, 281], "verdict": "unsupported", "why": "The quoted record shows an upstream_timeout warning in the api service but does not indicate that this resulted in a 504 HTTP response or was visible to users."}

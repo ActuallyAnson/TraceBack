@@ -1,0 +1,1 @@
+{"tokens": [508, 194], "verdict": "unsupported", "why": "The quoted records show order response times around 0.1\u202fs with no baseline for comparison and no indication of caller timeouts."}

@@ -1,0 +1,1 @@
+{"tokens": [376, 421], "verdict": "partial", "why": "The record confirms an API request failed with a delivery_failed error, but it does not provide the +66.429s onset time mentioned in the statement."}

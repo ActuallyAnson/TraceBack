@@ -1,0 +1,1 @@
+{"tokens": [477, 453], "verdict": "partial", "why": "The records show ingest experienced high latency and broker 503 errors, indicating slow/failed calls, but they do not explicitly show that the internal request queue filled to its limit or that load shedding was triggered."}

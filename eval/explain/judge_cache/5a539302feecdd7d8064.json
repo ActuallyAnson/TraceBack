@@ -1,0 +1,1 @@
+{"tokens": [456, 433], "verdict": "partial", "why": "The records show Orders experienced high latency and a high queue usage, indicating slowness and overload, but they do not mention waiting for payments, retries, or any errors, so those parts of the statement are not supported."}

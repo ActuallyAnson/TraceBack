@@ -1,0 +1,1 @@
+{"tokens": [522, 444], "verdict": "partial", "why": "The records show the broker timing out on a call to billing and the API observing an upstream timeout, but they contain no indication of retries before the timeout."}

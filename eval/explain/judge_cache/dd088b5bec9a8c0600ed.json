@@ -1,0 +1,1 @@
+{"tokens": [442, 236], "verdict": "supported", "why": "The orders service error log shows a connection refused by inventory and the warning log shows a retry scheduled with backoff_ms\u202f50 for inventory calls."}

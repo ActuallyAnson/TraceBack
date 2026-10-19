@@ -1,0 +1,1 @@
+{"tokens": [457, 304], "verdict": "supported", "why": "The first record shows the API received a 503 from ingest, and the second record shows the API had 34 5xx errors, indicating it returned 5xx responses to users."}

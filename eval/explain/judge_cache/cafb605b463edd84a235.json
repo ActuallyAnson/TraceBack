@@ -1,0 +1,1 @@
+{"tokens": [410, 268], "verdict": "supported", "why": "The gateway logs show error events indicating that the orders service returned 504, meaning orders was failing while gateway reported errors."}

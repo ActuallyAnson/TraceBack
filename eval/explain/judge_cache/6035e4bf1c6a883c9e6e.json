@@ -1,0 +1,1 @@
+{"tokens": [364, 297], "verdict": "partial", "why": "The record shows the gateway observed an upstream error when the orders service returned a 503 status, but it does not indicate repeated failures or retries causing those errors."}

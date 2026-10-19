@@ -1,0 +1,1 @@
+{"tokens": [546, 702], "verdict": "partial", "why": "The records show orders and inventory operations in the same trace with errors and elevated latency/queue times, but they do not show that the orders service itself received pool_exhausted errors (it shows order_failed), so the specific error type claim is not directly supported."}

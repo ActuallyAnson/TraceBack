@@ -1,0 +1,1 @@
+{"tokens": [402, 232], "verdict": "partial", "why": "The record shows ingest experiencing an upstream timeout, but it does not mention the broker, any retries, or that broker slowness caused the timeout."}

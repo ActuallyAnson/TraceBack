@@ -1,0 +1,1 @@
+{"tokens": [346, 215], "verdict": "unsupported", "why": "The quoted record shows only a single snapshot of orders metrics (zero 5xx errors and latency values) with no prior data to indicate an increase in latency or a rise in error rates."}

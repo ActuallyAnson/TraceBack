@@ -198,10 +198,19 @@ def main():
         return sheet(exps)
     judge_all(exps)
     block = build(exps)
+    readme = ROOT / "README.md"
+    txt = readme.read_text()
+    a, b = txt.find("<!-- EXPLAIN:START"), txt.find("<!-- EXPLAIN:END -->")
+    end = b + len("<!-- EXPLAIN:END -->")
+    head = "# Explanation-quality results on the fresh sets (generated)\n\n"
     if "--check" in sys.argv:
-        cur = (HERE / "RESULTS.md").read_text()
-        sys.exit(0 if cur == "# Explanation-quality results on the fresh sets (generated)\n\n" + block + "\n" else "RESULTS.md out of date")
-    (HERE / "RESULTS.md").write_text("# Explanation-quality results on the fresh sets (generated)\n\n" + block + "\n")
+        if (HERE / "RESULTS.md").read_text() != head + block + "\n" or a < 0 or txt[a:end] != block:
+            sys.exit("explanation-quality results or README block out of date; run `make explain`")
+        print("explanation-quality results match")
+        return
+    (HERE / "RESULTS.md").write_text(head + block + "\n")
+    if a >= 0:
+        readme.write_text(txt[:a] + block + txt[end:])
     print(block)
 
 

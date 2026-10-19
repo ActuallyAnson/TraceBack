@@ -1,0 +1,1 @@
+{"tokens": [444, 454], "verdict": "supported", "why": "The orders service logged a 503 error and, using the same trace ID, scheduled a retry for inventory with backoff_ms\u202f0, indicating an immediate retry after receiving the 503 from inventory."}

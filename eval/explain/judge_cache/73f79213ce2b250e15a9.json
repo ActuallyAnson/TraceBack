@@ -1,0 +1,1 @@
+{"tokens": [523, 397], "verdict": "supported", "why": "The records show orders service making charge calls to payments with timeout errors and attempt numbers 2 and 3, indicating retries after timeouts which generate additional calls to payments, thus increasing load."}

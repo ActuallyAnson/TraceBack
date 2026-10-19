@@ -1,0 +1,1 @@
+{"tokens": [375, 201], "verdict": "supported", "why": "The quoted record shows a gateway-level upstream_error with message 'dependency orders returned 500', confirming the described observation."}

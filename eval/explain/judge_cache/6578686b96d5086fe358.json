@@ -1,0 +1,1 @@
+{"tokens": [332, 171], "verdict": "supported", "why": "The record shows the billing service logged a 'pool_exhausted' event with the message 'db connection pool exhausted', directly matching the statement."}

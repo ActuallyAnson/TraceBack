@@ -1,0 +1,1 @@
+{"tokens": [526, 201], "verdict": "partial", "why": "The records show inventory refusing connections (conn_refused errors), but they contain no information about a metrics gap or a restart."}

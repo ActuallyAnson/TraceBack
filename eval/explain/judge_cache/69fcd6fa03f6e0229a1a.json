@@ -1,0 +1,1 @@
+{"tokens": [361, 468], "verdict": "partial", "why": "The record shows an upstream timeout for the API call, confirming a timeout due to lack of response, but does not explicitly name ingest as the upstream service."}

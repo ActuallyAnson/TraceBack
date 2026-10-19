@@ -1,0 +1,1 @@
+{"tokens": [468, 243], "verdict": "supported", "why": "The orders service logged an upstream_error caused by payments returning 503, and at the same timestamp it issued a retry_scheduled entry with backoff_ms set to 0, indicating an immediate retry."}

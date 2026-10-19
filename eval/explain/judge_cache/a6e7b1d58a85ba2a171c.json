@@ -1,0 +1,1 @@
+{"tokens": [331, 76], "verdict": "supported", "why": "The broker's error log explicitly states 'connection refused by billing', matching the statement verbatim."}

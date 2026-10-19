@@ -1,0 +1,1 @@
+{"tokens": [438, 330], "verdict": "supported", "why": "Gateway logged two error events at the same timestamp, one indicating that dependency orders returned 500, showing orders were failing."}

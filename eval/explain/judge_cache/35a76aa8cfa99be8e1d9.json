@@ -1,0 +1,1 @@
+{"tokens": [543, 659], "verdict": "partial", "why": "The records show orders making immediate retry attempts to inventory with no backoff, but they do not provide explicit evidence that this amplified load on inventory."}

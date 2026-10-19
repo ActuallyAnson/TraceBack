@@ -1,0 +1,1 @@
+{"tokens": [356, 367], "verdict": "partial", "why": "The record shows a high err5xx count (34 out of 91 requests) and elevated latency (p50\u2248145\u202fms, p99\u2248190\u202fms), supporting the observation of high error rate and latency, but it does not provide prior values to confirm a sharp rise."}

@@ -1,0 +1,1 @@
+{"tokens": [364, 311], "verdict": "partial", "why": "The record confirms a gateway request returned 500 internal_error, but it does not include the +60.008s timing information stated in the claim."}

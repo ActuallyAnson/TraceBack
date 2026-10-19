@@ -1,0 +1,1 @@
+{"tokens": [443, 210], "verdict": "supported", "why": "The quoted records show two gateway error entries where the messages indicate that the 'orders' dependency returned a 500 error and that an order failed, confirming the gateway reported errors while its dependency orders was failing."}

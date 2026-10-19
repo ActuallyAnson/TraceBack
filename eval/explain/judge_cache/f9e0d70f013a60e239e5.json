@@ -1,0 +1,1 @@
+{"tokens": [296, 153], "verdict": "supported", "why": "The record shows the shipping service logged a fatal oom_kill event with message 'out of memory: process killed', confirming the container experienced an OOM kill that crashed the process."}

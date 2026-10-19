@@ -1,0 +1,1 @@
+{"tokens": [371, 236], "verdict": "unsupported", "why": "The quoted record shows only a single failed gateway request and provides no information about a surge of failures or that it began at +52.528\u202fs."}

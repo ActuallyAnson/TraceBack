@@ -1,0 +1,1 @@
+{"tokens": [354, 371], "verdict": "partial", "why": "The record shows broker latency metrics but does not mention a loss of capacity, ingest's publish activity, or a causal link, so only some parts of the statement are supported."}

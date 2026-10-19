@@ -1,0 +1,1 @@
+{"tokens": [386, 532], "verdict": "partial", "why": "The records show the shipping service was deployed to version v1.2.6, but they do not contain the +66.278s timing information, so the time claim cannot be verified."}

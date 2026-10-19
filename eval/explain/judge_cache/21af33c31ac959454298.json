@@ -1,0 +1,1 @@
+{"tokens": [675, 356], "verdict": "partial", "why": "The records show shipping service returning internal_error (status 500) for reserve_shipment requests, but they provide no information about a deploy or the timing relative to it."}

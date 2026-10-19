@@ -1,0 +1,1 @@
+{"tokens": [367, 323], "verdict": "partial", "why": "The record shows high p50 latency and queue depth for the broker, but it does not demonstrate a latency increase over time or that the latency caused the queue times."}

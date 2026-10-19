@@ -1,0 +1,1 @@
+{"tokens": [474, 423], "verdict": "partial", "why": "The records show increased latency and queue buildup for ingest, but they do not mention the broker or indicate that ingest was waiting for the broker to accept messages."}

@@ -1,0 +1,1 @@
+{"tokens": [442, 228], "verdict": "supported", "why": "The logs show a gateway upstream timeout with peer orders and a later error response indicating status 504, matching the statement."}

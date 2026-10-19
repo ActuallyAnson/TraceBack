@@ -1,0 +1,1 @@
+{"tokens": [374, 275], "verdict": "partial", "why": "The record confirms a billing internal_error occurrence, but provides no evidence of spikes or that it happened before an entry failure burst."}

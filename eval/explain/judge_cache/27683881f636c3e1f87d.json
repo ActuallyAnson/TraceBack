@@ -1,0 +1,1 @@
+{"tokens": [682, 383], "verdict": "partial", "why": "The records show orders client spans to payments with ~9\u202fms duration and timeout errors, supporting the service, operation, peer, duration, and error, but they do not demonstrate that this occurred 'immediately after the change'."}

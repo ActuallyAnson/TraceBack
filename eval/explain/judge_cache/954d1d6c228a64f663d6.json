@@ -1,0 +1,1 @@
+{"tokens": [357, 457], "verdict": "partial", "why": "The record confirms the orders service's workers_limit is 1, but it does not show a prior limit of 16 or the timestamp offset +60.392s."}

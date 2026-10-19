@@ -1,0 +1,1 @@
+{"tokens": [365, 205], "verdict": "unsupported", "why": "The quoted record shows only a single failed API request with no indication of a burst or a start time of +50.685\u202fs."}

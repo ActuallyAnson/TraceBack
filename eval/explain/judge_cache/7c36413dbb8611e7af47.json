@@ -1,0 +1,1 @@
+{"tokens": [519, 129], "verdict": "supported", "why": "Both quoted billing spans show the error 'pool_exhausted', indicating the billing service ran out of database connections."}

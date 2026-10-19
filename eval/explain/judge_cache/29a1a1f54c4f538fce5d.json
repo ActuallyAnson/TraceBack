@@ -1,0 +1,1 @@
+{"tokens": [344, 172], "verdict": "supported", "why": "The orders service recorded an upstream timeout when calling inventory, showing that orders experienced a timeout on inventory calls."}

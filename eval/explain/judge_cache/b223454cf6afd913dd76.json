@@ -1,0 +1,1 @@
+{"tokens": [1592, 247], "verdict": "partial", "why": "The records show ingest operations with error delivery_failed, but they do not indicate that the failure came from a broker or that it was returned to an API."}

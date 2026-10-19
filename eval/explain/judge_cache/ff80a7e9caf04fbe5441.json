@@ -1,0 +1,1 @@
+{"tokens": [635, 431], "verdict": "partial", "why": "The records show billing service latency durations but provide no baseline for comparison, so the claim of increased latency relative to baseline cannot be verified."}

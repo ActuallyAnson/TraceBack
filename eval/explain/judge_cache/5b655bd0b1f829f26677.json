@@ -1,0 +1,1 @@
+{"tokens": [599, 455], "verdict": "partial", "why": "The records confirm the inventory service returned stock_record_corrupt errors, but they do not provide a reference point to verify the claimed timing of +47.474s."}

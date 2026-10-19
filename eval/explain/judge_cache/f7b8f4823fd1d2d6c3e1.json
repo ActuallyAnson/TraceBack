@@ -1,0 +1,1 @@
+{"tokens": [333, 317], "verdict": "partial", "why": "The record shows the gateway logging an upstream_timeout error, confirming that part of the statement, but it does not indicate that the error was caused by calls to orders timing out or that it occurred after a +55\u202fs delay."}

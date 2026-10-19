@@ -1,0 +1,1 @@
+{"tokens": [424, 213], "verdict": "partial", "why": "The records confirm that orders reported errors (upstream_timeout), but they contain no information about inventory failing."}

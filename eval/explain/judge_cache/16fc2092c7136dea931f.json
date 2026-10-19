@@ -1,0 +1,1 @@
+{"tokens": [356, 323], "verdict": "supported", "why": "The record shows ingest timed out waiting for a response from the broker after 2500\u202fms, indicating the broker did not respond promptly."}

@@ -1,0 +1,1 @@
+{"tokens": [541, 181], "verdict": "supported", "why": "The quoted ingest spans show errors 'upstream_timeout' and 'delivery_failed', indicating ingest encountered timeouts or failures when communicating with its upstream broker."}

@@ -1,0 +1,1 @@
+{"tokens": [354, 318], "verdict": "partial", "why": "The record confirms the API service had 5xx errors (err5xx=13), but it does not show an increase over time, so the claim of 'increased err5xx' is not fully supported."}

@@ -1,0 +1,1 @@
+{"tokens": [497, 666], "verdict": "unsupported", "why": "The quoted records show a timeout on the API\u2011to\u2011ingest call and broker metrics, but they do not mention any broker capacity reduction or demonstrate that broker saturation caused the ingest to hang."}

@@ -1,0 +1,1 @@
+{"tokens": [481, 219], "verdict": "supported", "why": "The quoted gateway metrics show very high 5xx error counts matching request volumes and elevated latency (p50/p99 around 2500\u202fms), confirming users saw high latency and 5xx errors."}

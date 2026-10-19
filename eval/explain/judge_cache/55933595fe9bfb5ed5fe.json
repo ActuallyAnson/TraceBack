@@ -1,0 +1,1 @@
+{"tokens": [531, 307], "verdict": "partial", "why": "The quoted records show gateway client create_order calls to orders timing out, but they do not state that the timeout was caused by waiting for a slow service."}

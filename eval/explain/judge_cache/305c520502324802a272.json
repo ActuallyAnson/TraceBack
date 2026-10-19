@@ -1,0 +1,1 @@
+{"tokens": [310, 226], "verdict": "partial", "why": "The record confirms the gateway returned 503 overloaded errors, but does not show that this was due to its own queue filling from retries and timeouts."}

@@ -1,0 +1,1 @@
+{"tokens": [351, 307], "verdict": "partial", "why": "The record shows high 5xx error count and latency values for the API, but it does not demonstrate an increase over time or explicitly confirm that these issues were visible to users."}

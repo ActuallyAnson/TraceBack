@@ -1,0 +1,1 @@
+{"tokens": [403, 474], "verdict": "partial", "why": "The record confirms an order_failed span with a queue time, showing failed orders and some latency, but it does not indicate that the failures were due to calls to inventory or involve retries."}

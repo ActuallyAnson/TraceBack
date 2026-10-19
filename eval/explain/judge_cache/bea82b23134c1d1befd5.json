@@ -1,0 +1,1 @@
+{"tokens": [466, 286], "verdict": "supported", "why": "The records show a gateway upstream_timeout warning, high latency (p50\u22482501\u202fms, p99\u22482502\u202fms), and a large number of 5xx errors (47 out of 81 requests)."}

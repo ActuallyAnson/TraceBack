@@ -1,0 +1,1 @@
+{"tokens": [366, 163], "verdict": "supported", "why": "The record shows a gateway service processing a POST /checkout request that resulted in HTTP status 504 with an upstream_timeout error, which directly matches the statement."}

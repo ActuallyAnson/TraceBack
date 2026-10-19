@@ -1,0 +1,1 @@
+{"tokens": [693, 695], "verdict": "partial", "why": "The records show a connection\u2011refused error and a subsequent service restart, but they do not contain a metric record indicating a silent period (no requests) for the payments service."}

@@ -1,0 +1,1 @@
+{"tokens": [385, 266], "verdict": "supported", "why": "The logs show the API service emitting an upstream_timeout warning about a timeout calling the ingest peer and an error event with status 504, which directly supports the statement."}

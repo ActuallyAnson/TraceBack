@@ -1,0 +1,1 @@
+{"tokens": [399, 631], "verdict": "partial", "why": "The record confirms a broker timeout when calling billing, but it does not provide the specific time window ~44.948-44.951s mentioned in the statement."}

@@ -1,0 +1,1 @@
+{"tokens": [472, 601], "verdict": "partial", "why": "The quoted records show orders returning internal_error responses, but they do not include any information about a deploy time or the +53.597s offset mentioned in the statement."}

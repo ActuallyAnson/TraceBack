@@ -1,0 +1,1 @@
+{"tokens": [353, 200], "verdict": "partial", "why": "The record confirms the gateway saw an upstream 503 error from orders, but it does not mention that this was due to failed inventory calls."}

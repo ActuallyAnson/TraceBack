@@ -1,0 +1,1 @@
+{"tokens": [387, 301], "verdict": "partial", "why": "The record shows an inventory request with a non\u2011zero queue time, but it does not mention or indicate that this queuing occurred after a limit drop."}

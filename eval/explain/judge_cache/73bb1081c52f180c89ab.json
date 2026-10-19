@@ -1,0 +1,1 @@
+{"tokens": [669, 437], "verdict": "partial", "why": "The records show the billing request took about 3\u202fseconds and broker calls timed\u2011out, indicating a slowdown, but they do not mention an exhausted pool as the cause."}

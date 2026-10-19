@@ -1,0 +1,1 @@
+{"tokens": [389, 226], "verdict": "supported", "why": "The record shows a client call from api to ingest with a duration of 3000000\u202f\u00b5s (\u22483000\u202fms) and a timeout error, matching the statement."}

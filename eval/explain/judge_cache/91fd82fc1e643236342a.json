@@ -1,0 +1,1 @@
+{"tokens": [331, 141], "verdict": "supported", "why": "The record shows the API service logged an internal error with HTTP status 500, which is a 5xx error returned to the requester (users)."}

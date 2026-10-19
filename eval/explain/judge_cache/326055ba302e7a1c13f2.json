@@ -1,0 +1,1 @@
+{"tokens": [429, 329], "verdict": "supported", "why": "Both API error logs mention ingest returning 503/connection\u2011refused, indicating API errors occurred while the ingest dependency was failing."}

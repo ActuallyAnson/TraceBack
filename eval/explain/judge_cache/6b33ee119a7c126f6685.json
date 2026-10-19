@@ -1,0 +1,1 @@
+{"tokens": [526, 650], "verdict": "partial", "why": "The records show a billing request that failed with pool_exhausted error and had a non\u2011zero queue_us, indicating queuing due to lack of DB connections, but they do not demonstrate that request latency increased relative to normal operation."}

@@ -1,0 +1,1 @@
+{"tokens": [431, 170], "verdict": "supported", "why": "Broker error logs show 'connection refused by billing', indicating the broker reported errors while its dependency billing was failing."}

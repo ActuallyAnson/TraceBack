@@ -1,0 +1,1 @@
+{"tokens": [358, 262], "verdict": "supported", "why": "The record shows an API server operation (POST /orders) with status 500 and an error field set to 'delivery_failed', which directly indicates the API entry request failed due to a delivery_failed error."}

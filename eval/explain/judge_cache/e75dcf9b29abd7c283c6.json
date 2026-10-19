@@ -1,0 +1,1 @@
+{"tokens": [362, 258], "verdict": "partial", "why": "The record shows the gateway service returned status 503 with error 'order_failed', but it does not explicitly state that this response was sent to the user."}

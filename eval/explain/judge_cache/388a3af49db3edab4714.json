@@ -1,0 +1,1 @@
+{"tokens": [339, 509], "verdict": "partial", "why": "The record shows the gateway logged an upstream_error with a 500 status, but it does not specify that the 5xx came from orders nor does it show an internal_error being logged."}

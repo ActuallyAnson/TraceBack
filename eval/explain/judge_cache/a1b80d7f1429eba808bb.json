@@ -1,0 +1,1 @@
+{"tokens": [517, 616], "verdict": "partial", "why": "The records show the same trace_id with errors in both gateway and inventory, confirming a failing gateway request, but they do not explicitly indicate that the error propagated to the user."}

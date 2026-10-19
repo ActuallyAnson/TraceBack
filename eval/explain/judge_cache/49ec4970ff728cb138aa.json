@@ -1,0 +1,1 @@
+{"tokens": [816, 554], "verdict": "supported", "why": "The records show upstream_timeout errors on outbound calls, non\u2011zero queue times and queue lengths, and high latencies/p99, indicating workers blocked on those calls caused queued requests and increased inbound API latency."}

@@ -1,0 +1,1 @@
+{"tokens": [358, 124], "verdict": "supported", "why": "The quoted record shows a gateway server operation returning HTTP 500 with error 'internal_error', matching the claim about failed gateway entry requests."}

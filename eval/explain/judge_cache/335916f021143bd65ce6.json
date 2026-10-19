@@ -1,0 +1,1 @@
+{"tokens": [462, 180], "verdict": "supported", "why": "The broker recorded a billing 503 error indicating a failure, then logged a retry scheduled with a 100\u202fms backoff, showing it detected the failure and retried with a short backoff."}

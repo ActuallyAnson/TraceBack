@@ -1,0 +1,1 @@
+{"tokens": [389, 615], "verdict": "supported", "why": "The record shows broker-L00041 logging an upstream_error that shipping returned 500 and includes attempt=2, indicating a retry was scheduled."}

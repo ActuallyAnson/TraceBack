@@ -1,0 +1,1 @@
+{"tokens": [352, 454], "verdict": "partial", "why": "The record confirms orders timed out calls to payments with timeout_ms=5, but it does not show that this happened after a change."}

@@ -1,0 +1,1 @@
+{"tokens": [387, 865], "verdict": "supported", "why": "The start and finish timestamps in the records correspond to +62.745\u202fs and +66.745\u202fs (within rounding), matching the statement."}

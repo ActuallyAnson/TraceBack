@@ -1,0 +1,1 @@
+{"tokens": [439, 303], "verdict": "supported", "why": "The records show the api service logging errors (delivery_failed and upstream_error) and the upstream_error explicitly states that dependency ingest returned 500, indicating ingest was failing."}

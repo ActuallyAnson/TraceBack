@@ -1,0 +1,1 @@
+{"tokens": [358, 416], "verdict": "partial", "why": "The record shows the worker limit is 1 but provides no information about a prior value of 24 or the time offset +54.420s."}

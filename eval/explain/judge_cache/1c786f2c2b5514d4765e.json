@@ -1,0 +1,1 @@
+{"tokens": [474, 739], "verdict": "partial", "why": "The records show a gateway error and an inventory pool\u2011exhaustion event, but they do not demonstrate that the pool exhaustion caused latency or timeouts observed by the gateway."}

@@ -1,0 +1,1 @@
+{"tokens": [518, 229], "verdict": "partial", "why": "The records show failures originating in the shipping service, but they provide no evidence about callers surfacing those failures as generic errors."}

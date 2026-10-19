@@ -1,0 +1,1 @@
+{"tokens": [511, 521], "verdict": "partial", "why": "The records show ingest\u2019s request queue built up and all workers busy, but contain no information about broker retries or that they caused the slowdown."}

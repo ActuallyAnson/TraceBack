@@ -1,0 +1,1 @@
+{"tokens": [454, 193], "verdict": "supported", "why": "The records show the gateway service receiving a 500 response from orders, logging an upstream_error event, and then logging an order_failed event with the same trace ID."}

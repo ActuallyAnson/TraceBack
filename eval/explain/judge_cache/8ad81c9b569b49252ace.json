@@ -1,0 +1,1 @@
+{"tokens": [364, 201], "verdict": "partial", "why": "The record confirms broker calls to billing failed with 503, but provides no evidence of immediate retries, zero backoff, or increased load on billing."}

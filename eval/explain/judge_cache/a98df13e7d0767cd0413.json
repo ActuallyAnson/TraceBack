@@ -1,0 +1,1 @@
+{"tokens": [747, 400], "verdict": "supported", "why": "The shipping OOM kill record indicates the service crashed and thus stopped accepting connections, while the broker spans show connection\u2011refused errors when attempting to call shipping."}

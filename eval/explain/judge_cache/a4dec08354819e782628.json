@@ -1,0 +1,1 @@
+{"tokens": [478, 378], "verdict": "supported", "why": "The records show the broker logged an upstream_error due to billing returning 503 and then scheduled a retry with a 100\u202fms backoff, matching each part of the statement."}

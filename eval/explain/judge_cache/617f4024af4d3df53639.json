@@ -1,0 +1,1 @@
+{"tokens": [540, 301], "verdict": "supported", "why": "The quoted records include a broker\u2011to\u2011billing call that returned status\u202f503 and another that resulted in a timeout error, directly supporting the claim that broker calls to billing began returning 503 errors and timing out."}

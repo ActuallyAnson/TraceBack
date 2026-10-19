@@ -1,0 +1,1 @@
+{"tokens": [675, 228], "verdict": "partial", "why": "The records show broker-to-billing calls timing out, but provide no information about whether billing recorded those calls."}

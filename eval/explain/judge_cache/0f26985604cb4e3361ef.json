@@ -1,0 +1,1 @@
+{"tokens": [394, 285], "verdict": "partial", "why": "The quoted record shows a timeout span of about 9\u202fms from orders to payments, supporting the timeout detail, but it does not mention or imply that this occurred after a config change."}

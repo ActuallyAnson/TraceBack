@@ -1,0 +1,1 @@
+{"tokens": [443, 252], "verdict": "supported", "why": "The ingest logs contain error entries stating the broker returned 503, showing that ingest reported errors while its dependency broker was failing."}

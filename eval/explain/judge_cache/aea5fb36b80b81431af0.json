@@ -1,0 +1,1 @@
+{"tokens": [347, 496], "verdict": "partial", "why": "The record shows Orders retrying a call to payments with backoff_ms\u202f=\u202f0, confirming a retry without backoff, but it does not demonstrate multiple retries needed to support 'repeatedly'."}

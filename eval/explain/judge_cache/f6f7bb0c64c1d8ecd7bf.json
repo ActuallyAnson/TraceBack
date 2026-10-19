@@ -1,0 +1,1 @@
+{"tokens": [510, 195], "verdict": "supported", "why": "The records show an API client call to ingest timing out and a subsequent API server response with a 504 upstream_timeout error, matching the statement."}

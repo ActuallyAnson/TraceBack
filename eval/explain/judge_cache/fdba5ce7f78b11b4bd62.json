@@ -1,0 +1,1 @@
+{"tokens": [436, 230], "verdict": "supported", "why": "The ingest service logged error events (upstream_error and delivery_failed) that explicitly state the dependency broker returned a 503 status, indicating the broker was failing while ingest reported errors."}

@@ -1,0 +1,1 @@
+{"tokens": [394, 428], "verdict": "partial", "why": "The record shows ingest received a delivery_failed error and returned a 503 status, but it does not explicitly indicate that the failure originated from a broker."}

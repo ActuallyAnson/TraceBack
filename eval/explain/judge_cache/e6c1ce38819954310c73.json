@@ -1,0 +1,1 @@
+{"tokens": [356, 486], "verdict": "supported", "why": "The record shows orders service with queue_max=98 (high queue depth), busy_max=16 equals workers_limit=16 (all workers busy), and elevated p50/p99 latencies (~2.9\u20113.9\u202fs), indicating request latency and queuing."}

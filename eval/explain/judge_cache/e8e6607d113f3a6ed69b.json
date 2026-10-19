@@ -1,0 +1,1 @@
+{"tokens": [395, 154], "verdict": "supported", "why": "Both quoted records explicitly show the broker's timeout.shipping_ms changing from old=1000 to new=4."}

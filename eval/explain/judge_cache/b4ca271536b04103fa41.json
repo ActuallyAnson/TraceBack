@@ -1,0 +1,1 @@
+{"tokens": [389, 833], "verdict": "supported", "why": "The quoted records show start at 42.085475\u202fs and finish at 46.085475\u202fs relative to a common base, which rounds to the +42.085\u202fs and +46.085\u202fs stated."}

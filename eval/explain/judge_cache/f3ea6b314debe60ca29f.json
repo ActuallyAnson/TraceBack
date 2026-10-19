@@ -1,0 +1,1 @@
+{"tokens": [459, 352], "verdict": "supported", "why": "Latency rose from ~310\u202fms to ~884\u202fms and busy_max equals workers_limit (1), showing worker saturation."}

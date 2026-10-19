@@ -58,3 +58,7 @@ v2-check: build
 # v1 results, locked splits, scoring protocol and frozen analyzer/prompts are unchanged since the v1 freeze.
 v1-check:
 	sh eval/v2/check_v1.sh
+explain: build
+	python3 eval/explain/run.py --set fresh
+explain-check: build
+	python3 eval/explain/run.py --set fresh --check

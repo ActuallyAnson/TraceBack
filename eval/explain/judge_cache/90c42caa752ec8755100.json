@@ -1,0 +1,1 @@
+{"tokens": [362, 280], "verdict": "supported", "why": "The quoted record shows broker\u2011L0003f logging \"delivery step failed\" with a status of 500, matching the claim that a failed delivery step caused the broker to return 500."}

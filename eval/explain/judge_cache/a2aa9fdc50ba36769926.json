@@ -1,0 +1,1 @@
+{"tokens": [498, 423], "verdict": "partial", "why": "The quoted records confirm that the inventory service produced a stock_record_corrupt error, but they do not provide a baseline time to verify the '+47.423\u202fs' start offset mentioned in the statement."}

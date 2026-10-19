@@ -1,0 +1,1 @@
+{"tokens": [396, 267], "verdict": "unsupported", "why": "The quoted record only shows an API request timing out when communicating with ingest; it provides no information about capacity loss, ingest's inability to forward messages to a broker, or resulting backpressure."}

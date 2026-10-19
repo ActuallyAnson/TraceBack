@@ -1,0 +1,1 @@
+{"tokens": [385, 404], "verdict": "partial", "why": "The record confirms that the orders service returned an internal_error, but it does not show that this occurred after a deployment or at the specific +63.366s offset mentioned in the statement."}

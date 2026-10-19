@@ -1,0 +1,1 @@
+{"tokens": [455, 161], "verdict": "supported", "why": "The broker logs show error-level entries indicating 'dependency billing returned 503', meaning broker reported errors while its dependency billing was failing."}

@@ -1,0 +1,1 @@
+{"tokens": [427, 306], "verdict": "supported", "why": "Gateway logs contain error entries, including an upstream_error with message 'order step failed', showing the gateway reported errors while its orders dependency was failing."}

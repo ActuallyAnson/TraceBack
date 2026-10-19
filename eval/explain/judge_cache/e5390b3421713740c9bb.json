@@ -1,0 +1,1 @@
+{"tokens": [348, 403], "verdict": "supported", "why": "The record shows a workers_limit of 1 (very few workers) and a queue_max of 4, indicating that requests were queued due to insufficient worker capacity."}

@@ -1,0 +1,1 @@
+{"tokens": [561, 295], "verdict": "unsupported", "why": "The quoted records show only single-attempt calls from broker to shipping (attempt=1) with no evidence of repeated retries, absence of backoff, or any amplification of load on shipping."}

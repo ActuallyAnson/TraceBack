@@ -1,0 +1,1 @@
+{"tokens": [363, 409], "verdict": "partial", "why": "The record shows a broker upstream_timeout to shipping with timeout_ms=6, but it does not indicate that this occurred after a change or began around +58.9\u202fs."}

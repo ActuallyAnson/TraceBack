@@ -1,0 +1,1 @@
+{"tokens": [369, 220], "verdict": "partial", "why": "The record confirms the API service returned a 503 error with delivery_failed, but it does not specify that the call was to an ingest endpoint or that this directly caused user\u2011visible failures."}
