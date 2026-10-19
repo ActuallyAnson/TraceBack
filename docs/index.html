@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Traceback: incident root-cause analysis you can check</title>
+<meta name="description" content="Deterministic-first incident investigator for multi-service backends. Nemotron on Nebius Token Factory ranks and explains hypotheses; every claim cites real event IDs and is checked by counterfactual replay.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f766e'/%3E%3Cpath d='M7 20l5-8 4 6 5-9 4 7' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#explorer">Skip to the incident explorer</a>
+<header class="top">
+  <div class="wrap bar">
+    <a class="brand" href="#top" aria-label="Traceback home"><svg viewBox="0 0 32 32" width="26" height="26" aria-hidden="true"><rect width="32" height="32" rx="7" fill="var(--accent)"/><path d="M7 20l5-8 4 6 5-9 4 7" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Traceback</a>
+    <nav aria-label="Sections">
+      <a href="#results">Results</a><a href="#explorer">Incident explorer</a><a href="#how">How it works</a>
+      <a href="https://github.com/ActuallyAnson/TraceBack" rel="noopener">GitHub</a><button id="theme" class="theme" aria-label="Toggle color theme" title="Toggle color theme">◐</button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero wrap">
+  <p class="eyebrow">Nebius × NVIDIA Global AI Hackathon · Best Apps and Agents</p>
+  <h1>Root-cause analysis you can check.</h1>
+  <p class="lede">Traceback reconstructs what happened in a failed multi-service request, names the most likely root cause, cites the exact log, span and metric records behind every claim, and then <strong>replays the incident with the suspected cause switched off</strong> to see whether the failure disappears.</p>
+  <div class="stats" id="stats" aria-live="polite"></div>
+  <p class="fine" id="stats-note"></p>
+</section>
+
+<section id="results" class="wrap">
+  <div class="sec-head">
+    <h2>Three systems, one scoreboard</h2>
+    <div class="seg" role="group" aria-label="Split">
+      <button class="on" data-split="test" aria-pressed="true">Held-out test</button>
+      <button data-split="dev" aria-pressed="false">Dev (tuned on)</button>
+    </div>
+  </div>
+  <p class="sub" id="results-sub"></p>
+  <div class="chart-grid">
+    <figure class="card"><figcaption>Root-cause accuracy (top-1) <span class="hint">higher is better</span></figcaption><div id="chart-acc"></div></figure>
+    <figure class="card"><figcaption>Confidently wrong <span class="hint">answers marked “high” that were wrong; lower is better</span></figcaption><div id="chart-fc"></div></figure>
+  </div>
+  <div class="table-wrap"><table id="results-table"></table></div>
+  <ul class="notes" id="results-notes"></ul>
+</section>
+
+<section id="explorer" class="wrap">
+  <div class="sec-head plain"><h2>Incident explorer</h2><p class="sub">Every incident here is a labeled, simulated outage. Pick one to see what each system said and why.</p></div>
+  <div class="explorer">
+    <aside class="list-pane" aria-label="Incidents">
+      <div class="filters">
+        <div class="seg small" role="group" aria-label="Split filter" id="f-split">
+          <button class="on" data-v="all">All</button><button data-v="test">Test</button><button data-v="dev">Dev</button>
+        </div>
+        <div class="seg small" role="group" aria-label="Outcome filter" id="f-out">
+          <button class="on" data-v="all">Any</button><button data-v="wrong">Traceback wrong</button><button data-v="base-wrong">Baseline wrong</button>
+        </div>
+      </div>
+      <ul id="inc-list" class="inc-list"></ul>
+    </aside>
+    <div class="detail" id="detail" aria-live="polite"><p class="empty">Loading…</p></div>
+  </div>
+</section>
+
+<section id="how" class="wrap">
+  <div class="sec-head plain"><h2>How it works</h2></div>
+  <p class="sub">Deterministic analysis first. The language model only ranks, explains and checks hypotheses against evidence, and it is never trusted without a replay.</p>
+  <figure class="card arch"><div id="arch"></div></figure>
+  <div class="cols">
+    <div class="card"><h3>What the LLM can and can’t do</h3><ul>
+      <li>It sees ranked candidates and the records behind them, not the raw firehose.</li>
+      <li>Every claim must cite record IDs. IDs that don’t exist are rejected and the model is asked again.</li>
+      <li>It can overrule the analyzer, and sometimes wrongly; the replay verifier catches some of that.</li>
+    </ul></div>
+    <div class="card"><h3>Honest limitations</h3><ul>
+      <li>Evaluation data comes from a simulator, so this shows the pipeline handles the modeled failures, not that it works on production telemetry.</li>
+      <li>26 test incidents: a one-incident gap in accuracy is not significant.</li>
+      <li>The verifier needs a replayable environment (a canary or feature-flag rollback in production).</li>
+      <li>The baseline’s input exceeded the model’s context for some incidents and was sampled by trace.</li>
+    </ul></div>
+  </div>
+</section>
+</main>
+
+<footer class="wrap foot">
+  <p>Built for the Nebius × NVIDIA Global AI Hackathon. Model: <code id="model">nvidia/nemotron-3-super-120b-a12b</code> on Nebius Token Factory. MIT licensed. All numbers on this page are generated by <code>eval/build_site.py</code> from saved runs.</p>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
