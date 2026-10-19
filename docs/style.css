@@ -148,3 +148,20 @@ svg text{font-family:system-ui,sans-serif;fill:var(--mut);font-size:11px}svg .la
 .empty{color:var(--mut)}
 @media(max-width:980px){.app{grid-template-columns:1fr}.side{position:static;max-height:300px}.grid2,.chart-grid,.cols,.stats{grid-template-columns:1fr}.counters,.readout{grid-template-columns:1fr 1fr}.rows .row{grid-template-columns:30px 1fr}.rows .row>:nth-child(n+3){grid-column:2}.bar-row{grid-template-columns:110px 1fr 52px}.views button{padding:6px 9px}.gh{display:none}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+
+/* ---- The outage (failure-first story) ---- */
+.story-top{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:24px;align-items:start;margin-bottom:18px}
+.story-ctl{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.prov{display:inline-block;font-size:12.5px;font-weight:800;letter-spacing:.04em;border-radius:6px;padding:4px 10px;border:1.5px solid}
+.prov.live{color:var(--ok);border-color:var(--ok);background:var(--ok-soft)}.prov.rec{color:var(--warn);border-color:var(--warn);background:var(--warn-soft)}
+.provline{font-size:13.5px;color:var(--mut);border-left:3px solid var(--line);padding:2px 0 2px 12px;margin:0 0 16px;max-width:900px}
+.chk{font-size:13.5px;color:var(--mut);display:flex;gap:8px;align-items:flex-start}
+.act{margin:0 0 18px}.act-head{display:flex;align-items:center;gap:12px;margin-bottom:8px}.act-head h2{font-size:21px;margin:0}
+.act-n{width:30px;height:30px;border-radius:50%;background:var(--accent);color:var(--on-accent);display:inline-flex;align-items:center;justify-content:center;font-weight:800}
+.act-lede{margin:0 0 12px;max-width:860px}.act-actions{display:flex;gap:10px;flex-wrap:wrap;margin:6px 0 22px}
+.big-spark{margin:6px 0 0}.minis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.mini-h{display:flex;justify-content:space-between;gap:6px;font-size:13px;margin-bottom:3px}
+.raw{background:var(--surface2);border:1px solid var(--line);border-radius:8px;padding:12px;max-height:340px;overflow:auto;font-size:12.5px;white-space:pre-wrap;word-break:break-word}
+.stages{margin:12px 0 0;padding-left:20px}.stages li{margin:5px 0}
+.honest{margin-top:12px;border:1.5px solid var(--warn);background:var(--warn-soft);border-radius:10px;padding:10px 14px}.honest.ok{border-color:var(--ok);background:var(--ok-soft)}
+.story-err{color:var(--bad);font-weight:600}.tally{font-size:14px;color:var(--mut);max-width:860px}.empty-card{max-width:760px}
+@media(max-width:860px){.story-top{grid-template-columns:1fr}.minis{grid-template-columns:repeat(2,minmax(0,1fr))}}

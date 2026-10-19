@@ -5,3 +5,5 @@ runs/
 *.key
 .DS_Store
 __pycache__/
+tests/ui/node_modules/
+tests/ui/package*.json

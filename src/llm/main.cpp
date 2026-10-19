@@ -15,6 +15,7 @@ int main(int argc, char** argv) {
     else if (k == "--model") o.llm.model = v;
     else if (k == "--cache") o.llm.cache_dir = v;
     else if (k == "--cache-fallback") o.llm.fallback_cache_dir = v;
+    else if (k == "--timeout") o.llm.timeout_s = std::stoi(v);
     else if (k == "--budget") o.token_budget = std::stoi(v);
     else if (k == "--prompts") o.prompts_dir = v;
     else if (k == "--prompt") o.prompt_name = v;

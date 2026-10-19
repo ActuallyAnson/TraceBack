@@ -21,7 +21,7 @@ const SYS = [
   { key: 'traceback', label: 'Full Traceback', sub: 'analyzer + LLM + verifier', color: 'var(--c-tb)' },
 ];
 const state = {
-  idx: null, view: 'inv', split: 'test', fSplit: 'all', fOut: 'all', id: null, step: Math.max(0, Math.min(7, (+q.get('step') || 1) - 1)),
+  idx: null, view: 'out', split: 'test', fSplit: 'all', fOut: 'all', id: null, step: Math.max(0, Math.min(7, (+q.get('step') || 1) - 1)),
   reveal: q.get('reveal') === '1', who: 'tb', clockOrder: 'raw', cursor: 0, playing: false, timer: null, replaySel: null, hint: true, cache: {},
 };
 let TL = null; // timeline geometry for the scrubber
@@ -37,12 +37,12 @@ function showView(v) {
   if (v !== 'inv') stopPlay();
 }
 function setHash() {
-  const h = state.view === 'inv' ? `#${state.id}/${state.step + 1}` : '#' + state.view;
+  const h = state.view === 'inv' ? `#${state.id}/${state.step + 1}` : state.view === 'out' ? '#out' : '#' + state.view;
   if (location.hash !== h) history.replaceState(null, '', location.pathname + location.search + h);
 }
 function applyHash() {
   const h = location.hash.slice(1);
-  if (h === 'score' || h === 'how') { showView(h); return null; }
+  if (h === 'score' || h === 'how' || h === 'out' || h === '') { showView(h === '' ? 'out' : h); return null; }
   const m = h.match(/^(inc-\d+)(?:\/(\d))?$/);
   showView('inv');
   if (m && state.idx.incidents.some(r => r.id === m[1])) return { id: m[1], step: m[2] ? +m[2] - 1 : state.step };
@@ -443,4 +443,5 @@ function wire() {
   renderStats(); renderResults(); renderArch(); wire();
   const r = applyHash();
   if (state.view === 'inv') await select(r ? r.id : defaultPick(), r ? r.step : state.step);
+  if (state.view === 'out' && !location.hash) { /* landing: the story */ }
 })();

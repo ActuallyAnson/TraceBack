@@ -1,4 +1,4 @@
-.PHONY: build test data verify eval-dev site serve results results-check demo topology2 topology2-check
+.PHONY: live build test data verify eval-dev site serve results results-check demo topology2 topology2-check
 build:
 	cmake -S . -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build -j
 test: build
@@ -15,7 +15,10 @@ eval-dev: data
 # Rebuild the showcase site data (docs/data) from saved runs and cached model answers; no new API calls.
 site: build
 	python3 eval/build_site.py
-# Preview the showcase site at http://localhost:8000
+# Live mode: same UI, but "Trigger an outage" re-runs the simulator, analyzer and verifier for real (model answers recorded unless you opt in).
+live: build
+	python3 tools/live_server.py 8000
+# Preview the static showcase site at http://localhost:8000
 serve:
 	python3 -m http.server 8000 -d docs
 
