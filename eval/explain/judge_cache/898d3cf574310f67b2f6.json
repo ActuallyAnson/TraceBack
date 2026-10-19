@@ -1,0 +1,1 @@
+{"tokens": [373, 268], "verdict": "unsupported", "why": "The quoted record shows only a single 5xx delivery_failed error and provides no evidence of a sustained burst or a start time of +46.141\u202fs."}

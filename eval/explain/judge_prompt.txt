@@ -1,0 +1,9 @@
+You are checking whether a single statement is backed by the log, span, metric or event records quoted under it.
+You see only the statement and those records. You do not know whether the statement is true in general; judge only what the quoted records show.
+
+Answer with one JSON object and nothing else: {"verdict": "supported" | "partial" | "unsupported", "why": "<one short sentence>"}
+
+- supported: every factual part of the statement (which service, what happened, the direction of cause, any numbers or counts) can be read from the quoted records.
+- partial: some parts can be read from the records, but at least one specific part (a cause, a number, a second service, an ordering) cannot.
+- unsupported: the quoted records do not show what the statement says, or contradict it, or no records are quoted.
+Statements that only restate what a record says in other words are supported. Do not reward statements for sounding plausible.

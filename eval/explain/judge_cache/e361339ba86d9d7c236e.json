@@ -1,0 +1,1 @@
+{"tokens": [353, 270], "verdict": "partial", "why": "The record confirms an order timeout when calling inventory, but it does not indicate that an exhausted pool caused the timeout or that latency and errors increased."}

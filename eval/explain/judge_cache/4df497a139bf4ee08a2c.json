@@ -1,0 +1,1 @@
+{"tokens": [357, 260], "verdict": "partial", "why": "The record confirms Api received an upstream_error from ingest with status 503, but it does not state that the error was due to ingest's failure to reach a broker."}

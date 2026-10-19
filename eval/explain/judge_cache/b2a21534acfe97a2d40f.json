@@ -1,0 +1,1 @@
+{"tokens": [358, 153], "verdict": "unsupported", "why": "The quoted record only shows an API endpoint returning a 5xx error; it contains no information about Ingest propagating errors or causing the response."}

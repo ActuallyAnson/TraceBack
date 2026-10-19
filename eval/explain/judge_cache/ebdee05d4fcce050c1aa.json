@@ -1,0 +1,1 @@
+{"tokens": [360, 305], "verdict": "partial", "why": "The record shows the API had err5xx errors, but it does not demonstrate a rising trend or that the errors occurred after shipping errors started."}

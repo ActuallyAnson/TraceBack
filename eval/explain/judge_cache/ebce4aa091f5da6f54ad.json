@@ -1,0 +1,1 @@
+{"tokens": [544, 394], "verdict": "partial", "why": "The records show two retry attempts (attempt=1 and attempt=2) to the payments service, confirming multiple call attempts, but they do not explicitly state that this increased load on payments."}

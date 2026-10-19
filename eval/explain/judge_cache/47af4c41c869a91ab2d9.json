@@ -1,0 +1,1 @@
+{"tokens": [352, 181], "verdict": "supported", "why": "The quoted record shows an API POST /orders request returning HTTP 500 with an internal_error, indicating a failed entry request."}

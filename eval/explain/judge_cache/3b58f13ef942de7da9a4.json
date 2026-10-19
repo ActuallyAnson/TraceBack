@@ -1,0 +1,1 @@
+{"tokens": [325, 187], "verdict": "supported", "why": "The broker log entry shows a retry being scheduled with a backoff of exactly 100\u202fms, matching the claim about short backoff."}

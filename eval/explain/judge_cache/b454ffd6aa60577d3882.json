@@ -1,0 +1,1 @@
+{"tokens": [345, 615], "verdict": "partial", "why": "The record shows the orders service experienced a connection refusal and returned a 503 status, but it does not explicitly state that those 503 errors were sent to the gateway."}

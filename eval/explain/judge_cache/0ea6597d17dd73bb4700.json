@@ -1,0 +1,1 @@
+{"tokens": [584, 580], "verdict": "partial", "why": "The records show broker retries to billing, elevated broker latency/error rates, and ingest timeouts to broker, but they do not explicitly state that broker-to-billing calls were timing out."}

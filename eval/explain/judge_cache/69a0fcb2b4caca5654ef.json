@@ -1,0 +1,1 @@
+{"tokens": [678, 315], "verdict": "partial", "why": "The records show elevated queue_us values for ingest spans, indicating high queue times, but they contain no information about worker utilization or whether all workers were busy."}

@@ -1,0 +1,1 @@
+{"tokens": [527, 638], "verdict": "partial", "why": "The records confirm the queue_max=26, busy_max=24 values and show a publish span with high queue time, but they do not provide evidence that retry load consumed workers or caused the queue backup."}

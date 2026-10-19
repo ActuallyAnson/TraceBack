@@ -1,0 +1,1 @@
+{"tokens": [353, 244], "verdict": "partial", "why": "The record confirms the broker had an upstream timeout when calling billing, but it does not state that the timeout was due to billing's slowness."}

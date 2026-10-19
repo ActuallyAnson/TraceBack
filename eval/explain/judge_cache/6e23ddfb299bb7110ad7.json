@@ -1,0 +1,1 @@
+{"tokens": [549, 310], "verdict": "partial", "why": "The records show Ingest calls had queuing (queue_us) and delivery_failed errors, but they do not specify that the calls were to a broker."}

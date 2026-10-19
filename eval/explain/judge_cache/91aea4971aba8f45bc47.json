@@ -1,0 +1,1 @@
+{"tokens": [362, 259], "verdict": "partial", "why": "The record confirms Ingest received a 503 error from broker resulting in an upstream_error, but it does not mention 504 errors or timeouts."}

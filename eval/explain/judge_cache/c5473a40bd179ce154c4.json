@@ -1,0 +1,1 @@
+{"tokens": [361, 170], "verdict": "supported", "why": "The quoted record shows a request returning status 504 with error 'upstream_timeout', confirming that entry requests fail with a 504 upstream timeout."}

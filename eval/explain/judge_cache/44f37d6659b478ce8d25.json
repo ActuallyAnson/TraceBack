@@ -1,0 +1,1 @@
+{"tokens": [726, 546], "verdict": "supported", "why": "The broker span shows a 503 response from billing, and subsequent log entries show a retry scheduled with backoff_ms\u202f0 for the same trace_id, indicating an immediate retry."}

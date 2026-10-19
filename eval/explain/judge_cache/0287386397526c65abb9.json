@@ -1,0 +1,1 @@
+{"tokens": [424, 636], "verdict": "partial", "why": "The records show a timeout and a failed request, but they do not provide the +67.469\u202fs start time or evidence of a sustained burst of failed entry requests."}

@@ -1,0 +1,1 @@
+{"tokens": [349, 271], "verdict": "partial", "why": "The record confirms the broker had an error calling shipping (connection refused), but it does not show that this prevented ingest requests or caused ingest to return errors to the API."}

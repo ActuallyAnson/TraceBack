@@ -1,0 +1,1 @@
+{"tokens": [361, 279], "verdict": "partial", "why": "The record confirms a gateway request failed with a connection\u2011refused error, but it does not show that this was the first or onset of such failures."}

@@ -1,0 +1,1 @@
+{"tokens": [457, 143], "verdict": "supported", "why": "The broker records include an upstream error from billing and a retry\u2011scheduled warning, matching the statement."}

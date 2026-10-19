@@ -1,0 +1,1 @@
+{"tokens": [338, 195], "verdict": "partial", "why": "The record shows an order_failed event from the orders service, but it does not mention that this occurred after retries were exhausted."}

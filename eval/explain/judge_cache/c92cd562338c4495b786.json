@@ -1,0 +1,1 @@
+{"tokens": [652, 411], "verdict": "partial", "why": "The quoted records show billing charge request durations of about 2.4\u20132.7\u202fseconds, but they provide no information about the normal processing time of ~35\u202fms, so the comparison cannot be verified."}

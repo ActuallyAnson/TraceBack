@@ -1,0 +1,1 @@
+{"tokens": [446, 210], "verdict": "supported", "why": "The ingest service logged error events indicating the broker returned 503, showing ingest reported errors during broker failure."}

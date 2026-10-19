@@ -1,0 +1,1 @@
+{"tokens": [356, 390], "verdict": "supported", "why": "The quoted record shows the orders service logging an upstream_error with message 'dependency payments returned 500' and a peer of payments with status 500, matching the statement."}

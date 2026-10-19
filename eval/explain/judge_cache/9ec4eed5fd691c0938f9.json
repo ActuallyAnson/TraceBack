@@ -1,0 +1,1 @@
+{"tokens": [685, 286], "verdict": "partial", "why": "The records show Orders making repeated calls to Payments that returned connection\u2011refused errors with incrementing attempt numbers, confirming retries, but they do not provide information about whether a backoff strategy was used or absent."}

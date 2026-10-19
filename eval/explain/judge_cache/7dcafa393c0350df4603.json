@@ -1,0 +1,1 @@
+{"tokens": [358, 411], "verdict": "partial", "why": "The record shows orders workers fully utilized (busy_max equals workers_limit) and a high queue_max, indicating queued request buildup, but it does not mention inventory as the cause of the pinning."}

@@ -1,0 +1,1 @@
+{"tokens": [334, 169], "verdict": "supported", "why": "The record shows the inventory service logged a pool_exhausted error with pool_size 0, indicating the DB connection pool was exhausted and thus unable to accept new connections."}

@@ -1,0 +1,1 @@
+{"tokens": [457, 339], "verdict": "partial", "why": "The records show boot count rising from 2 to 3, supporting the increased boot count claim, but request volume rose from 57 to 62, contradicting the claim of reduced request volume."}

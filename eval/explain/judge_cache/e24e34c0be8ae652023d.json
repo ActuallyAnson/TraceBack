@@ -1,0 +1,1 @@
+{"tokens": [436, 426], "verdict": "partial", "why": "The records show a shipping error and an API delivery_failed error occurring close in time, but they contain no information about an ingest\u2192broker failure or a causal link from the shipping error to that failure."}

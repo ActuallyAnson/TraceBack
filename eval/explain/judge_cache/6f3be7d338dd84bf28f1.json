@@ -1,0 +1,1 @@
+{"tokens": [461, 267], "verdict": "supported", "why": "The records show the gateway logged an upstream_error indicating orders returned 500 and subsequently logged an order_failed event, matching the statement."}

@@ -1,0 +1,1 @@
+{"tokens": [471, 627], "verdict": "partial", "why": "The records show broker worker saturation (busy_max equals workers_limit) and high latency (p99_ms ~6109), plus a billing 503 error, but they do not explicitly state that waiting for slow billing responses caused the latency increase."}

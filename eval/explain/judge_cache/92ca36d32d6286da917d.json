@@ -1,0 +1,1 @@
+{"tokens": [366, 458], "verdict": "partial", "why": "The record confirms the gateway returned a 500 error for a POST /checkout request, but it does not include the timestamp offset +49.939s mentioned in the statement."}

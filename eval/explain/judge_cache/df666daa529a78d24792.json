@@ -1,0 +1,1 @@
+{"tokens": [331, 170], "verdict": "partial", "why": "The record shows orders returned upstream_timeout (504) but contains no information about any retries."}

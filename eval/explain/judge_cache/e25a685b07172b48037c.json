@@ -1,0 +1,1 @@
+{"tokens": [369, 352], "verdict": "partial", "why": "The quoted record confirms that the gateway saw an order_failed error on a checkout request, but it does not show that the orders service failed its checkout requests or that any errors caused that failure."}

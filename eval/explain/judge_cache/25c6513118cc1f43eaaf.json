@@ -1,0 +1,1 @@
+{"tokens": [360, 429], "verdict": "partial", "why": "The record shows broker metrics indicating high load (workers_limit=1, busy_max=3, queue_max=15), but it does not mention any reduction, ingest service, publish operations, or a causal link to delayed API responses."}

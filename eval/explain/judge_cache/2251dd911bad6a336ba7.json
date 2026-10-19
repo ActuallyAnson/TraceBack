@@ -1,0 +1,1 @@
+{"tokens": [365, 165], "verdict": "supported", "why": "The record shows a broker error event 'upstream_error' with message 'dependency shipping returned 500', indicating broker calls to shipping failed with a 500 response."}

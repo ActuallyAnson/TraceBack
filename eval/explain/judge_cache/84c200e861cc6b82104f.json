@@ -1,0 +1,1 @@
+{"tokens": [603, 156], "verdict": "supported", "why": "The quoted records show gateway spans with HTTP status 500 and error 'internal_error', confirming the gateway returned an internal error to the client."}

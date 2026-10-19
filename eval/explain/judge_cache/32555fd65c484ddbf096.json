@@ -1,0 +1,1 @@
+{"tokens": [345, 428], "verdict": "partial", "why": "The record shows the API had 100% 5xx errors and elevated latency (p50\u2248759\u202fms, p99\u2248962\u202fms), confirming high error rates and latency, but it does not provide a prior baseline to demonstrate that these values represent an increase."}

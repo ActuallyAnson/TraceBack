@@ -1,0 +1,1 @@
+{"tokens": [676, 373], "verdict": "partial", "why": "The records show API client spans to ingest with 3\u2011second durations and timeout errors, confirming the timeout and duration, but they do not provide evidence that the timeout was caused by ingest's queue delay."}

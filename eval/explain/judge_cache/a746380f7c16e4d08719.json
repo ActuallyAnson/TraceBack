@@ -1,0 +1,1 @@
+{"tokens": [379, 321], "verdict": "partial", "why": "The quoted record confirms an upstream timeout failure in the API, but it does not mention the broker, ingest, or the +52.600\u202fs start time described in the statement."}

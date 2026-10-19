@@ -1,0 +1,1 @@
+{"tokens": [494, 435], "verdict": "partial", "why": "The records show both ingest and broker reporting delivery_failed errors, but they do not demonstrate that ingest\u2019s call to broker caused the failure or that broker\u2019s retries were exhausted."}

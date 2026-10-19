@@ -1,0 +1,1 @@
+{"tokens": [394, 575], "verdict": "partial", "why": "The records confirm that shipping v1.2.8 deployment started and finished with a 4\u2011second interval, but the specific offset times (+50.054s and +54.054s) cannot be directly read from the quoted timestamps."}

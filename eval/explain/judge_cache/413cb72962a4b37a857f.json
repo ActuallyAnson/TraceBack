@@ -1,0 +1,1 @@
+{"tokens": [348, 226], "verdict": "partial", "why": "The record confirms the broker returned a 503 error to ingest, but it only shows a single attempt (attempt:1) and provides no evidence of any retries before that failure."}

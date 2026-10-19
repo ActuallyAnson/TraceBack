@@ -1,0 +1,1 @@
+{"tokens": [454, 343], "verdict": "partial", "why": "The records confirm the broker logged an upstream error and later scheduled a retry involving billing, but they do not explicitly indicate that the error was a pool_exhausted error received from billing."}

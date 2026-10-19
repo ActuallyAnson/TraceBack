@@ -1,0 +1,1 @@
+{"tokens": [423, 288], "verdict": "partial", "why": "The records show orders reporting errors, but they do not provide evidence that the inventory dependency was failing."}

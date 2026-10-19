@@ -1,0 +1,1 @@
+{"tokens": [497, 302], "verdict": "partial", "why": "The orders trace shows a connection\u2011refused error when calling payments, confirming calls were refused, but the payments metrics record shows non\u2011zero request activity, not silence."}

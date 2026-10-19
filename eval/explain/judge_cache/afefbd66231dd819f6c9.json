@@ -1,0 +1,1 @@
+{"tokens": [481, 470], "verdict": "supported", "why": "The records show a gateway timeout when calling the orders service and a high count of 5xx errors, matching the claim of timeouts or 503 errors from orders leading to 504/503 client responses."}

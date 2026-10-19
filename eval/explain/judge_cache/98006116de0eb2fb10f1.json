@@ -1,0 +1,1 @@
+{"tokens": [525, 326], "verdict": "partial", "why": "The records show queue latency for orders requests but do not indicate loss of serving capacity or that too few workers caused the queue."}

@@ -1,0 +1,1 @@
+{"tokens": [383, 644], "verdict": "supported", "why": "The quoted record shows queue_max=60, busy_max=16, p50_ms\u22481636\u202fms and p99_ms\u22484277\u202fms for the orders service, matching the statement\u2019s claims about queue length, busy workers, and high latencies at the given timestamp."}

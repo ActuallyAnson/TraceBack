@@ -1,0 +1,1 @@
+{"tokens": [489, 742], "verdict": "partial", "why": "The records show Orders experiencing connection\u2011refused errors on two attempts (attempt:1 and attempt:2) when calling Payments, but they do not contain any timing information that confirms a 100\u202fms backoff between retries."}

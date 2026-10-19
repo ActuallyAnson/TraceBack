@@ -1,0 +1,1 @@
+{"tokens": [333, 143], "verdict": "supported", "why": "The record shows the api service logged a 'delivery_failed' error with status code 503."}

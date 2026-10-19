@@ -1,0 +1,1 @@
+{"tokens": [543, 416], "verdict": "partial", "why": "The records show broker calls to billing timed out after 1200\u202fms, but they do not provide evidence that billing was slow or error\u2011prone, so the causal claim is not directly supported."}

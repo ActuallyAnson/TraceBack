@@ -1,0 +1,1 @@
+{"tokens": [381, 228], "verdict": "partial", "why": "The record confirms gateway\u2011S007ea had status\u202f504 with error\u202fupstream_timeout, but it does not indicate that the error came from orders."}

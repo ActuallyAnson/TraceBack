@@ -1,0 +1,1 @@
+{"tokens": [375, 334], "verdict": "unsupported", "why": "The records show a deploy start and a service start a few seconds later, with no mention of any failure occurring immediately after the deploy."}

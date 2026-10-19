@@ -1,0 +1,1 @@
+{"tokens": [521, 409], "verdict": "supported", "why": "The client span records a 2500\u202fms timeout to orders, and the server span in the same trace shows an upstream_timeout error."}

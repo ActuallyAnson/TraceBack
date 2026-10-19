@@ -1,0 +1,1 @@
+{"tokens": [532, 193], "verdict": "supported", "why": "The quoted broker spans show calls to billing with a timeout error, indicating the broker-to-billing calls timed out without reaching billing."}

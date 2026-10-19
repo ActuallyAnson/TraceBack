@@ -1,0 +1,1 @@
+{"tokens": [440, 211], "verdict": "supported", "why": "The quoted records show API-level error events that explicitly mention the dependency ingest returning a 504 status and timing out, indicating API reported errors while ingest was failing."}

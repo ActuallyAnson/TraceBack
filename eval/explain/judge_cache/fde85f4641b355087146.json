@@ -1,0 +1,1 @@
+{"tokens": [391, 433], "verdict": "partial", "why": "The record confirms that orders timed out a call to inventory, but it does not show that this occurred after a change or that it was the first observed timeout at +53.078\u202fs."}

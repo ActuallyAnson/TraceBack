@@ -1,0 +1,1 @@
+{"tokens": [664, 128], "verdict": "supported", "why": "The quoted records show orders service making client calls to payments with error 'conn_refused', confirming that orders client calls to payments received connection\u2011refused errors."}

@@ -1,0 +1,1 @@
+{"tokens": [518, 379], "verdict": "partial", "why": "The records show an inventory operation taking about 1.08\u202fs and an orders client timeout on the same trace, but they do not provide a baseline latency to show the inventory latency was increased beyond normal, nor do they explicitly prove that the inventory latency caused the timeout."}

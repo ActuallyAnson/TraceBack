@@ -1,0 +1,1 @@
+{"tokens": [430, 295], "verdict": "supported", "why": "Both quoted records show gateway logging errors (upstream_error and order_failed) that reference order step/order failures, and they share the exact same timestamp, indicating the errors occurred while the orders dependency was failing."}

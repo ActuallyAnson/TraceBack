@@ -1,0 +1,1 @@
+{"tokens": [457, 720], "verdict": "supported", "why": "The deploy of payments finished at timestamp 1780019047288199\u202f\u00b5s and a payments charge span starting 15.5\u202fseconds later returned status\u202f503 with error\u202ftemporarily_unavailable, indicating errors began shortly after deployment."}

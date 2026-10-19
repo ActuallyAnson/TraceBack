@@ -1,0 +1,1 @@
+{"tokens": [319, 390], "verdict": "partial", "why": "The record shows the shipping service finished deploying to v1.3.2, but it does not contain the +52.934s finish time mentioned in the statement."}

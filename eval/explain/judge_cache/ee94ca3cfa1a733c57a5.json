@@ -1,0 +1,1 @@
+{"tokens": [738, 525], "verdict": "partial", "why": "The records show refused connection errors and evidence of a payments restart (container restarted, service started, boots increment), but they do not explicitly show a metrics gap\u2014only a change in metric values between two consecutive windows."}

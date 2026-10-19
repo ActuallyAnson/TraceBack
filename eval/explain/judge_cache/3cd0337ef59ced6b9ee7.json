@@ -1,0 +1,1 @@
+{"tokens": [387, 313], "verdict": "partial", "why": "The record shows Ingest's call to broker timed out, supporting the first part, but there is no information about whether the broker recorded the call, so the second part cannot be verified."}

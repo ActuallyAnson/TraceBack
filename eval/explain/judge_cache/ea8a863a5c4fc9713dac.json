@@ -1,0 +1,1 @@
+{"tokens": [354, 238], "verdict": "partial", "why": "The record confirms ingest had upstream timeout errors when calling the broker, but it does not indicate the broker was slow or that this caused worker saturation or queue buildup."}

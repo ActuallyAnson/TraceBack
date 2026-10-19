@@ -1,0 +1,1 @@
+{"tokens": [319, 307], "verdict": "partial", "why": "The record shows the payments service deployment finished and upgraded to v1.6.9, but it does not include the timestamp offset +49.934s mentioned in the statement."}

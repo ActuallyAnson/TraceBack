@@ -1,0 +1,1 @@
+{"tokens": [402, 394], "verdict": "supported", "why": "The quoted record shows err5xx=72, p50_ms\u2248361ms, p99_ms\u2248667ms, queue_max=4, and busy_max=12, matching the example values given in the statement."}

@@ -1,0 +1,1 @@
+{"tokens": [642, 369], "verdict": "partial", "why": "The quoted spans show inventory service reserve operations with durations over 1\u202fsecond, confirming increased latency, but the records do not provide a reference point to verify that the increase began around +57.9\u202fseconds."}

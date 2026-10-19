@@ -1,0 +1,1 @@
+{"tokens": [354, 208], "verdict": "partial", "why": "The record shows Ingest received a 500 error from broker and logged the message, but it does not show that Ingest returned a 500 to the API."}

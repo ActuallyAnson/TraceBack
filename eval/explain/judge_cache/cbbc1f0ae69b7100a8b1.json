@@ -1,0 +1,1 @@
+{"tokens": [375, 555], "verdict": "unsupported", "why": "The records show shipping started about 4\u202fseconds after the deploy began, not 0\u202fseconds, and they contain no indication of any failure."}

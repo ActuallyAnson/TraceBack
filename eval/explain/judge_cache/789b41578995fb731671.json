@@ -1,0 +1,1 @@
+{"tokens": [457, 346], "verdict": "partial", "why": "The records show the payments service had a high err5xx count and internal_error logs, confirming internal errors, but they do not provide any information about a deploy or that the errors occurred after it."}

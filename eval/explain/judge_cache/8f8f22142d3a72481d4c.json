@@ -1,0 +1,1 @@
+{"tokens": [388, 283], "verdict": "partial", "why": "The record confirms the inventory service returned a stock_record_corrupt error, but the quoted data does not show that this occurred at +62.641s, so the timing claim cannot be verified."}

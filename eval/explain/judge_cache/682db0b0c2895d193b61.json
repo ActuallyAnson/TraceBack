@@ -1,0 +1,1 @@
+{"tokens": [501, 192], "verdict": "unsupported", "why": "The quoted records only show two order\u2011creation latencies (~124\u202fms and ~92\u202fms) with no baseline for comparison and no indication of timeouts."}

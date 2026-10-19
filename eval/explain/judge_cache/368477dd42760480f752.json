@@ -1,0 +1,1 @@
+{"tokens": [456, 558], "verdict": "partial", "why": "The records show a config change that lowered the inventory timeout and a subsequent timeout on an orders\u2192inventory call shortly after, but they do not provide evidence that inventory was actually answering those calls."}

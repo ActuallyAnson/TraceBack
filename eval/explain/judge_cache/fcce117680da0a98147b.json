@@ -1,0 +1,1 @@
+{"tokens": [518, 569], "verdict": "supported", "why": "The first record shows an API client call to ingest timing out after exactly 3\u202fseconds, and the second record shows the API (entry) service returning a 503 error, which together satisfy both factual parts of the statement."}

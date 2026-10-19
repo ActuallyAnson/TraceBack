@@ -1,0 +1,1 @@
+{"tokens": [390, 540], "verdict": "supported", "why": "The records show the payments deployment started at timestamp 1780019043.288199\u202fs and finished at 1780019047.288199\u202fs, which corresponds to a start at +43.288\u202fs and finish at +47.288\u202fs (ignoring the finer\u2011grained microseconds)."}

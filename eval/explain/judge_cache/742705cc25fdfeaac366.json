@@ -1,0 +1,1 @@
+{"tokens": [683, 1131], "verdict": "partial", "why": "The records show inventory refusing connections (supporting that incoming connections stopped) but also show inventory metrics being reported and a service started event, with no explicit crash or metrics silence."}

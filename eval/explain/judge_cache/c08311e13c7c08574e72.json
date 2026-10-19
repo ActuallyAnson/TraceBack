@@ -1,0 +1,1 @@
+{"tokens": [366, 341], "verdict": "unsupported", "why": "The quoted record shows ingest p50 latency of ~338\u202fms, not >3000\u202fms, and provides no earlier ~30\u202fms value to support the claimed increase."}

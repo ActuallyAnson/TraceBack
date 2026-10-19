@@ -1,0 +1,1 @@
+{"tokens": [512, 623], "verdict": "partial", "why": "The records show ingest request queue time and a queue\u2011max metric indicating queuing, but they do not provide evidence that the broker\u2019s consumption speed caused the queuing."}

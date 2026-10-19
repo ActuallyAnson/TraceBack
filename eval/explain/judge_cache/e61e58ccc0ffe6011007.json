@@ -1,0 +1,1 @@
+{"tokens": [386, 263], "verdict": "partial", "why": "The record confirms the broker\u2019s call to billing timed out, but it provides no information about whether billing recorded the call, so the claim about billing not recording them is unsupported."}

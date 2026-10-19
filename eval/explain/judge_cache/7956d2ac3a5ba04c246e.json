@@ -1,0 +1,1 @@
+{"tokens": [538, 262], "verdict": "partial", "why": "The records show broker-to-shipping calls receiving connection\u2011refused errors, confirming the refused\u2011connections part, but they provide no evidence of a metrics gap or a restart."}

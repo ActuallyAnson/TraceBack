@@ -1,0 +1,1 @@
+{"tokens": [344, 203], "verdict": "partial", "why": "The record shows orders timing out when calling inventory, but it does not mention a config change, so the temporal cause is not supported."}

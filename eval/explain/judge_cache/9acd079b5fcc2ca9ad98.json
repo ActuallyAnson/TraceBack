@@ -1,0 +1,1 @@
+{"tokens": [510, 412], "verdict": "supported", "why": "The records show an ingest span with a delivery_failed error, high queue wait time, and metrics indicating elevated latency (p50/p99 ms) and queued requests (queue_max, queue_us), matching all parts of the statement."}

@@ -1,0 +1,1 @@
+{"tokens": [375, 556], "verdict": "partial", "why": "The record shows shipping err5xx=42 and p99\u224854\u202fms, matching the cited numbers, but it does not indicate that this occurred after a deploy."}

@@ -1,0 +1,1 @@
+{"tokens": [394, 264], "verdict": "partial", "why": "The record shows the API timed out waiting for ingest, indicating a delayed response, but does not mention broker backpressure as the cause."}

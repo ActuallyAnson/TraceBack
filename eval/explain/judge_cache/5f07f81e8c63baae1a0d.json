@@ -1,0 +1,1 @@
+{"tokens": [353, 287], "verdict": "supported", "why": "The record shows extremely high latency (p50\u22482.5\u202fs, p99\u22483\u202fs) and 43 out of 46 requests resulting in 5xx errors, confirming increased latency and errors that would be visible to users."}

@@ -1,0 +1,1 @@
+{"tokens": [428, 184], "verdict": "partial", "why": "The records show the gateway reporting errors (upstream_timeout), but they contain no information about the orders service or its failure."}

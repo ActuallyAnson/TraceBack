@@ -1,0 +1,1 @@
+{"tokens": [677, 130], "verdict": "supported", "why": "The quoted spans show the orders service making client calls to the payments service and receiving conn_refused errors."}

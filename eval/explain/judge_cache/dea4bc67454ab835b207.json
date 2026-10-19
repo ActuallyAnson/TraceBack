@@ -1,0 +1,1 @@
+{"tokens": [502, 411], "verdict": "partial", "why": "The records show an ingest timeout and an API upstream timeout on orders, but they do not explicitly demonstrate that the ingest failure caused the timeout."}

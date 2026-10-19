@@ -1,0 +1,1 @@
+{"tokens": [340, 305], "verdict": "partial", "why": "The record shows payments returning an internal error with status 500, but it does not provide any information about when this occurred relative to a deployment."}

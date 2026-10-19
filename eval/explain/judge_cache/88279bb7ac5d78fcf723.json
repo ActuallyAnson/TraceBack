@@ -1,0 +1,1 @@
+{"tokens": [615, 323], "verdict": "supported", "why": "The records show a broker client call to shipping returning status 500 on attempt\u202f1, followed by a warning log indicating a retry was scheduled for attempt\u202f2, confirming the failure prompted retries."}

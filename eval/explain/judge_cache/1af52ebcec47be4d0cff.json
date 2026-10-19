@@ -1,0 +1,1 @@
+{"tokens": [461, 910], "verdict": "partial", "why": "The deploy finished before the payments\u2011S003ad span, showing errors after the deploy, but the claimed +49.153\u202fs offset does not match the actual ~0.069\u202fs difference between the timestamps."}

@@ -1,0 +1,1 @@
+{"tokens": [359, 124], "verdict": "supported", "why": "The quoted record shows the api service handling a POST /orders request with error 'delivery_failed', indicating it returned that error to clients."}

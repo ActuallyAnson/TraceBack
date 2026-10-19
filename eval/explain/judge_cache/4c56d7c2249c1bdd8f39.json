@@ -1,0 +1,1 @@
+{"tokens": [303, 290], "verdict": "partial", "why": "The record confirms an OOM kill caused the shipping process to crash, but it does not provide a timestamp that can be checked against the claimed +51.164\u202fs offset."}

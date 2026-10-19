@@ -1,0 +1,1 @@
+{"tokens": [479, 188], "verdict": "supported", "why": "The records show the billing service logged a pool_exhausted error with a timed-out db connection message and a span marked with pool_exhausted error, confirming billing experienced database connection pool exhaustion."}

@@ -1,0 +1,1 @@
+{"tokens": [569, 1151], "verdict": "partial", "why": "The records show broker upstream_timeout errors and API 504 responses with upstream_timeout, but they do not explicitly show that the broker's errors caused the API's 504 responses."}

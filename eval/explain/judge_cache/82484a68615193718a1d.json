@@ -1,0 +1,1 @@
+{"tokens": [621, 179], "verdict": "partial", "why": "The records show the API returning 504 responses with upstream_timeout errors, but they do not indicate that these errors were caused by ingest timeouts."}

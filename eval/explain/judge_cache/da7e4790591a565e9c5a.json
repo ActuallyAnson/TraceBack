@@ -1,0 +1,1 @@
+{"tokens": [379, 440], "verdict": "partial", "why": "The record confirms a gateway request returned a 500 error, but it does not provide the +49.087\u202fs timing or any evidence linking the failure to orders/payments downstream issues."}

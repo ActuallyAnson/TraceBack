@@ -1,0 +1,1 @@
+{"tokens": [391, 509], "verdict": "partial", "why": "The records show a shipping service deployment start and finish events 4 seconds apart, but they do not provide the exact start (+60.028s) and finish (+64.028s) times stated."}

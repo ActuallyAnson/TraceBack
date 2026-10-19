@@ -1,0 +1,1 @@
+{"tokens": [289, 122], "verdict": "supported", "why": "The record shows the payments container was restarted after exiting, which indicates a crash followed by a restart."}

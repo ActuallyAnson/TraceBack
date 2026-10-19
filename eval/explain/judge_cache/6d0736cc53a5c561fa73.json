@@ -1,0 +1,1 @@
+{"tokens": [397, 247], "verdict": "partial", "why": "The record confirms that the orders service returned a 504 error with upstream_timeout, but it does not mention inventory timeouts as the cause."}

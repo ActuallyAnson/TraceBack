@@ -1,0 +1,1 @@
+{"tokens": [361, 211], "verdict": "partial", "why": "The record confirms the API observed upstream timeout errors, but it does not provide evidence that delayed ingest processing was the cause."}

@@ -1,0 +1,1 @@
+{"tokens": [342, 301], "verdict": "partial", "why": "The record shows a single gateway order_failed error with status 500, but does not indicate that 500 such errors were observed."}

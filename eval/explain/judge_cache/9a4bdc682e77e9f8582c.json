@@ -1,0 +1,1 @@
+{"tokens": [567, 254], "verdict": "supported", "why": "The quoted metrics show high err5xx counts and the log entry records an internal_error with status 500, matching the statement."}

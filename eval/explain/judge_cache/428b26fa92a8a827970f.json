@@ -1,0 +1,1 @@
+{"tokens": [530, 331], "verdict": "partial", "why": "The records show broker attempts to billing that timed out, indicating the calls failed, but they do not prove the calls never reached billing."}

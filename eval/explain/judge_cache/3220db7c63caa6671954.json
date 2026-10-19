@@ -1,0 +1,1 @@
+{"tokens": [450, 531], "verdict": "supported", "why": "The billing service logged a pool_exhausted error and shortly after showed high latency (p99\u202fms\u202f\u2248\u202f1129) and many 5xx errors, indicating the exhaustion caused increased latency and errors."}

@@ -1,0 +1,1 @@
+{"tokens": [394, 222], "verdict": "partial", "why": "The record confirms that the orders service returned a 504 upstream_timeout error, but it does not mention charging payments or returning the error to a gateway."}

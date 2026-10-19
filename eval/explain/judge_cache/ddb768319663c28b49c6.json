@@ -1,0 +1,1 @@
+{"tokens": [389, 120], "verdict": "supported", "why": "Both quoted records show a config change in the orders service where timeout.payments_ms changed from 1200 to 6."}

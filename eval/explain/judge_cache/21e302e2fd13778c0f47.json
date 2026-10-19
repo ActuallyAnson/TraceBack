@@ -1,0 +1,1 @@
+{"tokens": [372, 413], "verdict": "partial", "why": "The record confirms the broker\u2019s workers_limit dropped to 1 and its p50 latency is >350\u202fms after throttling, but it does not provide the prior p50 value (~28\u202fms) needed for the sharp\u2011rise comparison."}

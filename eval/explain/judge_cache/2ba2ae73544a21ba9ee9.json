@@ -1,0 +1,1 @@
+{"tokens": [348, 714], "verdict": "partial", "why": "The record shows Orders scheduling a retry to payments on attempt\u202f3, implying prior attempts, but does not explicitly state the payment calls had failed or that there were multiple retries."}

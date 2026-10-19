@@ -1,0 +1,1 @@
+{"tokens": [348, 428], "verdict": "supported", "why": "The record shows workers_limit=1 and a non\u2011zero queue_max=3, indicating the broker had limited worker capacity and requests were queued behind too few workers."}

@@ -1,0 +1,1 @@
+{"tokens": [338, 124], "verdict": "supported", "why": "The record shows ingest received an upstream error with status 503 during a delivery step, indicating the broker returned 503 to ingest for that step."}

@@ -1,0 +1,1 @@
+{"tokens": [330, 360], "verdict": "partial", "why": "The record shows Orders changed timeout.inventory_ms from 800 to 5\u202fms via a config change, confirming the service, the change, and the new value, but it does not provide enough information to verify the exact '+53.047\u202fs' timing mentioned in the statement."}

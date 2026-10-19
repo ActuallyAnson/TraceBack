@@ -1,0 +1,1 @@
+{"tokens": [449, 479], "verdict": "supported", "why": "The orders service shows high latency (p50\u22481288\u202fms, p99\u22482433\u202fms) and a significant count of 5xx errors (29/52 requests), while the gateway logs an upstream error with status 503 indicating it received failures from orders."}

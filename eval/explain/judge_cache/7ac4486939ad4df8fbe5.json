@@ -1,0 +1,1 @@
+{"tokens": [324, 360], "verdict": "partial", "why": "The record shows orders timing out calls to payments with a 6\u202fms timeout, but it does not indicate that this occurred shortly after a change."}

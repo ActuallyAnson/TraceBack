@@ -1,0 +1,1 @@
+{"tokens": [794, 367], "verdict": "partial", "why": "The records show inventory reserve spans with elevated latency and orders client spans timing out, but they do not mention queued workers or establish that queued workers caused the latency increase."}

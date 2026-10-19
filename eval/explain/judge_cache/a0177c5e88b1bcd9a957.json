@@ -1,0 +1,1 @@
+{"tokens": [475, 381], "verdict": "partial", "why": "The records confirm billing had a connection pool exhaustion error and show a billing charge span with a multi\u2011second duration, but they do not explicitly link the pool exhaustion to causing the slow responses or additional errors."}

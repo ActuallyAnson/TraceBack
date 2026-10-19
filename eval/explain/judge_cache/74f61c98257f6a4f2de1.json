@@ -1,0 +1,1 @@
+{"tokens": [334, 220], "verdict": "partial", "why": "The record shows Orders returned an error, but it does not state that the error was due to failed inventory calls."}

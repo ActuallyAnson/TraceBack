@@ -1,0 +1,1 @@
+{"tokens": [428, 195], "verdict": "supported", "why": "The quoted records show the gateway service logging error-level events about order step/order failure, indicating that the gateway reported errors while its orders dependency was failing."}

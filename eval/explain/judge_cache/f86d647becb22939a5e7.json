@@ -1,0 +1,1 @@
+{"tokens": [347, 171], "verdict": "supported", "why": "The record shows the API logged an upstream error where dependency ingest returned status 503, indicating Ingest was returning 503 errors to the API."}

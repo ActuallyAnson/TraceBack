@@ -1,0 +1,1 @@
+{"tokens": [360, 280], "verdict": "partial", "why": "The record confirms the API returned an internal_error on a POST /orders request, but it does not show that this error originated from ingest responses."}

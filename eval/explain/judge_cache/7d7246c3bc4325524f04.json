@@ -1,0 +1,1 @@
+{"tokens": [323, 141], "verdict": "supported", "why": "The gateway log shows an error message 'order step failed', indicating that the orders service returned an error to the gateway."}

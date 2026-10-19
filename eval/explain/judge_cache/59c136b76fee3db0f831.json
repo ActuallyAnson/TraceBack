@@ -1,0 +1,1 @@
+{"tokens": [337, 299], "verdict": "partial", "why": "The record shows a 503 upstream error during an order step, but does not mention that the orders service returned the error after exhausting retries."}

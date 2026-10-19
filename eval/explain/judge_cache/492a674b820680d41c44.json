@@ -1,0 +1,1 @@
+{"tokens": [497, 181], "verdict": "supported", "why": "The quoted records include an API request returning status 500 with error 'internal_error' and another API request returning status 504 with error 'upstream_timeout', matching the statement."}

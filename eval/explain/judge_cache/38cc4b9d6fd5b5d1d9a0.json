@@ -1,0 +1,1 @@
+{"tokens": [740, 257], "verdict": "partial", "why": "The records show billing service emitting pool_exhausted and temporarily_unavailable errors, confirming the error types, but they do not provide a reference time to verify the '+60.134s' start offset mentioned in the statement."}

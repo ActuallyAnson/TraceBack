@@ -1,0 +1,1 @@
+{"tokens": [340, 233], "verdict": "partial", "why": "The record confirms the orders service failed with a 500 status, but it does not mention that the failure occurred after retries."}

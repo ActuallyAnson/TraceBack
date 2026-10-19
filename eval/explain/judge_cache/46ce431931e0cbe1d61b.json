@@ -1,0 +1,1 @@
+{"tokens": [481, 422], "verdict": "partial", "why": "The records show p99 latency and queue depth increasing between the two windows, but both entries have the same workers_limit value (1), so there is no evidence of a worker\u2011limit reduction causing the changes."}

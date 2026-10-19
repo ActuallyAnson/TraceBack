@@ -1,0 +1,1 @@
+{"tokens": [350, 157], "verdict": "supported", "why": "The record indicates the broker scheduled a retry for the billing peer with backoff_ms set to 0."}

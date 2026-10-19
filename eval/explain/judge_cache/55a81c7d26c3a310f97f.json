@@ -1,0 +1,1 @@
+{"tokens": [513, 566], "verdict": "partial", "why": "The records confirm an API call to ingest timed out and a separate internal error that returned 500, but they do not show that the timeout itself resulted in 500 responses."}

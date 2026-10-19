@@ -1,0 +1,1 @@
+{"tokens": [470, 320], "verdict": "partial", "why": "The records confirm payments returned temporarily_unavailable errors and the gateway observed upstream timeouts, but they do not provide evidence that increased load caused these issues."}

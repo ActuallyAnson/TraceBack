@@ -1,0 +1,1 @@
+{"tokens": [466, 384], "verdict": "partial", "why": "The records show an orders-to-payments call timing out and a retry being scheduled, but they do not explicitly state that increased payments latency caused the timeout."}

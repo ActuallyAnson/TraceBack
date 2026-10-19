@@ -1,0 +1,1 @@
+{"tokens": [585, 814], "verdict": "partial", "why": "The records show broker latency spikes and retries waiting for billing, but they do not demonstrate a sharp drop in billing's request rate (no prior rate for comparison)."}

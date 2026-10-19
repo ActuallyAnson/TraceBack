@@ -1,0 +1,1 @@
+{"tokens": [323, 117], "verdict": "supported", "why": "The record shows the orders service changing timeout.inventory_ms from 800 to 5, which matches the statement."}

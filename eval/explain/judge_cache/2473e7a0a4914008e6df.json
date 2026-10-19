@@ -1,0 +1,1 @@
+{"tokens": [377, 162], "verdict": "partial", "why": "The record shows one Notifier request returning internal_error, but provides no evidence that this error persisted for many subsequent requests."}

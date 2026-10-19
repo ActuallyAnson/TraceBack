@@ -1,0 +1,1 @@
+{"tokens": [395, 370], "verdict": "partial", "why": "The quoted record confirms that broker calls to billing were refused with conn_refused, but it does not mention a crash or that billing stopped accepting connections as a result."}

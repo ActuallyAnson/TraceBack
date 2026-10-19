@@ -1,0 +1,1 @@
+{"tokens": [357, 318], "verdict": "partial", "why": "The record confirms the API returned a 500 internal error, but it does not explicitly indicate that this event marks symptom onset."}

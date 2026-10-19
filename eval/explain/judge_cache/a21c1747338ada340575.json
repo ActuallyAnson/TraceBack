@@ -1,0 +1,1 @@
+{"tokens": [458, 503], "verdict": "partial", "why": "The records confirm a timeout and another failure at the gateway service, but they do not show that these timeouts formed a sustained burst of failures."}

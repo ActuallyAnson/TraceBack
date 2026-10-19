@@ -1,0 +1,1 @@
+{"tokens": [388, 228], "verdict": "partial", "why": "The record shows the gateway experienced a timeout while calling the orders service, confirming the timeout part, but it does not indicate that this resulted in 500 errors being returned to clients."}

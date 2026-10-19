@@ -1,0 +1,1 @@
+{"tokens": [498, 399], "verdict": "partial", "why": "The records show both the orders and gateway services returned 500 internal_error in the same trace, but they do not explicitly demonstrate that the orders error caused the gateway error."}

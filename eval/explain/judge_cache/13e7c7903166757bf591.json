@@ -1,0 +1,1 @@
+{"tokens": [363, 183], "verdict": "partial", "why": "The record confirms the API returned a 500 status with error 'internal_error', but there is no information linking this to symptom onset or a +54.907\u202fs offset."}

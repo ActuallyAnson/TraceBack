@@ -1,0 +1,1 @@
+{"tokens": [401, 550], "verdict": "partial", "why": "The record confirms a broker-to-shipping client call that returned a connection\u2011refused error, but it does not show any crash context or a timestamp offset of +51.220\u202fs, so the timing claim cannot be verified."}

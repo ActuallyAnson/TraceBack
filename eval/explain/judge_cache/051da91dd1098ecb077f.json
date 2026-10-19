@@ -1,0 +1,1 @@
+{"tokens": [456, 524], "verdict": "partial", "why": "The records confirm the gateway received a 504 from orders and show err5xx and latency metrics, but they do not provide evidence that err5xx or latency are rising over time."}

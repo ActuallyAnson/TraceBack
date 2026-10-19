@@ -1,0 +1,1 @@
+{"tokens": [653, 426], "verdict": "partial", "why": "The records show inventory reserve request durations around 1.1\u20131.3\u202fs, confirming they exceed 1\u202fs, but they do not provide the baseline of ~20\u202fms for comparison."}

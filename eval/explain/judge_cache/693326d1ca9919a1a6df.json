@@ -1,0 +1,1 @@
+{"tokens": [477, 353], "verdict": "unsupported", "why": "The quoted records show p99 latencies of ~545\u202fms and >1000\u202fms, with no ~114\u202fms baseline or indication that a worker\u2011limit reduction caused the increase."}

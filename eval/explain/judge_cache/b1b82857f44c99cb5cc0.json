@@ -1,0 +1,1 @@
+{"tokens": [636, 428], "verdict": "supported", "why": "The quoted records show orders detecting an upstream 503 from inventory (L01012) and scheduling a retry with attempt=2 and 50ms backoff (L01013), which directly matches the statement."}

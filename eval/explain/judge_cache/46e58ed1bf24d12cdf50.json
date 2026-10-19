@@ -1,0 +1,1 @@
+{"tokens": [330, 140], "verdict": "supported", "why": "The quoted record shows an orders service error with message 'request failed: order_failed', confirming that orders requests were failing with order_failed errors."}

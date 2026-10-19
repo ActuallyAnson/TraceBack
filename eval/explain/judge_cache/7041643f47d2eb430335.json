@@ -1,0 +1,1 @@
+{"tokens": [1049, 293], "verdict": "partial", "why": "The records show broker errors followed by retry_scheduled events with a 100ms backoff targeting billing, but they do not explicitly indicate that the errors were pool_exhausted."}

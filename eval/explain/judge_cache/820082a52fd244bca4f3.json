@@ -1,0 +1,1 @@
+{"tokens": [433, 172], "verdict": "supported", "why": "The quoted records show the API service logging error events indicating that its dependency 'ingest' returned a 503 status, which means ingest was failing."}

@@ -1,0 +1,1 @@
+{"tokens": [358, 344], "verdict": "partial", "why": "The record shows shipping had a high count of err5xx errors, but it does not provide a prior baseline to demonstrate a sharp rise after deployment."}

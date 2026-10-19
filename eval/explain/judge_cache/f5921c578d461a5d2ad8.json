@@ -1,0 +1,1 @@
+{"tokens": [452, 365], "verdict": "supported", "why": "The records show a 504 error from the API service and high latency metrics (p50\u22482510\u202fms, p99\u22483003\u202fms) with many 5xx errors, indicating timed\u2011out ingest calls, increased latency, and 504 responses to users."}

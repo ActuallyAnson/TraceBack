@@ -1,0 +1,1 @@
+{"tokens": [502, 337], "verdict": "supported", "why": "The records show ingest had a non\u2011zero queue_max (67) indicating queued requests, and busy_max equals workers_limit (16), showing workers were pinned."}

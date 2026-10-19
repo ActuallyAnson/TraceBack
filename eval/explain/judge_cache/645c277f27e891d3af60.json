@@ -1,0 +1,1 @@
+{"tokens": [423, 337], "verdict": "supported", "why": "The gateway logs show error events (upstream_error, order_failed) that reference order step/request failures, indicating the gateway reported errors while its orders dependency was experiencing failures."}

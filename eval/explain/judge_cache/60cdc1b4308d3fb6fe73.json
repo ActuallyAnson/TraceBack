@@ -1,0 +1,1 @@
+{"tokens": [679, 685], "verdict": "partial", "why": "The records show broker latency and non\u2011queue times, indicating queued requests, but they do not mention a retry storm or show that the storm caused the latency increase or slowed ingest responses."}

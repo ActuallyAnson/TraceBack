@@ -1,0 +1,1 @@
+{"tokens": [349, 318], "verdict": "partial", "why": "The record shows the API logged an upstream error with status 500, but it does not indicate that the error came from the ingest service or that it resulted in 5xx responses to users."}

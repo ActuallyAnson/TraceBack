@@ -1,0 +1,1 @@
+{"tokens": [367, 249], "verdict": "partial", "why": "The record confirms the gateway saw a 500 error, but it does not show that upstream timeouts propagated to cause that error."}

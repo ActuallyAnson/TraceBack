@@ -1,0 +1,1 @@
+{"tokens": [363, 368], "verdict": "partial", "why": "The record confirms that the broker returned a 504 error to ingest and was logged as an error, but the quoted data does not provide enough information to verify the timing 'around +53.711s'."}

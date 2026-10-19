@@ -1,0 +1,1 @@
+{"tokens": [486, 461], "verdict": "partial", "why": "The records show payments returning internal_error errors, but they do not indicate that this occurred after a deploy or that the first observation was at +50.036s."}

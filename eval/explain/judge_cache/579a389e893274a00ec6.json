@@ -1,0 +1,1 @@
+{"tokens": [300, 559], "verdict": "partial", "why": "The record confirms the billing container restarted, but it does not show the +75.109s offset relative to a known start time, so the specific timing claim cannot be verified."}

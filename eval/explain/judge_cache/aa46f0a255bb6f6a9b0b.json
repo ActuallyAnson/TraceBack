@@ -1,0 +1,1 @@
+{"tokens": [337, 1435], "verdict": "unsupported", "why": "The quoted record shows an internal error at a timestamp with microseconds 252,097 (0.252\u202fs) after a large second count, not at +60.252\u202fs."}

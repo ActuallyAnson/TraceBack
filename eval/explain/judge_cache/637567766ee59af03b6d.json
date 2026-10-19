@@ -1,0 +1,1 @@
+{"tokens": [459, 205], "verdict": "supported", "why": "The log shows the gateway received a 503 error from the orders service, and the metrics show a rise in 5xx responses (err5xx=50) indicating the gateway began returning 5xx errors to users."}

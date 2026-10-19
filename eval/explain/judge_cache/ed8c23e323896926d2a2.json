@@ -1,0 +1,1 @@
+{"tokens": [403, 475], "verdict": "partial", "why": "The record confirms a shipping span with status 500 and error internal_error, but it does not provide the +64.153s timestamp offset mentioned in the statement."}

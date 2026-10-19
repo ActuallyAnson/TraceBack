@@ -1,0 +1,1 @@
+{"tokens": [405, 339], "verdict": "partial", "why": "The records confirm the inventory process crashed and was restarted, but they do not show a period during which it failed to accept connections."}

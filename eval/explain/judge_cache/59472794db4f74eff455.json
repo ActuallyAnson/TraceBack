@@ -1,0 +1,1 @@
+{"tokens": [666, 353], "verdict": "partial", "why": "The quoted API spans show client calls to ingest timing out, supporting the first part of the statement, but they provide no information about whether ingest recorded those calls, so the claim about ingest not recording them is not evidenced."}
