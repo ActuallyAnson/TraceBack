@@ -1,0 +1,16 @@
+{
+ "id": "q09",
+ "source": "opentelemetry-demo 85c2cb2 (3.1.0)",
+ "window_start_us": 1792470487280257,
+ "window_end_us": 1792470607280257,
+ "kind": "fault",
+ "flag": "intlShippingSlowdown",
+ "variant": "10sec",
+ "flip_us": 1792470527286434,
+ "root_cause": {
+  "service": "shipping",
+  "edge": null,
+  "summary": "non-US shipping delayed 10 s (repeat)",
+  "onset_us": 1792470527286434
+ }
+}

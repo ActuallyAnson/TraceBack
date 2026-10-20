@@ -104,3 +104,18 @@ real4-check: build real4-data
 	python3 eval/real4/evaluate.py --check
 v4-check:
 	sh eval/real4/check_v4.sh
+
+# Fifth real batch and analyzer v5 (eval/real5/PLAN.md). Offline: model answers come from eval/llm_cache.
+real5-data:
+	mkdir -p eval/real5/data
+	[ -d eval/real5/data/incidents ] || tar -xzf eval/real5/incidents.tgz -C eval/real5/data
+real5: build real5-data
+	python3 eval/real5/evaluate.py
+real5-check: build real5-data
+	python3 eval/real5/evaluate.py --check
+v5-sim: build
+	python3 eval/real5/sim_fresh.py
+v5-sim-check: build
+	python3 eval/real5/sim_fresh.py --check
+v5-check:
+	sh eval/real5/check_v5.sh
