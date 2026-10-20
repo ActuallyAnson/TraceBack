@@ -78,3 +78,18 @@ real2: build real2-data
 	python3 eval/real2/evaluate.py
 real2-check: build real2-data real-data
 	python3 eval/real2/evaluate.py --check
+
+# Third real batch and the hybrid (eval/real3/PLAN.md). Offline: model answers come from eval/llm_cache.
+real3-data:
+	mkdir -p eval/real3/data
+	[ -d eval/real3/data/incidents ] || tar -xzf eval/real3/incidents.tgz -C eval/real3/data
+real3: build real3-data
+	python3 eval/real3/evaluate.py
+real3-check: build real3-data
+	python3 eval/real3/evaluate.py --check
+hybrid-sim: build
+	python3 eval/hybrid/report.py
+hybrid-sim-check: build
+	python3 eval/hybrid/report.py --check
+hybrid-check:
+	sh eval/real3/check_hybrid.sh

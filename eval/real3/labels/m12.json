@@ -1,0 +1,16 @@
+{
+ "id": "m12",
+ "source": "opentelemetry-demo 85c2cb2 (3.1.0)",
+ "window_start_us": 1792462679292677,
+ "window_end_us": 1792462799292677,
+ "kind": "fault",
+ "flag": "productCatalogLockContention",
+ "variant": "on",
+ "flip_us": 1792462719298569,
+ "root_cause": {
+  "service": "product-catalog",
+  "edge": null,
+  "summary": "lock on catalog.products (repeat)",
+  "onset_us": 1792462719298569
+ }
+}

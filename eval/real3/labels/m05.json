@@ -1,0 +1,7 @@
+{
+ "id": "m05",
+ "source": "opentelemetry-demo 85c2cb2 (3.1.0)",
+ "window_start_us": 1792461734159919,
+ "window_end_us": 1792461854159919,
+ "kind": "clean"
+}
