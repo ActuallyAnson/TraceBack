@@ -1,0 +1,16 @@
+{
+ "id": "s10",
+ "source": "opentelemetry-demo 85c2cb2 (3.1.0)",
+ "window_start_us": 1792478708677651,
+ "window_end_us": 1792478828677651,
+ "kind": "fault",
+ "flag": "recommendationCacheFailure",
+ "variant": "on",
+ "flip_us": 1792478748687176,
+ "root_cause": {
+  "service": "recommendation",
+  "edge": null,
+  "summary": "recommendation cache grows and leaks memory (repeat)",
+  "onset_us": 1792478748687176
+ }
+}

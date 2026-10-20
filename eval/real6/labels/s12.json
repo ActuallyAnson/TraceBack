@@ -1,0 +1,16 @@
+{
+ "id": "s12",
+ "source": "opentelemetry-demo 85c2cb2 (3.1.0)",
+ "window_start_us": 1792478978725328,
+ "window_end_us": 1792479098725328,
+ "kind": "fault",
+ "flag": "adHighCpu",
+ "variant": "on",
+ "flip_us": 1792479018732870,
+ "root_cause": {
+  "service": "ad",
+  "edge": null,
+  "summary": "high CPU load in the ad service (repeat)",
+  "onset_us": 1792479018732870
+ }
+}

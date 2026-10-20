@@ -119,3 +119,18 @@ v5-sim-check: build
 	python3 eval/real5/sim_fresh.py --check
 v5-check:
 	sh eval/real5/check_v5.sh
+
+# Sixth real batch and analyzer v6 (eval/real6/PLAN.md). Offline: model answers come from eval/llm_cache.
+real6-data:
+	mkdir -p eval/real6/data
+	[ -d eval/real6/data/incidents ] || tar -xzf eval/real6/incidents.tgz -C eval/real6/data
+real6: build real6-data
+	python3 eval/real6/evaluate.py
+real6-check: build real6-data
+	python3 eval/real6/evaluate.py --check
+v6-sim: build
+	python3 eval/real6/sim_all.py
+v6-sim-check: build
+	python3 eval/real6/sim_all.py --check
+v6-check:
+	sh eval/real6/check_v6.sh
