@@ -26,8 +26,8 @@ int main(int argc, char** argv) {
     else { std::fprintf(stderr, "unknown option %s\n", k.c_str()); return 2; }
   }
   if (o.system != "traceback" && o.system != "baseline") { std::fprintf(stderr, "--system must be traceback or baseline\n"); return 2; }
-  if (o.rules != "v1" && o.rules != "v2" && o.rules != "v3" && o.rules != "v4" && o.rules != "v5") { std::fprintf(stderr, "--rules must be v1, v2, v3, v4 or v5\n"); return 2; }
-  if (o.rules != "v1" && o.system != "traceback") { std::fprintf(stderr, "--rules v2/v3/v4/v5 apply to --system traceback only\n"); return 2; }
+  if (o.rules != "v1" && o.rules != "v2" && o.rules != "v3" && o.rules != "v4" && o.rules != "v5" && o.rules != "v6") { std::fprintf(stderr, "--rules must be v1, v2, v3, v4, v5 or v6\n"); return 2; }
+  if (o.rules != "v1" && o.system != "traceback") { std::fprintf(stderr, "--rules v2/v3/v4/v5/v6 apply to --system traceback only\n"); return 2; }
   if (o.rules != "v1" && o.prompts_dir == "prompts") o.prompts_dir = "prompts_v2";
   try {
     tb::Incident inc = tb::load_incident(argv[1]);
