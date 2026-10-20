@@ -8,7 +8,13 @@ TAU = 10.0  # fixed on the development data (RE2-SS) before any test data was op
 
 
 def window_scores(path, w0, w1):
-    rows = list(csv.DictReader(open(path, newline="", encoding="utf-8", errors="replace")))
+    rows = []
+    for r in csv.DictReader(open(path, newline="", encoding="utf-8", errors="replace")):
+        try:
+            float(r["time"])
+        except (TypeError, ValueError):
+            continue  # a few rows of some archives have an empty timestamp; they carry no usable sample
+        rows.append(r)
     if not rows:
         return {}
     t = [int(float(r["time"])) for r in rows]
