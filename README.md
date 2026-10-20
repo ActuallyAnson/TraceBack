@@ -740,7 +740,7 @@ Model cost of this batch (baseline, Full Traceback v2 and v4; the hybrid's propo
 - **What the linkage fix did do:** the failing service is now inside the failed entry requests (for example all 14 failing payment spans of `p02`), and in `p10` the origin measure credits the true service (`recommendation`) with 82% (checked on the converted data, diagnostic only).
 - **What is still wrong:** every analyzer answers `retry_amplification/frontend` on all 13 runs, clean ones included, so a v1 rule fires on ordinary real traffic and the true service is never proposed. This is candidate generation, not scoring or linkage. I did not investigate the rule further.
 - **Hybrid:** the frozen hybrid scored 4/10 on this batch as first run, but that came from a merge bug (the analyzer's top candidate was overwritten by a lower-ranked duplicate in all 13 runs, so it used its last-resort branch). With the bug fixed it follows its pre-registered rule and localizes 0 of 10, like the analyzers. Both columns are in the table. The bug did not occur on batch 3 or on the simulator sets, whose results are unchanged.
-- **Cost and time:** $0.412 in model calls for this batch; about 1 hour 40 minutes of wall-clock including the review below.
+- **Cost and time:** $0.412 in model calls for this batch; about 1 hour of wall-clock including the review below.
 
 ### Scoring correction and code review (2026-10-20)
 
