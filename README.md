@@ -904,6 +904,9 @@ Incidents where the analyzer answer differs between v5 and v6 or either is wrong
 - **Cost and time:** $0.33 in model calls for batch 6 plus a few cents on the simulator rerun; the iteration took most of a working session, about three hours of it spent on the stalled endpoint and the retries. Total model spend since the "about $10 left" budget note: about $5.2.
 
 
+**Model-size check on batch 6 (2026-10-20, run once, not tuned; `eval/real6/ultra_check.py`):** the same locked data and prompts with the larger Nemotron Ultra model. The raw-logs baseline localized **7 of 10** (6 with Super), Full Traceback v6 stayed at **5 of 10**, and with Ultra Full Traceback raised a medium alarm on 3 of 3 clean runs (it was 0 of 3 with Super) and returned no answer at all on `s08`. So a larger model helps the approach that reads raw logs and does not help the one limited by the analyzer's shortlist, which supports the view that Full Traceback's real-telemetry limit is the evidence and structure around the model, not the model. One batch, one run each; no significance claims. Model cost $1.43 (repo price constants for Ultra); total model spend since the "$10 left" note is now about $6.6.
+
+
 ## Future work
 
 - Harmless deploys and swallowed errors on fire-and-forget branches still outrank real causes in some latency cascades (v1's `fan-02`, v2's fresh `f2-02`); v2's origin-share rule fixed the entry-service variant only partly. Needs a way to tell a swallowed error from a causal one that survives cascades.
