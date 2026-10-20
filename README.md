@@ -819,6 +819,18 @@ Wrong answers per system (all of them): Analyzer v4: f2-02, f2-04; Analyzer v5: 
 - **Cost and time:** $0.44 in model calls for batch 5 (a few cents more for the simulator rerun); about 1 hour of wall-clock for this iteration including collection. Total model spend since the "about $10 left" budget note: about $4.8.
 
 
+### Sixth iteration: log evidence (analyzer v6), fresh batch 6 (analyzers only so far)
+
+The explanation I gave for the analyzers trailing the raw-logs baseline is that the baseline reads what the logs say and the analyzer never does. I tested it with one rule (`eval/real6/PLAN.md`, frozen with `V6_HASHES` before batch 6 existed; batches 1 to 5 were development data): a service that logs a burst of warnings or errors beyond its own baseline is evidence about it, a caller that logs because something it calls is logging is a symptom, and a "retry storm" whose attempts overlap in time is not retrying (that false alarm fired on every clean real run). Batch 6 (13 runs) was collected and locked (`eval/real6/LOCK`).
+
+**What is done and what is not.** The model endpoint stalled while I was running the model-side systems on batch 6: a one-line chat request timed out while the model-list endpoint answered in under a second, and the first run hung for over an hour on a single baseline request. So the raw-logs baseline and Full Traceback v5/v6 have **not** been run on batch 6, and the pre-registered comparison is incomplete; the analyzer-only part needs no model and is reported (`eval/real6/RESULTS_PARTIAL.md`, `analyzers_only.py`).
+
+- **Batch 6, analyzers only (10 faults, 3 clean runs):** analyzer v5 localizes 4 of 10, **analyzer v6 5 of 10**; clean-run alarms (medium or high): v5 3 of 3, **v6 0 of 3**. The one extra fault is `s11` (cart 25%). No significance claims; the baseline's number on this batch is not available.
+- **Simulator, analyzer alone, top-1 (v5 to v6):** v2 fresh 46 to 47 of 48 (`f2-04` fixed); topology 2 test 12 to 12 of 14 (one fixed, one broken: `fan-12` and `fan-13`); **v1 test split 26 to 24 of 26** (`inc-049` and `inc-050` newly wrong: `internal_errors/inventory`). So v6 is not free on the simulator; those are the analyzer alone, the published Full Traceback numbers on those sets were not re-run.
+- **Reading:** the log-evidence idea is partly supported (it localizes one more fault and removes the clean-run false alarms) but it costs two simulator test incidents, and whether it closes the gap to the baseline is still untested on this batch.
+- **Pending:** the baseline, Full Traceback v5/v6 on batch 6, and Full Traceback v6 on the simulator fresh sets (`make real6`, `make v6-sim`, once the endpoint answers; no README block exists for them yet, so those two targets will not pass until it does). A review fix went in: a request that already used its whole timeout is no longer retried five times.
+
+
 ## Future work
 
 - Harmless deploys and swallowed errors on fire-and-forget branches still outrank real causes in some latency cascades (v1's `fan-02`, v2's fresh `f2-02`); v2's origin-share rule fixed the entry-service variant only partly. Needs a way to tell a swallowed error from a causal one that survives cascades.

@@ -83,7 +83,8 @@ LlmResult chat(const LlmConfig& cfg, const Messages& msgs) {
     curl_easy_cleanup(curl);
     r.http_status = static_cast<int>(status);
 
-    const bool transient = rc != CURLE_OK || status == 429 || status >= 500;
+    // A request that already used its whole timeout is not retried: five attempts of 600 s each hung an evaluation for over an hour when the endpoint stalled.
+    const bool transient = (rc != CURLE_OK && rc != CURLE_OPERATION_TIMEDOUT) || status == 429 || status >= 500;
     if (rc == CURLE_OK && status == 200) {
       json j = json::parse(resp, nullptr, false);
       if (j.is_discarded() || !j.contains("choices") || j["choices"].empty()) { r.error = "malformed response"; return r; }
