@@ -2,6 +2,7 @@
 
 #include "tb/analyzer_v2.hpp"
 #include "tb/analyzer_v3.hpp"
+#include "tb/analyzer_v4.hpp"
 
 #include <algorithm>
 #include <cmath>
@@ -330,7 +331,7 @@ json reason(Incident& inc, const ReasonOptions& opt) {
   json rep;
   std::string user;
   if (opt.system == "traceback") {
-    rep = opt.rules == "v3" ? analyze_v3(inc, opt.incident_dir) : opt.rules == "v2" ? analyze_v2(inc) : analyze(inc);  // aligns clocks in place
+    rep = opt.rules == "v4" ? analyze_v4(inc, opt.incident_dir) : opt.rules == "v3" ? analyze_v3(inc, opt.incident_dir) : opt.rules == "v2" ? analyze_v2(inc) : analyze(inc);  // aligns clocks in place
     user = traceback_user(inc, rep, meta);
   } else {
     user = baseline_user(inc, opt.token_budget, meta);

@@ -1,0 +1,6 @@
+# analyzer v4, converter v3 and the batch-4 plan inputs, frozen before batch 4 was collected. check: sh eval/real4/check_v4.sh
+36a6df1ece500339079c6396d6cedc5ed06af5304a7e5be7366c8fb4592c3b7c  include/tb/analyzer_v4.hpp
+463f0d65b67554c3b4dfaf4d7deee922a32bcd2cebd0bb3bb202f384f2007ca5  src/analyzer_v4/rerank.cpp
+395862e84d846ab65dfecb8c9f083281e5a1499f9119f879380572fb61fc9563  src/analyzer_v4/main.cpp
+bdec61c5a4c5da2a8f4b4c3b50aebad4300d2d981ad12b3ac768c455eb634f07  eval/real4/convert.py
+9676998d53ceb7bceee603a3ea00fed15dd1302f1a89db136a38387414c3fc9f  eval/real4/scenarios.json

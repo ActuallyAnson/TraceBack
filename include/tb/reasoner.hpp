@@ -14,8 +14,8 @@ struct ReasonOptions {
   std::string description;          // optional architecture sentence from the incident's meta.json; replaces the prompt's first paragraph
   std::string prompt_name;           // system prompt file prefix; defaults to `system` (e.g. "baseline_plus")
   std::string prompts_dir = "prompts";
-  std::string rules = "v1";          // "v1" (frozen) | "v2" (analyzer v2 + override rule; traceback only; see eval/v2/PLAN.md) | "v3" (analyzer v3 + the same override rule; eval/real2/PLAN.md)
-  std::string incident_dir;          // needed by rules "v3" (optional per-span error flags)
+  std::string rules = "v1";          // "v1" (frozen) | "v2" (analyzer v2 + override rule; traceback only; see eval/v2/PLAN.md) | "v3" (analyzer v3 + the same override rule; eval/real2/PLAN.md) | "v4" (analyzer v4, eval/real4/PLAN.md)
+  std::string incident_dir;          // needed by rules "v3"/"v4" (optional per-span error flags)
   LlmConfig llm;
   int token_budget = 225000;  // estimated prompt tokens for the baseline; above this warn/error logs are subsampled
   bool dry_run = false;       // build the prompts, call nothing
