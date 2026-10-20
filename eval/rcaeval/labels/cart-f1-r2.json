@@ -1,0 +1,11 @@
+{
+ "id": "cart-f1-r2",
+ "kind": "fault",
+ "source": "RCAEval RE3-OB",
+ "case": "cartservice_f1/2",
+ "fault_type": "f1",
+ "root_cause": {
+  "service": "cartservice",
+  "edge": null
+ }
+}

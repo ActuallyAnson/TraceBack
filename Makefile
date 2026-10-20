@@ -134,3 +134,12 @@ v6-sim-check: build
 	python3 eval/real6/sim_all.py --check
 v6-check:
 	sh eval/real6/check_v6.sh
+
+# RCAEval RE3-OB public benchmark check (eval/rcaeval/PLAN.md). Offline: model answers come from eval/llm_cache.
+rcaeval-data:
+	mkdir -p eval/rcaeval/data
+	[ -d eval/rcaeval/data/incidents ] || tar -xzf eval/rcaeval/incidents.tgz -C eval/rcaeval/data
+rcaeval: build rcaeval-data
+	python3 eval/rcaeval/evaluate.py
+rcaeval-check: build rcaeval-data
+	python3 eval/rcaeval/evaluate.py --check

@@ -1,0 +1,11 @@
+{
+ "id": "email-f2-r1",
+ "kind": "fault",
+ "source": "RCAEval RE3-OB",
+ "case": "emailservice_f2/1",
+ "fault_type": "f2",
+ "root_cause": {
+  "service": "emailservice",
+  "edge": null
+ }
+}
