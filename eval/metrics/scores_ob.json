@@ -1,0 +1,1562 @@
+[
+{
+"id": "ob-checkoutservice-cpu-r1",
+"kind": "fault",
+"truth": "checkoutservice",
+"fault_type": "cpu",
+"answer": "checkoutservice",
+"top_service": "checkoutservice",
+"top_score": 10.58,
+"second": [
+"paymentservice",
+3.09
+]
+},
+{
+"id": "ob-clean-checkoutservice-cpu",
+"kind": "clean",
+"truth": null,
+"fault_type": "cpu",
+"answer": null,
+"top_service": "currencyservice",
+"top_score": 5.62,
+"second": [
+"cartservice",
+2.6
+]
+},
+{
+"id": "ob-checkoutservice-cpu-r2",
+"kind": "fault",
+"truth": "checkoutservice",
+"fault_type": "cpu",
+"answer": null,
+"top_service": "checkoutservice",
+"top_score": 9.43,
+"second": [
+"currencyservice",
+6.96
+]
+},
+{
+"id": "ob-checkoutservice-cpu-r3",
+"kind": "fault",
+"truth": "checkoutservice",
+"fault_type": "cpu",
+"answer": "checkoutservice",
+"top_service": "checkoutservice",
+"top_score": 10.99,
+"second": [
+"redis",
+8.29
+]
+},
+{
+"id": "ob-checkoutservice-delay-r1",
+"kind": "fault",
+"truth": "checkoutservice",
+"fault_type": "delay",
+"answer": "emailservice",
+"top_service": "emailservice",
+"top_score": 12.88,
+"second": [
+"paymentservice",
+12.86
+]
+},
+{
+"id": "ob-clean-checkoutservice-delay",
+"kind": "clean",
+"truth": null,
+"fault_type": "delay",
+"answer": null,
+"top_service": "cartservice",
+"top_score": 4.57,
+"second": [
+"frontend",
+3.92
+]
+},
+{
+"id": "ob-checkoutservice-delay-r2",
+"kind": "fault",
+"truth": "checkoutservice",
+"fault_type": "delay",
+"answer": "emailservice",
+"top_service": "emailservice",
+"top_score": 10.08,
+"second": [
+"paymentservice",
+9.78
+]
+},
+{
+"id": "ob-checkoutservice-delay-r3",
+"kind": "fault",
+"truth": "checkoutservice",
+"fault_type": "delay",
+"answer": "checkoutservice",
+"top_service": "checkoutservice",
+"top_score": 11.68,
+"second": [
+"emailservice",
+11.1
+]
+},
+{
+"id": "ob-checkoutservice-disk-r1",
+"kind": "fault",
+"truth": "checkoutservice",
+"fault_type": "disk",
+"answer": "checkoutservice",
+"top_service": "checkoutservice",
+"top_score": 15.46,
+"second": [
+"paymentservice",
+2.85
+]
+},
+{
+"id": "ob-clean-checkoutservice-disk",
+"kind": "clean",
+"truth": null,
+"fault_type": "disk",
+"answer": null,
+"top_service": "checkoutservice",
+"top_score": 3.7,
+"second": [
+"shippingservice",
+3.42
+]
+},
+{
+"id": "ob-checkoutservice-disk-r2",
+"kind": "fault",
+"truth": "checkoutservice",
+"fault_type": "disk",
+"answer": "checkoutservice",
+"top_service": "checkoutservice",
+"top_score": 15.78,
+"second": [
+"redis",
+7.84
+]
+},
+{
+"id": "ob-checkoutservice-disk-r3",
+"kind": "fault",
+"truth": "checkoutservice",
+"fault_type": "disk",
+"answer": "checkoutservice",
+"top_service": "checkoutservice",
+"top_score": 14.21,
+"second": [
+"adservice",
+6.18
+]
+},
+{
+"id": "ob-checkoutservice-loss-r1",
+"kind": "fault",
+"truth": "checkoutservice",
+"fault_type": "loss",
+"answer": null,
+"top_service": "checkoutservice",
+"top_score": 8.65,
+"second": [
+"frontend-external",
+6.52
+]
+},
+{
+"id": "ob-clean-checkoutservice-loss",
+"kind": "clean",
+"truth": null,
+"fault_type": "loss",
+"answer": null,
+"top_service": "cartservice",
+"top_score": 5.72,
+"second": [
+"frontend",
+4.8
+]
+},
+{
+"id": "ob-checkoutservice-loss-r2",
+"kind": "fault",
+"truth": "checkoutservice",
+"fault_type": "loss",
+"answer": null,
+"top_service": "checkoutservice",
+"top_score": 9.91,
+"second": [
+"emailservice",
+2.87
+]
+},
+{
+"id": "ob-checkoutservice-loss-r3",
+"kind": "fault",
+"truth": "checkoutservice",
+"fault_type": "loss",
+"answer": "checkoutservice",
+"top_service": "checkoutservice",
+"top_score": 13.41,
+"second": [
+"adservice",
+3.39
+]
+},
+{
+"id": "ob-checkoutservice-mem-r1",
+"kind": "fault",
+"truth": "checkoutservice",
+"fault_type": "mem",
+"answer": "checkoutservice",
+"top_service": "checkoutservice",
+"top_score": 12.67,
+"second": [
+"redis",
+8.31
+]
+},
+{
+"id": "ob-clean-checkoutservice-mem",
+"kind": "clean",
+"truth": null,
+"fault_type": "mem",
+"answer": null,
+"top_service": "cartservice",
+"top_score": 3.24,
+"second": [
+"currencyservice",
+1.75
+]
+},
+{
+"id": "ob-checkoutservice-mem-r2",
+"kind": "fault",
+"truth": "checkoutservice",
+"fault_type": "mem",
+"answer": "checkoutservice",
+"top_service": "checkoutservice",
+"top_score": 12.42,
+"second": [
+"currencyservice",
+7.56
+]
+},
+{
+"id": "ob-checkoutservice-mem-r3",
+"kind": "fault",
+"truth": "checkoutservice",
+"fault_type": "mem",
+"answer": "checkoutservice",
+"top_service": "checkoutservice",
+"top_score": 13.94,
+"second": [
+"paymentservice",
+6.01
+]
+},
+{
+"id": "ob-checkoutservice-socket-r1",
+"kind": "fault",
+"truth": "checkoutservice",
+"fault_type": "socket",
+"answer": "checkoutservice",
+"top_service": "checkoutservice",
+"top_score": 15.25,
+"second": [
+"currencyservice",
+3.59
+]
+},
+{
+"id": "ob-clean-checkoutservice-socket",
+"kind": "clean",
+"truth": null,
+"fault_type": "socket",
+"answer": null,
+"top_service": "adservice",
+"top_score": 7.3,
+"second": [
+"currencyservice",
+4.66
+]
+},
+{
+"id": "ob-checkoutservice-socket-r2",
+"kind": "fault",
+"truth": "checkoutservice",
+"fault_type": "socket",
+"answer": "checkoutservice",
+"top_service": "checkoutservice",
+"top_score": 14.02,
+"second": [
+"paymentservice",
+2.57
+]
+},
+{
+"id": "ob-checkoutservice-socket-r3",
+"kind": "fault",
+"truth": "checkoutservice",
+"fault_type": "socket",
+"answer": "checkoutservice",
+"top_service": "checkoutservice",
+"top_score": 14.18,
+"second": [
+"currencyservice",
+4.57
+]
+},
+{
+"id": "ob-currencyservice-cpu-r1",
+"kind": "fault",
+"truth": "currencyservice",
+"fault_type": "cpu",
+"answer": null,
+"top_service": "currencyservice",
+"top_score": 8.66,
+"second": [
+"frontend",
+8.39
+]
+},
+{
+"id": "ob-clean-currencyservice-cpu",
+"kind": "clean",
+"truth": null,
+"fault_type": "cpu",
+"answer": null,
+"top_service": "paymentservice",
+"top_score": 3.55,
+"second": [
+"frontend",
+2.86
+]
+},
+{
+"id": "ob-currencyservice-cpu-r2",
+"kind": "fault",
+"truth": "currencyservice",
+"fault_type": "cpu",
+"answer": "currencyservice",
+"top_service": "currencyservice",
+"top_score": 10.1,
+"second": [
+"checkoutservice",
+9.51
+]
+},
+{
+"id": "ob-currencyservice-cpu-r3",
+"kind": "fault",
+"truth": "currencyservice",
+"fault_type": "cpu",
+"answer": null,
+"top_service": "frontend",
+"top_score": 8.31,
+"second": [
+"currencyservice",
+7.67
+]
+},
+{
+"id": "ob-currencyservice-delay-r1",
+"kind": "fault",
+"truth": "currencyservice",
+"fault_type": "delay",
+"answer": "currencyservice",
+"top_service": "currencyservice",
+"top_score": 11.56,
+"second": [
+"checkoutservice",
+10.28
+]
+},
+{
+"id": "ob-clean-currencyservice-delay",
+"kind": "clean",
+"truth": null,
+"fault_type": "delay",
+"answer": null,
+"top_service": "paymentservice",
+"top_score": 4.95,
+"second": [
+"shippingservice",
+2.05
+]
+},
+{
+"id": "ob-currencyservice-delay-r2",
+"kind": "fault",
+"truth": "currencyservice",
+"fault_type": "delay",
+"answer": "currencyservice",
+"top_service": "currencyservice",
+"top_score": 12.24,
+"second": [
+"frontend",
+10.47
+]
+},
+{
+"id": "ob-currencyservice-delay-r3",
+"kind": "fault",
+"truth": "currencyservice",
+"fault_type": "delay",
+"answer": "currencyservice",
+"top_service": "currencyservice",
+"top_score": 11.83,
+"second": [
+"frontend",
+10.4
+]
+},
+{
+"id": "ob-currencyservice-disk-r1",
+"kind": "fault",
+"truth": "currencyservice",
+"fault_type": "disk",
+"answer": "currencyservice",
+"top_service": "currencyservice",
+"top_score": 15.03,
+"second": [
+"checkoutservice",
+11.46
+]
+},
+{
+"id": "ob-clean-currencyservice-disk",
+"kind": "clean",
+"truth": null,
+"fault_type": "disk",
+"answer": null,
+"top_service": "redis",
+"top_score": 5.91,
+"second": [
+"checkoutservice",
+5.79
+]
+},
+{
+"id": "ob-currencyservice-disk-r2",
+"kind": "fault",
+"truth": "currencyservice",
+"fault_type": "disk",
+"answer": "currencyservice",
+"top_service": "currencyservice",
+"top_score": 14.65,
+"second": [
+"frontend",
+10.63
+]
+},
+{
+"id": "ob-currencyservice-disk-r3",
+"kind": "fault",
+"truth": "currencyservice",
+"fault_type": "disk",
+"answer": "currencyservice",
+"top_service": "currencyservice",
+"top_score": 11.34,
+"second": [
+"frontend",
+9.22
+]
+},
+{
+"id": "ob-currencyservice-loss-r1",
+"kind": "fault",
+"truth": "currencyservice",
+"fault_type": "loss",
+"answer": "checkoutservice",
+"top_service": "checkoutservice",
+"top_score": 11.53,
+"second": [
+"currencyservice",
+8.75
+]
+},
+{
+"id": "ob-clean-currencyservice-loss",
+"kind": "clean",
+"truth": null,
+"fault_type": "loss",
+"answer": null,
+"top_service": "frontend",
+"top_score": 3.53,
+"second": [
+"checkoutservice",
+2.16
+]
+},
+{
+"id": "ob-currencyservice-loss-r2",
+"kind": "fault",
+"truth": "currencyservice",
+"fault_type": "loss",
+"answer": "cartservice",
+"top_service": "cartservice",
+"top_score": 12.2,
+"second": [
+"frontend",
+11.34
+]
+},
+{
+"id": "ob-currencyservice-loss-r3",
+"kind": "fault",
+"truth": "currencyservice",
+"fault_type": "loss",
+"answer": null,
+"top_service": "recommendationservice",
+"top_score": 9.87,
+"second": [
+"checkoutservice",
+9.61
+]
+},
+{
+"id": "ob-currencyservice-mem-r1",
+"kind": "fault",
+"truth": "currencyservice",
+"fault_type": "mem",
+"answer": "currencyservice",
+"top_service": "currencyservice",
+"top_score": 13.33,
+"second": [
+"frontend",
+11.08
+]
+},
+{
+"id": "ob-clean-currencyservice-mem",
+"kind": "clean",
+"truth": null,
+"fault_type": "mem",
+"answer": null,
+"top_service": "emailservice",
+"top_score": 7.76,
+"second": [
+"paymentservice",
+6.54
+]
+},
+{
+"id": "ob-currencyservice-mem-r2",
+"kind": "fault",
+"truth": "currencyservice",
+"fault_type": "mem",
+"answer": "currencyservice",
+"top_service": "currencyservice",
+"top_score": 14.0,
+"second": [
+"recommendationservice",
+11.23
+]
+},
+{
+"id": "ob-currencyservice-mem-r3",
+"kind": "fault",
+"truth": "currencyservice",
+"fault_type": "mem",
+"answer": "currencyservice",
+"top_service": "currencyservice",
+"top_score": 12.0,
+"second": [
+"frontend",
+9.79
+]
+},
+{
+"id": "ob-currencyservice-socket-r1",
+"kind": "fault",
+"truth": "currencyservice",
+"fault_type": "socket",
+"answer": "currencyservice",
+"top_service": "currencyservice",
+"top_score": 12.0,
+"second": [
+"frontend",
+5.87
+]
+},
+{
+"id": "ob-clean-currencyservice-socket",
+"kind": "clean",
+"truth": null,
+"fault_type": "socket",
+"answer": null,
+"top_service": "redis",
+"top_score": 7.68,
+"second": [
+"checkoutservice",
+4.21
+]
+},
+{
+"id": "ob-currencyservice-socket-r2",
+"kind": "fault",
+"truth": "currencyservice",
+"fault_type": "socket",
+"answer": "currencyservice",
+"top_service": "currencyservice",
+"top_score": 15.57,
+"second": [
+"frontend",
+11.41
+]
+},
+{
+"id": "ob-currencyservice-socket-r3",
+"kind": "fault",
+"truth": "currencyservice",
+"fault_type": "socket",
+"answer": "currencyservice",
+"top_service": "currencyservice",
+"top_score": 13.94,
+"second": [
+"frontend",
+10.11
+]
+},
+{
+"id": "ob-emailservice-cpu-r1",
+"kind": "fault",
+"truth": "emailservice",
+"fault_type": "cpu",
+"answer": "emailservice",
+"top_service": "emailservice",
+"top_score": 10.77,
+"second": [
+"checkoutservice",
+3.94
+]
+},
+{
+"id": "ob-clean-emailservice-cpu",
+"kind": "clean",
+"truth": null,
+"fault_type": "cpu",
+"answer": null,
+"top_service": "shippingservice",
+"top_score": 2.59,
+"second": [
+"checkoutservice",
+2.5
+]
+},
+{
+"id": "ob-emailservice-cpu-r2",
+"kind": "fault",
+"truth": "emailservice",
+"fault_type": "cpu",
+"answer": "emailservice",
+"top_service": "emailservice",
+"top_score": 13.91,
+"second": [
+"checkoutservice",
+13.18
+]
+},
+{
+"id": "ob-emailservice-cpu-r3",
+"kind": "fault",
+"truth": "emailservice",
+"fault_type": "cpu",
+"answer": "emailservice",
+"top_service": "emailservice",
+"top_score": 11.64,
+"second": [
+"checkoutservice",
+6.45
+]
+},
+{
+"id": "ob-emailservice-delay-r1",
+"kind": "fault",
+"truth": "emailservice",
+"fault_type": "delay",
+"answer": "emailservice",
+"top_service": "emailservice",
+"top_score": 12.27,
+"second": [
+"checkoutservice",
+10.06
+]
+},
+{
+"id": "ob-clean-emailservice-delay",
+"kind": "clean",
+"truth": null,
+"fault_type": "delay",
+"answer": null,
+"top_service": "emailservice",
+"top_score": 9.31,
+"second": [
+"paymentservice",
+9.08
+]
+},
+{
+"id": "ob-emailservice-delay-r2",
+"kind": "fault",
+"truth": "emailservice",
+"fault_type": "delay",
+"answer": "checkoutservice",
+"top_service": "checkoutservice",
+"top_score": 10.59,
+"second": [
+"emailservice",
+9.98
+]
+},
+{
+"id": "ob-emailservice-delay-r3",
+"kind": "fault",
+"truth": "emailservice",
+"fault_type": "delay",
+"answer": "emailservice",
+"top_service": "emailservice",
+"top_score": 13.13,
+"second": [
+"checkoutservice",
+12.8
+]
+},
+{
+"id": "ob-emailservice-disk-r1",
+"kind": "fault",
+"truth": "emailservice",
+"fault_type": "disk",
+"answer": "emailservice",
+"top_service": "emailservice",
+"top_score": 16.43,
+"second": [
+"checkoutservice",
+9.04
+]
+},
+{
+"id": "ob-clean-emailservice-disk",
+"kind": "clean",
+"truth": null,
+"fault_type": "disk",
+"answer": null,
+"top_service": "redis",
+"top_score": 5.39,
+"second": [
+"checkoutservice",
+3.17
+]
+},
+{
+"id": "ob-emailservice-disk-r2",
+"kind": "fault",
+"truth": "emailservice",
+"fault_type": "disk",
+"answer": "emailservice",
+"top_service": "emailservice",
+"top_score": 14.0,
+"second": [
+"paymentservice",
+4.46
+]
+},
+{
+"id": "ob-emailservice-disk-r3",
+"kind": "fault",
+"truth": "emailservice",
+"fault_type": "disk",
+"answer": "emailservice",
+"top_service": "emailservice",
+"top_score": 16.2,
+"second": [
+"adservice",
+9.38
+]
+},
+{
+"id": "ob-emailservice-loss-r1",
+"kind": "fault",
+"truth": "emailservice",
+"fault_type": "loss",
+"answer": null,
+"top_service": "currencyservice",
+"top_score": 9.3,
+"second": [
+"checkoutservice",
+6.67
+]
+},
+{
+"id": "ob-clean-emailservice-loss",
+"kind": "clean",
+"truth": null,
+"fault_type": "loss",
+"answer": null,
+"top_service": "checkoutservice",
+"top_score": 2.67,
+"second": [
+"paymentservice",
+2.67
+]
+},
+{
+"id": "ob-emailservice-loss-r2",
+"kind": "fault",
+"truth": "emailservice",
+"fault_type": "loss",
+"answer": null,
+"top_service": "checkoutservice",
+"top_score": 7.9,
+"second": [
+"redis",
+6.91
+]
+},
+{
+"id": "ob-emailservice-loss-r3",
+"kind": "fault",
+"truth": "emailservice",
+"fault_type": "loss",
+"answer": null,
+"top_service": "checkoutservice",
+"top_score": 8.8,
+"second": [
+"emailservice",
+8.65
+]
+},
+{
+"id": "ob-emailservice-mem-r1",
+"kind": "fault",
+"truth": "emailservice",
+"fault_type": "mem",
+"answer": "emailservice",
+"top_service": "emailservice",
+"top_score": 10.71,
+"second": [
+"checkoutservice",
+10.22
+]
+},
+{
+"id": "ob-clean-emailservice-mem",
+"kind": "clean",
+"truth": null,
+"fault_type": "mem",
+"answer": "adservice",
+"top_service": "adservice",
+"top_score": 10.06,
+"second": [
+"cartservice",
+4.65
+]
+},
+{
+"id": "ob-emailservice-mem-r2",
+"kind": "fault",
+"truth": "emailservice",
+"fault_type": "mem",
+"answer": "emailservice",
+"top_service": "emailservice",
+"top_score": 10.57,
+"second": [
+"checkoutservice",
+10.56
+]
+},
+{
+"id": "ob-emailservice-mem-r3",
+"kind": "fault",
+"truth": "emailservice",
+"fault_type": "mem",
+"answer": "emailservice",
+"top_service": "emailservice",
+"top_score": 10.03,
+"second": [
+"checkoutservice",
+9.7
+]
+},
+{
+"id": "ob-emailservice-socket-r1",
+"kind": "fault",
+"truth": "emailservice",
+"fault_type": "socket",
+"answer": "emailservice",
+"top_service": "emailservice",
+"top_score": 14.67,
+"second": [
+"checkoutservice",
+6.72
+]
+},
+{
+"id": "ob-clean-emailservice-socket",
+"kind": "clean",
+"truth": null,
+"fault_type": "socket",
+"answer": null,
+"top_service": "shippingservice",
+"top_score": 4.69,
+"second": [
+"checkoutservice",
+3.2
+]
+},
+{
+"id": "ob-emailservice-socket-r2",
+"kind": "fault",
+"truth": "emailservice",
+"fault_type": "socket",
+"answer": "emailservice",
+"top_service": "emailservice",
+"top_score": 13.68,
+"second": [
+"checkoutservice",
+6.5
+]
+},
+{
+"id": "ob-emailservice-socket-r3",
+"kind": "fault",
+"truth": "emailservice",
+"fault_type": "socket",
+"answer": "emailservice",
+"top_service": "emailservice",
+"top_score": 13.42,
+"second": [
+"currencyservice",
+4.8
+]
+},
+{
+"id": "ob-productcatalogservice-cpu-r1",
+"kind": "fault",
+"truth": "productcatalogservice",
+"fault_type": "cpu",
+"answer": "recommendationservice",
+"top_service": "recommendationservice",
+"top_score": 10.78,
+"second": [
+"productcatalogservice",
+10.21
+]
+},
+{
+"id": "ob-clean-productcatalogservice-cpu",
+"kind": "clean",
+"truth": null,
+"fault_type": "cpu",
+"answer": null,
+"top_service": "paymentservice",
+"top_score": 7.08,
+"second": [
+"emailservice",
+6.14
+]
+},
+{
+"id": "ob-productcatalogservice-cpu-r2",
+"kind": "fault",
+"truth": "productcatalogservice",
+"fault_type": "cpu",
+"answer": "recommendationservice",
+"top_service": "recommendationservice",
+"top_score": 13.11,
+"second": [
+"productcatalogservice",
+10.64
+]
+},
+{
+"id": "ob-productcatalogservice-cpu-r3",
+"kind": "fault",
+"truth": "productcatalogservice",
+"fault_type": "cpu",
+"answer": "recommendationservice",
+"top_service": "recommendationservice",
+"top_score": 12.67,
+"second": [
+"productcatalogservice",
+10.67
+]
+},
+{
+"id": "ob-productcatalogservice-delay-r1",
+"kind": "fault",
+"truth": "productcatalogservice",
+"fault_type": "delay",
+"answer": "recommendationservice",
+"top_service": "recommendationservice",
+"top_score": 12.91,
+"second": [
+"frontend",
+12.59
+]
+},
+{
+"id": "ob-clean-productcatalogservice-delay",
+"kind": "clean",
+"truth": null,
+"fault_type": "delay",
+"answer": null,
+"top_service": "checkoutservice",
+"top_score": 2.52,
+"second": [
+"frontend",
+2.14
+]
+},
+{
+"id": "ob-productcatalogservice-delay-r2",
+"kind": "fault",
+"truth": "productcatalogservice",
+"fault_type": "delay",
+"answer": "recommendationservice",
+"top_service": "recommendationservice",
+"top_score": 13.58,
+"second": [
+"productcatalogservice",
+11.74
+]
+},
+{
+"id": "ob-productcatalogservice-delay-r3",
+"kind": "fault",
+"truth": "productcatalogservice",
+"fault_type": "delay",
+"answer": "recommendationservice",
+"top_service": "recommendationservice",
+"top_score": 13.4,
+"second": [
+"frontend",
+12.57
+]
+},
+{
+"id": "ob-productcatalogservice-disk-r1",
+"kind": "fault",
+"truth": "productcatalogservice",
+"fault_type": "disk",
+"answer": "productcatalogservice",
+"top_service": "productcatalogservice",
+"top_score": 14.59,
+"second": [
+"frontend",
+8.42
+]
+},
+{
+"id": "ob-clean-productcatalogservice-disk",
+"kind": "clean",
+"truth": null,
+"fault_type": "disk",
+"answer": null,
+"top_service": "paymentservice",
+"top_score": 2.63,
+"second": [
+"adservice",
+2.48
+]
+},
+{
+"id": "ob-productcatalogservice-disk-r2",
+"kind": "fault",
+"truth": "productcatalogservice",
+"fault_type": "disk",
+"answer": "recommendationservice",
+"top_service": "recommendationservice",
+"top_score": 13.58,
+"second": [
+"productcatalogservice",
+12.03
+]
+},
+{
+"id": "ob-productcatalogservice-disk-r3",
+"kind": "fault",
+"truth": "productcatalogservice",
+"fault_type": "disk",
+"answer": "productcatalogservice",
+"top_service": "productcatalogservice",
+"top_score": 15.18,
+"second": [
+"recommendationservice",
+13.31
+]
+},
+{
+"id": "ob-productcatalogservice-loss-r1",
+"kind": "fault",
+"truth": "productcatalogservice",
+"fault_type": "loss",
+"answer": "frontend",
+"top_service": "frontend",
+"top_score": 13.96,
+"second": [
+"productcatalogservice",
+9.3
+]
+},
+{
+"id": "ob-clean-productcatalogservice-loss",
+"kind": "clean",
+"truth": null,
+"fault_type": "loss",
+"answer": null,
+"top_service": "checkoutservice",
+"top_score": 5.0,
+"second": [
+"paymentservice",
+3.36
+]
+},
+{
+"id": "ob-productcatalogservice-loss-r2",
+"kind": "fault",
+"truth": "productcatalogservice",
+"fault_type": "loss",
+"answer": "cartservice",
+"top_service": "cartservice",
+"top_score": 11.32,
+"second": [
+"recommendationservice",
+11.2
+]
+},
+{
+"id": "ob-productcatalogservice-loss-r3",
+"kind": "fault",
+"truth": "productcatalogservice",
+"fault_type": "loss",
+"answer": "frontend",
+"top_service": "frontend",
+"top_score": 13.84,
+"second": [
+"cartservice",
+9.34
+]
+},
+{
+"id": "ob-productcatalogservice-mem-r1",
+"kind": "fault",
+"truth": "productcatalogservice",
+"fault_type": "mem",
+"answer": "productcatalogservice",
+"top_service": "productcatalogservice",
+"top_score": 14.0,
+"second": [
+"recommendationservice",
+9.98
+]
+},
+{
+"id": "ob-clean-productcatalogservice-mem",
+"kind": "clean",
+"truth": null,
+"fault_type": "mem",
+"answer": null,
+"top_service": "checkoutservice",
+"top_score": 5.13,
+"second": [
+"cartservice",
+4.4
+]
+},
+{
+"id": "ob-productcatalogservice-mem-r2",
+"kind": "fault",
+"truth": "productcatalogservice",
+"fault_type": "mem",
+"answer": "productcatalogservice",
+"top_service": "productcatalogservice",
+"top_score": 14.67,
+"second": [
+"frontend",
+11.07
+]
+},
+{
+"id": "ob-productcatalogservice-mem-r3",
+"kind": "fault",
+"truth": "productcatalogservice",
+"fault_type": "mem",
+"answer": "productcatalogservice",
+"top_service": "productcatalogservice",
+"top_score": 11.5,
+"second": [
+"frontend",
+11.31
+]
+},
+{
+"id": "ob-productcatalogservice-socket-r1",
+"kind": "fault",
+"truth": "productcatalogservice",
+"fault_type": "socket",
+"answer": "productcatalogservice",
+"top_service": "productcatalogservice",
+"top_score": 16.37,
+"second": [
+"recommendationservice",
+13.08
+]
+},
+{
+"id": "ob-clean-productcatalogservice-socket",
+"kind": "clean",
+"truth": null,
+"fault_type": "socket",
+"answer": null,
+"top_service": "adservice",
+"top_score": 4.28,
+"second": [
+"cartservice",
+3.91
+]
+},
+{
+"id": "ob-productcatalogservice-socket-r2",
+"kind": "fault",
+"truth": "productcatalogservice",
+"fault_type": "socket",
+"answer": "productcatalogservice",
+"top_service": "productcatalogservice",
+"top_score": 13.57,
+"second": [
+"recommendationservice",
+13.5
+]
+},
+{
+"id": "ob-productcatalogservice-socket-r3",
+"kind": "fault",
+"truth": "productcatalogservice",
+"fault_type": "socket",
+"answer": "productcatalogservice",
+"top_service": "productcatalogservice",
+"top_score": 15.62,
+"second": [
+"recommendationservice",
+13.55
+]
+},
+{
+"id": "ob-recommendationservice-cpu-r1",
+"kind": "fault",
+"truth": "recommendationservice",
+"fault_type": "cpu",
+"answer": "recommendationservice",
+"top_service": "recommendationservice",
+"top_score": 12.99,
+"second": [
+"adservice",
+7.09
+]
+},
+{
+"id": "ob-clean-recommendationservice-cpu",
+"kind": "clean",
+"truth": null,
+"fault_type": "cpu",
+"answer": null,
+"top_service": "redis",
+"top_score": 7.5,
+"second": [
+"cartservice",
+7.09
+]
+},
+{
+"id": "ob-recommendationservice-cpu-r2",
+"kind": "fault",
+"truth": "recommendationservice",
+"fault_type": "cpu",
+"answer": "recommendationservice",
+"top_service": "recommendationservice",
+"top_score": 11.78,
+"second": [
+"frontend",
+8.27
+]
+},
+{
+"id": "ob-recommendationservice-cpu-r3",
+"kind": "fault",
+"truth": "recommendationservice",
+"fault_type": "cpu",
+"answer": "recommendationservice",
+"top_service": "recommendationservice",
+"top_score": 12.03,
+"second": [
+"frontend",
+6.95
+]
+},
+{
+"id": "ob-recommendationservice-delay-r1",
+"kind": "fault",
+"truth": "recommendationservice",
+"fault_type": "delay",
+"answer": "recommendationservice",
+"top_service": "recommendationservice",
+"top_score": 13.11,
+"second": [
+"frontend",
+10.32
+]
+},
+{
+"id": "ob-clean-recommendationservice-delay",
+"kind": "clean",
+"truth": null,
+"fault_type": "delay",
+"answer": null,
+"top_service": "adservice",
+"top_score": 1.25,
+"second": [
+"frontend",
+1.25
+]
+},
+{
+"id": "ob-recommendationservice-delay-r2",
+"kind": "fault",
+"truth": "recommendationservice",
+"fault_type": "delay",
+"answer": "recommendationservice",
+"top_service": "recommendationservice",
+"top_score": 13.08,
+"second": [
+"frontend",
+11.57
+]
+},
+{
+"id": "ob-recommendationservice-delay-r3",
+"kind": "fault",
+"truth": "recommendationservice",
+"fault_type": "delay",
+"answer": "recommendationservice",
+"top_service": "recommendationservice",
+"top_score": 13.24,
+"second": [
+"frontend",
+11.2
+]
+},
+{
+"id": "ob-recommendationservice-disk-r1",
+"kind": "fault",
+"truth": "recommendationservice",
+"fault_type": "disk",
+"answer": "recommendationservice",
+"top_service": "recommendationservice",
+"top_score": 14.89,
+"second": [
+"checkoutservice",
+4.9
+]
+},
+{
+"id": "ob-clean-recommendationservice-disk",
+"kind": "clean",
+"truth": null,
+"fault_type": "disk",
+"answer": null,
+"top_service": "redis",
+"top_score": 5.25,
+"second": [
+"checkoutservice",
+3.58
+]
+},
+{
+"id": "ob-recommendationservice-disk-r2",
+"kind": "fault",
+"truth": "recommendationservice",
+"fault_type": "disk",
+"answer": "recommendationservice",
+"top_service": "recommendationservice",
+"top_score": 13.78,
+"second": [
+"frontend",
+9.68
+]
+},
+{
+"id": "ob-recommendationservice-disk-r3",
+"kind": "fault",
+"truth": "recommendationservice",
+"fault_type": "disk",
+"answer": "recommendationservice",
+"top_service": "recommendationservice",
+"top_score": 14.91,
+"second": [
+"checkoutservice",
+9.41
+]
+},
+{
+"id": "ob-recommendationservice-loss-r1",
+"kind": "fault",
+"truth": "recommendationservice",
+"fault_type": "loss",
+"answer": null,
+"top_service": "frontend",
+"top_score": 9.09,
+"second": [
+"recommendationservice",
+8.95
+]
+},
+{
+"id": "ob-clean-recommendationservice-loss",
+"kind": "clean",
+"truth": null,
+"fault_type": "loss",
+"answer": null,
+"top_service": "redis",
+"top_score": 5.82,
+"second": [
+"checkoutservice",
+2.79
+]
+},
+{
+"id": "ob-recommendationservice-loss-r2",
+"kind": "fault",
+"truth": "recommendationservice",
+"fault_type": "loss",
+"answer": null,
+"top_service": "paymentservice",
+"top_score": 8.69,
+"second": [
+"recommendationservice",
+7.94
+]
+},
+{
+"id": "ob-recommendationservice-loss-r3",
+"kind": "fault",
+"truth": "recommendationservice",
+"fault_type": "loss",
+"answer": null,
+"top_service": "frontend",
+"top_score": 9.31,
+"second": [
+"productcatalogservice",
+6.1
+]
+},
+{
+"id": "ob-recommendationservice-mem-r1",
+"kind": "fault",
+"truth": "recommendationservice",
+"fault_type": "mem",
+"answer": "redis",
+"top_service": "redis",
+"top_score": 16.64,
+"second": [
+"frontend",
+10.82
+]
+},
+{
+"id": "ob-clean-recommendationservice-mem",
+"kind": "clean",
+"truth": null,
+"fault_type": "mem",
+"answer": "currencyservice",
+"top_service": "currencyservice",
+"top_score": 12.46,
+"second": [
+"recommendationservice",
+10.09
+]
+},
+{
+"id": "ob-recommendationservice-mem-r2",
+"kind": "fault",
+"truth": "recommendationservice",
+"fault_type": "mem",
+"answer": "recommendationservice",
+"top_service": "recommendationservice",
+"top_score": 10.14,
+"second": [
+"frontend",
+7.78
+]
+},
+{
+"id": "ob-recommendationservice-mem-r3",
+"kind": "fault",
+"truth": "recommendationservice",
+"fault_type": "mem",
+"answer": "recommendationservice",
+"top_service": "recommendationservice",
+"top_score": 11.02,
+"second": [
+"frontend",
+8.42
+]
+},
+{
+"id": "ob-recommendationservice-socket-r1",
+"kind": "fault",
+"truth": "recommendationservice",
+"fault_type": "socket",
+"answer": "recommendationservice",
+"top_service": "recommendationservice",
+"top_score": 15.29,
+"second": [
+"frontend",
+8.93
+]
+},
+{
+"id": "ob-clean-recommendationservice-socket",
+"kind": "clean",
+"truth": null,
+"fault_type": "socket",
+"answer": null,
+"top_service": "cartservice",
+"top_score": 5.84,
+"second": [
+"adservice",
+3.42
+]
+},
+{
+"id": "ob-recommendationservice-socket-r2",
+"kind": "fault",
+"truth": "recommendationservice",
+"fault_type": "socket",
+"answer": "recommendationservice",
+"top_service": "recommendationservice",
+"top_score": 12.42,
+"second": [
+"frontend",
+9.18
+]
+},
+{
+"id": "ob-recommendationservice-socket-r3",
+"kind": "fault",
+"truth": "recommendationservice",
+"fault_type": "socket",
+"answer": "recommendationservice",
+"top_service": "recommendationservice",
+"top_score": 13.37,
+"second": [
+"frontend",
+9.54
+]
+}
+]
