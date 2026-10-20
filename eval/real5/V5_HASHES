@@ -1,0 +1,6 @@
+# analyzer v5 and the batch-5 scenarios, frozen before batch 5 was collected. check: sh eval/real5/check_v5.sh
+9311a026e999ee65e19ea0dc92378593d561138789e4c784a2f2ca0d931e4ec5  include/tb/analyzer_v5.hpp
+19eaf4a229c64f430e10a10089b100121996ad5f7075ad256dcbe4206bc9c67d  src/analyzer_v5/rerank.cpp
+0e3a3ef1bbadc6982673d972f36ede686960d26855b95126cb8850f6cc087d17  src/analyzer_v5/main.cpp
+e2c307f03e9b448575a1f8471da5dda1be5bdf79db2e2ec855c3880c54c0add8  eval/real5/scenarios.json
+5c2f571321feb0375e0d2e6fb56f5a32ed617e15de6d29ad5033d43017fd8750  eval/real5/dev_check.py
