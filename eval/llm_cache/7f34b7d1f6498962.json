@@ -1,0 +1,1 @@
+{"completion_tokens":381,"content":"\n\n{\n  \"root_cause\": {\"category\": \"other\", \"service\": \"gateway\", \"summary\": \"Insufficient telemetry to identify root cause\"},\n  \"confidence\": \"low\",\n  \"causal_chain\": [],\n  \"alternatives\": []\n}","latency_s":4.872239541,"ok":true,"prompt_tokens":867}
