@@ -33,8 +33,8 @@ Model cost for the 10 incidents, both LLM systems: $0.172.
 | System | Fault runs localized | Clean runs with a “high” or “medium” alarm |
 |---|---:|---:|
 | Raw logs → LLM (baseline) | 5/7 | 3/3 |
-| Analyzer v1 | 2/7 | 3/3 |
-| Analyzer v2 | 2/7 | 3/3 |
+| Analyzer v1 | 1/7 | 3/3 |
+| Analyzer v2 | 1/7 | 3/3 |
 | Full Traceback v2 (no replay verifier) | 1/7 | 3/3 |
 
 | Run | Truth | Entry failures | Baseline | Analyzer v1 | Analyzer v2 | Full Traceback v2 |
@@ -47,7 +47,7 @@ Model cost for the 10 incidents, both LLM systems: $0.172.
 | r06 | `cartFailure=100%` → cart | 0/6884 | ✓ dependency_slow/cart (high) | ✗ retry_amplification/checkout (medium) | ✗ retry_amplification/checkout (medium) | ✗ retry_amplification/checkout (medium) |
 | r07 | `adFailure=on` → ad | 4/6978 | ✓ internal_errors/ad (medium) | ✗ retry_amplification/frontend (medium) | ✗ retry_amplification/frontend (medium) | ✗ retry_amplification/frontend (low) |
 | r08 | `intlShippingSlowdown=10sec` → shipping | 0/7101 | ✗ dependency_slow/flagd (medium) | ✗ retry_amplification/checkout (medium) | ✗ retry_amplification/checkout (medium) | ✗ dependency_slow/flagd (medium) |
-| r09 | `productCatalogLockContention=on` → product-catalog | 81/4527 | ✓ config_regression/product-catalog (medium) | ✓ retry_amplification/recommendation (medium) | ✓ retry_amplification/recommendation (medium) | ✗ retry_amplification/recommendation (low) |
+| r09 | `productCatalogLockContention=on` → product-catalog | 81/4527 | ✓ config_regression/product-catalog (medium) | ✗ retry_amplification/recommendation (medium) | ✗ retry_amplification/recommendation (medium) | ✗ retry_amplification/recommendation (low) |
 | r10 | none (clean) | 0/6890 | dependency_slow/flagd (high) | retry_amplification/checkout (medium) | retry_amplification/checkout (medium) | retry_amplification/checkout (medium) |
 
 Model cost for the 10 incidents, both LLM systems: $0.216.

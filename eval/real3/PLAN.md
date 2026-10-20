@@ -28,3 +28,6 @@ The thresholds in step 5 are generic and were chosen from the failure mode seen 
 ## Runs
 Once, after the freeze (`HYBRID_HASHES`): batch 3 with the raw-logs baseline, Full Traceback v2 and the hybrid (analyzer v2 shown for reference); then the hybrid on the simulator fresh sets (both topologies) next to the numbers already in the README. No changes after seeing results; a further change needs a new batch.
 Model cost cap for this iteration: about $0.5 (the sim fresh runs reuse cached baseline answers).
+
+## Amendment (2026-10-20, after batch 4 was scored)
+A review found a merge bug (duplicate analyzer entries overwrote the top candidate's rank; `eval/diagnose/CODE_REVIEW.md` bug 2). It did not occur on batch 3 or on the simulator fresh sets (their outputs are identical before and after the fix, checked with `make real3-check` and `make hybrid-sim-check`), so those results stand. `HYBRID_HASHES` was re-frozen for the fix; `--legacy-merge yes` reproduces the old behaviour, used for the “first run” column of batch 4.

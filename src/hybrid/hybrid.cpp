@@ -108,7 +108,7 @@ std::vector<HybridCand> propose_from_answer(const json& ans, const std::set<std:
   return out;
 }
 
-json hybrid(const std::string& dir, const ReasonOptions& bopts) {
+json hybrid(const std::string& dir, const ReasonOptions& bopts, bool legacy_merge) {
   // 1. The model reads the same evidence as the raw-logs baseline (same request, so the same cached answer).
   ReasonOptions bo = bopts;
   bo.system = "baseline";
@@ -140,10 +140,14 @@ json hybrid(const std::string& dir, const ReasonOptions& bopts) {
     for (auto& c : cands) if (c.category == cat && c.service == svc) hit = &c;
     if (!hit) { cands.emplace_back(); hit = &cands.back(); hit->category = cat; hit->service = svc; hit->text = h["summary"].get<std::string>(); hit->cites = ev; }
     else for (auto& id : ev) add_unique(hit->cites, id);
+    // The analyzer can list the same (category, service) more than once (different edges). The best-ranked entry must win; the original
+    // merge let a later, lower-ranked duplicate overwrite the rank, which hid the analyzer's top candidate (found in review after batch 4).
+    if (legacy_merge || !hit->from_analyzer || k < hit->analyzer_rank) {
+      hit->analyzer_rank = k;
+      hit->analyzer_score = h["score"].get<double>();
+      if (!h["edge"].is_null()) { hit->edge_from = h["edge"]["from"].get<std::string>(); hit->edge_to = h["edge"]["to"].get<std::string>(); }
+    }
     hit->from_analyzer = true;
-    hit->analyzer_rank = k;
-    hit->analyzer_score = h["score"].get<double>();
-    if (!h["edge"].is_null()) { hit->edge_from = h["edge"]["from"].get<std::string>(); hit->edge_to = h["edge"]["to"].get<std::string>(); }
   }
 
   // 4. Evidence for every candidate, whoever proposed it: the share of failed entry requests whose failure originates in its service, and

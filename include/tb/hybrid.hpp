@@ -29,6 +29,7 @@ std::string min_conf(const std::string& a, const std::string& b);
 // (origin share of the failed requests, anomalous share of its records), medium >= 50% on both, otherwise low.
 std::string support_ceiling(double origin, double anomalous);
 
-json hybrid(const std::string& incident_dir, const ReasonOptions& baseline_opts);
+// legacy_merge reproduces the merge as it was when batch 4 was first run (a lower-ranked duplicate overwrote the analyzer rank); for the record only.
+json hybrid(const std::string& incident_dir, const ReasonOptions& baseline_opts, bool legacy_merge = false);
 
 }  // namespace tb

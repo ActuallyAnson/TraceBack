@@ -11,6 +11,13 @@ Model: `nvidia/nemotron-3-super-120b-a12b` on **Nebius Token Factory**.
 - **Live showcase (interactive):** https://actuallyanson.github.io/TraceBack/ (opens on a failing system; `make serve` locally, or `make live` to run the simulator and pipeline for real)
 - **One-command demo:** `make demo` (no API key needed; see below)
 
+## Status at a glance (2026-10-20)
+
+- **Simulated incidents, fresh locked sets (48):** Full Traceback v2 finds the cause in **95.8%** (raw-logs baseline 68.8%), with **0% confidently wrong** (baseline 29.2%), at about a tenth of the baseline's cost per incident. The deterministic analyzer alone is also 95.8%: the language model adds checkable explanations and calibration, not accuracy.
+- **Real telemetry (OpenTelemetry Demo, four batches):** the pipeline runs, but it does **not** yet localize well: analyzers and Full Traceback 0 to 1 of 7-10 faults per batch against 5 of 10 for the raw-logs baseline. A converter bug explained part of it and is fixed; the rest is open (see "Real telemetry check").
+- **The replay verifier needs the simulator**, so on real data it cannot check anything.
+- Every number below is generated from saved runs (`make results-check` and the other `*-check` targets reproduce them offline) and every wrong answer is listed.
+
 ## What Traceback claims, and what it doesn't
 
 **Claimed: the answer is checkable and calibrated.** Every claim cites record IDs that exist, the suspected cause is replayed
@@ -462,7 +469,7 @@ data and labels were committed first (`eval/real/LOCK`); the analyzers, prompts 
 
 What the result shows (no significance claims, 7 faults and 3 clean runs):
 
-- **The pipeline runs on real telemetry, and it does badly.** The best localization is the raw-logs baseline (5 of 7). The analyzers and Full Traceback v2 localize 1 of 7 with the fixed converter (2 of 7 with the first one). Where they are wrong they are mostly wrong the same way: the demo's feature-flag service (`flagd`), which every service calls, becomes the "slow dependency".
+- **The pipeline runs on real telemetry, and it does badly.** The best localization is the raw-logs baseline (5 of 7). The analyzers and Full Traceback v2 localize 1 of 7 with either converter (the first run reported 2 of 7 for the first converter; that counted one answer, r09, by a rule more lenient than the pre-registered one, corrected on 2026-10-20: see the code review below). Where they are wrong they are mostly wrong the same way: the demo's feature-flag service (`flagd`), which every service calls, becomes the "slow dependency".
 - **What did work:** on the three clean runs the analyzers raised no medium/high alarm with the fixed converter (every answer low confidence), while the raw-logs baseline raised a high-confidence alarm on all three. Full Traceback v2 was confidently wrong twice on fault runs (`r08`, `r09`, both `high`), which the replay verifier would have had to catch and cannot here.
 - **Two things had to be found in the data, and both are disclosed.** (1) The demo's load generator puts a whole user session in one trace while our analyzer assumes one request per trace, so the first run saw almost no failed entry requests. This was fixed in the converter after the first scored run (converter v1) and **both runs are shown**; it was found by looking at the data, but after seeing the first scores. (2) The demo's frontend turns a failed checkout into HTTP 422, which the analyzer (entry status 500 and above) does not count as a failure, so `paymentFailure` and `cartFailure` have no visible symptom at the entry by its definition. I did not map 4xx to failures to fit the data.
 - **What it does not show:** only one demo app, a controlled fault injected by a flag at a known moment, 25 synthetic users, a small sample, no production traffic, and an analyzer designed around entry 5xx rates, worker/pool metrics and change events that this telemetry does not carry. It is evidence that the pipeline is not limited to our simulators' file format, not evidence that it works on real systems; on this sample it mostly doesn't, without changes.
@@ -500,8 +507,8 @@ Model cost for the 10 incidents, both LLM systems: $0.172.
 | System | Fault runs localized | Clean runs with a “high” or “medium” alarm |
 |---|---:|---:|
 | Raw logs → LLM (baseline) | 5/7 | 3/3 |
-| Analyzer v1 | 2/7 | 3/3 |
-| Analyzer v2 | 2/7 | 3/3 |
+| Analyzer v1 | 1/7 | 3/3 |
+| Analyzer v2 | 1/7 | 3/3 |
 | Full Traceback v2 (no replay verifier) | 1/7 | 3/3 |
 
 | Run | Truth | Entry failures | Baseline | Analyzer v1 | Analyzer v2 | Full Traceback v2 |
@@ -514,7 +521,7 @@ Model cost for the 10 incidents, both LLM systems: $0.172.
 | r06 | `cartFailure=100%` → cart | 0/6884 | ✓ dependency_slow/cart (high) | ✗ retry_amplification/checkout (medium) | ✗ retry_amplification/checkout (medium) | ✗ retry_amplification/checkout (medium) |
 | r07 | `adFailure=on` → ad | 4/6978 | ✓ internal_errors/ad (medium) | ✗ retry_amplification/frontend (medium) | ✗ retry_amplification/frontend (medium) | ✗ retry_amplification/frontend (low) |
 | r08 | `intlShippingSlowdown=10sec` → shipping | 0/7101 | ✗ dependency_slow/flagd (medium) | ✗ retry_amplification/checkout (medium) | ✗ retry_amplification/checkout (medium) | ✗ dependency_slow/flagd (medium) |
-| r09 | `productCatalogLockContention=on` → product-catalog | 81/4527 | ✓ config_regression/product-catalog (medium) | ✓ retry_amplification/recommendation (medium) | ✓ retry_amplification/recommendation (medium) | ✗ retry_amplification/recommendation (low) |
+| r09 | `productCatalogLockContention=on` → product-catalog | 81/4527 | ✓ config_regression/product-catalog (medium) | ✗ retry_amplification/recommendation (medium) | ✗ retry_amplification/recommendation (medium) | ✗ retry_amplification/recommendation (low) |
 | r10 | none (clean) | 0/6890 | dependency_slow/flagd (high) | retry_amplification/checkout (medium) | retry_amplification/checkout (medium) | retry_amplification/checkout (medium) |
 
 Model cost for the 10 incidents, both LLM systems: $0.216.
@@ -680,6 +687,64 @@ Why was the true service's origin share 0.0 in `m10`, where the payment service 
 - **Simulator:** not affected the same way (random 4% span loss, which the analyzer was built around; 4.0% of failing traces rootless against 29.9% in the real runs inspected); the simulator results are unchanged and were not re-run.
 - **Consequence, stated plainly:** the real-telemetry numbers for the analyzers, Full Traceback and the hybrid above (1/7, 0/10, 1/10, 0/10, ...) partly reflect this conversion error, so they are not evidence about the approach on real traces as such. They stay in the README unchanged.
 - **Proposed fix, not applied:** a converter v3 that re-parents to the nearest retained ancestor, and an analyzer rule "a 4xx server span with a failing descendant counts as failed", verified on a new, locked fourth batch plus a simulator no-change check.
+
+
+### Fourth iteration: linkage fix (converter v3 + analyzer v4), fresh batch 4
+
+After the diagnosis I fixed both causes and tested on a **new, locked** batch (13 runs, `eval/real4/LOCK`; plan and freeze `eval/real4/PLAN.md`, `V4_HASHES`, written before the batch existed): converter v3 re-parents a span whose parent was dropped to its nearest retained ancestor (rootless traces in a real run: 2,998 of 8,644 before, 13 after, structure only); analyzer v4 counts a 4xx server span with a failing descendant as failed. v4 equals v3 on all 162 simulator incidents in category, service, ranking and confidence (one report differs in a score by 0.001, disclosed in the plan). Localization uses the pre-registered rule (`eval/real/PLAN.md`); see the scoring correction below.
+
+<!-- REAL4:START (generated by eval/real4/evaluate.py; do not edit by hand) -->
+
+**Fourth batch of real telemetry (converter v3 and analyzer v4, the fixes from the diagnosis) (10 fault runs + 3 clean runs), collected and locked before any system was run on it; the converter fix and analyzer v4 were frozen before the batch existed.** Localization only. “As stated” is the system's own confidence; “after the verifier policy” applies what the replay verifier does when it cannot reproduce the effect: real telemetry has no replay environment, so the verdict is inconclusive and a “high” becomes “medium” (that cap makes “confidently wrong” zero by construction, so wrong answers at medium or high confidence are shown too). A clean-run alarm is a medium or high answer. No significance claims.
+
+| System | Faults localized | Clean-run alarms (as stated) | Wrong, high (as stated) | Wrong, medium or high (as stated) | Wrong, high (after verifier policy) | Clean-run alarms (after verifier policy) |
+|---|---:|---:|---:|---:|---:|---:|
+| Raw logs → LLM (baseline) | 5/10 | 3/3 | 2 | 5 | 2 | 3/3 |
+| Analyzer v2 (reference) | 0/10 | 3/3 | 0 | 10 | 0 | 3/3 |
+| Analyzer v3 (converter fix only) | 0/10 | 3/3 | 0 | 10 | 0 | 3/3 |
+| **Analyzer v4** | 0/10 | 3/3 | 0 | 10 | 0 | 3/3 |
+| Full Traceback v2 | 0/10 | 2/3 | 0 | 6 | 0 | 2/3 |
+| **Full Traceback v4** | 0/10 | 2/3 | 0 | 8 | 0 | 2/3 |
+| Hybrid as first run (merge bug, see below) | 4/10 | 0/3 | 0 | 0 | 0 | 0/3 |
+| Hybrid, merge bug fixed (analyzer layer v3) | 0/10 | 3/3 | 0 | 10 | 0 | 3/3 |
+
+Every run (✓ = localized; the answer is shown for every ✗; on clean runs the top answer). Confidence as stated → after the verifier policy for the two systems that have a verifier step. “Entry failures” = failed entry requests / entry requests:
+
+| Run | Truth | Entry failures (v4) | Baseline | Analyzer v3 | Analyzer v4 | Full Traceback v2 | Full Traceback v4 | Hybrid, first run | Hybrid, fixed |
+|---|---|---:|---|---|---|---|---|---|---|
+| p01 | none (clean) | 0/6016 | dependency_slow/inventory (medium) | retry_amplification/frontend (medium) | retry_amplification/frontend (medium) | retry_amplification/frontend (low) | retry_amplification/frontend (low) | retry_amplification/frontend (low) | retry_amplification/frontend (medium) |
+| p02 | `paymentFailure=75%` → payment | 14/6151 | ✓ internal_errors/payment (medium) | ✗ retry_amplification/frontend (medium) | ✗ retry_amplification/frontend (medium) | ✗ retry_amplification/frontend (low) | ✗ retry_amplification/frontend (medium) | ✓ internal_errors/payment (low) | ✗ retry_amplification/frontend (medium) |
+| p03 | `cartFailure=100%` → cart | 0/6381 | ✓ dependency_slow/cart (high) | ✗ retry_amplification/frontend (medium) | ✗ retry_amplification/frontend (medium) | ✗ retry_amplification/frontend (medium) | ✗ retry_amplification/frontend (medium) | ✗ dependency_slow/frontend (low) | ✗ retry_amplification/frontend (medium) |
+| p04 | `productCatalogFailure=on` → product-catalog | 2/5578 | ✗ dependency_slow/flagd (medium) | ✗ retry_amplification/frontend (medium) | ✗ retry_amplification/frontend (medium) | ✗ retry_amplification/frontend (low) | ✗ retry_amplification/frontend (low) | ✗ dependency_slow/flagd (low) | ✗ retry_amplification/frontend (medium) |
+| p05 | none (clean) | 1/5505 | dependency_slow/flagd (medium) | retry_amplification/frontend (medium) | retry_amplification/frontend (medium) | retry_amplification/frontend (medium) | retry_amplification/frontend (medium) | dependency_slow/flagd (low) | retry_amplification/frontend (medium) |
+| p06 | `adFailure=on` → ad | 8/5294 | ✓ internal_errors/ad (high) | ✗ retry_amplification/frontend (medium) | ✗ retry_amplification/frontend (medium) | ✗ retry_amplification/frontend (medium) | ✗ retry_amplification/frontend (medium) | ✓ internal_errors/ad (low) | ✗ retry_amplification/frontend (medium) |
+| p07 | `paymentUnreachable=on` → payment (checkout→payment) | 21/6376 | ✗ edge_unreachable/frontend (high) | ✗ retry_amplification/frontend (medium) | ✗ retry_amplification/frontend (medium) | ✗ retry_amplification/frontend (medium) | ✗ retry_amplification/frontend (medium) | ✓ retry_amplification/checkout (low) | ✗ retry_amplification/frontend (medium) |
+| p08 | `productCatalogLockContention=on` → product-catalog | 51/4076 | ✓ pool_exhaustion/product-catalog (high) | ✗ retry_amplification/frontend (medium) | ✗ retry_amplification/frontend (medium) | ✗ retry_amplification/frontend (medium) | ✗ retry_amplification/frontend (medium) | ✗ dependency_slow/frontend (low) | ✗ retry_amplification/frontend (medium) |
+| p09 | `intlShippingSlowdown=5sec` → shipping | 0/5723 | ✗ dependency_slow/flagd (high) | ✗ retry_amplification/frontend (medium) | ✗ retry_amplification/frontend (medium) | ✗ retry_amplification/frontend (low) | ✗ retry_amplification/frontend (medium) | ✗ dependency_slow/flagd (low) | ✗ retry_amplification/frontend (medium) |
+| p10 | `recommendationCacheFailure=on` → recommendation | 17/5981 | ✓ dependency_slow/recommendation (high) | ✗ retry_amplification/frontend (medium) | ✗ retry_amplification/frontend (medium) | ✗ retry_amplification/frontend (medium) | ✗ retry_amplification/frontend (medium) | ✓ process_crash/recommendation (medium) | ✗ retry_amplification/frontend (medium) |
+| p11 | `cartFailure=75%` → cart | 12/6429 | ✗ dependency_slow/inventory (medium) | ✗ retry_amplification/frontend (medium) | ✗ retry_amplification/frontend (medium) | ✗ retry_amplification/frontend (medium) | ✗ retry_amplification/frontend (medium) | ✗ retry_amplification/frontend (low) | ✗ retry_amplification/frontend (medium) |
+| p12 | `adHighCpu=on` → ad | 1/5207 | ✗ edge_unreachable/cart (medium) | ✗ retry_amplification/frontend (medium) | ✗ retry_amplification/frontend (medium) | ✗ retry_amplification/frontend (low) | ✗ retry_amplification/frontend (low) | ✗ internal_errors/flagd (low) | ✗ retry_amplification/frontend (medium) |
+| p13 | none (clean) | 0/6176 | dependency_slow/flagd (medium) | retry_amplification/frontend (medium) | retry_amplification/frontend (medium) | retry_amplification/frontend (medium) | retry_amplification/frontend (medium) | dependency_slow/flagd (low) | retry_amplification/frontend (medium) |
+
+Wrong fault-run answers per system (all of them): Raw logs → LLM (baseline): p04, p07, p09, p11, p12; Analyzer v2 (reference): p02, p03, p04, p06, p07, p08, p09, p10, p11, p12; Analyzer v3 (converter fix only): p02, p03, p04, p06, p07, p08, p09, p10, p11, p12; Analyzer v4: p02, p03, p04, p06, p07, p08, p09, p10, p11, p12; Full Traceback v2: p02, p03, p04, p06, p07, p08, p09, p10, p11, p12; Full Traceback v4: p02, p03, p04, p06, p07, p08, p09, p10, p11, p12; Hybrid as first run (merge bug, see below): p03, p04, p08, p09, p11, p12; Hybrid, merge bug fixed (analyzer layer v3): p02, p03, p04, p06, p07, p08, p09, p10, p11, p12.
+
+**Merge bug in the hybrid, found in review after this batch was scored:** in 13 of 13 runs (p01, p02, p03, p04, p05, p06, p07, p08, p09, p10, p11, p12, p13) the analyzer listed the same category and service twice (the top candidate and a lower-ranked duplicate with another edge) and the hybrid's merge let the duplicate overwrite the top candidate's rank. The hybrid then had no analyzer top candidate and fell to its last-resort branch (the candidate with the best measured evidence), so the “first run” column is not the pre-registered decision rule. The “fixed” column keeps the best-ranked entry and applies the rule as written; both are shown, nothing else about the hybrid changed, and the bug did not occur on the simulator fresh sets or on batch 3 (checked: their outputs are identical before and after the fix).
+
+Hybrid internals (fixed version): the model's proposals that passed validation: 26; rejected (unknown service, no citation or an id that does not exist): 5. Runs where a model proposal replaced the analyzer's top candidate: none. Runs where the model's top proposal named a different service than the one chosen (confidence capped at medium): p02, p03, p04, p05, p06, p08, p09, p10, p12, p13.
+
+Model cost of this batch (baseline, Full Traceback v2 and v4; the hybrid's proposals are the baseline's answer, so it adds no calls): $0.412.
+
+<!-- REAL4:END -->
+
+- **Result: the fixes did not improve localization.** Analyzer v3 and v4 localize 0 of 10 (v2 also 0 of 10 on this data), Full Traceback v2 and v4 0 of 10, the raw-logs baseline 5 of 10, as in the two previous batches.
+- **What the linkage fix did do:** the failing service is now inside the failed entry requests (for example all 14 failing payment spans of `p02`), and in `p10` the origin measure credits the true service (`recommendation`) with 82% (checked on the converted data, diagnostic only).
+- **What is still wrong:** every analyzer answers `retry_amplification/frontend` on all 13 runs, clean ones included, so a v1 rule fires on ordinary real traffic and the true service is never proposed. This is candidate generation, not scoring or linkage. I did not investigate the rule further.
+- **Hybrid:** the frozen hybrid scored 4/10 on this batch as first run, but that came from a merge bug (the analyzer's top candidate was overwritten by a lower-ranked duplicate in all 13 runs, so it used its last-resort branch). With the bug fixed it follows its pre-registered rule and localizes 0 of 10, like the analyzers. Both columns are in the table. The bug did not occur on batch 3 or on the simulator sets, whose results are unchanged.
+- **Cost and time:** $0.412 in model calls for this batch; about 1 hour 40 minutes of wall-clock including the review below.
+
+### Scoring correction and code review (2026-10-20)
+
+A review of the code found a **scoring bug**: the real-telemetry evaluation also accepted an answer whose own edge touched the true service, more leniently than the pre-registered rule (answer's service is the label's service or an endpoint of the label's edge). It changed exactly one reported number: the analyzers on the first batch with the first converter were reported as 2/7 and are **1/7** (r09). Batches 1 (converter v1), 2 and 3 are unchanged, and batch 4 is scored strictly. The review also found and fixed a hybrid merge bug, a crash on `"content": null` model replies, and a non-atomic cache write; it lists what remains (`eval/diagnose/CODE_REVIEW.md`, `eval/diagnose/strict_scoring.py` reprints strict and as-implemented scores for every batch).
 
 
 ## Future work

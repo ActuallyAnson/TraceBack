@@ -22,7 +22,7 @@ def view(rep):
 def correct(lab, v):
     rc = lab["root_cause"]
     names = {rc["service"]} | ({rc["edge"]["from"], rc["edge"]["to"]} if rc.get("edge") else set())
-    return v["svc"] in names or bool(v["edge"] and {v["edge"]["from"], v["edge"]["to"]} & names)
+    return v["svc"] in names  # pre-registered rule: the answer's service is the label's service or an endpoint of the LABEL's edge (an earlier version also accepted any answer whose own edge touched it; no batch 1-3 number changed)
 
 
 def run(conv):

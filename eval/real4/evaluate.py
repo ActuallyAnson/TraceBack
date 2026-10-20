@@ -14,8 +14,8 @@ spec = importlib.util.spec_from_file_location("real1", ROOT / "eval/real/evaluat
 real1 = importlib.util.module_from_spec(spec); spec.loader.exec_module(real1)
 view, correct = real1.view, real1.correct
 
-SYS = [("bl", "Raw logs → LLM (baseline)"), ("an2", "Analyzer v2 (reference)"), ("an3", "Analyzer v3 (converter fix only)"), ("an4", "**Analyzer v4**"), ("tb2", "Full Traceback v2"), ("tb4", "**Full Traceback v4**"), ("hy", "Hybrid (frozen; analyzer layer v3)")]
-CAPPED = ("tb2", "tb4", "hy")  # systems with a verifier step; real telemetry has no replay environment, so the verdict is "inconclusive" (high -> medium)
+SYS = [("bl", "Raw logs → LLM (baseline)"), ("an2", "Analyzer v2 (reference)"), ("an3", "Analyzer v3 (converter fix only)"), ("an4", "**Analyzer v4**"), ("tb2", "Full Traceback v2"), ("tb4", "**Full Traceback v4**"), ("hl", "Hybrid as first run (merge bug, see below)"), ("hy", "Hybrid, merge bug fixed (analyzer layer v3)")]
+CAPPED = ("tb2", "tb4", "hl", "hy")  # systems with a verifier step; real telemetry has no replay environment, so the verdict is "inconclusive" (high -> medium)
 
 
 def run3():
@@ -38,12 +38,13 @@ def run3():
             res = json.loads(p.stdout)
             r[k] = view(score.llm_as_report(res))
             r["cost"] += res["meta"]["cost_usd"]
-        p = report.sh([ROOT / "build/tb_hybrid", DATA / "incidents" / iid, "--cache", report.CACHE])
-        if p.returncode:
-            sys.exit(f"tb_hybrid failed on {iid}: {p.stderr.strip()[:300]}")
-        res = json.loads(p.stdout)
-        r["hy"] = view(score.llm_as_report(res))
-        r["hy_info"] = res["hybrid"]
+        for k, extra in (("hy", []), ("hl", ["--legacy-merge", "yes"])):
+            p = report.sh([ROOT / "build/tb_hybrid", DATA / "incidents" / iid, "--cache", report.CACHE] + extra)
+            if p.returncode:
+                sys.exit(f"tb_hybrid failed on {iid}: {p.stderr.strip()[:300]}")
+            res = json.loads(p.stdout)
+            r[k] = view(score.llm_as_report(res))
+            r[k + "_info"] = res["hybrid"]
         for k, _ in SYS:
             r[k]["capped"] = score.final_conf(r[k]["conf"], "inconclusive") if k in CAPPED else r[k]["conf"]
             r[k]["ok"] = correct(lab, r[k]) if lab["kind"] == "fault" else None
@@ -72,7 +73,7 @@ def build(rows):
         s = summ(rows, k)
         L.append(f"| {name} | {s['loc']} | {s['clean']} | {s['cw']} | {s['wmh']} | {s['cw_cap']} | {s['clean_cap']} |")
     L += ["", "Every run (✓ = localized; the answer is shown for every ✗; on clean runs the top answer). Confidence as stated → after the verifier policy for the two systems that have a verifier step. “Entry failures” = failed entry requests / entry requests:", "",
-          "| Run | Truth | Entry failures (v4) | Baseline | Analyzer v3 | Analyzer v4 | Full Traceback v2 | Full Traceback v4 | Hybrid |", "|---|---|---:|---|---|---|---|---|---|"]
+          "| Run | Truth | Entry failures (v4) | Baseline | Analyzer v3 | Analyzer v4 | Full Traceback v2 | Full Traceback v4 | Hybrid, first run | Hybrid, fixed |", "|---|---|---:|---|---|---|---|---|---|---|"]
     for r in rows:
         lab = r["lab"]
         truth = "none (clean)" if lab["kind"] == "clean" else f"`{lab['flag']}={lab['variant']}` → {lab['root_cause']['service']}" + (f" ({lab['root_cause']['edge']['from']}→{lab['root_cause']['edge']['to']})" if lab["root_cause"]["edge"] else "")
@@ -80,14 +81,16 @@ def build(rows):
             v = r[k]
             conf = f"{v['conf']} → {v['capped']}" if k in CAPPED and v["conf"] != v["capped"] else v["conf"]
             return (f"{'✓' if v['ok'] else '✗'} {v['cat']}/{v['svc']} ({conf})" if lab["kind"] == "fault" else f"{v['cat']}/{v['svc']} ({conf})")
-        L.append(f"| {r['id']} | {truth} | {r['sym']['failed_traces']}/{r['sym']['traces']} | {cell('bl')} | {cell('an3')} | {cell('an4')} | {cell('tb2')} | {cell('tb4')} | {cell('hy')} |")
+        L.append(f"| {r['id']} | {truth} | {r['sym']['failed_traces']}/{r['sym']['traces']} | {cell('bl')} | {cell('an3')} | {cell('an4')} | {cell('tb2')} | {cell('tb4')} | {cell('hl')} | {cell('hy')} |")
     wrong = {name: [r["id"] for r in rows if r["lab"]["kind"] == "fault" and not r[k]["ok"]] for k, name in SYS}
     L += ["", "Wrong fault-run answers per system (all of them): " + "; ".join(f"{n.replace('**', '')}: {', '.join(v) if v else 'none'}" for n, v in wrong.items()) + ".", ""]
     ch = [r["id"] for r in rows if r["hy_info"].get("chosen", {}).get("challenged_analyzer")]
     dis = [r["id"] for r in rows if r["hy_info"].get("chosen", {}).get("model_disagrees")]
     n_llm = sum(r["hy_info"]["llm_candidates"] for r in rows)
     n_rej = sum(len(r["hy_info"]["rejected"]) for r in rows)
-    L += [f"Hybrid internals: the model's proposals that passed validation: {n_llm}; rejected (unknown service, no citation or an id that does not exist): {n_rej}. "
+    lost = [r["id"] for r in rows if not any(c["analyzer_rank"] == 1 for c in r["hl_info"]["candidates"])]
+    L += [f"**Merge bug in the hybrid, found in review after this batch was scored:** in {len(lost)} of {len(rows)} runs ({', '.join(lost) if lost else 'none'}) the analyzer listed the same category and service twice (the top candidate and a lower-ranked duplicate with another edge) and the hybrid's merge let the duplicate overwrite the top candidate's rank. The hybrid then had no analyzer top candidate and fell to its last-resort branch (the candidate with the best measured evidence), so the “first run” column is not the pre-registered decision rule. The “fixed” column keeps the best-ranked entry and applies the rule as written; both are shown, nothing else about the hybrid changed, and the bug did not occur on the simulator fresh sets or on batch 3 (checked: their outputs are identical before and after the fix).", "",
+          f"Hybrid internals (fixed version): the model's proposals that passed validation: {n_llm}; rejected (unknown service, no citation or an id that does not exist): {n_rej}. "
           f"Runs where a model proposal replaced the analyzer's top candidate: {', '.join(ch) if ch else 'none'}. Runs where the model's top proposal named a different service than the one chosen (confidence capped at medium): {', '.join(dis) if dis else 'none'}.", "",
           f"Model cost of this batch (baseline, Full Traceback v2 and v4; the hybrid's proposals are the baseline's answer, so it adds no calls): ${sum(r['cost'] for r in rows):.3f}.", "", "<!-- REAL4:END -->"]
     return "\n".join(L)

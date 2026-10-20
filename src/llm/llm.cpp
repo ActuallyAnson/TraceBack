@@ -8,6 +8,7 @@
 #include <fstream>
 #include <sstream>
 #include <thread>
+#include <unistd.h>
 
 #include "../../third_party/nlohmann/json.hpp"
 
@@ -86,14 +87,19 @@ LlmResult chat(const LlmConfig& cfg, const Messages& msgs) {
     if (rc == CURLE_OK && status == 200) {
       json j = json::parse(resp, nullptr, false);
       if (j.is_discarded() || !j.contains("choices") || j["choices"].empty()) { r.error = "malformed response"; return r; }
-      r.content = j["choices"][0]["message"].value("content", "");
+      const json& msg = j["choices"][0]["message"];
+      r.content = msg.contains("content") && msg["content"].is_string() ? msg["content"].get<std::string>() : "";  // content is null when a reasoning model spends its whole budget thinking
+      const std::string finish = j["choices"][0].contains("finish_reason") && j["choices"][0]["finish_reason"].is_string() ? j["choices"][0]["finish_reason"].get<std::string>() : "";
       if (j.contains("usage")) {
         r.prompt_tokens = j["usage"].value("prompt_tokens", 0);
         r.completion_tokens = j["usage"].value("completion_tokens", 0);
       }
+      if (r.content.empty()) { r.error = "empty reply (finish_reason=" + finish + ")"; return r; }  // never cached, so a rerun asks again
       r.ok = true;
       if (!cache_path.empty()) {
-        std::ofstream(cache_path) << json{{"ok", true}, {"content", r.content}, {"prompt_tokens", r.prompt_tokens}, {"completion_tokens", r.completion_tokens}, {"latency_s", r.latency_s}}.dump();
+        const std::string tmp = cache_path + ".tmp" + std::to_string(::getpid());  // write-then-rename: a concurrent reader never sees half a file
+        std::ofstream(tmp) << json{{"ok", true}, {"content", r.content}, {"prompt_tokens", r.prompt_tokens}, {"completion_tokens", r.completion_tokens}, {"latency_s", r.latency_s}}.dump();
+        std::filesystem::rename(tmp, cache_path);
       }
       return r;
     }
