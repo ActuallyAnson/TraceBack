@@ -93,3 +93,14 @@ hybrid-sim-check: build
 	python3 eval/hybrid/report.py --check
 hybrid-check:
 	sh eval/real3/check_hybrid.sh
+
+# Fourth real batch (converter v3 + analyzer v4; eval/real4/PLAN.md). Offline: model answers come from eval/llm_cache.
+real4-data:
+	mkdir -p eval/real4/data
+	[ -d eval/real4/data/incidents ] || tar -xzf eval/real4/incidents.tgz -C eval/real4/data
+real4: build real4-data
+	python3 eval/real4/evaluate.py
+real4-check: build real4-data
+	python3 eval/real4/evaluate.py --check
+v4-check:
+	sh eval/real4/check_v4.sh

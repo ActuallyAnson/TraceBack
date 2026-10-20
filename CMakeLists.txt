@@ -93,3 +93,6 @@ target_link_libraries(tb_hybrid_cli tb_hybrid)
 add_executable(test_hybrid tests/test_hybrid.cpp)
 target_link_libraries(test_hybrid tb_hybrid)
 add_test(NAME hybrid_rules COMMAND test_hybrid)
+
+# Batch-4 fixes (eval/real4/PLAN.md): converter v3 linkage and analyzer v4 rule on synthetic data. Run from the repository's own build directory.
+add_test(NAME real4_synthetic COMMAND python3 ${CMAKE_SOURCE_DIR}/eval/real4/synthetic_check.py)
