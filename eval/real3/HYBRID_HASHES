@@ -1,0 +1,6 @@
+# hybrid sources, frozen before batch 3 was collected. check: sh eval/real3/check_hybrid.sh
+a6a9af4c38a726619a0809ec202a95a79d56e5f4d19034a554e387a432edbc99  include/tb/hybrid.hpp
+8e7c6f0da194c371d219f37ac30eadd78cd44d1898919fc53641f5dde383bf95  src/hybrid/hybrid.cpp
+f5e3d8dbbf54b2d68d342bfca905f2142c2b08d80fe365a195ddbef47b62879b  src/hybrid/main.cpp
+3aadee7462946de5df76f20ca0793fdf8c124548698ac34e8c023783159ca08b  tests/test_hybrid.cpp
+862fb7e9091b9a5780e7e9b924f7446807ddcf39707f1f17d731c7bab25846c0  eval/hybrid/sim_eval.py

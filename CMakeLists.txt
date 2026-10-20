@@ -78,3 +78,13 @@ add_test(NAME v2_fresh_t2_locked COMMAND tb_sim2 verify --set v2fresh --manifest
 add_executable(test_override tests/test_override.cpp)
 target_link_libraries(test_override tb_llm)
 add_test(NAME override_rule COMMAND test_override)
+
+# Hybrid (eval/real3/PLAN.md): LLM-proposed candidates checked and capped by the deterministic layer. New files only.
+add_library(tb_hybrid src/hybrid/hybrid.cpp)
+target_link_libraries(tb_hybrid tb_llm)
+add_executable(tb_hybrid_cli src/hybrid/main.cpp)
+set_target_properties(tb_hybrid_cli PROPERTIES OUTPUT_NAME tb_hybrid)
+target_link_libraries(tb_hybrid_cli tb_hybrid)
+add_executable(test_hybrid tests/test_hybrid.cpp)
+target_link_libraries(test_hybrid tb_hybrid)
+add_test(NAME hybrid_rules COMMAND test_hybrid)
