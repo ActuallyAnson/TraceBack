@@ -816,7 +816,7 @@ Wrong answers per system (all of them): Analyzer v4: f2-02, f2-04; Analyzer v5: 
 
 <!-- V5SIM:END -->
 
-- **Cost and time:** $0.44 in model calls for batch 5 (a few cents more for the simulator rerun); about 1 hour 40 minutes of wall-clock for this iteration including collection. Total model spend since the "about $10 left" budget note: about $4.8.
+- **Cost and time:** $0.44 in model calls for batch 5 (a few cents more for the simulator rerun); about 1 hour of wall-clock for this iteration including collection. Total model spend since the "about $10 left" budget note: about $4.8.
 
 
 ## Future work
