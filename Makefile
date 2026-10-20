@@ -143,3 +143,12 @@ rcaeval: build rcaeval-data
 	python3 eval/rcaeval/evaluate.py
 rcaeval-check: build rcaeval-data
 	python3 eval/rcaeval/evaluate.py --check
+rcaeval2-data:
+	mkdir -p eval/rcaeval/data2
+	[ -d eval/rcaeval/data2/incidents ] || tar -xzf eval/rcaeval/incidents2.tgz -C eval/rcaeval/data2
+rcaeval2: build rcaeval2-data
+	python3 eval/rcaeval/evaluate2.py
+rcaeval2-check: build rcaeval2-data
+	python3 eval/rcaeval/evaluate2.py --check
+rcaeval-check-hash:
+	sh eval/rcaeval/check.sh

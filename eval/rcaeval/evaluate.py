@@ -87,7 +87,7 @@ def main():
     txt = readme.read_text()
     a, b = txt.find("<!-- RCAEVAL:START"), txt.find("<!-- RCAEVAL:END -->")
     end = b + len("<!-- RCAEVAL:END -->")
-    head = "# Real-telemetry sixth batch (generated)\n\n"
+    head = "# RCAEval RE3-OB (generated)\n\n"
     if "--check" in sys.argv:
         if (HERE / "RESULTS.md").read_text() != head + block + "\n" or a < 0 or txt[a:end] != block:
             sys.exit("rcaeval results or README block out of date; run `make rcaeval`")
