@@ -1,0 +1,12 @@
+{
+ "id": "tt-ts-auth-service-f4-r2",
+ "kind": "fault",
+ "system": "tt",
+ "source": "RCAEval RE3",
+ "case": "ts-auth-service_f4/2",
+ "fault_type": "f4",
+ "root_cause": {
+  "service": "ts-auth-service",
+  "edge": null
+ }
+}

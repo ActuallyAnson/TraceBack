@@ -1,0 +1,12 @@
+{
+ "id": "ob-currencyservice-f1-r1",
+ "kind": "fault",
+ "system": "ob",
+ "source": "RCAEval RE3",
+ "case": "currencyservice_f1/1",
+ "fault_type": "f1",
+ "root_cause": {
+  "service": "currencyservice",
+  "edge": null
+ }
+}

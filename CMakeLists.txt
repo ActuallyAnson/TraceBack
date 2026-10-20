@@ -106,3 +106,10 @@ add_test(NAME hybrid_rules COMMAND test_hybrid)
 
 # Batch-4 fixes (eval/real4/PLAN.md): converter v3 linkage and analyzer v4 rule on synthetic data. Run from the repository's own build directory.
 add_test(NAME real4_synthetic COMMAND python3 ${CMAKE_SOURCE_DIR}/eval/real4/synthetic_check.py)
+
+# Hybrid 2 (eval/transfer/PLAN.md): model proposals kept only where the incident's measurements support them. New files only.
+add_library(tb_hybrid2 src/hybrid2/hybrid2.cpp)
+target_link_libraries(tb_hybrid2 tb_hybrid)
+add_executable(tb_hybrid2_cli src/hybrid2/main.cpp)
+set_target_properties(tb_hybrid2_cli PROPERTIES OUTPUT_NAME tb_hybrid2)
+target_link_libraries(tb_hybrid2_cli tb_hybrid2)

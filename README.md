@@ -1046,6 +1046,12 @@ Model cost of this batch (baseline, Full Traceback v6): $0.690.
 - **Cost:** $0.67 for the first run and $0.69 for the post hoc run in model calls (repo price constants); total since the "$10 left" note about $8.7, so I stopped there.
 
 
+### Transfer to unseen real systems: model proposals plus measured evidence (hybrid 2)
+
+<!-- TRANSFER:START -->
+<!-- TRANSFER:END -->
+
+
 ## Future work
 
 - Harmless deploys and swallowed errors on fire-and-forget branches still outrank real causes in some latency cascades (v1's `fan-02`, v2's fresh `f2-02`); v2's origin-share rule fixed the entry-service variant only partly. Needs a way to tell a swallowed error from a causal one that survives cascades.

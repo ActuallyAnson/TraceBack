@@ -152,3 +152,15 @@ rcaeval2-check: build rcaeval2-data
 	python3 eval/rcaeval/evaluate2.py --check
 rcaeval-check-hash:
 	sh eval/rcaeval/check.sh
+
+# Transfer test on unseen real systems (eval/transfer/PLAN.md). Offline: model answers come from eval/llm_cache.
+transfer-data:
+	mkdir -p eval/transfer/test eval/transfer/dev
+	[ -d eval/transfer/test/data/incidents ] || tar -xzf eval/transfer/test_incidents.tgz -C eval/transfer/test
+	[ -d eval/transfer/dev/data/incidents ] || tar -xzf eval/transfer/dev_incidents.tgz -C eval/transfer/dev
+transfer: build transfer-data
+	python3 eval/transfer/evaluate.py
+transfer-check: build transfer-data
+	python3 eval/transfer/evaluate.py --check
+transfer-hash:
+	sh eval/transfer/check.sh
