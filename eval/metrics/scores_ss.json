@@ -1,0 +1,1562 @@
+[
+{
+"id": "ss-carts-cpu-r1",
+"kind": "fault",
+"truth": "carts",
+"fault_type": "cpu",
+"answer": "carts",
+"top_service": "carts",
+"top_score": 12.13,
+"second": [
+"orders",
+12.02
+]
+},
+{
+"id": "ss-clean-carts-cpu",
+"kind": "clean",
+"truth": null,
+"fault_type": "cpu",
+"answer": null,
+"top_service": "queue-master",
+"top_score": 5.65,
+"second": [
+"front-end",
+3.07
+]
+},
+{
+"id": "ss-carts-cpu-r2",
+"kind": "fault",
+"truth": "carts",
+"fault_type": "cpu",
+"answer": "carts",
+"top_service": "carts",
+"top_score": 10.41,
+"second": [
+"orders",
+3.95
+]
+},
+{
+"id": "ss-carts-cpu-r3",
+"kind": "fault",
+"truth": "carts",
+"fault_type": "cpu",
+"answer": "carts",
+"top_service": "carts",
+"top_score": 10.45,
+"second": [
+"rabbitmq-exporter",
+7.57
+]
+},
+{
+"id": "ss-carts-delay-r1",
+"kind": "fault",
+"truth": "carts",
+"fault_type": "delay",
+"answer": "orders",
+"top_service": "orders",
+"top_score": 13.58,
+"second": [
+"carts",
+12.19
+]
+},
+{
+"id": "ss-clean-carts-delay",
+"kind": "clean",
+"truth": null,
+"fault_type": "delay",
+"answer": null,
+"top_service": "carts",
+"top_score": 6.84,
+"second": [
+"front-end",
+4.09
+]
+},
+{
+"id": "ss-carts-delay-r2",
+"kind": "fault",
+"truth": "carts",
+"fault_type": "delay",
+"answer": "orders",
+"top_service": "orders",
+"top_score": 14.02,
+"second": [
+"front-end",
+13.56
+]
+},
+{
+"id": "ss-carts-delay-r3",
+"kind": "fault",
+"truth": "carts",
+"fault_type": "delay",
+"answer": "orders",
+"top_service": "orders",
+"top_score": 13.96,
+"second": [
+"carts",
+12.38
+]
+},
+{
+"id": "ss-carts-disk-r1",
+"kind": "fault",
+"truth": "carts",
+"fault_type": "disk",
+"answer": "carts",
+"top_service": "carts",
+"top_score": 10.45,
+"second": [
+"user",
+3.59
+]
+},
+{
+"id": "ss-clean-carts-disk",
+"kind": "clean",
+"truth": null,
+"fault_type": "disk",
+"answer": null,
+"top_service": "carts",
+"top_score": 9.69,
+"second": [
+"session-db",
+7.67
+]
+},
+{
+"id": "ss-carts-disk-r2",
+"kind": "fault",
+"truth": "carts",
+"fault_type": "disk",
+"answer": "carts",
+"top_service": "carts",
+"top_score": 13.09,
+"second": [
+"orders",
+12.41
+]
+},
+{
+"id": "ss-carts-disk-r3",
+"kind": "fault",
+"truth": "carts",
+"fault_type": "disk",
+"answer": "carts",
+"top_service": "carts",
+"top_score": 12.34,
+"second": [
+"orders",
+11.65
+]
+},
+{
+"id": "ss-carts-loss-r1",
+"kind": "fault",
+"truth": "carts",
+"fault_type": "loss",
+"answer": "front-end",
+"top_service": "front-end",
+"top_score": 11.04,
+"second": [
+"orders",
+10.52
+]
+},
+{
+"id": "ss-clean-carts-loss",
+"kind": "clean",
+"truth": null,
+"fault_type": "loss",
+"answer": null,
+"top_service": "shipping",
+"top_score": 3.51,
+"second": [
+"carts",
+2.36
+]
+},
+{
+"id": "ss-carts-loss-r2",
+"kind": "fault",
+"truth": "carts",
+"fault_type": "loss",
+"answer": "front-end",
+"top_service": "front-end",
+"top_score": 12.97,
+"second": [
+"carts",
+10.92
+]
+},
+{
+"id": "ss-carts-loss-r3",
+"kind": "fault",
+"truth": "carts",
+"fault_type": "loss",
+"answer": "carts",
+"top_service": "carts",
+"top_score": 10.02,
+"second": [
+"front-end",
+9.94
+]
+},
+{
+"id": "ss-carts-mem-r1",
+"kind": "fault",
+"truth": "carts",
+"fault_type": "mem",
+"answer": "carts",
+"top_service": "carts",
+"top_score": 11.82,
+"second": [
+"orders",
+10.69
+]
+},
+{
+"id": "ss-clean-carts-mem",
+"kind": "clean",
+"truth": null,
+"fault_type": "mem",
+"answer": null,
+"top_service": "rabbitmq-exporter",
+"top_score": 4.68,
+"second": [
+"payment",
+4.53
+]
+},
+{
+"id": "ss-carts-mem-r2",
+"kind": "fault",
+"truth": "carts",
+"fault_type": "mem",
+"answer": "carts",
+"top_service": "carts",
+"top_score": 11.45,
+"second": [
+"rabbitmq-exporter",
+5.4
+]
+},
+{
+"id": "ss-carts-mem-r3",
+"kind": "fault",
+"truth": "carts",
+"fault_type": "mem",
+"answer": "carts",
+"top_service": "carts",
+"top_score": 13.73,
+"second": [
+"shipping",
+3.99
+]
+},
+{
+"id": "ss-carts-socket-r1",
+"kind": "fault",
+"truth": "carts",
+"fault_type": "socket",
+"answer": "orders",
+"top_service": "orders",
+"top_score": 12.62,
+"second": [
+"carts",
+11.86
+]
+},
+{
+"id": "ss-clean-carts-socket",
+"kind": "clean",
+"truth": null,
+"fault_type": "socket",
+"answer": "carts-db",
+"top_service": "carts-db",
+"top_score": 12.14,
+"second": [
+"carts",
+4.52
+]
+},
+{
+"id": "ss-carts-socket-r2",
+"kind": "fault",
+"truth": "carts",
+"fault_type": "socket",
+"answer": "carts",
+"top_service": "carts",
+"top_score": 15.81,
+"second": [
+"orders",
+9.88
+]
+},
+{
+"id": "ss-carts-socket-r3",
+"kind": "fault",
+"truth": "carts",
+"fault_type": "socket",
+"answer": "carts",
+"top_service": "carts",
+"top_score": 16.0,
+"second": [
+"orders",
+12.42
+]
+},
+{
+"id": "ss-catalogue-cpu-r1",
+"kind": "fault",
+"truth": "catalogue",
+"fault_type": "cpu",
+"answer": "catalogue",
+"top_service": "catalogue",
+"top_score": 15.02,
+"second": [
+"session-db",
+7.31
+]
+},
+{
+"id": "ss-clean-catalogue-cpu",
+"kind": "clean",
+"truth": null,
+"fault_type": "cpu",
+"answer": null,
+"top_service": "front-end",
+"top_score": 5.21,
+"second": [
+"orders-db",
+3.2
+]
+},
+{
+"id": "ss-catalogue-cpu-r2",
+"kind": "fault",
+"truth": "catalogue",
+"fault_type": "cpu",
+"answer": "catalogue",
+"top_service": "catalogue",
+"top_score": 13.84,
+"second": [
+"user",
+7.8
+]
+},
+{
+"id": "ss-catalogue-cpu-r3",
+"kind": "fault",
+"truth": "catalogue",
+"fault_type": "cpu",
+"answer": "catalogue",
+"top_service": "catalogue",
+"top_score": 12.34,
+"second": [
+"carts-db",
+3.78
+]
+},
+{
+"id": "ss-catalogue-delay-r1",
+"kind": "fault",
+"truth": "catalogue",
+"fault_type": "delay",
+"answer": "catalogue",
+"top_service": "catalogue",
+"top_score": 12.96,
+"second": [
+"orders",
+12.52
+]
+},
+{
+"id": "ss-clean-catalogue-delay",
+"kind": "clean",
+"truth": null,
+"fault_type": "delay",
+"answer": null,
+"top_service": "shipping",
+"top_score": 4.58,
+"second": [
+"rabbitmq-exporter",
+2.57
+]
+},
+{
+"id": "ss-catalogue-delay-r2",
+"kind": "fault",
+"truth": "catalogue",
+"fault_type": "delay",
+"answer": "catalogue",
+"top_service": "catalogue",
+"top_score": 10.22,
+"second": [
+"front-end",
+8.79
+]
+},
+{
+"id": "ss-catalogue-delay-r3",
+"kind": "fault",
+"truth": "catalogue",
+"fault_type": "delay",
+"answer": "catalogue",
+"top_service": "catalogue",
+"top_score": 11.45,
+"second": [
+"front-end",
+8.52
+]
+},
+{
+"id": "ss-catalogue-disk-r1",
+"kind": "fault",
+"truth": "catalogue",
+"fault_type": "disk",
+"answer": "catalogue",
+"top_service": "catalogue",
+"top_score": 14.0,
+"second": [
+"orders-db",
+4.28
+]
+},
+{
+"id": "ss-clean-catalogue-disk",
+"kind": "clean",
+"truth": null,
+"fault_type": "disk",
+"answer": null,
+"top_service": "catalogue",
+"top_score": 7.87,
+"second": [
+"session-db",
+5.55
+]
+},
+{
+"id": "ss-catalogue-disk-r2",
+"kind": "fault",
+"truth": "catalogue",
+"fault_type": "disk",
+"answer": "catalogue",
+"top_service": "catalogue",
+"top_score": 15.49,
+"second": [
+"session-db",
+4.76
+]
+},
+{
+"id": "ss-catalogue-disk-r3",
+"kind": "fault",
+"truth": "catalogue",
+"fault_type": "disk",
+"answer": "catalogue",
+"top_service": "catalogue",
+"top_score": 11.29,
+"second": [
+"carts",
+2.51
+]
+},
+{
+"id": "ss-catalogue-loss-r1",
+"kind": "fault",
+"truth": "catalogue",
+"fault_type": "loss",
+"answer": "catalogue",
+"top_service": "catalogue",
+"top_score": 10.2,
+"second": [
+"user",
+7.74
+]
+},
+{
+"id": "ss-clean-catalogue-loss",
+"kind": "clean",
+"truth": null,
+"fault_type": "loss",
+"answer": null,
+"top_service": "queue-master",
+"top_score": 7.01,
+"second": [
+"session-db",
+5.44
+]
+},
+{
+"id": "ss-catalogue-loss-r2",
+"kind": "fault",
+"truth": "catalogue",
+"fault_type": "loss",
+"answer": "catalogue",
+"top_service": "catalogue",
+"top_score": 10.6,
+"second": [
+"shipping",
+7.65
+]
+},
+{
+"id": "ss-catalogue-loss-r3",
+"kind": "fault",
+"truth": "catalogue",
+"fault_type": "loss",
+"answer": null,
+"top_service": "catalogue",
+"top_score": 9.69,
+"second": [
+"session-db",
+8.29
+]
+},
+{
+"id": "ss-catalogue-mem-r1",
+"kind": "fault",
+"truth": "catalogue",
+"fault_type": "mem",
+"answer": "catalogue",
+"top_service": "catalogue",
+"top_score": 11.44,
+"second": [
+"front-end",
+6.94
+]
+},
+{
+"id": "ss-clean-catalogue-mem",
+"kind": "clean",
+"truth": null,
+"fault_type": "mem",
+"answer": null,
+"top_service": "payment",
+"top_score": 4.0,
+"second": [
+"front-end",
+2.56
+]
+},
+{
+"id": "ss-catalogue-mem-r2",
+"kind": "fault",
+"truth": "catalogue",
+"fault_type": "mem",
+"answer": "catalogue",
+"top_service": "catalogue",
+"top_score": 11.08,
+"second": [
+"rabbitmq-exporter",
+7.48
+]
+},
+{
+"id": "ss-catalogue-mem-r3",
+"kind": "fault",
+"truth": "catalogue",
+"fault_type": "mem",
+"answer": "catalogue",
+"top_service": "catalogue",
+"top_score": 10.47,
+"second": [
+"front-end",
+8.7
+]
+},
+{
+"id": "ss-catalogue-socket-r1",
+"kind": "fault",
+"truth": "catalogue",
+"fault_type": "socket",
+"answer": "catalogue",
+"top_service": "catalogue",
+"top_score": 12.89,
+"second": [
+"orders",
+4.28
+]
+},
+{
+"id": "ss-clean-catalogue-socket",
+"kind": "clean",
+"truth": null,
+"fault_type": "socket",
+"answer": "session-db",
+"top_service": "session-db",
+"top_score": 11.76,
+"second": [
+"orders",
+10.24
+]
+},
+{
+"id": "ss-catalogue-socket-r2",
+"kind": "fault",
+"truth": "catalogue",
+"fault_type": "socket",
+"answer": "catalogue",
+"top_service": "catalogue",
+"top_score": 13.53,
+"second": [
+"session-db",
+8.08
+]
+},
+{
+"id": "ss-catalogue-socket-r3",
+"kind": "fault",
+"truth": "catalogue",
+"fault_type": "socket",
+"answer": "catalogue",
+"top_service": "catalogue",
+"top_score": 15.3,
+"second": [
+"shipping",
+6.1
+]
+},
+{
+"id": "ss-orders-cpu-r1",
+"kind": "fault",
+"truth": "orders",
+"fault_type": "cpu",
+"answer": "orders",
+"top_service": "orders",
+"top_score": 10.8,
+"second": [
+"carts-db",
+5.07
+]
+},
+{
+"id": "ss-clean-orders-cpu",
+"kind": "clean",
+"truth": null,
+"fault_type": "cpu",
+"answer": null,
+"top_service": "carts",
+"top_score": 2.22,
+"second": [
+"user-db",
+2.21
+]
+},
+{
+"id": "ss-orders-cpu-r2",
+"kind": "fault",
+"truth": "orders",
+"fault_type": "cpu",
+"answer": "orders",
+"top_service": "orders",
+"top_score": 10.77,
+"second": [
+"shipping",
+3.11
+]
+},
+{
+"id": "ss-orders-cpu-r3",
+"kind": "fault",
+"truth": "orders",
+"fault_type": "cpu",
+"answer": null,
+"top_service": "orders",
+"top_score": 9.7,
+"second": [
+"queue-master",
+8.48
+]
+},
+{
+"id": "ss-orders-delay-r1",
+"kind": "fault",
+"truth": "orders",
+"fault_type": "delay",
+"answer": "shipping",
+"top_service": "shipping",
+"top_score": 12.05,
+"second": [
+"orders",
+12.01
+]
+},
+{
+"id": "ss-clean-orders-delay",
+"kind": "clean",
+"truth": null,
+"fault_type": "delay",
+"answer": null,
+"top_service": "carts",
+"top_score": 2.72,
+"second": [
+"orders",
+2.64
+]
+},
+{
+"id": "ss-orders-delay-r2",
+"kind": "fault",
+"truth": "orders",
+"fault_type": "delay",
+"answer": "shipping",
+"top_service": "shipping",
+"top_score": 11.4,
+"second": [
+"payment",
+11.35
+]
+},
+{
+"id": "ss-orders-delay-r3",
+"kind": "fault",
+"truth": "orders",
+"fault_type": "delay",
+"answer": "orders",
+"top_service": "orders",
+"top_score": 11.2,
+"second": [
+"payment",
+11.16
+]
+},
+{
+"id": "ss-orders-disk-r1",
+"kind": "fault",
+"truth": "orders",
+"fault_type": "disk",
+"answer": "orders",
+"top_service": "orders",
+"top_score": 13.59,
+"second": [
+"front-end",
+10.53
+]
+},
+{
+"id": "ss-clean-orders-disk",
+"kind": "clean",
+"truth": null,
+"fault_type": "disk",
+"answer": null,
+"top_service": "orders",
+"top_score": 8.59,
+"second": [
+"carts",
+2.04
+]
+},
+{
+"id": "ss-orders-disk-r2",
+"kind": "fault",
+"truth": "orders",
+"fault_type": "disk",
+"answer": "orders",
+"top_service": "orders",
+"top_score": 11.17,
+"second": [
+"orders-db",
+10.08
+]
+},
+{
+"id": "ss-orders-disk-r3",
+"kind": "fault",
+"truth": "orders",
+"fault_type": "disk",
+"answer": "orders",
+"top_service": "orders",
+"top_score": 10.48,
+"second": [
+"rabbitmq-exporter",
+3.04
+]
+},
+{
+"id": "ss-orders-loss-r1",
+"kind": "fault",
+"truth": "orders",
+"fault_type": "loss",
+"answer": "orders",
+"top_service": "orders",
+"top_score": 10.79,
+"second": [
+"payment",
+8.54
+]
+},
+{
+"id": "ss-clean-orders-loss",
+"kind": "clean",
+"truth": null,
+"fault_type": "loss",
+"answer": null,
+"top_service": "rabbitmq-exporter",
+"top_score": 2.89,
+"second": [
+"shipping",
+2.89
+]
+},
+{
+"id": "ss-orders-loss-r2",
+"kind": "fault",
+"truth": "orders",
+"fault_type": "loss",
+"answer": null,
+"top_service": "orders",
+"top_score": 9.37,
+"second": [
+"front-end",
+5.43
+]
+},
+{
+"id": "ss-orders-loss-r3",
+"kind": "fault",
+"truth": "orders",
+"fault_type": "loss",
+"answer": "front-end",
+"top_service": "front-end",
+"top_score": 10.22,
+"second": [
+"orders",
+7.75
+]
+},
+{
+"id": "ss-orders-mem-r1",
+"kind": "fault",
+"truth": "orders",
+"fault_type": "mem",
+"answer": "orders",
+"top_service": "orders",
+"top_score": 10.11,
+"second": [
+"rabbitmq-exporter",
+9.85
+]
+},
+{
+"id": "ss-clean-orders-mem",
+"kind": "clean",
+"truth": null,
+"fault_type": "mem",
+"answer": null,
+"top_service": "front-end",
+"top_score": 3.37,
+"second": [
+"orders",
+3.26
+]
+},
+{
+"id": "ss-orders-mem-r2",
+"kind": "fault",
+"truth": "orders",
+"fault_type": "mem",
+"answer": "orders",
+"top_service": "orders",
+"top_score": 12.12,
+"second": [
+"payment",
+4.14
+]
+},
+{
+"id": "ss-orders-mem-r3",
+"kind": "fault",
+"truth": "orders",
+"fault_type": "mem",
+"answer": "orders",
+"top_service": "orders",
+"top_score": 11.21,
+"second": [
+"queue-master",
+4.78
+]
+},
+{
+"id": "ss-orders-socket-r1",
+"kind": "fault",
+"truth": "orders",
+"fault_type": "socket",
+"answer": "orders",
+"top_service": "orders",
+"top_score": 12.8,
+"second": [
+"user",
+5.99
+]
+},
+{
+"id": "ss-clean-orders-socket",
+"kind": "clean",
+"truth": null,
+"fault_type": "socket",
+"answer": "orders",
+"top_service": "orders",
+"top_score": 13.55,
+"second": [
+"orders-db",
+12.33
+]
+},
+{
+"id": "ss-orders-socket-r2",
+"kind": "fault",
+"truth": "orders",
+"fault_type": "socket",
+"answer": "orders",
+"top_service": "orders",
+"top_score": 12.77,
+"second": [
+"shipping",
+10.86
+]
+},
+{
+"id": "ss-orders-socket-r3",
+"kind": "fault",
+"truth": "orders",
+"fault_type": "socket",
+"answer": "orders",
+"top_service": "orders",
+"top_score": 11.77,
+"second": [
+"shipping",
+9.72
+]
+},
+{
+"id": "ss-payment-cpu-r1",
+"kind": "fault",
+"truth": "payment",
+"fault_type": "cpu",
+"answer": "payment",
+"top_service": "payment",
+"top_score": 15.09,
+"second": [
+"session-db",
+5.18
+]
+},
+{
+"id": "ss-clean-payment-cpu",
+"kind": "clean",
+"truth": null,
+"fault_type": "cpu",
+"answer": null,
+"top_service": "session-db",
+"top_score": 7.37,
+"second": [
+"queue-master",
+1.65
+]
+},
+{
+"id": "ss-payment-cpu-r2",
+"kind": "fault",
+"truth": "payment",
+"fault_type": "cpu",
+"answer": "payment",
+"top_service": "payment",
+"top_score": 13.75,
+"second": [
+"shipping",
+7.84
+]
+},
+{
+"id": "ss-payment-cpu-r3",
+"kind": "fault",
+"truth": "payment",
+"fault_type": "cpu",
+"answer": "payment",
+"top_service": "payment",
+"top_score": 14.21,
+"second": [
+"queue-master",
+6.19
+]
+},
+{
+"id": "ss-payment-delay-r1",
+"kind": "fault",
+"truth": "payment",
+"fault_type": "delay",
+"answer": "payment",
+"top_service": "payment",
+"top_score": 13.68,
+"second": [
+"front-end",
+4.82
+]
+},
+{
+"id": "ss-clean-payment-delay",
+"kind": "clean",
+"truth": null,
+"fault_type": "delay",
+"answer": null,
+"top_service": "orders",
+"top_score": 3.51,
+"second": [
+"payment",
+3.43
+]
+},
+{
+"id": "ss-payment-delay-r2",
+"kind": "fault",
+"truth": "payment",
+"fault_type": "delay",
+"answer": "orders",
+"top_service": "orders",
+"top_score": 12.81,
+"second": [
+"payment",
+12.14
+]
+},
+{
+"id": "ss-payment-delay-r3",
+"kind": "fault",
+"truth": "payment",
+"fault_type": "delay",
+"answer": "orders",
+"top_service": "orders",
+"top_score": 12.85,
+"second": [
+"payment",
+12.08
+]
+},
+{
+"id": "ss-payment-disk-r1",
+"kind": "fault",
+"truth": "payment",
+"fault_type": "disk",
+"answer": "payment",
+"top_service": "payment",
+"top_score": 14.13,
+"second": [
+"session-db",
+7.35
+]
+},
+{
+"id": "ss-clean-payment-disk",
+"kind": "clean",
+"truth": null,
+"fault_type": "disk",
+"answer": null,
+"top_service": "shipping",
+"top_score": 7.74,
+"second": [
+"payment",
+7.35
+]
+},
+{
+"id": "ss-payment-disk-r2",
+"kind": "fault",
+"truth": "payment",
+"fault_type": "disk",
+"answer": "payment",
+"top_service": "payment",
+"top_score": 13.56,
+"second": [
+"shipping",
+4.4
+]
+},
+{
+"id": "ss-payment-disk-r3",
+"kind": "fault",
+"truth": "payment",
+"fault_type": "disk",
+"answer": "payment",
+"top_service": "payment",
+"top_score": 10.74,
+"second": [
+"queue-master",
+8.08
+]
+},
+{
+"id": "ss-payment-loss-r1",
+"kind": "fault",
+"truth": "payment",
+"fault_type": "loss",
+"answer": null,
+"top_service": "front-end",
+"top_score": 8.79,
+"second": [
+"orders",
+8.65
+]
+},
+{
+"id": "ss-clean-payment-loss",
+"kind": "clean",
+"truth": null,
+"fault_type": "loss",
+"answer": null,
+"top_service": "payment",
+"top_score": 6.25,
+"second": [
+"shipping",
+2.63
+]
+},
+{
+"id": "ss-payment-loss-r2",
+"kind": "fault",
+"truth": "payment",
+"fault_type": "loss",
+"answer": null,
+"top_service": "orders",
+"top_score": 6.3,
+"second": [
+"queue-master",
+4.78
+]
+},
+{
+"id": "ss-payment-loss-r3",
+"kind": "fault",
+"truth": "payment",
+"fault_type": "loss",
+"answer": null,
+"top_service": "orders",
+"top_score": 8.51,
+"second": [
+"queue-master",
+5.63
+]
+},
+{
+"id": "ss-payment-mem-r1",
+"kind": "fault",
+"truth": "payment",
+"fault_type": "mem",
+"answer": "payment",
+"top_service": "payment",
+"top_score": 11.96,
+"second": [
+"session-db",
+8.76
+]
+},
+{
+"id": "ss-clean-payment-mem",
+"kind": "clean",
+"truth": null,
+"fault_type": "mem",
+"answer": "shipping",
+"top_service": "shipping",
+"top_score": 16.44,
+"second": [
+"payment",
+15.18
+]
+},
+{
+"id": "ss-payment-mem-r2",
+"kind": "fault",
+"truth": "payment",
+"fault_type": "mem",
+"answer": "payment",
+"top_service": "payment",
+"top_score": 10.73,
+"second": [
+"orders",
+9.63
+]
+},
+{
+"id": "ss-payment-mem-r3",
+"kind": "fault",
+"truth": "payment",
+"fault_type": "mem",
+"answer": "payment",
+"top_service": "payment",
+"top_score": 10.69,
+"second": [
+"orders",
+7.87
+]
+},
+{
+"id": "ss-payment-socket-r1",
+"kind": "fault",
+"truth": "payment",
+"fault_type": "socket",
+"answer": "payment",
+"top_service": "payment",
+"top_score": 12.52,
+"second": [
+"orders",
+3.39
+]
+},
+{
+"id": "ss-clean-payment-socket",
+"kind": "clean",
+"truth": null,
+"fault_type": "socket",
+"answer": null,
+"top_service": "session-db",
+"top_score": 7.86,
+"second": [
+"carts",
+2.32
+]
+},
+{
+"id": "ss-payment-socket-r2",
+"kind": "fault",
+"truth": "payment",
+"fault_type": "socket",
+"answer": "payment",
+"top_service": "payment",
+"top_score": 12.67,
+"second": [
+"orders",
+11.07
+]
+},
+{
+"id": "ss-payment-socket-r3",
+"kind": "fault",
+"truth": "payment",
+"fault_type": "socket",
+"answer": "payment",
+"top_service": "payment",
+"top_score": 15.3,
+"second": [
+"orders",
+10.22
+]
+},
+{
+"id": "ss-user-cpu-r1",
+"kind": "fault",
+"truth": "user",
+"fault_type": "cpu",
+"answer": "orders",
+"top_service": "orders",
+"top_score": 13.68,
+"second": [
+"user",
+12.31
+]
+},
+{
+"id": "ss-clean-user-cpu",
+"kind": "clean",
+"truth": null,
+"fault_type": "cpu",
+"answer": null,
+"top_service": "front-end",
+"top_score": 5.0,
+"second": [
+"session-db",
+2.0
+]
+},
+{
+"id": "ss-user-cpu-r2",
+"kind": "fault",
+"truth": "user",
+"fault_type": "cpu",
+"answer": "user",
+"top_service": "user",
+"top_score": 11.08,
+"second": [
+"orders",
+7.91
+]
+},
+{
+"id": "ss-user-cpu-r3",
+"kind": "fault",
+"truth": "user",
+"fault_type": "cpu",
+"answer": "user",
+"top_service": "user",
+"top_score": 10.96,
+"second": [
+"orders",
+8.11
+]
+},
+{
+"id": "ss-user-delay-r1",
+"kind": "fault",
+"truth": "user",
+"fault_type": "delay",
+"answer": "user",
+"top_service": "user",
+"top_score": 12.53,
+"second": [
+"session-db",
+9.35
+]
+},
+{
+"id": "ss-clean-user-delay",
+"kind": "clean",
+"truth": null,
+"fault_type": "delay",
+"answer": null,
+"top_service": "session-db",
+"top_score": 8.34,
+"second": [
+"orders",
+5.27
+]
+},
+{
+"id": "ss-user-delay-r2",
+"kind": "fault",
+"truth": "user",
+"fault_type": "delay",
+"answer": "orders",
+"top_service": "orders",
+"top_score": 13.1,
+"second": [
+"user",
+12.98
+]
+},
+{
+"id": "ss-user-delay-r3",
+"kind": "fault",
+"truth": "user",
+"fault_type": "delay",
+"answer": "front-end",
+"top_service": "front-end",
+"top_score": 14.15,
+"second": [
+"orders",
+13.96
+]
+},
+{
+"id": "ss-user-disk-r1",
+"kind": "fault",
+"truth": "user",
+"fault_type": "disk",
+"answer": "user",
+"top_service": "user",
+"top_score": 12.09,
+"second": [
+"user-db",
+3.73
+]
+},
+{
+"id": "ss-clean-user-disk",
+"kind": "clean",
+"truth": null,
+"fault_type": "disk",
+"answer": null,
+"top_service": "orders",
+"top_score": 6.68,
+"second": [
+"user",
+5.94
+]
+},
+{
+"id": "ss-user-disk-r2",
+"kind": "fault",
+"truth": "user",
+"fault_type": "disk",
+"answer": "user",
+"top_service": "user",
+"top_score": 13.53,
+"second": [
+"session-db",
+6.3
+]
+},
+{
+"id": "ss-user-disk-r3",
+"kind": "fault",
+"truth": "user",
+"fault_type": "disk",
+"answer": "user",
+"top_service": "user",
+"top_score": 15.78,
+"second": [
+"queue-master",
+9.85
+]
+},
+{
+"id": "ss-user-loss-r1",
+"kind": "fault",
+"truth": "user",
+"fault_type": "loss",
+"answer": null,
+"top_service": "orders",
+"top_score": 9.99,
+"second": [
+"user",
+9.53
+]
+},
+{
+"id": "ss-clean-user-loss",
+"kind": "clean",
+"truth": null,
+"fault_type": "loss",
+"answer": null,
+"top_service": "carts",
+"top_score": 4.51,
+"second": [
+"session-db",
+3.65
+]
+},
+{
+"id": "ss-user-loss-r2",
+"kind": "fault",
+"truth": "user",
+"fault_type": "loss",
+"answer": "front-end",
+"top_service": "front-end",
+"top_score": 12.05,
+"second": [
+"orders",
+10.76
+]
+},
+{
+"id": "ss-user-loss-r3",
+"kind": "fault",
+"truth": "user",
+"fault_type": "loss",
+"answer": "orders",
+"top_service": "orders",
+"top_score": 10.54,
+"second": [
+"user",
+8.7
+]
+},
+{
+"id": "ss-user-mem-r1",
+"kind": "fault",
+"truth": "user",
+"fault_type": "mem",
+"answer": "user",
+"top_service": "user",
+"top_score": 10.61,
+"second": [
+"orders",
+8.64
+]
+},
+{
+"id": "ss-clean-user-mem",
+"kind": "clean",
+"truth": null,
+"fault_type": "mem",
+"answer": null,
+"top_service": "rabbitmq-exporter",
+"top_score": 9.2,
+"second": [
+"queue-master",
+7.23
+]
+},
+{
+"id": "ss-user-mem-r2",
+"kind": "fault",
+"truth": "user",
+"fault_type": "mem",
+"answer": "user",
+"top_service": "user",
+"top_score": 10.24,
+"second": [
+"orders",
+9.43
+]
+},
+{
+"id": "ss-user-mem-r3",
+"kind": "fault",
+"truth": "user",
+"fault_type": "mem",
+"answer": "user",
+"top_service": "user",
+"top_score": 10.43,
+"second": [
+"orders",
+10.32
+]
+},
+{
+"id": "ss-user-socket-r1",
+"kind": "fault",
+"truth": "user",
+"fault_type": "socket",
+"answer": "user",
+"top_service": "user",
+"top_score": 14.3,
+"second": [
+"session-db",
+7.04
+]
+},
+{
+"id": "ss-clean-user-socket",
+"kind": "clean",
+"truth": null,
+"fault_type": "socket",
+"answer": null,
+"top_service": "user-db",
+"top_score": 4.63,
+"second": [
+"payment",
+4.18
+]
+},
+{
+"id": "ss-user-socket-r2",
+"kind": "fault",
+"truth": "user",
+"fault_type": "socket",
+"answer": "orders",
+"top_service": "orders",
+"top_score": 13.67,
+"second": [
+"user",
+11.71
+]
+},
+{
+"id": "ss-user-socket-r3",
+"kind": "fault",
+"truth": "user",
+"fault_type": "socket",
+"answer": "user",
+"top_service": "user",
+"top_score": 14.02,
+"second": [
+"orders",
+11.96
+]
+}
+]

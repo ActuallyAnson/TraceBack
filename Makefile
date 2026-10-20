@@ -173,3 +173,11 @@ transfer2: build transfer2-data
 	python3 eval/transfer2/evaluate.py
 transfer2-check: build transfer2-data
 	python3 eval/transfer2/evaluate.py --check
+
+# Rule M, per-service metric anomaly on RCAEval RE2 (eval/metrics/PLAN.md). Offline: reads the committed per-case scores; eval/metrics/scores.py regenerates them from the public archives.
+metrics:
+	python3 eval/metrics/evaluate.py
+metrics-check:
+	python3 eval/metrics/evaluate.py --check
+metrics-hash:
+	sh eval/metrics/check.sh

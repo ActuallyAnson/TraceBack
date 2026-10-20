@@ -1,0 +1,4 @@
+# rule M, scorer and plan, frozen before the RE2-OB and RE2-TT archives were opened. check: sh eval/metrics/check.sh
+687b2686538bde9b34853e224474b339de0035b3cef2c7d8b0f98bc6831fc8e6  eval/metrics/metric_rule.py
+5fd54eac52c88e3e003d0f4112ad15c8373e0ab46649b6cec889b2869b9f3945  eval/metrics/scores.py
+bc8af874041981543ac844615926daf98454307fd5a91f63bb5514ad9c5e2b1d  eval/metrics/PLAN.md

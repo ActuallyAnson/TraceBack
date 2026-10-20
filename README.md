@@ -1392,6 +1392,12 @@ Model cost (the baseline's calls; hybrid 2 reuses them): $2.443.
 
 </details>
 
+### Rule M: reading the resource metrics (RE2 resource and network faults, no model)
+
+<!-- METRICS:START -->
+<!-- METRICS:END -->
+
+
 ## Future work
 
 - **Read the resource metrics.** RCAEval's resource and network faults (CPU, memory, disk, delay, loss, socket) leave little in the logs; hybrid 2 found 5 of 90 of them. A measured per-service metric anomaly is the obvious next kind of evidence and is untested.
