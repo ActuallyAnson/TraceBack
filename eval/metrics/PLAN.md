@@ -20,3 +20,6 @@ Also reported for context (no new run): the earlier model-based results on RE2-S
 
 ## Amendment 1 (found while scoring the first test archive, before any test result was seen)
 The scorer crashed on RE2-OB (`ValueError`): some rows of its `simple_metrics.csv` have an empty timestamp. `metric_rule.py` now skips rows whose time is not a number. This is a bug fix, not a change of the rule: the development scores on RE2-SS are byte-identical before and after (`scores_ss.json`). `METRICS_HASHES` re-frozen for `metric_rule.py` and this plan; nothing about TAU or the formula changed.
+
+## Amendment 2 (also before any test result was seen)
+The RE2-OB archive has an extra `multi-source-data` directory next to the repeat directories 1, 2 and 3; the scorer now only reads directories whose name is a number. RE2-SS scores are byte-identical. `METRICS_HASHES` re-frozen again; the rule is untouched.

@@ -1,4 +1,4 @@
-# rule M, scorer and plan. Frozen before the RE2-OB and RE2-TT archives were opened; re-frozen once for the empty-timestamp fix (PLAN.md amendment 1), before any test result was seen. check: sh eval/metrics/check.sh
+# rule M, scorer and plan. Frozen before the RE2-OB and RE2-TT archives were opened; re-frozen twice for scorer robustness fixes (PLAN.md amendments 1 and 2), before any test result was seen. check: sh eval/metrics/check.sh
 ef8e11a7d305f0ca51eae45543f66bd3391f2dc2a5903d374677bce72b1910c2  eval/metrics/metric_rule.py
-5fd54eac52c88e3e003d0f4112ad15c8373e0ab46649b6cec889b2869b9f3945  eval/metrics/scores.py
-8edbb7457bdc827a3ae9037535ab88efbc536a21bcd4db9885805d6beab96c55  eval/metrics/PLAN.md
+843b4237d60b483dc3fc54828d2744fcd61b831cafdf73149d40e8aefb837862  eval/metrics/scores.py
+fe2e792933c6dd7bce21004030f6832d8a7d0db3adbf76243120a34aa2336c76  eval/metrics/PLAN.md

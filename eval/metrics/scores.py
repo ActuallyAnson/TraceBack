@@ -9,7 +9,7 @@ out = []
 for d in sorted(p for p in root.iterdir() if p.is_dir()):
     m = re.match(r"^(.*)_(cpu|delay|disk|loss|mem|socket)$", d.name)
     svc, ft = m.group(1), m.group(2)
-    for rep in sorted(p.name for p in d.iterdir() if p.is_dir()):
+    for rep in sorted(p.name for p in d.iterdir() if p.is_dir() and p.name.isdigit()):  # the RE2-OB archive also has a `multi-source-data` directory
         c = d / rep
         inj = int((c / "inject_time.txt").read_text().strip())
         for kind, w0 in (("fault", inj - 40), ("clean", inj - 700)):
