@@ -1,0 +1,15 @@
+[
+ {"id":"m01","kind":"clean"},
+ {"id":"m02","kind":"fault","flag":"paymentFailure","variant":"25%","root_service":"payment","edge":null,"summary":"payment fails a quarter of charge requests (new variant)"},
+ {"id":"m03","kind":"fault","flag":"cartFailure","variant":"50%","root_service":"cart","edge":null,"summary":"cart fails half of its requests (new variant)"},
+ {"id":"m04","kind":"fault","flag":"productCatalogFailure","variant":"on","root_service":"product-catalog","edge":null,"summary":"GetProduct fails for one product id (repeat)"},
+ {"id":"m05","kind":"clean"},
+ {"id":"m06","kind":"fault","flag":"adFailure","variant":"on","root_service":"ad","edge":null,"summary":"GetAds errors about 1 in 10 calls (repeat)"},
+ {"id":"m07","kind":"fault","flag":"intlShippingSlowdown","variant":"10sec","root_service":"shipping","edge":null,"summary":"non-US shipping delayed 10 s (repeat of r08)"},
+ {"id":"m08","kind":"fault","flag":"adManualGc","variant":"on","root_service":"ad","edge":null,"summary":"full manual garbage collections in the ad service (new flag)"},
+ {"id":"m09","kind":"fault","flag":"emailMemoryLeak","variant":"100x","root_service":"email","edge":null,"summary":"memory leak in the email service (new flag; may show no visible failure in 80 s)"},
+ {"id":"m10","kind":"fault","flag":"paymentFailure","variant":"100%","root_service":"payment","edge":null,"summary":"payment fails every charge request (repeat)"},
+ {"id":"m11","kind":"fault","flag":"paymentUnreachable","variant":"on","root_service":"payment","edge":{"from":"checkout","to":"payment"},"summary":"checkout pointed at a bad payment address (repeat)"},
+ {"id":"m12","kind":"fault","flag":"productCatalogLockContention","variant":"on","root_service":"product-catalog","edge":null,"summary":"lock on catalog.products (repeat)"},
+ {"id":"m13","kind":"clean"}
+]
