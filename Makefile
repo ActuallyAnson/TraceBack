@@ -181,3 +181,7 @@ metrics-check:
 	python3 eval/metrics/evaluate.py --check
 metrics-hash:
 	sh eval/metrics/check.sh
+
+# Ablation of hybrid 2 (eval/transfer/ablation.py), offline from cached answers.
+ablation-check: build
+	( python3 eval/transfer/ablation.py; echo; python3 eval/transfer/ablation.py --model ultra ) | diff -q - eval/transfer/ABLATION.md >/dev/null && echo "ablation results match" || { echo "ABLATION OUT OF DATE"; exit 1; }
