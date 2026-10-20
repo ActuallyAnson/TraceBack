@@ -1,0 +1,12 @@
+{
+ "id": "ss2-user-disk-r1",
+ "kind": "fault",
+ "system": "ss2",
+ "source": "RCAEval RE2",
+ "case": "user_disk/1",
+ "fault_type": "disk",
+ "root_cause": {
+  "service": "user",
+  "edge": null
+ }
+}

@@ -1,0 +1,7 @@
+{
+ "id": "ss2-clean-catalogue-socket",
+ "kind": "clean",
+ "system": "ss2",
+ "source": "RCAEval RE2",
+ "case": "catalogue_socket/1"
+}

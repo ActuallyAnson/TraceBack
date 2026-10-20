@@ -164,3 +164,12 @@ transfer-check: build transfer-data
 	python3 eval/transfer/evaluate.py --check
 transfer-hash:
 	sh eval/transfer/check.sh
+
+# Larger transfer test, RCAEval RE2 Sock Shop (eval/transfer2/PLAN.md). Offline: model answers come from eval/llm_cache.
+transfer2-data:
+	mkdir -p eval/transfer2/test
+	[ -d eval/transfer2/test/data/incidents ] || tar -xzf eval/transfer2/test_incidents.tgz -C eval/transfer2/test
+transfer2: build transfer2-data
+	python3 eval/transfer2/evaluate.py
+transfer2-check: build transfer2-data
+	python3 eval/transfer2/evaluate.py --check

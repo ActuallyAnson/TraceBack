@@ -1,0 +1,7 @@
+{
+ "id": "ss2-clean-catalogue-cpu",
+ "kind": "clean",
+ "system": "ss2",
+ "source": "RCAEval RE2",
+ "case": "catalogue_cpu/1"
+}

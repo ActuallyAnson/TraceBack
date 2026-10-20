@@ -1,0 +1,12 @@
+{
+ "id": "ss2-user-socket-r1",
+ "kind": "fault",
+ "system": "ss2",
+ "source": "RCAEval RE2",
+ "case": "user_socket/1",
+ "fault_type": "socket",
+ "root_cause": {
+  "service": "user",
+  "edge": null
+ }
+}

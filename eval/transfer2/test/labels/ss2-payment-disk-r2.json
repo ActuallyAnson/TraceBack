@@ -1,0 +1,12 @@
+{
+ "id": "ss2-payment-disk-r2",
+ "kind": "fault",
+ "system": "ss2",
+ "source": "RCAEval RE2",
+ "case": "payment_disk/2",
+ "fault_type": "disk",
+ "root_cause": {
+  "service": "payment",
+  "edge": null
+ }
+}

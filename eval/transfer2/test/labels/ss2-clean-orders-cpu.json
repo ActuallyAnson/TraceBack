@@ -1,0 +1,7 @@
+{
+ "id": "ss2-clean-orders-cpu",
+ "kind": "clean",
+ "system": "ss2",
+ "source": "RCAEval RE2",
+ "case": "orders_cpu/1"
+}

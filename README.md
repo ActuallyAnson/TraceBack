@@ -1157,6 +1157,12 @@ Model cost (the baseline's calls; hybrid 2 reuses them): $1.300.
 
 
 
+### Larger transfer test: RCAEval RE2 Sock Shop (resource and network faults)
+
+<!-- TRANSFER2:START -->
+<!-- TRANSFER2:END -->
+
+
 ## Future work
 
 - Harmless deploys and swallowed errors on fire-and-forget branches still outrank real causes in some latency cascades (v1's `fan-02`, v2's fresh `f2-02`); v2's origin-share rule fixed the entry-service variant only partly. Needs a way to tell a swallowed error from a causal one that survives cascades.

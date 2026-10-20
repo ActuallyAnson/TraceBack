@@ -1,0 +1,12 @@
+{
+ "id": "ss2-payment-cpu-r3",
+ "kind": "fault",
+ "system": "ss2",
+ "source": "RCAEval RE2",
+ "case": "payment_cpu/3",
+ "fault_type": "cpu",
+ "root_cause": {
+  "service": "payment",
+  "edge": null
+ }
+}
