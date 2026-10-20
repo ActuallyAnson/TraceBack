@@ -670,6 +670,18 @@ Incidents where a model proposal replaced the analyzer's top candidate: f1-14, f
 - No significance claims. The hybrid did not solve the real-telemetry problem; the diagnostic points at the measurement of where failures originate in the converted real traces, not at the choice of candidates.
 
 
+### Update 2026-10-20: diagnosis of the 0.0 origin share (cause found; nothing changed, no number above re-scored)
+
+Why was the true service's origin share 0.0 in `m10`, where the payment service has 11 failing server spans? Full write-up and scripts: `eval/diagnose/FINDING.md`. Two causes, one of them a **converter bug**:
+
+- **(a) Converter bug, lost parent links.** The converter keeps only server and client spans. In the raw data the failing chain runs through an internal frontend span (`executing api route`); dropping it removes the parent link of the frontend's `PlaceOrder` client span, and the re-keying then gives that subtree its own trace. In `m10`, 2,985 spans lost their parent this way; 3,000 of 8,644 traces have no root server span (the simulator: 3.9% of traces, random loss; real: 35%, systematic). All 11 failing payment spans sit in such a detached trace, so none counts toward a failed entry request. Span ids themselves are intact (no id missing or rewritten against the raw data).
+- **(b) A rule too narrow for how the demo reports failures.** Even with the links restored in memory (one run, no score computed), the walk from the failed entry request stops at two `frontend` server spans answered with HTTP 422 and no error flag, above a natively failing child. Analyzer v3's 4xx rule only promotes the direct parent of a span it promoted itself.
+- **Other runs:** `m12`, `m03` and `m11` have the same detached failing subtrees (a); `m11` additionally has no resolvable peer for the bad address. (b) was confirmed on `m10` only.
+- **Simulator:** not affected the same way (random 4% span loss, which the analyzer was built around; 4.0% of failing traces rootless against 29.9% in the real runs inspected); the simulator results are unchanged and were not re-run.
+- **Consequence, stated plainly:** the real-telemetry numbers for the analyzers, Full Traceback and the hybrid above (1/7, 0/10, 1/10, 0/10, ...) partly reflect this conversion error, so they are not evidence about the approach on real traces as such. They stay in the README unchanged.
+- **Proposed fix, not applied:** a converter v3 that re-parents to the nearest retained ancestor, and an analyzer rule "a 4xx server span with a failing descendant counts as failed", verified on a new, locked fourth batch plus a simulator no-change check.
+
+
 ## Future work
 
 - Harmless deploys and swallowed errors on fire-and-forget branches still outrank real causes in some latency cascades (v1's `fan-02`, v2's fresh `f2-02`); v2's origin-share rule fixed the entry-service variant only partly. Needs a way to tell a swallowed error from a causal one that survives cascades.
