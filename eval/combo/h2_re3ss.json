@@ -1,0 +1,197 @@
+{
+"ss-carts-f1-r1": {
+"conf": "medium",
+"src": "model alternative, measured",
+"svc": "orders"
+},
+"ss-carts-f1-r2": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "carts"
+},
+"ss-carts-f1-r3": {
+"conf": "medium",
+"src": "model alternative, measured",
+"svc": "carts"
+},
+"ss-carts-f1-r4": {
+"conf": "medium",
+"src": "model alternative, measured",
+"svc": "orders"
+},
+"ss-carts-f3-r1": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "front-end"
+},
+"ss-carts-f3-r2": {
+"conf": "medium",
+"src": "model alternative, measured",
+"svc": "orders"
+},
+"ss-carts-f3-r3": {
+"conf": "medium",
+"src": "model alternative, measured",
+"svc": "orders"
+},
+"ss-carts-f3-r4": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "front-end"
+},
+"ss-carts-f4-r1": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "front-end"
+},
+"ss-carts-f4-r2": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "orders"
+},
+"ss-carts-f4-r3": {
+"conf": "medium",
+"src": "model alternative, measured",
+"svc": "orders"
+},
+"ss-carts-f4-r4": {
+"conf": "medium",
+"src": "model alternative, measured",
+"svc": "orders"
+},
+"ss-clean-carts-f1": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "front-end"
+},
+"ss-clean-carts-f3": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "queue-master"
+},
+"ss-clean-carts-f4": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "queue-master"
+},
+"ss-clean-front-end-f1": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "queue-master"
+},
+"ss-clean-front-end-f2": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "front-end"
+},
+"ss-clean-front-end-f3": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "queue-master"
+},
+"ss-clean-orders-f1": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "front-end"
+},
+"ss-clean-orders-f3": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ss-clean-orders-f4": {
+"conf": "medium",
+"src": "model alternative, measured",
+"svc": "queue-master"
+},
+"ss-front-end-f1-r1": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "front-end"
+},
+"ss-front-end-f1-r2": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss-front-end-f1-r3": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "front-end"
+},
+"ss-front-end-f2-r1": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "front-end"
+},
+"ss-front-end-f2-r2": {
+"conf": "medium",
+"src": "model alternative, measured",
+"svc": "orders"
+},
+"ss-front-end-f2-r3": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "front-end"
+},
+"ss-front-end-f3-r1": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "front-end"
+},
+"ss-front-end-f3-r2": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ss-front-end-f3-r3": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ss-orders-f1-r1": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "orders"
+},
+"ss-orders-f1-r2": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "front-end"
+},
+"ss-orders-f1-r3": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "orders"
+},
+"ss-orders-f3-r1": {
+"conf": "medium",
+"src": "model alternative, measured",
+"svc": "orders"
+},
+"ss-orders-f3-r2": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "orders"
+},
+"ss-orders-f3-r3": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "orders"
+},
+"ss-orders-f4-r1": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "orders"
+},
+"ss-orders-f4-r2": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "orders"
+},
+"ss-orders-f4-r3": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "orders"
+}
+}

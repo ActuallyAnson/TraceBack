@@ -1,0 +1,197 @@
+{
+"tt-clean-ts-auth-service-f1": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"tt-clean-ts-auth-service-f2": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"tt-clean-ts-auth-service-f3": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"tt-clean-ts-auth-service-f4": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"tt-clean-ts-route-service-f1": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"tt-clean-ts-route-service-f2": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"tt-clean-ts-route-service-f3": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"tt-clean-ts-route-service-f3_1": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"tt-clean-ts-route-service-f4": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"tt-ts-auth-service-f1-r1": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "ts-ui-dashboard"
+},
+"tt-ts-auth-service-f1-r2": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "ts-ui-dashboard"
+},
+"tt-ts-auth-service-f1-r3": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "ts-auth-service"
+},
+"tt-ts-auth-service-f1-r4": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "ts-ui-dashboard"
+},
+"tt-ts-auth-service-f2-r1": {
+"conf": "low",
+"src": "model top, measured",
+"svc": "ts-auth-service"
+},
+"tt-ts-auth-service-f2-r2": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "ts-auth-service"
+},
+"tt-ts-auth-service-f2-r3": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "ts-order-service"
+},
+"tt-ts-auth-service-f2-r4": {
+"conf": "medium",
+"src": "model alternative, measured",
+"svc": "ts-auth-service"
+},
+"tt-ts-auth-service-f3-r1": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "ts-ui-dashboard"
+},
+"tt-ts-auth-service-f3-r2": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "ts-auth-service"
+},
+"tt-ts-auth-service-f3-r3": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "ts-ui-dashboard"
+},
+"tt-ts-auth-service-f3-r4": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "ts-ui-dashboard"
+},
+"tt-ts-auth-service-f4-r1": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "ts-auth-service"
+},
+"tt-ts-auth-service-f4-r2": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "ts-order-service"
+},
+"tt-ts-auth-service-f4-r3": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "ts-ui-dashboard"
+},
+"tt-ts-route-service-f1-r1": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "ts-route-service"
+},
+"tt-ts-route-service-f1-r2": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "ts-ui-dashboard"
+},
+"tt-ts-route-service-f1-r3": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "ts-ui-dashboard"
+},
+"tt-ts-route-service-f2-r1": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "ts-ui-dashboard"
+},
+"tt-ts-route-service-f2-r2": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "ts-ui-dashboard"
+},
+"tt-ts-route-service-f2-r3": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "ts-ui-dashboard"
+},
+"tt-ts-route-service-f3-r1": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "ts-ui-dashboard"
+},
+"tt-ts-route-service-f3-r2": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "ts-ui-dashboard"
+},
+"tt-ts-route-service-f3-r3": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "ts-ui-dashboard"
+},
+"tt-ts-route-service-f3_1-r1": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "ts-ui-dashboard"
+},
+"tt-ts-route-service-f3_1-r2": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "ts-ui-dashboard"
+},
+"tt-ts-route-service-f3_1-r3": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "ts-ui-dashboard"
+},
+"tt-ts-route-service-f4-r1": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "ts-ui-dashboard"
+},
+"tt-ts-route-service-f4-r2": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "ts-ui-dashboard"
+},
+"tt-ts-route-service-f4-r3": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "ts-ui-dashboard"
+}
+}

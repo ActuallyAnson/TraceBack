@@ -1,0 +1,602 @@
+{
+"ss2-carts-cpu-r1": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-carts-cpu-r2": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ss2-carts-cpu-r3": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "carts"
+},
+"ss2-carts-delay-r1": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ss2-carts-delay-r2": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ss2-carts-delay-r3": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-carts-disk-r1": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-carts-disk-r2": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ss2-carts-disk-r3": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-carts-loss-r1": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ss2-carts-loss-r2": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "carts"
+},
+"ss2-carts-loss-r3": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "carts"
+},
+"ss2-carts-mem-r1": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ss2-carts-mem-r2": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-carts-mem-r3": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ss2-carts-socket-r1": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-carts-socket-r2": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-carts-socket-r3": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-catalogue-cpu-r1": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "carts"
+},
+"ss2-catalogue-cpu-r2": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "carts"
+},
+"ss2-catalogue-cpu-r3": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-catalogue-delay-r1": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ss2-catalogue-delay-r2": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-catalogue-delay-r3": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ss2-catalogue-disk-r1": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ss2-catalogue-disk-r2": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-catalogue-disk-r3": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-catalogue-loss-r1": {
+"conf": "medium",
+"src": "model alternative, measured",
+"svc": "front-end"
+},
+"ss2-catalogue-loss-r2": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ss2-catalogue-loss-r3": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "front-end"
+},
+"ss2-catalogue-mem-r1": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-catalogue-mem-r2": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ss2-catalogue-mem-r3": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-catalogue-socket-r1": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-catalogue-socket-r2": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "carts"
+},
+"ss2-catalogue-socket-r3": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ss2-clean-carts-cpu": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ss2-clean-carts-delay": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ss2-clean-carts-disk": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "carts"
+},
+"ss2-clean-carts-loss": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-clean-carts-mem": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-clean-carts-socket": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-clean-catalogue-cpu": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ss2-clean-catalogue-delay": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-clean-catalogue-disk": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-clean-catalogue-loss": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "carts"
+},
+"ss2-clean-catalogue-mem": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ss2-clean-catalogue-socket": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-clean-orders-cpu": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ss2-clean-orders-delay": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-clean-orders-disk": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ss2-clean-orders-loss": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "carts"
+},
+"ss2-clean-orders-mem": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ss2-clean-orders-socket": {
+"conf": "low",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-clean-payment-cpu": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ss2-clean-payment-delay": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-clean-payment-disk": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "queue-master"
+},
+"ss2-clean-payment-loss": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "carts"
+},
+"ss2-clean-payment-mem": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "queue-master"
+},
+"ss2-clean-payment-socket": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "carts"
+},
+"ss2-clean-user-cpu": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ss2-clean-user-delay": {
+"conf": "medium",
+"src": "model alternative, measured",
+"svc": "queue-master"
+},
+"ss2-clean-user-disk": {
+"conf": "medium",
+"src": "model alternative, measured",
+"svc": "queue-master"
+},
+"ss2-clean-user-loss": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ss2-clean-user-mem": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "carts"
+},
+"ss2-clean-user-socket": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-orders-cpu-r1": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "carts"
+},
+"ss2-orders-cpu-r2": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-orders-cpu-r3": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ss2-orders-delay-r1": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ss2-orders-delay-r2": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-orders-delay-r3": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ss2-orders-disk-r1": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "orders"
+},
+"ss2-orders-disk-r2": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "orders"
+},
+"ss2-orders-disk-r3": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "carts"
+},
+"ss2-orders-loss-r1": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "carts"
+},
+"ss2-orders-loss-r2": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "front-end"
+},
+"ss2-orders-loss-r3": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "queue-master"
+},
+"ss2-orders-mem-r1": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "carts"
+},
+"ss2-orders-mem-r2": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-orders-mem-r3": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-orders-socket-r1": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ss2-orders-socket-r2": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "carts"
+},
+"ss2-orders-socket-r3": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ss2-payment-cpu-r1": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-payment-cpu-r2": {
+"conf": "medium",
+"src": "model alternative, measured",
+"svc": "queue-master"
+},
+"ss2-payment-cpu-r3": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-payment-delay-r1": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-payment-delay-r2": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ss2-payment-delay-r3": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-payment-disk-r1": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-payment-disk-r2": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-payment-disk-r3": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-payment-loss-r1": {
+"conf": "medium",
+"src": "model alternative, measured",
+"svc": "orders"
+},
+"ss2-payment-loss-r2": {
+"conf": "medium",
+"src": "model alternative, measured",
+"svc": "orders"
+},
+"ss2-payment-loss-r3": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-payment-mem-r1": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-payment-mem-r2": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-payment-mem-r3": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "carts"
+},
+"ss2-payment-socket-r1": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "carts"
+},
+"ss2-payment-socket-r2": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-payment-socket-r3": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-user-cpu-r1": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "carts"
+},
+"ss2-user-cpu-r2": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ss2-user-cpu-r3": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ss2-user-delay-r1": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ss2-user-delay-r2": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "carts"
+},
+"ss2-user-delay-r3": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ss2-user-disk-r1": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-user-disk-r2": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-user-disk-r3": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "carts"
+},
+"ss2-user-loss-r1": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "front-end"
+},
+"ss2-user-loss-r2": {
+"conf": "medium",
+"src": "model alternative, measured",
+"svc": "front-end"
+},
+"ss2-user-loss-r3": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-user-mem-r1": {
+"conf": "medium",
+"src": "model alternative, measured",
+"svc": "queue-master"
+},
+"ss2-user-mem-r2": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ss2-user-mem-r3": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "queue-master"
+},
+"ss2-user-socket-r1": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "carts"
+},
+"ss2-user-socket-r2": {
+"conf": "medium",
+"src": "model alternative, measured",
+"svc": "queue-master"
+},
+"ss2-user-socket-r3": {
+"conf": "medium",
+"src": "model alternative, measured",
+"svc": "queue-master"
+}
+}
