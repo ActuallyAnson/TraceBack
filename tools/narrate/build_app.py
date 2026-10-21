@@ -19,6 +19,6 @@ for i, seg in enumerate(json.load(open(src))):
     audio.append({"file": f"a{i:02d}.wav", "at": round(t + 0.3, 2)})
     for a in seg["actions"]:
         actions.append({**a, "t": round(t + a["t"], 2)})
-    t += max(d + 0.9, last + 2.6)
+    t += max(d + 0.6, last + 2.4)
     print(i, round(d, 2), round(t, 2), flush=True)
 json.dump({"length": round(t, 2), "actions": actions, "audio": audio}, open(f"{out}/timeline.json", "w"), indent=1)

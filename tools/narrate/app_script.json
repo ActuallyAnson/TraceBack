@@ -115,7 +115,7 @@
   ]
  },
  {
-  "text": "On the twenty-six locked test incidents, accuracy is about the same, and the gap is within noise. What holds up is no confidently wrong answers, against seven point seven percent for raw logs, at thirteen times lower model cost.",
+  "text": "The scoreboard has the cost column. On the first twenty-six locked incidents, accuracy is within noise, but Traceback is never confidently wrong, and costs thirteen times less.",
   "actions": [
    {
     "t": 0.2,
@@ -123,7 +123,7 @@
     "target": "[data-view=score]"
    },
    {
-    "t": 6.0,
+    "t": 4.0,
     "do": "scroll",
     "target": 520
    }
