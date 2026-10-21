@@ -14,8 +14,8 @@ Legend: ✅ done in the repo · 🧑 you must do it (cannot be done by code) · 
 | 2 | Uses at least one **NVIDIA open-source model** | ✅ | `nvidia/nemotron-3-super-120b-a12b` |
 | 3 | Fits one of the four tracks; **identify the track** on the form | 🧑 | Choose **Best Apps and Agents** |
 | 4 | Project description (what, why, how) | ✅ draft | `submission/DEVPOST_DESCRIPTION.md`, paste into the form |
-| 5 | **Working demo URL** (hosted app or test build) | ✅ once Pages is live | https://actuallyanson.github.io/TraceBack/ (GitHub Pages, serves `docs/`). Open it in a private window before submitting |
-| 6 | **Demo video ≤ 3 minutes**, public on **YouTube**, showing the project working and how Token Factory + Nemotron are used | 🧑 | Script: `submission/VIDEO_OUTLINE.md`. No copyrighted music; no third-party logos you lack permission for. Judges need not watch past 3:00 |
+| 5 | **Working demo URL** (hosted app or test build) | ✅ once Pages is live | https://actuallyanson.github.io/TraceBack/ (GitHub Pages, serves `docs/`). Open it in a private window before submitting. ⚠️ Pages serves `main`: the dark UI, the Presentation page and the current README only appear after the `combo` branch is merged |
+| 6 | **Demo video ≤ 3 minutes**, public on **YouTube**, showing the project working and how Token Factory + Nemotron are used | 🧑 | Upload `submission/traceback_narrated.mp4` (2:48; real app, synthetic Kokoro voice) as Public, with `traceback_narrated.srt` as the caption track. Title and description text: `submission/YOUTUBE.md`. No music, no third-party logos. LinkedIn: `traceback_narrated_captioned.mp4` |
 | 7 | **Public code repository** (GitHub) with all source, assets and instructions | ✅ | https://github.com/ActuallyAnson/TraceBack |
 | 8 | **OSI open-source license** file, detectable and visible in the repo's About section | ✅ | MIT; GitHub detects it (`licenseInfo: MIT`). ⚠️ glance at the repo page to confirm the license shows in the sidebar |
 | 9 | **README** with setup instructions, how to run, and how NVIDIA Nemotron / Token Factory / other Nebius services are used | ✅ | `README.md` sections "How Nemotron and Nebius Token Factory are used" and "Quick start" |
@@ -46,7 +46,7 @@ Legend: ✅ done in the repo · 🧑 you must do it (cannot be done by code) · 
 1. Open the demo URL in a private window; click through one incident (Play walkthrough).
 2. Look at the repo page: license shows in About; README renders the diagram and the results table.
 3. `git clone` into a fresh directory and run `make build test demo` once more.
-4. Record the video from `submission/VIDEO_OUTLINE.md`; upload to YouTube as **Public**; confirm it is under 3:00.
+4. Upload `submission/traceback_narrated.mp4` to YouTube as **Public**, add the `.srt`, paste the text from `submission/YOUTUBE.md`; confirm it reads under 3:00. Say in the description that the voice is synthetic, and check the Devpost rules on AI-generated voice.
 5. Fill the Devpost form: track = Best Apps and Agents; paste the description and feedback; add repo URL, demo URL, video URL.
 6. After submitting: revoke or rotate your Nebius API key if you no longer need it, and remove it from `~/.zshrc`.
 7. Do not push commits that change results or prompts after submitting unless you resubmit; judging uses what the repo shows.
