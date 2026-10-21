@@ -150,3 +150,4 @@ addEventListener('keydown', e => {
 if (location.search.includes('still')) document.body.classList.add('still');
 go(Math.max(0, (parseInt(location.hash.slice(1), 10) || 1) - 1));
 if (location.search.includes('auto')) toggle();  // ?auto starts playing at once (handy when recording)
+if (location.search.includes('clean')) { document.getElementById('hud').classList.add('hide'); document.body.classList.add('nocursor'); }  // ?clean hides the controls for recording
