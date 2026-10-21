@@ -182,6 +182,11 @@ metrics-check:
 metrics-hash:
 	sh eval/metrics/check.sh
 
+# Combination (eval/combo/PLAN.md) and rule-M dominance (eval/combo/dominance.py): offline.
+combo-check:
+	sh eval/combo/check.sh
+	python3 eval/combo/dominance.py --check
+
 # Ablation of hybrid 2 (eval/transfer/ablation.py), offline from cached answers.
 ablation-check: build
 	( python3 eval/transfer/ablation.py; echo; python3 eval/transfer/ablation.py --model ultra ) | diff -q - eval/transfer/ABLATION.md >/dev/null && echo "ablation results match" || { echo "ABLATION OUT OF DATE"; exit 1; }
