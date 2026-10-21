@@ -6,7 +6,7 @@ const FPS = 30, MAXSEC = +process.argv[2] || 200, OUT = process.argv[3] || 'subm
 const b = await puppeteer.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: 'new', defaultViewport: { width: 1920, height: 1080, deviceScaleFactor: 1 }, args: ['--hide-scrollbars', '--disable-gpu', '--run-all-compositor-stages-before-draw', '--disable-new-content-rendering-timeout', '--disable-threaded-animation', '--disable-threaded-scrolling'] });
 const p = await b.newPage();
 const c = await p.createCDPSession();
-await p.goto('http://localhost:8765/present.html?clean', { waitUntil: 'load' });
+await p.goto(process.env.PRES_URL || 'http://localhost:8765/present.html?clean', { waitUntil: 'load' });
 await p.evaluate(() => document.fonts.ready);
 await new Promise(r => setTimeout(r, 800));
 const ff = spawn('/opt/homebrew/bin/ffmpeg', ['-y', '-f', 'image2pipe', '-framerate', String(FPS), '-c:v', 'mjpeg', '-i', '-', '-c:v', 'libx264', '-crf', '17', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', OUT], { stdio: ['pipe', 'ignore', 'inherit'] });
@@ -25,6 +25,7 @@ for (; n < MAXSEC * FPS; n++) {
     if (n % 300 === 0) console.log('t=', n / FPS);
   }
 }
+{ const st = await p.evaluate(() => window.__starts); console.log('STARTS', JSON.stringify(st.map(x => +((x - st[0]) / 1000).toFixed(2)))); }
 ff.stdin.end(); await new Promise(r => ff.on('close', r));
 console.log('frames', n, 'seconds', n / FPS);
 await b.close();
