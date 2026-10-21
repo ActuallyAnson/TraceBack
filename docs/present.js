@@ -132,7 +132,7 @@ function paintChapters(i) { [...chap.children].forEach((d, k) => { d.classList.t
 async function go(i) {
   if (i < 0 || i >= scenes.length) { playing = false; playBtn.textContent = '▶ Play'; return; }
   const my = ++tok; cur = i;
-  [...stage.children].forEach(c => c.classList.remove('on')); setTimeout(() => stage.querySelectorAll('.scene:not(.on)').forEach(c => c.remove()), 700);
+  const old = [...stage.children]; old.forEach(c => c.classList.remove('on')); setTimeout(() => old.forEach(c => c.remove()), 700);
   const sc = document.createElement('section'); sc.className = 'scene'; stage.appendChild(sc); paintChapters(i);
   requestAnimationFrame(() => sc.classList.add('on'));
   try { await scenes[i].run(sc); if (playing) { await sleep(HOLD); go(i + 1); } else { playBtn.textContent = '▶ Play'; } } catch (e) { if (!(e instanceof Stop)) throw e; }
@@ -149,3 +149,4 @@ addEventListener('keydown', e => {
 });
 if (location.search.includes('still')) document.body.classList.add('still');
 go(Math.max(0, (parseInt(location.hash.slice(1), 10) || 1) - 1));
+if (location.search.includes('auto')) toggle();  // ?auto starts playing at once (handy when recording)
