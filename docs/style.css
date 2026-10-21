@@ -175,3 +175,15 @@ svg text{font-family:system-ui,sans-serif;fill:var(--mut);font-size:11px}svg .la
 .t2ansrow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.t2ans{border:1px solid var(--line);border-radius:10px;padding:8px 12px}.t2ans b:first-child{display:block;font-size:13px;color:var(--mut);margin-bottom:3px}
 .t2dia{margin-top:10px;max-width:640px}#t2detail{margin:14px 0 18px}
 @media(max-width:860px){.t2top,.t2ansrow{grid-template-columns:1fr}}
+
+/* polish: motion and dark finish (respects reduced motion) */
+.view.on{animation:viewin .45s cubic-bezier(.2,.8,.2,1)}
+@keyframes viewin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.card,.mini,.inc-list li{transition:border-color .2s,box-shadow .25s,transform .25s}
+.card:hover{border-color:color-mix(in srgb,var(--accent) 40%,var(--line))}
+.inc-list li:hover{transform:translateX(2px)}
+.views button{transition:background .2s,color .2s}
+.gh.pres{background:var(--accent);color:var(--on-accent);padding:6px 12px;border-radius:8px;font-weight:600;text-decoration:none;margin-right:8px}
+html{background:var(--bg)}
+[data-theme=dark] body{min-height:100vh;background:radial-gradient(900px 500px at 10% -5%,rgba(45,212,191,.07),transparent 60%) fixed,var(--bg)}
+@media(prefers-reduced-motion:reduce){.view.on{animation:none}*{transition-duration:.01s!important}}

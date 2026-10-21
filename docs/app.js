@@ -437,7 +437,7 @@ function wire() {
 }
 
 (async function init() {
-  if (q.get('theme')) document.documentElement.dataset.theme = q.get('theme');
+  document.documentElement.dataset.theme = q.get('theme') || 'dark';  // dark by default; the ◐ button still toggles
   try { state.idx = await getJSON('data/index.json'); }
   catch (e) { $('#pane').innerHTML = '<p class="empty">Could not load data/index.json. Serve this folder over HTTP (for example <code>make serve</code>).</p>'; return; }
   renderStats(); renderResults(); renderArch(); wire();
