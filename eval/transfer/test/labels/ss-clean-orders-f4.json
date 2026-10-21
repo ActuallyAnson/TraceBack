@@ -1,0 +1,7 @@
+{
+ "id": "ss-clean-orders-f4",
+ "kind": "clean",
+ "system": "ss",
+ "source": "RCAEval RE3",
+ "case": "orders_f4/1"
+}

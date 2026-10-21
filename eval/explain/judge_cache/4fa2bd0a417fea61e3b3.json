@@ -1,0 +1,1 @@
+{"tokens": [357, 354], "verdict": "partial", "why": "The record confirms busy_max=3 and queue_max=4 indicating overload, but does not show that this occurred after a limit drop."}

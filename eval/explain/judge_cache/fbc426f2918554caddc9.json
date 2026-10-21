@@ -1,0 +1,1 @@
+{"tokens": [365, 631], "verdict": "partial", "why": "The record shows the gateway had a high count of 5xx errors, confirming a spike in 5xx responses, but it does not specify that those errors were 504 or 500, so the specific error types cannot be verified from the quoted data."}

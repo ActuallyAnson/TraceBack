@@ -1,0 +1,1 @@
+{"tokens": [389, 403], "verdict": "partial", "why": "The records show the orders service deploy started and finished 4 seconds apart, confirming the service and duration, but they do not provide the absolute start (+50.524s) and finish (+54.524s) offsets needed to verify those exact times."}

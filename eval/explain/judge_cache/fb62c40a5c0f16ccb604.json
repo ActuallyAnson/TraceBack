@@ -1,0 +1,1 @@
+{"tokens": [333, 271], "verdict": "supported", "why": "The gateway log records an 'order step failed' error and a response status of 503, which directly matches the claim that the gateway observed upstream order errors and returned 503 to clients."}

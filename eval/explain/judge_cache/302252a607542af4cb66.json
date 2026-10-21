@@ -1,0 +1,1 @@
+{"tokens": [382, 653], "verdict": "partial", "why": "The records confirm a config change in the orders service shortly before the log entry, but they provide no evidence that orders actually timed out calls to inventory or that inventory continued to answer."}

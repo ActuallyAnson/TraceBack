@@ -1,0 +1,1 @@
+{"tokens": [311, 107], "verdict": "supported", "why": "The orders log entry explicitly contains the message 'connection refused by payments', matching the statement."}

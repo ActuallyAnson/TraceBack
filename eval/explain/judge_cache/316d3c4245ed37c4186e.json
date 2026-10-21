@@ -1,0 +1,1 @@
+{"tokens": [643, 459], "verdict": "partial", "why": "The records show non\u2011zero queue_us values indicating wait times, but they do not explicitly demonstrate that the timed\u2011out calls occupied API workers for the full timeout duration."}

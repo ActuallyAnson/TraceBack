@@ -1,0 +1,1 @@
+{"tokens": [356, 231], "verdict": "supported", "why": "The quoted record shows the API service logged an error with status 500 and event delivery_failed, matching the statement."}

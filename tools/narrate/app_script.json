@@ -1,0 +1,132 @@
+[
+ {
+  "text": "Here is the real app. A simulated outage in a small four-service backend, labeled as a recorded replay. Checkout requests start failing, and the loudest service on the dashboard is payments.",
+  "actions": [
+   {
+    "t": 0.4,
+    "do": "click",
+    "target": "#trigger"
+   }
+  ]
+ },
+ {
+  "text": "First, the obvious tool. The raw logs go into the same Nemotron model on Nebius Token Factory. It answers payments, with high confidence. Check it against the simulator's ground truth, and the real cause was orders, a retry storm. The confident answer is wrong.",
+  "actions": [
+   {
+    "t": 0.3,
+    "do": "click",
+    "target": "#to2"
+   },
+   {
+    "t": 5.2,
+    "do": "click",
+    "target": "text=The model’s actual reply"
+   },
+   {
+    "t": 9.0,
+    "do": "click",
+    "target": "text=The model’s actual reply"
+   },
+   {
+    "t": 10.2,
+    "do": "click",
+    "target": "#check"
+   }
+  ]
+ },
+ {
+  "text": "Now the same incident through Traceback. Orders, retry amplification, high confidence, and it matches the ground truth.",
+  "actions": [
+   {
+    "t": 0.3,
+    "do": "click",
+    "target": "#to3"
+   }
+  ]
+ },
+ {
+  "text": "Walk through the evidence. Clocks and correlation come first, then ranked candidates from deterministic rules. Only then does Nemotron rank and explain, and every claim cites a real record that you can open and read. Finally the replay. Switch the suspected cause off, and the peak failure rate falls from eleven percent to one.",
+  "actions": [
+   {
+    "t": 0.2,
+    "do": "click",
+    "target": "#walk"
+   },
+   {
+    "t": 3.2,
+    "do": "click",
+    "target": "text=Clocks"
+   },
+   {
+    "t": 5.2,
+    "do": "click",
+    "target": "text=Candidates"
+   },
+   {
+    "t": 8.8,
+    "do": "click",
+    "target": "text=LLM"
+   },
+   {
+    "t": 12.3,
+    "do": "click",
+    "target": "text=orders-L00032"
+   },
+   {
+    "t": 16.5,
+    "do": "click",
+    "target": "text=Replay"
+   },
+   {
+    "t": 21.0,
+    "do": "click",
+    "target": "text=H2 capacity"
+   }
+  ]
+ },
+ {
+  "text": "It is not always right. On this outage the model overruled the analyzer and picked orders, but the truth was payments. The replay could not confirm the model's answer, so Traceback reports medium confidence, not high.",
+  "actions": [
+   {
+    "t": 0.2,
+    "do": "click",
+    "target": "[data-view=out]"
+   },
+   {
+    "t": 1.8,
+    "do": "click",
+    "target": "#again"
+   },
+   {
+    "t": 3.4,
+    "do": "click",
+    "target": "#to2"
+   },
+   {
+    "t": 5.0,
+    "do": "click",
+    "target": "#check"
+   },
+   {
+    "t": 6.6,
+    "do": "click",
+    "target": "#to3"
+   }
+  ]
+ },
+ {
+  "text": "The scoreboard has the cost column. On the first twenty-six locked incidents, accuracy is within noise, but Traceback is never confidently wrong, and costs thirteen times less.",
+  "actions": [
+   {
+    "t": 0.2,
+    "do": "click",
+    "target": "[data-view=score]"
+   },
+   {
+    "t": 4.0,
+    "do": "scroll",
+    "target": 520
+   }
+  ]
+ }
+]

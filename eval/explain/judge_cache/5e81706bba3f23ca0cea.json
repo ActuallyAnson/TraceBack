@@ -1,0 +1,1 @@
+{"tokens": [479, 471], "verdict": "supported", "why": "The records show inventory's DB connection pool exhausted (pool_size:0) and a reserve request failing with a pool_exhausted error, matching the statement's claim."}

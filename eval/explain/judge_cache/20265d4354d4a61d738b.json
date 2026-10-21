@@ -1,0 +1,1 @@
+{"tokens": [350, 222], "verdict": "partial", "why": "The record confirms the broker received a 503 response from billing, but it does not indicate that the cause was pool exhaustion."}

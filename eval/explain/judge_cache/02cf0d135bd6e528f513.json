@@ -1,0 +1,1 @@
+{"tokens": [363, 212], "verdict": "partial", "why": "The record shows the gateway returning a 500 internal_error for a POST /checkout request, confirming the error, but it does not specify that the request was an 'entry request' or that the error was visible to users."}

@@ -1,0 +1,1 @@
+{"tokens": [389, 247], "verdict": "partial", "why": "The record shows the shipping service returned an internal_error with a 500 status (a 5xx response), but it does not specify the label_record_invalid detail mentioned in the statement."}

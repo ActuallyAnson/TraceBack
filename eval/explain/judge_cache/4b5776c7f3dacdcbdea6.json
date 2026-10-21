@@ -1,0 +1,1 @@
+{"tokens": [425, 459], "verdict": "partial", "why": "The log confirms shipping returned internal 500 errors, and the metric shows a high err5xx count, but the quoted records do not provide a comparison to show a sharp rise."}

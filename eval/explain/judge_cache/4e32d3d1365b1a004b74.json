@@ -1,0 +1,1 @@
+{"tokens": [554, 528], "verdict": "partial", "why": "The records show queue wait times of hundreds of milliseconds correlating with high ingest latency, but they do not provide evidence that worker saturation caused the queuing."}

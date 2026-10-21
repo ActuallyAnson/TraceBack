@@ -1,0 +1,1 @@
+{"tokens": [357, 104], "verdict": "supported", "why": "The record shows a broker-level upstream_error with message \"dependency shipping returned 500\", matching the statement's claim about broker calls to shipping failing and producing that error."}

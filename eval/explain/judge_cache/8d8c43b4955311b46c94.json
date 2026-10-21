@@ -1,0 +1,1 @@
+{"tokens": [535, 206], "verdict": "partial", "why": "The records show broker-to-billing calls receiving 'conn_refused' errors, supporting the claim of refused connections, but they provide no information about a metrics gap or a restart."}

@@ -1,0 +1,1 @@
+{"tokens": [352, 210], "verdict": "supported", "why": "The record shows 38 out of 39 requests returned 5xx errors and latency metrics (p50\u22482.5\u202fs, p99\u22483\u202fs), indicating elevated latency and 5xx errors for API responses."}

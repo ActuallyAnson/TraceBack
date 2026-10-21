@@ -1,0 +1,1 @@
+{"tokens": [674, 342], "verdict": "partial", "why": "The records show API-to-ingest calls timing out, but provide no information about whether ingest recorded those calls."}

@@ -1,0 +1,1 @@
+{"tokens": [338, 314], "verdict": "partial", "why": "The record shows orders receiving a connection\u2011refused error from inventory, but it does not mention a prior crash or that inventory stopped accepting connections because of such a crash."}

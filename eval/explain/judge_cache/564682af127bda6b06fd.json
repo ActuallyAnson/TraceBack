@@ -1,0 +1,1 @@
+{"tokens": [357, 502], "verdict": "supported", "why": "The record shows the orders service scheduling a retry for a call to the payments peer with backoff_ms:100, indicating a retry of the payments call with a 100\u202fms backoff."}

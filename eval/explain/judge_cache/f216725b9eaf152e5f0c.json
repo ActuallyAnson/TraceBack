@@ -1,0 +1,1 @@
+{"tokens": [394, 354], "verdict": "partial", "why": "The record confirms the notifier returned an internal_error, but it does not provide deployment time or the +70.746s offset, so the timing claim cannot be verified."}

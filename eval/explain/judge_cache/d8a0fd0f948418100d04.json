@@ -1,0 +1,1 @@
+{"tokens": [373, 552], "verdict": "partial", "why": "The record shows a failed order POST (status\u202f500) indicating order completion was prevented, but it contains no information about broker\u2011to\u2011billing calls being refused or about a sustained burst of entry failures at +51.507\u202fs."}

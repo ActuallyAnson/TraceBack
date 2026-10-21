@@ -1,0 +1,1 @@
+{"tokens": [462, 489], "verdict": "supported", "why": "The orders service logs contain an upstream_error indicating a payments failure and a retry_scheduled showing a retry of the payment call, which together support the statement."}

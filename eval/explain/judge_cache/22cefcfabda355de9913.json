@@ -1,0 +1,1 @@
+{"tokens": [389, 329], "verdict": "partial", "why": "The records show api errors but provide no information about the ingest dependency failing."}

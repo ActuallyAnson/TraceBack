@@ -1,0 +1,1 @@
+{"tokens": [2818, 678], "verdict": "supported", "why": "The quoted records contain numerous gateway client spans to orders that timed out/errored and a gateway server span that returned status 500 with internal_error, confirming both parts of the statement."}

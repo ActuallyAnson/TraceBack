@@ -1,0 +1,1562 @@
+[
+{
+"id": "tt-ts-auth-service-cpu-r1",
+"kind": "fault",
+"truth": "ts-auth-service",
+"fault_type": "cpu",
+"answer": "ts-consign-price-service",
+"top_service": "ts-consign-price-service",
+"top_score": 13.18,
+"second": [
+"ts-auth-service",
+10.83
+]
+},
+{
+"id": "tt-clean-ts-auth-service-cpu",
+"kind": "clean",
+"truth": null,
+"fault_type": "cpu",
+"answer": null,
+"top_service": "ts-food-map-service",
+"top_score": 7.19,
+"second": [
+"ts-preserve-service",
+5.11
+]
+},
+{
+"id": "tt-ts-auth-service-cpu-r2",
+"kind": "fault",
+"truth": "ts-auth-service",
+"fault_type": "cpu",
+"answer": "ts-preserve-other-service",
+"top_service": "ts-preserve-other-service",
+"top_score": 13.34,
+"second": [
+"ts-user-service",
+13.18
+]
+},
+{
+"id": "tt-ts-auth-service-cpu-r3",
+"kind": "fault",
+"truth": "ts-auth-service",
+"fault_type": "cpu",
+"answer": "ts-auth-service",
+"top_service": "ts-auth-service",
+"top_score": 10.35,
+"second": [
+"ts-inside-payment-service",
+8.51
+]
+},
+{
+"id": "tt-ts-auth-service-delay-r1",
+"kind": "fault",
+"truth": "ts-auth-service",
+"fault_type": "delay",
+"answer": "ts-inside-payment-service",
+"top_service": "ts-inside-payment-service",
+"top_score": 12.9,
+"second": [
+"ts-consign-price-service",
+12.85
+]
+},
+{
+"id": "tt-clean-ts-auth-service-delay",
+"kind": "clean",
+"truth": null,
+"fault_type": "delay",
+"answer": null,
+"top_service": "ts-payment-service",
+"top_score": 7.19,
+"second": [
+"ts-order-mongo",
+6.95
+]
+},
+{
+"id": "tt-ts-auth-service-delay-r2",
+"kind": "fault",
+"truth": "ts-auth-service",
+"fault_type": "delay",
+"answer": null,
+"top_service": "ts-auth-service",
+"top_score": 9.21,
+"second": [
+"ts-travel2-service",
+8.08
+]
+},
+{
+"id": "tt-ts-auth-service-delay-r3",
+"kind": "fault",
+"truth": "ts-auth-service",
+"fault_type": "delay",
+"answer": "ts-auth-service",
+"top_service": "ts-auth-service",
+"top_score": 11.9,
+"second": [
+"ts-ui-dashboard",
+9.19
+]
+},
+{
+"id": "tt-ts-auth-service-disk-r1",
+"kind": "fault",
+"truth": "ts-auth-service",
+"fault_type": "disk",
+"answer": "ts-auth-service",
+"top_service": "ts-auth-service",
+"top_score": 12.85,
+"second": [
+"ts-payment-service",
+11.33
+]
+},
+{
+"id": "tt-clean-ts-auth-service-disk",
+"kind": "clean",
+"truth": null,
+"fault_type": "disk",
+"answer": "ts-auth-service",
+"top_service": "ts-auth-service",
+"top_score": 16.2,
+"second": [
+"ts-ui-dashboard",
+13.58
+]
+},
+{
+"id": "tt-ts-auth-service-disk-r2",
+"kind": "fault",
+"truth": "ts-auth-service",
+"fault_type": "disk",
+"answer": "ts-auth-service",
+"top_service": "ts-auth-service",
+"top_score": 10.99,
+"second": [
+"ts-preserve-service",
+10.0
+]
+},
+{
+"id": "tt-ts-auth-service-disk-r3",
+"kind": "fault",
+"truth": "ts-auth-service",
+"fault_type": "disk",
+"answer": "ts-auth-service",
+"top_service": "ts-auth-service",
+"top_score": 14.36,
+"second": [
+"ts-security-service",
+9.36
+]
+},
+{
+"id": "tt-ts-auth-service-loss-r1",
+"kind": "fault",
+"truth": "ts-auth-service",
+"fault_type": "loss",
+"answer": "ts-basic-service",
+"top_service": "ts-basic-service",
+"top_score": 10.74,
+"second": [
+"ts-preserve-other-service",
+9.23
+]
+},
+{
+"id": "tt-clean-ts-auth-service-loss",
+"kind": "clean",
+"truth": null,
+"fault_type": "loss",
+"answer": null,
+"top_service": "ts-contacts-service",
+"top_score": 9.48,
+"second": [
+"ts-inside-payment-service",
+9.02
+]
+},
+{
+"id": "tt-ts-auth-service-loss-r2",
+"kind": "fault",
+"truth": "ts-auth-service",
+"fault_type": "loss",
+"answer": null,
+"top_service": "ts-consign-service",
+"top_score": 8.44,
+"second": [
+"ts-auth-service",
+8.37
+]
+},
+{
+"id": "tt-ts-auth-service-loss-r3",
+"kind": "fault",
+"truth": "ts-auth-service",
+"fault_type": "loss",
+"answer": null,
+"top_service": "ts-preserve-service",
+"top_score": 7.78,
+"second": [
+"ts-preserve-other-service",
+6.6
+]
+},
+{
+"id": "tt-ts-auth-service-mem-r1",
+"kind": "fault",
+"truth": "ts-auth-service",
+"fault_type": "mem",
+"answer": "ts-auth-service",
+"top_service": "ts-auth-service",
+"top_score": 10.68,
+"second": [
+"ts-inside-payment-service",
+10.65
+]
+},
+{
+"id": "tt-clean-ts-auth-service-mem",
+"kind": "clean",
+"truth": null,
+"fault_type": "mem",
+"answer": "ts-preserve-other-service",
+"top_service": "ts-preserve-other-service",
+"top_score": 13.34,
+"second": [
+"ts-inside-payment-service",
+9.28
+]
+},
+{
+"id": "tt-ts-auth-service-mem-r2",
+"kind": "fault",
+"truth": "ts-auth-service",
+"fault_type": "mem",
+"answer": "ts-auth-service",
+"top_service": "ts-auth-service",
+"top_score": 12.01,
+"second": [
+"ts-notification-service",
+11.6
+]
+},
+{
+"id": "tt-ts-auth-service-mem-r3",
+"kind": "fault",
+"truth": "ts-auth-service",
+"fault_type": "mem",
+"answer": "ts-auth-service",
+"top_service": "ts-auth-service",
+"top_score": 11.02,
+"second": [
+"ts-ui-dashboard",
+10.07
+]
+},
+{
+"id": "tt-ts-auth-service-socket-r1",
+"kind": "fault",
+"truth": "ts-auth-service",
+"fault_type": "socket",
+"answer": "ts-auth-service",
+"top_service": "ts-auth-service",
+"top_score": 14.06,
+"second": [
+"ts-payment-service",
+10.8
+]
+},
+{
+"id": "tt-clean-ts-auth-service-socket",
+"kind": "clean",
+"truth": null,
+"fault_type": "socket",
+"answer": "ts-security-service",
+"top_service": "ts-security-service",
+"top_score": 10.72,
+"second": [
+"ts-auth-service",
+10.37
+]
+},
+{
+"id": "tt-ts-auth-service-socket-r2",
+"kind": "fault",
+"truth": "ts-auth-service",
+"fault_type": "socket",
+"answer": "ts-auth-service",
+"top_service": "ts-auth-service",
+"top_score": 15.87,
+"second": [
+"ts-inside-payment-service",
+13.85
+]
+},
+{
+"id": "tt-ts-auth-service-socket-r3",
+"kind": "fault",
+"truth": "ts-auth-service",
+"fault_type": "socket",
+"answer": "ts-auth-service",
+"top_service": "ts-auth-service",
+"top_score": 13.3,
+"second": [
+"ts-consign-service",
+10.27
+]
+},
+{
+"id": "tt-ts-order-service-cpu-r1",
+"kind": "fault",
+"truth": "ts-order-service",
+"fault_type": "cpu",
+"answer": "ts-order-service",
+"top_service": "ts-order-service",
+"top_score": 12.2,
+"second": [
+"ts-contacts-service",
+7.34
+]
+},
+{
+"id": "tt-clean-ts-order-service-cpu",
+"kind": "clean",
+"truth": null,
+"fault_type": "cpu",
+"answer": "ts-user-service",
+"top_service": "ts-user-service",
+"top_score": 16.72,
+"second": [
+"ts-preserve-other-service",
+13.47
+]
+},
+{
+"id": "tt-ts-order-service-cpu-r2",
+"kind": "fault",
+"truth": "ts-order-service",
+"fault_type": "cpu",
+"answer": "ts-preserve-service",
+"top_service": "ts-preserve-service",
+"top_score": 16.94,
+"second": [
+"ts-order-service",
+13.32
+]
+},
+{
+"id": "tt-ts-order-service-cpu-r3",
+"kind": "fault",
+"truth": "ts-order-service",
+"fault_type": "cpu",
+"answer": "ts-order-service",
+"top_service": "ts-order-service",
+"top_score": 18.04,
+"second": [
+"ts-security-service",
+16.32
+]
+},
+{
+"id": "tt-ts-order-service-delay-r1",
+"kind": "fault",
+"truth": "ts-order-service",
+"fault_type": "delay",
+"answer": "ts-preserve-other-service",
+"top_service": "ts-preserve-other-service",
+"top_score": 12.25,
+"second": [
+"ts-security-service",
+11.3
+]
+},
+{
+"id": "tt-clean-ts-order-service-delay",
+"kind": "clean",
+"truth": null,
+"fault_type": "delay",
+"answer": null,
+"top_service": "ts-travel-service",
+"top_score": 7.63,
+"second": [
+"ts-food-map-service",
+7.19
+]
+},
+{
+"id": "tt-ts-order-service-delay-r2",
+"kind": "fault",
+"truth": "ts-order-service",
+"fault_type": "delay",
+"answer": "ts-order-service",
+"top_service": "ts-order-service",
+"top_score": 12.29,
+"second": [
+"ts-price-service",
+9.82
+]
+},
+{
+"id": "tt-ts-order-service-delay-r3",
+"kind": "fault",
+"truth": "ts-order-service",
+"fault_type": "delay",
+"answer": "ts-inside-payment-service",
+"top_service": "ts-inside-payment-service",
+"top_score": 14.49,
+"second": [
+"ts-order-service",
+12.1
+]
+},
+{
+"id": "tt-ts-order-service-disk-r1",
+"kind": "fault",
+"truth": "ts-order-service",
+"fault_type": "disk",
+"answer": "ts-order-service",
+"top_service": "ts-order-service",
+"top_score": 12.77,
+"second": [
+"ts-consign-service",
+9.17
+]
+},
+{
+"id": "tt-clean-ts-order-service-disk",
+"kind": "clean",
+"truth": null,
+"fault_type": "disk",
+"answer": "ts-preserve-other-service",
+"top_service": "ts-preserve-other-service",
+"top_score": 14.69,
+"second": [
+"ts-security-service",
+12.3
+]
+},
+{
+"id": "tt-ts-order-service-disk-r2",
+"kind": "fault",
+"truth": "ts-order-service",
+"fault_type": "disk",
+"answer": "ts-order-service",
+"top_service": "ts-order-service",
+"top_score": 13.14,
+"second": [
+"ts-user-service",
+8.06
+]
+},
+{
+"id": "tt-ts-order-service-disk-r3",
+"kind": "fault",
+"truth": "ts-order-service",
+"fault_type": "disk",
+"answer": "ts-order-service",
+"top_service": "ts-order-service",
+"top_score": 14.65,
+"second": [
+"ts-travel2-service",
+8.79
+]
+},
+{
+"id": "tt-ts-order-service-loss-r1",
+"kind": "fault",
+"truth": "ts-order-service",
+"fault_type": "loss",
+"answer": "ts-preserve-service",
+"top_service": "ts-preserve-service",
+"top_score": 11.47,
+"second": [
+"ts-order-service",
+9.8
+]
+},
+{
+"id": "tt-clean-ts-order-service-loss",
+"kind": "clean",
+"truth": null,
+"fault_type": "loss",
+"answer": "ts-payment-service",
+"top_service": "ts-payment-service",
+"top_score": 13.68,
+"second": [
+"ts-preserve-other-service",
+6.36
+]
+},
+{
+"id": "tt-ts-order-service-loss-r2",
+"kind": "fault",
+"truth": "ts-order-service",
+"fault_type": "loss",
+"answer": null,
+"top_service": "ts-inside-payment-service",
+"top_score": 9.03,
+"second": [
+"ts-consign-service",
+7.84
+]
+},
+{
+"id": "tt-ts-order-service-loss-r3",
+"kind": "fault",
+"truth": "ts-order-service",
+"fault_type": "loss",
+"answer": null,
+"top_service": "ts-config-service",
+"top_score": 7.36,
+"second": [
+"ts-food-service",
+6.49
+]
+},
+{
+"id": "tt-ts-order-service-mem-r1",
+"kind": "fault",
+"truth": "ts-order-service",
+"fault_type": "mem",
+"answer": "ts-price-service",
+"top_service": "ts-price-service",
+"top_score": 10.83,
+"second": [
+"ts-order-service",
+10.58
+]
+},
+{
+"id": "tt-clean-ts-order-service-mem",
+"kind": "clean",
+"truth": null,
+"fault_type": "mem",
+"answer": "ts-order-service",
+"top_service": "ts-order-service",
+"top_score": 10.14,
+"second": [
+"ts-travel-service",
+9.71
+]
+},
+{
+"id": "tt-ts-order-service-mem-r2",
+"kind": "fault",
+"truth": "ts-order-service",
+"fault_type": "mem",
+"answer": "ts-order-service",
+"top_service": "ts-order-service",
+"top_score": 16.22,
+"second": [
+"ts-notification-service",
+10.96
+]
+},
+{
+"id": "tt-ts-order-service-mem-r3",
+"kind": "fault",
+"truth": "ts-order-service",
+"fault_type": "mem",
+"answer": "ts-order-service",
+"top_service": "ts-order-service",
+"top_score": 11.33,
+"second": [
+"ts-preserve-service",
+10.48
+]
+},
+{
+"id": "tt-ts-order-service-socket-r1",
+"kind": "fault",
+"truth": "ts-order-service",
+"fault_type": "socket",
+"answer": "ts-preserve-service",
+"top_service": "ts-preserve-service",
+"top_score": 15.75,
+"second": [
+"ts-order-service",
+14.21
+]
+},
+{
+"id": "tt-clean-ts-order-service-socket",
+"kind": "clean",
+"truth": null,
+"fault_type": "socket",
+"answer": null,
+"top_service": "ts-contacts-service",
+"top_score": 6.93,
+"second": [
+"ts-inside-payment-service",
+6.91
+]
+},
+{
+"id": "tt-ts-order-service-socket-r2",
+"kind": "fault",
+"truth": "ts-order-service",
+"fault_type": "socket",
+"answer": "ts-order-service",
+"top_service": "ts-order-service",
+"top_score": 15.53,
+"second": [
+"ts-inside-payment-service",
+13.16
+]
+},
+{
+"id": "tt-ts-order-service-socket-r3",
+"kind": "fault",
+"truth": "ts-order-service",
+"fault_type": "socket",
+"answer": "ts-order-service",
+"top_service": "ts-order-service",
+"top_score": 13.96,
+"second": [
+"ts-preserve-service",
+11.4
+]
+},
+{
+"id": "tt-ts-route-service-cpu-r1",
+"kind": "fault",
+"truth": "ts-route-service",
+"fault_type": "cpu",
+"answer": "ts-route-service",
+"top_service": "ts-route-service",
+"top_score": 10.64,
+"second": [
+"ts-ticketinfo-service",
+10.56
+]
+},
+{
+"id": "tt-clean-ts-route-service-cpu",
+"kind": "clean",
+"truth": null,
+"fault_type": "cpu",
+"answer": "ts-auth-service",
+"top_service": "ts-auth-service",
+"top_score": 13.95,
+"second": [
+"ts-payment-service",
+11.59
+]
+},
+{
+"id": "tt-ts-route-service-cpu-r2",
+"kind": "fault",
+"truth": "ts-route-service",
+"fault_type": "cpu",
+"answer": "ts-admin-travel-service",
+"top_service": "ts-admin-travel-service",
+"top_score": 13.1,
+"second": [
+"ts-travel-service",
+11.24
+]
+},
+{
+"id": "tt-ts-route-service-cpu-r3",
+"kind": "fault",
+"truth": "ts-route-service",
+"fault_type": "cpu",
+"answer": "ts-admin-travel-service",
+"top_service": "ts-admin-travel-service",
+"top_score": 13.34,
+"second": [
+"ts-ui-dashboard",
+11.32
+]
+},
+{
+"id": "tt-ts-route-service-delay-r1",
+"kind": "fault",
+"truth": "ts-route-service",
+"fault_type": "delay",
+"answer": "ts-seat-service",
+"top_service": "ts-seat-service",
+"top_score": 11.98,
+"second": [
+"ts-route-service",
+11.93
+]
+},
+{
+"id": "tt-clean-ts-route-service-delay",
+"kind": "clean",
+"truth": null,
+"fault_type": "delay",
+"answer": null,
+"top_service": "ts-consign-price-service",
+"top_score": 8.5,
+"second": [
+"ts-travel-service",
+8.44
+]
+},
+{
+"id": "tt-ts-route-service-delay-r2",
+"kind": "fault",
+"truth": "ts-route-service",
+"fault_type": "delay",
+"answer": "ts-seat-service",
+"top_service": "ts-seat-service",
+"top_score": 12.91,
+"second": [
+"ts-preserve-service",
+12.66
+]
+},
+{
+"id": "tt-ts-route-service-delay-r3",
+"kind": "fault",
+"truth": "ts-route-service",
+"fault_type": "delay",
+"answer": "ts-preserve-other-service",
+"top_service": "ts-preserve-other-service",
+"top_score": 19.92,
+"second": [
+"ts-seat-service",
+12.32
+]
+},
+{
+"id": "tt-ts-route-service-disk-r1",
+"kind": "fault",
+"truth": "ts-route-service",
+"fault_type": "disk",
+"answer": "ts-route-service",
+"top_service": "ts-route-service",
+"top_score": 15.34,
+"second": [
+"ts-admin-travel-service",
+12.85
+]
+},
+{
+"id": "tt-clean-ts-route-service-disk",
+"kind": "clean",
+"truth": null,
+"fault_type": "disk",
+"answer": "ts-travel2-service",
+"top_service": "ts-travel2-service",
+"top_score": 14.88,
+"second": [
+"ts-order-service",
+14.41
+]
+},
+{
+"id": "tt-ts-route-service-disk-r2",
+"kind": "fault",
+"truth": "ts-route-service",
+"fault_type": "disk",
+"answer": "ts-route-service",
+"top_service": "ts-route-service",
+"top_score": 16.22,
+"second": [
+"ts-preserve-service",
+10.56
+]
+},
+{
+"id": "tt-ts-route-service-disk-r3",
+"kind": "fault",
+"truth": "ts-route-service",
+"fault_type": "disk",
+"answer": "ts-route-service",
+"top_service": "ts-route-service",
+"top_score": 15.11,
+"second": [
+"ts-order-service",
+11.33
+]
+},
+{
+"id": "tt-ts-route-service-loss-r1",
+"kind": "fault",
+"truth": "ts-route-service",
+"fault_type": "loss",
+"answer": "ts-admin-travel-service",
+"top_service": "ts-admin-travel-service",
+"top_score": 10.24,
+"second": [
+"ts-travel2-service",
+8.56
+]
+},
+{
+"id": "tt-clean-ts-route-service-loss",
+"kind": "clean",
+"truth": null,
+"fault_type": "loss",
+"answer": "ts-payment-service",
+"top_service": "ts-payment-service",
+"top_score": 10.99,
+"second": [
+"ts-preserve-other-service",
+8.85
+]
+},
+{
+"id": "tt-ts-route-service-loss-r2",
+"kind": "fault",
+"truth": "ts-route-service",
+"fault_type": "loss",
+"answer": "ts-admin-travel-service",
+"top_service": "ts-admin-travel-service",
+"top_score": 12.54,
+"second": [
+"ts-security-service",
+12.5
+]
+},
+{
+"id": "tt-ts-route-service-loss-r3",
+"kind": "fault",
+"truth": "ts-route-service",
+"fault_type": "loss",
+"answer": null,
+"top_service": "ts-seat-service",
+"top_score": 8.7,
+"second": [
+"ts-consign-service",
+8.64
+]
+},
+{
+"id": "tt-ts-route-service-mem-r1",
+"kind": "fault",
+"truth": "ts-route-service",
+"fault_type": "mem",
+"answer": "ts-food-service",
+"top_service": "ts-food-service",
+"top_score": 12.65,
+"second": [
+"ts-admin-travel-service",
+12.43
+]
+},
+{
+"id": "tt-clean-ts-route-service-mem",
+"kind": "clean",
+"truth": null,
+"fault_type": "mem",
+"answer": "ts-preserve-service",
+"top_service": "ts-preserve-service",
+"top_score": 12.87,
+"second": [
+"ts-food-service",
+12.2
+]
+},
+{
+"id": "tt-ts-route-service-mem-r2",
+"kind": "fault",
+"truth": "ts-route-service",
+"fault_type": "mem",
+"answer": "ts-preserve-service",
+"top_service": "ts-preserve-service",
+"top_score": 12.08,
+"second": [
+"ts-admin-travel-service",
+11.7
+]
+},
+{
+"id": "tt-ts-route-service-mem-r3",
+"kind": "fault",
+"truth": "ts-route-service",
+"fault_type": "mem",
+"answer": "ts-seat-service",
+"top_service": "ts-seat-service",
+"top_score": 13.37,
+"second": [
+"ts-route-service",
+11.69
+]
+},
+{
+"id": "tt-ts-route-service-socket-r1",
+"kind": "fault",
+"truth": "ts-route-service",
+"fault_type": "socket",
+"answer": "ts-consign-price-service",
+"top_service": "ts-consign-price-service",
+"top_score": 15.59,
+"second": [
+"ts-route-service",
+14.47
+]
+},
+{
+"id": "tt-clean-ts-route-service-socket",
+"kind": "clean",
+"truth": null,
+"fault_type": "socket",
+"answer": "ts-user-service",
+"top_service": "ts-user-service",
+"top_score": 11.66,
+"second": [
+"ts-route-service",
+9.17
+]
+},
+{
+"id": "tt-ts-route-service-socket-r2",
+"kind": "fault",
+"truth": "ts-route-service",
+"fault_type": "socket",
+"answer": "ts-ui-dashboard",
+"top_service": "ts-ui-dashboard",
+"top_score": 15.69,
+"second": [
+"ts-route-service",
+14.93
+]
+},
+{
+"id": "tt-ts-route-service-socket-r3",
+"kind": "fault",
+"truth": "ts-route-service",
+"fault_type": "socket",
+"answer": "ts-preserve-other-service",
+"top_service": "ts-preserve-other-service",
+"top_score": 20.0,
+"second": [
+"ts-route-service",
+13.69
+]
+},
+{
+"id": "tt-ts-train-service-cpu-r1",
+"kind": "fault",
+"truth": "ts-train-service",
+"fault_type": "cpu",
+"answer": "ts-admin-travel-service",
+"top_service": "ts-admin-travel-service",
+"top_score": 11.37,
+"second": [
+"ts-train-service",
+9.87
+]
+},
+{
+"id": "tt-clean-ts-train-service-cpu",
+"kind": "clean",
+"truth": null,
+"fault_type": "cpu",
+"answer": "ts-assurance-service",
+"top_service": "ts-assurance-service",
+"top_score": 10.22,
+"second": [
+"ts-consign-service",
+9.72
+]
+},
+{
+"id": "tt-ts-train-service-cpu-r2",
+"kind": "fault",
+"truth": "ts-train-service",
+"fault_type": "cpu",
+"answer": "ts-seat-service",
+"top_service": "ts-seat-service",
+"top_score": 12.62,
+"second": [
+"ts-preserve-service",
+12.2
+]
+},
+{
+"id": "tt-ts-train-service-cpu-r3",
+"kind": "fault",
+"truth": "ts-train-service",
+"fault_type": "cpu",
+"answer": "ts-order-service",
+"top_service": "ts-order-service",
+"top_score": 11.28,
+"second": [
+"ts-admin-travel-service",
+11.28
+]
+},
+{
+"id": "tt-ts-train-service-delay-r1",
+"kind": "fault",
+"truth": "ts-train-service",
+"fault_type": "delay",
+"answer": "ts-admin-travel-service",
+"top_service": "ts-admin-travel-service",
+"top_score": 12.92,
+"second": [
+"ts-seat-service",
+12.59
+]
+},
+{
+"id": "tt-clean-ts-train-service-delay",
+"kind": "clean",
+"truth": null,
+"fault_type": "delay",
+"answer": "ts-preserve-other-service",
+"top_service": "ts-preserve-other-service",
+"top_score": 10.53,
+"second": [
+"ts-payment-service",
+7.7
+]
+},
+{
+"id": "tt-ts-train-service-delay-r2",
+"kind": "fault",
+"truth": "ts-train-service",
+"fault_type": "delay",
+"answer": "ts-preserve-other-service",
+"top_service": "ts-preserve-other-service",
+"top_score": 15.2,
+"second": [
+"ts-seat-service",
+13.42
+]
+},
+{
+"id": "tt-ts-train-service-delay-r3",
+"kind": "fault",
+"truth": "ts-train-service",
+"fault_type": "delay",
+"answer": "ts-order-service",
+"top_service": "ts-order-service",
+"top_score": 13.79,
+"second": [
+"ts-seat-service",
+12.95
+]
+},
+{
+"id": "tt-ts-train-service-disk-r1",
+"kind": "fault",
+"truth": "ts-train-service",
+"fault_type": "disk",
+"answer": "ts-admin-travel-service",
+"top_service": "ts-admin-travel-service",
+"top_score": 12.42,
+"second": [
+"ts-train-service",
+10.01
+]
+},
+{
+"id": "tt-clean-ts-train-service-disk",
+"kind": "clean",
+"truth": null,
+"fault_type": "disk",
+"answer": "ts-inside-payment-service",
+"top_service": "ts-inside-payment-service",
+"top_score": 10.56,
+"second": [
+"ts-order-service",
+8.82
+]
+},
+{
+"id": "tt-ts-train-service-disk-r2",
+"kind": "fault",
+"truth": "ts-train-service",
+"fault_type": "disk",
+"answer": "ts-train-service",
+"top_service": "ts-train-service",
+"top_score": 14.93,
+"second": [
+"ts-config-service",
+9.29
+]
+},
+{
+"id": "tt-ts-train-service-disk-r3",
+"kind": "fault",
+"truth": "ts-train-service",
+"fault_type": "disk",
+"answer": "ts-food-service",
+"top_service": "ts-food-service",
+"top_score": 10.54,
+"second": [
+"ts-train-service",
+10.24
+]
+},
+{
+"id": "tt-ts-train-service-loss-r1",
+"kind": "fault",
+"truth": "ts-train-service",
+"fault_type": "loss",
+"answer": "ts-station-mongo",
+"top_service": "ts-station-mongo",
+"top_score": 10.54,
+"second": [
+"ts-train-service",
+9.69
+]
+},
+{
+"id": "tt-clean-ts-train-service-loss",
+"kind": "clean",
+"truth": null,
+"fault_type": "loss",
+"answer": null,
+"top_service": "ts-inside-payment-service",
+"top_score": 7.42,
+"second": [
+"ts-preserve-other-service",
+7.15
+]
+},
+{
+"id": "tt-ts-train-service-loss-r2",
+"kind": "fault",
+"truth": "ts-train-service",
+"fault_type": "loss",
+"answer": "ts-preserve-other-service",
+"top_service": "ts-preserve-other-service",
+"top_score": 14.6,
+"second": [
+"ts-travel-service",
+10.98
+]
+},
+{
+"id": "tt-ts-train-service-loss-r3",
+"kind": "fault",
+"truth": "ts-train-service",
+"fault_type": "loss",
+"answer": null,
+"top_service": "ts-admin-travel-service",
+"top_score": 9.92,
+"second": [
+"ts-train-service",
+9.86
+]
+},
+{
+"id": "tt-ts-train-service-mem-r1",
+"kind": "fault",
+"truth": "ts-train-service",
+"fault_type": "mem",
+"answer": "ts-preserve-other-service",
+"top_service": "ts-preserve-other-service",
+"top_score": 12.94,
+"second": [
+"ts-travel2-service",
+12.72
+]
+},
+{
+"id": "tt-clean-ts-train-service-mem",
+"kind": "clean",
+"truth": null,
+"fault_type": "mem",
+"answer": "ts-train-service",
+"top_service": "ts-train-service",
+"top_score": 11.27,
+"second": [
+"ts-ui-dashboard",
+6.97
+]
+},
+{
+"id": "tt-ts-train-service-mem-r2",
+"kind": "fault",
+"truth": "ts-train-service",
+"fault_type": "mem",
+"answer": "ts-admin-travel-service",
+"top_service": "ts-admin-travel-service",
+"top_score": 12.51,
+"second": [
+"ts-user-service",
+11.68
+]
+},
+{
+"id": "tt-ts-train-service-mem-r3",
+"kind": "fault",
+"truth": "ts-train-service",
+"fault_type": "mem",
+"answer": "ts-preserve-other-service",
+"top_service": "ts-preserve-other-service",
+"top_score": 13.22,
+"second": [
+"ts-admin-travel-service",
+12.34
+]
+},
+{
+"id": "tt-ts-train-service-socket-r1",
+"kind": "fault",
+"truth": "ts-train-service",
+"fault_type": "socket",
+"answer": "ts-train-service",
+"top_service": "ts-train-service",
+"top_score": 14.48,
+"second": [
+"ts-admin-travel-service",
+11.76
+]
+},
+{
+"id": "tt-clean-ts-train-service-socket",
+"kind": "clean",
+"truth": null,
+"fault_type": "socket",
+"answer": "ts-preserve-service",
+"top_service": "ts-preserve-service",
+"top_score": 10.98,
+"second": [
+"ts-train-service",
+7.58
+]
+},
+{
+"id": "tt-ts-train-service-socket-r2",
+"kind": "fault",
+"truth": "ts-train-service",
+"fault_type": "socket",
+"answer": "ts-train-service",
+"top_service": "ts-train-service",
+"top_score": 13.94,
+"second": [
+"ts-preserve-other-service",
+11.33
+]
+},
+{
+"id": "tt-ts-train-service-socket-r3",
+"kind": "fault",
+"truth": "ts-train-service",
+"fault_type": "socket",
+"answer": "ts-train-service",
+"top_service": "ts-train-service",
+"top_score": 13.4,
+"second": [
+"ts-consign-price-service",
+12.79
+]
+},
+{
+"id": "tt-ts-travel-service-cpu-r1",
+"kind": "fault",
+"truth": "ts-travel-service",
+"fault_type": "cpu",
+"answer": "ts-preserve-service",
+"top_service": "ts-preserve-service",
+"top_score": 12.62,
+"second": [
+"ts-security-service",
+11.79
+]
+},
+{
+"id": "tt-clean-ts-travel-service-cpu",
+"kind": "clean",
+"truth": null,
+"fault_type": "cpu",
+"answer": "ts-admin-basic-info-service",
+"top_service": "ts-admin-basic-info-service",
+"top_score": 12.62,
+"second": [
+"ts-price-service",
+12.08
+]
+},
+{
+"id": "tt-ts-travel-service-cpu-r2",
+"kind": "fault",
+"truth": "ts-travel-service",
+"fault_type": "cpu",
+"answer": "ts-inside-payment-service",
+"top_service": "ts-inside-payment-service",
+"top_score": 14.35,
+"second": [
+"ts-preserve-service",
+12.45
+]
+},
+{
+"id": "tt-ts-travel-service-cpu-r3",
+"kind": "fault",
+"truth": "ts-travel-service",
+"fault_type": "cpu",
+"answer": "ts-travel-service",
+"top_service": "ts-travel-service",
+"top_score": 10.51,
+"second": [
+"ts-food-service",
+10.33
+]
+},
+{
+"id": "tt-ts-travel-service-delay-r1",
+"kind": "fault",
+"truth": "ts-travel-service",
+"fault_type": "delay",
+"answer": "ts-admin-travel-service",
+"top_service": "ts-admin-travel-service",
+"top_score": 13.29,
+"second": [
+"ts-food-service",
+12.51
+]
+},
+{
+"id": "tt-clean-ts-travel-service-delay",
+"kind": "clean",
+"truth": null,
+"fault_type": "delay",
+"answer": null,
+"top_service": "ts-consign-service",
+"top_score": 9.59,
+"second": [
+"ts-assurance-service",
+8.48
+]
+},
+{
+"id": "tt-ts-travel-service-delay-r2",
+"kind": "fault",
+"truth": "ts-travel-service",
+"fault_type": "delay",
+"answer": "ts-admin-travel-service",
+"top_service": "ts-admin-travel-service",
+"top_score": 14.02,
+"second": [
+"ts-food-service",
+11.42
+]
+},
+{
+"id": "tt-ts-travel-service-delay-r3",
+"kind": "fault",
+"truth": "ts-travel-service",
+"fault_type": "delay",
+"answer": "ts-admin-travel-service",
+"top_service": "ts-admin-travel-service",
+"top_score": 13.39,
+"second": [
+"ts-order-service",
+10.82
+]
+},
+{
+"id": "tt-ts-travel-service-disk-r1",
+"kind": "fault",
+"truth": "ts-travel-service",
+"fault_type": "disk",
+"answer": "ts-travel-service",
+"top_service": "ts-travel-service",
+"top_score": 13.0,
+"second": [
+"ts-food-service",
+12.75
+]
+},
+{
+"id": "tt-clean-ts-travel-service-disk",
+"kind": "clean",
+"truth": null,
+"fault_type": "disk",
+"answer": "ts-order-service",
+"top_service": "ts-order-service",
+"top_score": 13.02,
+"second": [
+"ts-admin-travel-service",
+12.76
+]
+},
+{
+"id": "tt-ts-travel-service-disk-r2",
+"kind": "fault",
+"truth": "ts-travel-service",
+"fault_type": "disk",
+"answer": "ts-travel-service",
+"top_service": "ts-travel-service",
+"top_score": 11.5,
+"second": [
+"ts-admin-travel-service",
+9.73
+]
+},
+{
+"id": "tt-ts-travel-service-disk-r3",
+"kind": "fault",
+"truth": "ts-travel-service",
+"fault_type": "disk",
+"answer": "ts-travel-service",
+"top_service": "ts-travel-service",
+"top_score": 16.53,
+"second": [
+"ts-admin-travel-service",
+10.26
+]
+},
+{
+"id": "tt-ts-travel-service-loss-r1",
+"kind": "fault",
+"truth": "ts-travel-service",
+"fault_type": "loss",
+"answer": "ts-preserve-service",
+"top_service": "ts-preserve-service",
+"top_score": 10.7,
+"second": [
+"ts-admin-travel-service",
+10.36
+]
+},
+{
+"id": "tt-clean-ts-travel-service-loss",
+"kind": "clean",
+"truth": null,
+"fault_type": "loss",
+"answer": "ts-ticket-office-service",
+"top_service": "ts-ticket-office-service",
+"top_score": 11.7,
+"second": [
+"ts-security-service",
+6.49
+]
+},
+{
+"id": "tt-ts-travel-service-loss-r2",
+"kind": "fault",
+"truth": "ts-travel-service",
+"fault_type": "loss",
+"answer": "ts-preserve-service",
+"top_service": "ts-preserve-service",
+"top_score": 12.13,
+"second": [
+"ts-user-service",
+9.86
+]
+},
+{
+"id": "tt-ts-travel-service-loss-r3",
+"kind": "fault",
+"truth": "ts-travel-service",
+"fault_type": "loss",
+"answer": "ts-admin-travel-service",
+"top_service": "ts-admin-travel-service",
+"top_score": 10.43,
+"second": [
+"ts-security-service",
+9.3
+]
+},
+{
+"id": "tt-ts-travel-service-mem-r1",
+"kind": "fault",
+"truth": "ts-travel-service",
+"fault_type": "mem",
+"answer": "ts-preserve-service",
+"top_service": "ts-preserve-service",
+"top_score": 12.0,
+"second": [
+"ts-admin-travel-service",
+11.73
+]
+},
+{
+"id": "tt-clean-ts-travel-service-mem",
+"kind": "clean",
+"truth": null,
+"fault_type": "mem",
+"answer": null,
+"top_service": "ts-route-mongo",
+"top_score": 9.65,
+"second": [
+"ts-contacts-service",
+5.58
+]
+},
+{
+"id": "tt-ts-travel-service-mem-r2",
+"kind": "fault",
+"truth": "ts-travel-service",
+"fault_type": "mem",
+"answer": "ts-travel-service",
+"top_service": "ts-travel-service",
+"top_score": 11.23,
+"second": [
+"ts-admin-user-service",
+10.66
+]
+},
+{
+"id": "tt-ts-travel-service-mem-r3",
+"kind": "fault",
+"truth": "ts-travel-service",
+"fault_type": "mem",
+"answer": "ts-preserve-service",
+"top_service": "ts-preserve-service",
+"top_score": 15.01,
+"second": [
+"ts-security-service",
+12.82
+]
+},
+{
+"id": "tt-ts-travel-service-socket-r1",
+"kind": "fault",
+"truth": "ts-travel-service",
+"fault_type": "socket",
+"answer": "ts-admin-travel-service",
+"top_service": "ts-admin-travel-service",
+"top_score": 12.71,
+"second": [
+"ts-travel-service",
+12.09
+]
+},
+{
+"id": "tt-clean-ts-travel-service-socket",
+"kind": "clean",
+"truth": null,
+"fault_type": "socket",
+"answer": null,
+"top_service": "ts-travel-service",
+"top_score": 8.08,
+"second": [
+"ts-train-service",
+7.26
+]
+},
+{
+"id": "tt-ts-travel-service-socket-r2",
+"kind": "fault",
+"truth": "ts-travel-service",
+"fault_type": "socket",
+"answer": "ts-food-service",
+"top_service": "ts-food-service",
+"top_score": 11.71,
+"second": [
+"ts-preserve-service",
+11.41
+]
+},
+{
+"id": "tt-ts-travel-service-socket-r3",
+"kind": "fault",
+"truth": "ts-travel-service",
+"fault_type": "socket",
+"answer": "ts-travel-service",
+"top_service": "ts-travel-service",
+"top_score": 14.22,
+"second": [
+"ts-food-service",
+12.91
+]
+}
+]

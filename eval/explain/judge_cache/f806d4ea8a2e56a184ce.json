@@ -1,0 +1,1 @@
+{"tokens": [680, 217], "verdict": "partial", "why": "The records show Api\u2192ingest client calls timing out after exactly 3\u202fseconds, but they do not provide evidence that the timeouts were caused by ingest latency."}

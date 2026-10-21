@@ -1,0 +1,1 @@
+{"tokens": [360, 297], "verdict": "partial", "why": "The record shows a broker retry to billing (attempt\u202f2) but does not provide evidence of repeated retries, failures or latency as the cause, broker worker saturation, or increased latency."}

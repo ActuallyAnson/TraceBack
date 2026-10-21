@@ -1,0 +1,1 @@
+{"tokens": [443, 485], "verdict": "partial", "why": "The records confirm the API logged delivery step failed and upstream timeout errors with 504 status, but they do not show that an Ingest error propagated to cause them."}

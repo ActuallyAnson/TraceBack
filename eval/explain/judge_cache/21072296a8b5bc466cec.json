@@ -1,0 +1,1 @@
+{"tokens": [424, 266], "verdict": "partial", "why": "The records show the broker reporting errors, but they contain no information about the billing dependency failing."}

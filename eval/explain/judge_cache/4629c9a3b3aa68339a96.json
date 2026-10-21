@@ -1,0 +1,1 @@
+{"tokens": [388, 301], "verdict": "supported", "why": "The record shows a gateway client call to orders that resulted in a timeout, indicating the orders did not respond promptly enough, which matches the statement."}

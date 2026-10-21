@@ -1,0 +1,1 @@
+{"tokens": [453, 170], "verdict": "supported", "why": "The orders service logged upstream_error events stating that dependency payments returned 500, showing orders reported errors while payments was failing."}

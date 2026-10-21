@@ -1,0 +1,1 @@
+{"tokens": [686, 203], "verdict": "supported", "why": "The quoted spans show the gateway client calling orders, with a duration of 2.5\u202fseconds and an error of 'timeout', indicating the gateway timed out waiting for a reply from orders."}

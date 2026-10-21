@@ -1,0 +1,1 @@
+{"tokens": [471, 228], "verdict": "supported", "why": "The broker log shows an upstream error indicating shipping returned 500, followed by a retry scheduled with a 100\u202fms backoff."}

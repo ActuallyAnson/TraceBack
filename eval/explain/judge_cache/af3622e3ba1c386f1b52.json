@@ -1,0 +1,1 @@
+{"tokens": [398, 261], "verdict": "partial", "why": "The record confirms that Ingest returned a 504 status with error 'upstream_timeout', but it does not explicitly state that this was due to a call to the broker timing out or that the response was sent to the API."}

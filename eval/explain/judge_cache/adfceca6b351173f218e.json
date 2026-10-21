@@ -1,0 +1,1 @@
+{"tokens": [356, 510], "verdict": "supported", "why": "The record shows a broker warning of an upstream timeout to shipping with a short 7\u202fms timeout at a timestamp whose fractional part corresponds to ~+53.602\u202fs."}

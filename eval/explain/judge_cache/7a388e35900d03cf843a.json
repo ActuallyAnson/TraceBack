@@ -1,0 +1,1 @@
+{"tokens": [339, 603], "verdict": "partial", "why": "The record confirms that the orders service returned a 504 status for an upstream_timeout error, but it does not indicate that the caller was a gateway."}

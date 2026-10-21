@@ -1,0 +1,1 @@
+{"tokens": [340, 233], "verdict": "partial", "why": "The record shows orders receiving a connection\u2011refused error from payments, but it does not indicate that this happened after a restart."}

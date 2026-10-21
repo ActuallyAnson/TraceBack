@@ -1,0 +1,1 @@
+{"tokens": [455, 394], "verdict": "supported", "why": "The API metrics show high latency (p50\u22482984\u202fms, p99\u22483004\u202fms) and many 5xx errors (43/89 requests), while an error log records that the ingest dependency returned a 504 timeout, indicating ingest slowness/timeouts as the cause."}

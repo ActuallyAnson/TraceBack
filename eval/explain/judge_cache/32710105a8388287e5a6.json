@@ -1,0 +1,1 @@
+{"tokens": [1126, 475], "verdict": "partial", "why": "The records show Ingest's submit_order calls failing with delivery_failed errors, increasing queue_us times, and workers reaching the busy limit, but they do not mention broker retries being exhausted."}

@@ -1,0 +1,1 @@
+{"id":"f1-01","group":"storm_variant","split":"fresh","seed":3032853169033896951,"root_cause":{"type":"retry_storm","service":"orders","onset_us":1790000046776241,"end_us":1790000076776241,"trigger_service":"payments"},"decoys":[],"complications":[],"symptom_service":"gateway","err_rate_baseline":0.005,"err_rate_incident":0.095,"err_rate_incident_without_cause":0.000}

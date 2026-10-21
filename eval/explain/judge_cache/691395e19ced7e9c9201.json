@@ -1,0 +1,1 @@
+{"tokens": [368, 216], "verdict": "supported", "why": "The record shows a gateway request returning status 503 with error 'conn_refused', indicating a 503 failure caused by a connection refusal."}

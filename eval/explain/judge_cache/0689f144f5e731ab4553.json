@@ -1,0 +1,1 @@
+{"tokens": [351, 205], "verdict": "unsupported", "why": "The quoted record indicates the API received a 500 response from ingest, not a 503, and contains no mention of broker failure as the cause."}

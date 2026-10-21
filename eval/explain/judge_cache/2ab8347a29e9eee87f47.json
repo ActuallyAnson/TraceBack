@@ -1,0 +1,1 @@
+{"tokens": [369, 250], "verdict": "partial", "why": "The record confirms the API service had an upstream timeout error, but it does not indicate that the error occurred when calling Ingest."}

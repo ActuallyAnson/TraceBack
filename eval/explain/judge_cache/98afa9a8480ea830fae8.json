@@ -1,0 +1,1 @@
+{"tokens": [354, 201], "verdict": "supported", "why": "The record shows all 92 requests resulted in 5xx errors (err5xx=92) and latency metrics (p50\u22483\u202fs, p99\u22483\u202fs), confirming high error rates and increased latency."}

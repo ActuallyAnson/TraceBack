@@ -1,0 +1,1 @@
+{"tokens": [443, 316], "verdict": "partial", "why": "The records confirm the API returned delivery_failed errors, but they do not contain any evidence of internal_error responses."}

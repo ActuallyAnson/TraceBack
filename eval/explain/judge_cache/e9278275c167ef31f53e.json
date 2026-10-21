@@ -1,0 +1,1 @@
+{"tokens": [304, 121], "verdict": "supported", "why": "The quoted record shows a fatal log entry for the billing service indicating an OOM kill, which directly supports the statement."}

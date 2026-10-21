@@ -1,0 +1,7 @@
+{
+ "id": "ss2-clean-catalogue-loss",
+ "kind": "clean",
+ "system": "ss2",
+ "source": "RCAEval RE2",
+ "case": "catalogue_loss/1"
+}

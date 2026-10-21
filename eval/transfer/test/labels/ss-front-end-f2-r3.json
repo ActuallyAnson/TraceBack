@@ -1,0 +1,12 @@
+{
+ "id": "ss-front-end-f2-r3",
+ "kind": "fault",
+ "system": "ss",
+ "source": "RCAEval RE3",
+ "case": "front-end_f2/3",
+ "fault_type": "f2",
+ "root_cause": {
+  "service": "front-end",
+  "edge": null
+ }
+}

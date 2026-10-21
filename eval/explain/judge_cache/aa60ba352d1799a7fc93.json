@@ -1,0 +1,1 @@
+{"tokens": [746, 184], "verdict": "supported", "why": "The quoted records show API server spans for POST /orders with HTTP status 504 and error 'upstream_timeout', indicating API calls timed out and returned 504 errors to users."}

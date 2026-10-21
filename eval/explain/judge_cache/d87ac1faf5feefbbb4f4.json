@@ -1,0 +1,1 @@
+{"tokens": [344, 250], "verdict": "partial", "why": "The record confirms the billing DB connection pool was exhausted but does not show that this caused 503 errors."}

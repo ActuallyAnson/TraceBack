@@ -1,0 +1,1 @@
+{"tokens": [529, 355], "verdict": "partial", "why": "The records show payments service experiencing queue delays, but do not explicitly indicate lost serving capacity or that the cause is too few workers."}

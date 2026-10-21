@@ -1,0 +1,1 @@
+{"tokens": [382, 142], "verdict": "supported", "why": "The record shows a broker client operation 'charge' to peer 'billing' with error 'timeout', which directly indicates the broker timed out waiting for billing."}

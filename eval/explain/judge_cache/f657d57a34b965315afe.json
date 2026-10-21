@@ -1,0 +1,1 @@
+{"tokens": [820, 516], "verdict": "supported", "why": "The records show gateway client calls to orders with dur_us of 2500000 (2500\u202fms) and error timeout, and a gateway server span with status 504 and error upstream_timeout, matching the statement."}

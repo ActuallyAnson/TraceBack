@@ -1,0 +1,1 @@
+{"tokens": [406, 221], "verdict": "supported", "why": "Both quoted records show API-level error events where the messages indicate that the dependency 'ingest' returned a 503 error, confirming that the API reported errors while its dependency ingest was failing."}

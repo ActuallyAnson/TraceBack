@@ -1,0 +1,1 @@
+{"tokens": [330, 211], "verdict": "partial", "why": "The record confirms the Orders service returned an internal_error, but it provides no information about a deployment or the timing of the error relative to a deploy."}

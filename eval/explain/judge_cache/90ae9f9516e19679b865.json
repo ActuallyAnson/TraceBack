@@ -1,0 +1,1 @@
+{"tokens": [311, 422], "verdict": "partial", "why": "The record shows a deploy of orders started, but it does not contain information confirming the timestamp was +57.860s."}

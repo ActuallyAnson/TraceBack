@@ -1,0 +1,1 @@
+{"tokens": [394, 208], "verdict": "partial", "why": "The records show the API reporting errors (upstream_timeout), but they contain no information about the ingest dependency or its failure."}

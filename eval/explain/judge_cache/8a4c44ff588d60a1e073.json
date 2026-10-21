@@ -1,0 +1,1 @@
+{"tokens": [355, 196], "verdict": "partial", "why": "The record confirms Ingest received a 503 from broker, but it does not indicate that the cause was billing unavailability."}

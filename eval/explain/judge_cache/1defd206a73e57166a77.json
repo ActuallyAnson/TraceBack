@@ -1,0 +1,1 @@
+{"tokens": [527, 191], "verdict": "partial", "why": "The records confirm refused connections from orders to payments, but they do not provide evidence of a metrics gap or that payments was restarted."}

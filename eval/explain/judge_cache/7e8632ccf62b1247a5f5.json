@@ -1,0 +1,1 @@
+{"tokens": [371, 573], "verdict": "partial", "why": "The record shows shipping metrics at ~+57.363\u202fs with err5xx=34, matching the timestamp and error count, but it does not indicate that the errors were rising or that this occurred after deployment."}

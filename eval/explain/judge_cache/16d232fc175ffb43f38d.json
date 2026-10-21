@@ -1,0 +1,1 @@
+{"tokens": [529, 174], "verdict": "partial", "why": "The records confirm that the Orders service experienced timeouts when calling Inventory, but they do not provide any information about increased latency being the cause."}

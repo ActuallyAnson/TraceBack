@@ -1,0 +1,1 @@
+{"tokens": [346, 283], "verdict": "supported", "why": "The gateway log shows an upstream_error with status 504 while processing an order step, indicating the orders service returned a 504 timeout."}

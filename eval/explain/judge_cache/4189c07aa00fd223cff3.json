@@ -1,0 +1,1 @@
+{"tokens": [513, 592], "verdict": "partial", "why": "The records show the orders service detected a 503 error and later scheduled a retry with zero backoff, but they do not contain any timestamp indicating a +52.662\u202fs start offset."}

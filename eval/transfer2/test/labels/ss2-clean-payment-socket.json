@@ -1,0 +1,7 @@
+{
+ "id": "ss2-clean-payment-socket",
+ "kind": "clean",
+ "system": "ss2",
+ "source": "RCAEval RE2",
+ "case": "payment_socket/1"
+}

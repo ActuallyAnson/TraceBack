@@ -1,0 +1,1 @@
+{"tokens": [348, 193], "verdict": "supported", "why": "The record shows the billing service logged a pool_exhausted error and returned HTTP status 503, indicating the exhausted pool caused the 503 responses."}

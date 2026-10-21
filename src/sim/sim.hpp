@@ -44,6 +44,9 @@ struct Fault {
   int i1 = 0;
 };
 
+// Retry-storm callee: Fault::i1 names it; 0 (the original catalog) means payments.
+inline int storm_callee(const Fault& f) { return f.i1 ? f.i1 : PAYMENTS; }
+
 struct Spec {
   std::string id;
   std::string group;  // base | skew | double
@@ -88,5 +91,7 @@ std::vector<Spec> build_catalog(uint64_t master_seed);
 // Unseen-variant incidents (test split only), ids continue after the base catalog. Uses its own RNG
 // so adding or changing them cannot move any base incident.
 std::vector<Spec> build_variants(uint64_t seed, size_t first_index);
+// v2 evaluation sets (eval/v2/PLAN.md). `fresh` adds the retry-storm variant family. Separate RNG streams; v1 incidents are untouched.
+std::vector<Spec> build_v2_set(uint64_t seed, bool fresh, const std::string& prefix);
 
 }  // namespace tb::sim

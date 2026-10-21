@@ -1,0 +1,1 @@
+{"tokens": [356, 209], "verdict": "supported", "why": "The record shows API logged an upstream_error because dependency ingest returned status 500, which directly matches the statement."}

@@ -1,0 +1,1 @@
+{"tokens": [356, 252], "verdict": "partial", "why": "The record shows workers_limit=1 but does not provide the previous limit of 24, so the claimed drop from 24 to 1 cannot be verified."}

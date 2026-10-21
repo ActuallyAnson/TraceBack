@@ -1,0 +1,1 @@
+{"tokens": [467, 739], "verdict": "supported", "why": "The gateway log records an upstream timeout while waiting for the orders service, and the metrics show a large number of 5xx errors, indicating that the gateway returned 504 errors to users."}

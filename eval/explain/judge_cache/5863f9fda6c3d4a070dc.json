@@ -1,0 +1,1 @@
+{"tokens": [460, 513], "verdict": "partial", "why": "The records show a 504 timeout on order calls and a high rate of 5xx errors indicating overload, but they do not explicitly mention retries."}

@@ -1,0 +1,1 @@
+{"tokens": [365, 342], "verdict": "unsupported", "why": "The quoted record only shows a 503 upstream error in the orders service; it contains no information about retries, payment calls, attempt numbers, or backoff values, so the statement\u2019s specifics are not supported."}

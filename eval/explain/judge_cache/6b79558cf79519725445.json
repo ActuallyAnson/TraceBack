@@ -1,0 +1,1 @@
+{"tokens": [348, 247], "verdict": "supported", "why": "The record shows the orders service scheduling a retry for peer payments with backoff_ms set to 0."}

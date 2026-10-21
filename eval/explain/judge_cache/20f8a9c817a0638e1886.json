@@ -1,0 +1,1 @@
+{"tokens": [329, 140], "verdict": "supported", "why": "The record shows the inventory service logged a pool_exhausted error with the message 'db connection pool exhausted', which directly matches the statement."}

@@ -1,0 +1,1 @@
+{"tokens": [599, 449], "verdict": "supported", "why": "The records show a drop in requests (metrics gap), boots increasing from 1 to 2, and a container restart with reason exited, matching the statement."}

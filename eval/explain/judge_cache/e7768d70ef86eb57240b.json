@@ -1,0 +1,1 @@
+{"tokens": [309, 177], "verdict": "unsupported", "why": "The quoted record provides an absolute timestamp but does not indicate a deployment occurring at +45.552 seconds relative to any known start point."}

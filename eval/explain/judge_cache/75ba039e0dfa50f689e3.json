@@ -1,0 +1,1 @@
+{"tokens": [567, 166], "verdict": "supported", "why": "The orders service logs show retry_scheduled events targeting payments with backoff_ms set to 0, indicating immediate retries."}

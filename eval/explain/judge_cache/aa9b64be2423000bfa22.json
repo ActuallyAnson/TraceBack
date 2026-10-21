@@ -1,0 +1,1 @@
+{"tokens": [325, 332], "verdict": "partial", "why": "The record confirms that shipping logged a service_started event for version v1.3.9, but it does not provide the deployment\u2011relative timestamp (+64.028s) mentioned in the statement."}

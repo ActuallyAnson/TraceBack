@@ -1,0 +1,1 @@
+{"tokens": [515, 719], "verdict": "partial", "why": "The records confirm that the ingest service experienced an upstream_timeout error, but they do not show that this timeout was due to waiting for a broker or that it was returned to the api service."}

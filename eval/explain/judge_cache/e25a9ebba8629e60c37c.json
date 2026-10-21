@@ -1,0 +1,1 @@
+{"tokens": [366, 187], "verdict": "partial", "why": "The record confirms the API request failed with delivery_failed but provides no information about ingest or its inability to forward orders."}

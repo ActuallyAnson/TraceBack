@@ -1,0 +1,1 @@
+{"tokens": [350, 180], "verdict": "supported", "why": "The record shows the billing service logged a 'temporarily_unavailable' error with status code 503, indicating it returned such errors to callers."}

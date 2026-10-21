@@ -1,0 +1,1 @@
+{"tokens": [319, 207], "verdict": "partial", "why": "The record confirms the shipping service was deployed to version v1.3.2 with a finished phase, but it does not contain any timestamp or duration information to verify the '+52.423s' finishing time."}

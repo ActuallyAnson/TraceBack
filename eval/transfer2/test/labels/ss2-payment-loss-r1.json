@@ -1,0 +1,12 @@
+{
+ "id": "ss2-payment-loss-r1",
+ "kind": "fault",
+ "system": "ss2",
+ "source": "RCAEval RE2",
+ "case": "payment_loss/1",
+ "fault_type": "loss",
+ "root_cause": {
+  "service": "payment",
+  "edge": null
+ }
+}

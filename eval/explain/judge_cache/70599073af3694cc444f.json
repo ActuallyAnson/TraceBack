@@ -1,0 +1,1 @@
+{"tokens": [335, 174], "verdict": "partial", "why": "The record confirms the inventory service had a DB connection pool exhaustion, but it does not mention that this resulted in 503 errors."}

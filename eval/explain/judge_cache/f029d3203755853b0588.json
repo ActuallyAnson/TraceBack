@@ -1,0 +1,1 @@
+{"tokens": [347, 191], "verdict": "unsupported", "why": "The quoted record only shows a broker delivery failure; it provides no information about increased load from retries, shipping saturation, or that failures occurred after many attempts."}

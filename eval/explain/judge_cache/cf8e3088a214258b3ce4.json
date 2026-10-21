@@ -1,0 +1,1 @@
+{"tokens": [897, 356], "verdict": "partial", "why": "The records show workers_limit=1 and increasing queue_max, indicating low capacity and high queue depth, but they do not contain any evidence that the worker limit had previously been 12."}

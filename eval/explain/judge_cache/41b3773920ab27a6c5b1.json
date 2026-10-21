@@ -1,0 +1,1 @@
+{"tokens": [384, 348], "verdict": "partial", "why": "The record confirms an orders client call to inventory timed out after about 8.7\u202fms, but it does not show that this occurred immediately after a change."}

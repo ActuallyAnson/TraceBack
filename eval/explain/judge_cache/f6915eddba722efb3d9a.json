@@ -1,0 +1,1 @@
+{"tokens": [369, 219], "verdict": "partial", "why": "The record shows the gateway observed an upstream_timeout on an entry request, but it does not mention any overload or orders returning errors."}

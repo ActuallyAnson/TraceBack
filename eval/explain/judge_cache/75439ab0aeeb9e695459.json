@@ -1,0 +1,1 @@
+{"tokens": [369, 334], "verdict": "partial", "why": "The record confirms the API returned a 503 response with a connection\u2011refused error, but it does not state that the error originated from an outbound call to the ingest service."}

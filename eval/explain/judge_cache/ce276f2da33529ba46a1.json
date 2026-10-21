@@ -1,0 +1,1 @@
+{"tokens": [373, 274], "verdict": "unsupported", "why": "The quoted record shows a single latency measurement for the inventory service but provides no baseline latency for comparison, so we cannot determine whether latency increased relative to baseline."}

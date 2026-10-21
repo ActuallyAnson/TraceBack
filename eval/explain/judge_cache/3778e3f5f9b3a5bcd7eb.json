@@ -1,0 +1,1 @@
+{"tokens": [454, 332], "verdict": "supported", "why": "The records show an orders service error indicating a connection refused by payments, followed by a retry scheduled with a 100\u202fms backoff, matching the statement."}

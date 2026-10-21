@@ -1,0 +1,1 @@
+{"tokens": [507, 221], "verdict": "partial", "why": "The records confirm the gateway returned 504 errors with upstream_timeout, but they do not indicate that the timeout was caused by orders."}

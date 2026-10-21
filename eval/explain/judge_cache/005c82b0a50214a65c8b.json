@@ -1,0 +1,1 @@
+{"tokens": [375, 243], "verdict": "partial", "why": "The record confirms the API returned a 503 error with conn_refused, but it does not show that connection\u2011refused errors propagated upstream or caused the API error."}

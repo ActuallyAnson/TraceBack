@@ -1,0 +1,1 @@
+{"tokens": [440, 152], "verdict": "supported", "why": "The quoted records show gateway logging errors indicating that the orders service returned a 504 status, meaning orders was failing."}

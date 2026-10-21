@@ -1,0 +1,1 @@
+{"tokens": [394, 95], "verdict": "supported", "why": "The quoted records show multiple container_restarted events for the shipping service, confirming that the shipping service experienced container restarts."}

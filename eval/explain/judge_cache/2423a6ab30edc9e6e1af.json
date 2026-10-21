@@ -1,0 +1,1 @@
+{"tokens": [369, 382], "verdict": "partial", "why": "The record shows the gateway received a 500 response from orders and logged the upstream_error message, but it does not provide evidence that this led to user\u2011visible 5xx errors."}

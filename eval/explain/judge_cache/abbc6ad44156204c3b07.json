@@ -1,0 +1,1 @@
+{"tokens": [576, 493], "verdict": "partial", "why": "The records confirm that inventory's DB connection pool was exhausted with pool size zero, but they do not provide a reference time to verify the '+77.557s' timing claim."}

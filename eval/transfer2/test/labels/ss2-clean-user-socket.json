@@ -1,0 +1,7 @@
+{
+ "id": "ss2-clean-user-socket",
+ "kind": "clean",
+ "system": "ss2",
+ "source": "RCAEval RE2",
+ "case": "user_socket/1"
+}

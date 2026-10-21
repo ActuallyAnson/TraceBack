@@ -1,0 +1,1 @@
+{"tokens": [429, 479], "verdict": "partial", "why": "The records show gateway errors referencing an order step failure, but they do not explicitly state that the orders dependency was failing."}

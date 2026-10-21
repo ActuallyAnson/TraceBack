@@ -1,0 +1,1 @@
+{"tokens": [670, 308], "verdict": "partial", "why": "The records show orders\u2011to\u2011payments calls timing out after ~6.6\u202fms, matching the stated latency, but they provide no evidence that this behavior began after a change."}

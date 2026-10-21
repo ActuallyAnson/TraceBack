@@ -1,0 +1,1 @@
+{"tokens": [507, 134], "verdict": "supported", "why": "The quoted records show orders service spans with error 'pool_exhausted', indicating the orders service ran out of database connections."}

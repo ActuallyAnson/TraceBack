@@ -1,0 +1,1 @@
+{"tokens": [410, 387], "verdict": "supported", "why": "The record shows an inventory operation with a pool_exhausted error and a queue_us of 50425\u202f\u00b5s (~50\u202fms), indicating that while waiting for DB connections, requests incurred roughly a 50\u202fms queuing delay."}

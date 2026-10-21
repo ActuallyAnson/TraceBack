@@ -1,0 +1,1 @@
+{"tokens": [492, 178], "verdict": "supported", "why": "The quoted records show the inventory service's reserve operation returning status 500 with error 'stock_record_corrupt', matching the statement."}

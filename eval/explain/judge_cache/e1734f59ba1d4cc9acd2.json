@@ -1,0 +1,1 @@
+{"tokens": [456, 586], "verdict": "partial", "why": "The records show the payments service emitted 503 temporarily_unavailable errors, but they do not provide a reference time to confirm the \"starting around +59s\" claim."}

@@ -1,0 +1,1 @@
+{"tokens": [376, 223], "verdict": "partial", "why": "The record confirms the inventory server reserve operation lasted 1373\u202fms, but it does not provide any information about normal latency to support the claim that this is far above normal."}

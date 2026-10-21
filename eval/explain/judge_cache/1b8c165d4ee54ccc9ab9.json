@@ -1,0 +1,1 @@
+{"tokens": [377, 302], "verdict": "partial", "why": "The record confirms an API request with a delivery_failed error, but it does not show the timing (+63.459\u202fs) or that this occurred shortly after shipping errors began."}

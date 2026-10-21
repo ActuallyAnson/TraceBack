@@ -1,0 +1,1 @@
+{"tokens": [375, 278], "verdict": "partial", "why": "The record confirms a single gateway request returned HTTP\u202f500 internal_error, but it does not show a sustained burst of such requests nor indicate that they resulted from order failures."}

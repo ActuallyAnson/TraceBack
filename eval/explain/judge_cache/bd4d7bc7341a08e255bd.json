@@ -1,0 +1,1 @@
+{"tokens": [376, 279], "verdict": "partial", "why": "The record shows the notifier service returned an internal_error, but it does not mention a deploy or indicate that the error began immediately after one."}

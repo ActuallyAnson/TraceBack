@@ -1,0 +1,1 @@
+{"tokens": [356, 243], "verdict": "partial", "why": "The record shows the broker received an upstream_error from billing with status 503, but it does not indicate that retries were scheduled."}

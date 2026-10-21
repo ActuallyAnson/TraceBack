@@ -1,0 +1,1 @@
+{"tokens": [361, 362], "verdict": "partial", "why": "The record shows the gateway service received a 500 internal error, but it does not indicate that the error came from the orders service."}

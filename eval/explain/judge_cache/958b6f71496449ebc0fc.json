@@ -1,0 +1,1 @@
+{"tokens": [479, 291], "verdict": "partial", "why": "The records show shipping returning HTTP 500 internal_error responses, but they do not indicate that this occurred after a deployment."}

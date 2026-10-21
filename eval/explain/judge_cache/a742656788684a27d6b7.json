@@ -1,0 +1,1 @@
+{"tokens": [392, 385], "verdict": "partial", "why": "The record shows a broker-to-shipping call with a connection\u2011refused error, but it does not indicate that this was the start of such errors."}

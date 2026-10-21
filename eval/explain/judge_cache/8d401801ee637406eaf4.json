@@ -1,0 +1,1 @@
+{"tokens": [347, 208], "verdict": "supported", "why": "The record shows the orders service logging an upstream timeout when calling the payments dependency with a timeout_ms of 9, indicating orders timed out calls to payments using the new 9\u202fms timeout."}

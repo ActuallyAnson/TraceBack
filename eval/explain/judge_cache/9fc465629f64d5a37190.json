@@ -1,0 +1,1 @@
+{"tokens": [334, 273], "verdict": "partial", "why": "The quoted record shows a broker error but does not mention Ingest or that its calls to the broker began failing."}

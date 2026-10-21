@@ -1,0 +1,1 @@
+{"tokens": [298, 140], "verdict": "supported", "why": "The record shows the payments service logged an oom_kill event with a message stating the process was killed due to out of memory, matching the statement."}

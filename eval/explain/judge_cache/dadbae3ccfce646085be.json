@@ -1,0 +1,1 @@
+{"tokens": [500, 484], "verdict": "partial", "why": "The records show orders' workers at max utilization and request queuing, but they contain no information about retries increasing load."}

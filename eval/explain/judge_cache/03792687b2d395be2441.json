@@ -1,0 +1,1 @@
+{"tokens": [684, 388], "verdict": "partial", "why": "The records confirm that ingest\u2019s publish calls to the broker timed out, but they do not show that the broker was delayed or failed to acknowledge those publishes."}

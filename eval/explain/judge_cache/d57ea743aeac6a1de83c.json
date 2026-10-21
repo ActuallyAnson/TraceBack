@@ -1,0 +1,1 @@
+{"tokens": [360, 691], "verdict": "partial", "why": "The quoted record shows the orders service with workers_limit=1, but it does not indicate a prior reduction or the specific time offset of +62.265s."}

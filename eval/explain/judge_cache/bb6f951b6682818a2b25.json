@@ -1,0 +1,1 @@
+{"tokens": [375, 2588], "verdict": "unsupported", "why": "The quoted records show a deploy start followed by a service started event about 4 seconds later, with no indication of failure or zero\u2011second delay."}

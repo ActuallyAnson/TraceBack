@@ -1,0 +1,1 @@
+{"tokens": [396, 556], "verdict": "partial", "why": "The records confirm ingest\u2019s delivery step failed error with status 503 and broker\u2019s connection refused by shipping, but they do not explicitly show that the ingest error happened when the broker could not reach shipping."}

@@ -1,0 +1,1 @@
+{"tokens": [360, 431], "verdict": "partial", "why": "The record confirms a broker\u2192shipping failure (shipping returned 500), but it does not show repeated failures, that broker returned errors to ingest, or that those errors propagated to the API."}

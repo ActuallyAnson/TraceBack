@@ -1,0 +1,1 @@
+{"tokens": [677, 245], "verdict": "supported", "why": "The quoted spans show api client calls to ingest with dur_us=3000000\u202f\u00b5s (3000\u202fms) and error=timeout, matching the statement."}

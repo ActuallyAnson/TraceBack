@@ -1,0 +1,1 @@
+{"tokens": [509, 673], "verdict": "partial", "why": "The records confirm the gateway saw a 500 internal_error and the orders service experienced a payment\u2011related conn_refused failure, but they do not show a causal link that the gateway failure resulted from the orders\u2011payments failure."}

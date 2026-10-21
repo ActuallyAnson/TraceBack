@@ -1,0 +1,1 @@
+{"tokens": [406, 506], "verdict": "partial", "why": "The record shows a broker-to-shipping timeout, confirming that the broker timed out calls to shipping, but it does not indicate that this occurred immediately after a change or at the specific +52.533\u202fs offset mentioned in the statement."}

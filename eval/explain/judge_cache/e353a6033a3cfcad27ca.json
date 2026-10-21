@@ -1,0 +1,1 @@
+{"tokens": [305, 283], "verdict": "partial", "why": "The record confirms a billing OOM kill event, but it does not provide the +61.456s timing mentioned in the statement."}

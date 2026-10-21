@@ -1,0 +1,1 @@
+{"tokens": [549, 964], "verdict": "supported", "why": "The records show the gateway logged upstream_error and order_failed events (with order\u2011related messages) and a contemporaneous metrics window reporting err5xx=33, indicating a rise in 5xx errors that correlates with those logs."}

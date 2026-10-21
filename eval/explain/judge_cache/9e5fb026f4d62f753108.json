@@ -1,0 +1,1 @@
+{"tokens": [580, 245], "verdict": "partial", "why": "The records show the broker scheduling retries to billing with zero backoff, but they do not indicate that these retries were triggered by receiving 503 responses."}

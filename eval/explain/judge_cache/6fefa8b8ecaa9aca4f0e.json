@@ -1,0 +1,1 @@
+{"tokens": [606, 724], "verdict": "partial", "why": "The records show an increased boot counter for payments and a connection\u2011refused error from orders, but they do not clearly demonstrate a metrics gap (missing or zero\u2011metric interval) to support that part of the statement."}

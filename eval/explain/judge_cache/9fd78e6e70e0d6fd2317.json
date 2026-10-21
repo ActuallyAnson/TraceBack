@@ -1,0 +1,1 @@
+{"tokens": [445, 243], "verdict": "supported", "why": "The gateway error logs show it reported errors due to its dependency orders returning a 500 status, indicating orders were failing."}

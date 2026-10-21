@@ -1,0 +1,1 @@
+{"tokens": [387, 124], "verdict": "supported", "why": "Both quoted records explicitly state that the orders service changed the configuration key timeout.payments_ms from 1200 to 5."}

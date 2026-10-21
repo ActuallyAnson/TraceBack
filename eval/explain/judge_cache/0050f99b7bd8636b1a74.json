@@ -1,0 +1,1 @@
+{"tokens": [473, 174], "verdict": "supported", "why": "Both records share the same trace_id, showing the request that caused an error in shipping also produced a 500 error at the API entry point."}

@@ -1,0 +1,1 @@
+{"tokens": [499, 755], "verdict": "partial", "why": "The quoted records show a rise in err5xx and latency around 2500\u202fms, confirming the observed symptoms, but they do not explicitly indicate that those errors were upstream_timeout timeouts."}

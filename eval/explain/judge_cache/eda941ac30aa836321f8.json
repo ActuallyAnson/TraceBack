@@ -1,0 +1,1 @@
+{"tokens": [393, 172], "verdict": "supported", "why": "The record shows the orders service generated a 503 response with error order_failed."}

@@ -1,0 +1,1 @@
+{"tokens": [378, 542], "verdict": "partial", "why": "The quoted record shows the ingest service logging an upstream_error due to the broker returning 500, matching the example, but it does not explicitly state that broker errors caused ingest to lose connectivity to the broker."}

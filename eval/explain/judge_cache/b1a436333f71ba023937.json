@@ -1,0 +1,1 @@
+{"tokens": [373, 153], "verdict": "unsupported", "why": "The quoted record shows a payments response time but provides no baseline for comparison, so we cannot determine that it became much slower than baseline."}

@@ -1,0 +1,1 @@
+{"tokens": [538, 181], "verdict": "partial", "why": "The records confirm Shipping returned 503 temporarily_unavailable errors, but they do not show that these errors were in response to broker's calls."}

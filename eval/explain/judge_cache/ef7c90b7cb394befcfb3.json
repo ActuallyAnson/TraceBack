@@ -1,0 +1,1 @@
+{"tokens": [366, 159], "verdict": "supported", "why": "The record shows ingest service metrics with queue_max=37 and busy_max=16, matching the statement."}

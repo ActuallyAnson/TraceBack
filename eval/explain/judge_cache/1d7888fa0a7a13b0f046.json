@@ -1,0 +1,1 @@
+{"tokens": [480, 817], "verdict": "partial", "why": "The records confirm the gateway received 503 errors from orders, logged upstream errors, and show rising 5xx counts and latency spikes, but they do not explicitly show 504 errors or timeout logs mentioned in the statement."}

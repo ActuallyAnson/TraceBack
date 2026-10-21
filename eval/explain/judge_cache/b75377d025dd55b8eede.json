@@ -1,0 +1,1 @@
+{"tokens": [435, 391], "verdict": "partial", "why": "The records confirm the broker logged a failed delivery step, but they do not indicate that the step was directed to ingest."}

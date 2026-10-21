@@ -1,0 +1,6 @@
+# hybrid sources. Frozen before batch 3 was collected; re-frozen 2026-10-20 for the merge fix (eval/diagnose/CODE_REVIEW.md bug 2; --legacy-merge reproduces the old behaviour). check: sh eval/real3/check_hybrid.sh
+f8bb7a6b7a4608bc7be380941e6f51bebf41c87b10f4f55be2ca9a43bd65e8e7  include/tb/hybrid.hpp
+86d12dad6ee1fc54724e55f0dc90defd83199ccebf7387e928d3c63236db8fae  src/hybrid/hybrid.cpp
+124188ad92bc35ac9c3a251dbe4e737f0486a38571f712724d14bfca6bbca7db  src/hybrid/main.cpp
+3aadee7462946de5df76f20ca0793fdf8c124548698ac34e8c023783159ca08b  tests/test_hybrid.cpp
+862fb7e9091b9a5780e7e9b924f7446807ddcf39707f1f17d731c7bab25846c0  eval/hybrid/sim_eval.py

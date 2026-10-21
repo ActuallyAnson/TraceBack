@@ -1,0 +1,1 @@
+{"tokens": [337, 283], "verdict": "partial", "why": "The record confirms the inventory service returned HTTP\u202f500 due to an internal error, but it does not specify that the error was caused by stock_record_corrupt."}

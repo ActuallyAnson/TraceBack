@@ -1,0 +1,1 @@
+{"tokens": [357, 330], "verdict": "partial", "why": "The record shows orders scheduling a retry to inventory with a 50\u202fms backoff, but it does not indicate that the retry was triggered by a 503 response."}

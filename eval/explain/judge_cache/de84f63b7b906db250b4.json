@@ -1,0 +1,1 @@
+{"tokens": [349, 201], "verdict": "partial", "why": "The record confirms the broker timed out while calling billing, but it does not show that billing's unavailability was the cause of the timeout."}

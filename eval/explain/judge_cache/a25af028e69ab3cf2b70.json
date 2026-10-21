@@ -1,0 +1,1 @@
+{"tokens": [661, 275], "verdict": "supported", "why": "The quoted records show three orders client spans to payments each lasting 6649\u202f\u00b5s (~6.6\u202fms) and ending with a timeout error, matching the claim that orders client calls to payments began timing out after approximately 6\u202fms."}

@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Traceback: the presentation</title>
+<meta name="description" content="A 16:9 dark presentation of Traceback, built from the committed incident data. Space plays, arrows step, H hides the controls, F goes full screen.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f766e'/%3E%3Cpath d='M7 20l5-8 4 6 5-9 4 7' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="present.css">
+</head>
+<body>
+<div id="viewport"><div id="stage" aria-live="polite"></div></div>
+<div id="hud">
+  <div id="chapters" role="tablist" aria-label="Chapters"></div>
+  <div id="bar"><button id="prev" aria-label="Previous scene">‹</button><button id="play" aria-label="Play or pause">▶ Play</button><button id="next" aria-label="Next scene">›</button><span id="keys">Space play · ← → scenes · H hide · F full screen</span><a href="./" id="exit">Open the app</a></div>
+</div>
+<script src="present-data.js"></script>
+<script src="present.js"></script>
+</body>
+</html>

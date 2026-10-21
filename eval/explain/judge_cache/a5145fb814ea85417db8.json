@@ -1,0 +1,1 @@
+{"tokens": [373, 313], "verdict": "partial", "why": "The quoted record confirms an api upstream_timeout error mentioned in the statement, but it contains no information about broker retries, shipping errors, increased latency in broker\u2192shipping calls, or ingest timeout."}

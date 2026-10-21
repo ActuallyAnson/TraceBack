@@ -1,7 +1,7 @@
 # Feedback on Nebius Token Factory, AI Cloud and NVIDIA models (draft from real use)
 
-Context: one developer, Oct 2026, C++ client with libcurl, roughly 230 chat-completion calls (about 17M prompt tokens) during development and
-evaluation, including a few runs of the larger-context Ultra model. Model used for all reported results: `nvidia/nemotron-3-super-120b-a12b`.
+Context: one developer, Oct 2026, C++ client with libcurl, about 1,300 saved chat-completion responses (the response cache in the repo) during development and
+evaluation, mostly Nemotron 3 Super plus several runs of the larger Ultra model (`nvidia/Nemotron-3-Ultra-550b-a55b`). Model used for all reported results: `nvidia/nemotron-3-super-120b-a12b`.
 Nebius AI Cloud compute (Serverless Jobs/Endpoints, DevPods) was **not** used; the project is a Token Factory API consumer, and this feedback is only about what I used.
 
 ## What worked well

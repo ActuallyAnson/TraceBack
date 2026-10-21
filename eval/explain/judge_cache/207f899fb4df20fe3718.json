@@ -1,0 +1,1 @@
+{"tokens": [361, 313], "verdict": "partial", "why": "The record confirms an upstream_timeout error in the API logs when calling ingest due to a deadline exceeded, but it does not provide evidence that elevated ingest latency was the cause of the timeout."}

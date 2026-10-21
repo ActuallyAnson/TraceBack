@@ -1,0 +1,1 @@
+{"tokens": [505, 300], "verdict": "supported", "why": "The records show a 503 response from payments followed by a retry scheduled with backoff_ms:0."}

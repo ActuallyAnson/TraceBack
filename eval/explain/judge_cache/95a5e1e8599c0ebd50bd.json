@@ -1,0 +1,1 @@
+{"tokens": [322, 284], "verdict": "partial", "why": "The record confirms the broker logged the upstream_error message, but provides no information about when shipping errors began, so the temporal claim cannot be verified."}

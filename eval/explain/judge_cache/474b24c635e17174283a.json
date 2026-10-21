@@ -1,0 +1,1 @@
+{"tokens": [468, 439], "verdict": "partial", "why": "The records confirm that the orders service encountered db connection pool exhaustion, but they do not provide evidence that this began at approximately +101.111\u202fs."}

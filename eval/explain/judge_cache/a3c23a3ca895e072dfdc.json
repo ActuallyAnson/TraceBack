@@ -1,0 +1,1 @@
+{"tokens": [527, 874], "verdict": "partial", "why": "The records show the gateway receiving internal_error and returning 500 on calls to orders, but they do not demonstrate that these events caused a spike in failed entry requests starting at the specific offset +53.595\u202fs."}

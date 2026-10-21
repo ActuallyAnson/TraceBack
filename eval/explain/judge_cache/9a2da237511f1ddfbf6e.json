@@ -1,0 +1,1 @@
+{"tokens": [326, 262], "verdict": "partial", "why": "The record confirms the orders service deployment finished, upgrading from v1.0.0 to v1.6.7, but it does not provide the timestamp needed to verify the '+62.422s' timing mentioned in the statement."}

@@ -1,0 +1,1 @@
+{"tokens": [357, 208], "verdict": "unsupported", "why": "The quoted record shows only a single attempt (attempt:1) and contains no retry_scheduled log entries, providing no evidence that the broker retried shipping calls or that failures persisted after retries."}

@@ -1,0 +1,1 @@
+{"tokens": [955, 175], "verdict": "supported", "why": "The quoted records show billing service spans with status 503 and error 'pool_exhausted', and logs indicating the db connection pool was exhausted, directly supporting the statement."}

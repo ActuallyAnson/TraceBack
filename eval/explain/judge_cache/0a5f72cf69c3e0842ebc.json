@@ -1,0 +1,1 @@
+{"tokens": [678, 187], "verdict": "supported", "why": "The quoted spans show orders client calls to payments with dur_us\u22485555\u202f\u00b5s (~5\u202fms) and error='timeout', matching the statement."}

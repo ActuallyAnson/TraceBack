@@ -1,0 +1,1 @@
+{"tokens": [475, 364], "verdict": "partial", "why": "The records show increased err5xx counts and high latency, supporting the visibility claim, but they do not explicitly show that the errors were due to timeouts."}

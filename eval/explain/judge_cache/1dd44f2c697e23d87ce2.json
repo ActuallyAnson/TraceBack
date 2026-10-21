@@ -1,0 +1,1 @@
+{"tokens": [486, 499], "verdict": "partial", "why": "The records confirm inventory pool\u2011exhausted logs and spans, but they do not provide the +67.463\u202fs offset needed to verify the claimed start time."}

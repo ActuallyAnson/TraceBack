@@ -1,0 +1,1 @@
+{"tokens": [510, 482], "verdict": "partial", "why": "The records confirm the broker scheduled a retry to billing with zero backoff, but they do not show the timing offset of +52.124\u202fs."}

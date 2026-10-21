@@ -1,0 +1,1 @@
+{"tokens": [367, 317], "verdict": "partial", "why": "The quoted record confirms the gateway returned a 500 internal_error response, but it does not show that this occurred at the start of a sustained burst."}

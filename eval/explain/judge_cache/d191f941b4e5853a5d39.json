@@ -1,0 +1,1 @@
+{"tokens": [440, 309], "verdict": "supported", "why": "The broker logs contain upstream_error events stating that dependency shipping returned 500 and that a delivery step failed, showing the broker reported errors while its shipping dependency was failing."}

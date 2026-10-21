@@ -1,0 +1,1 @@
+{"id":"f1-21","group":"unseen","split":"fresh","seed":3451191104640643881,"root_cause":{"type":"crash_loop","service":"payments","onset_us":1790020047702243,"end_us":1790020089702243},"decoys":[],"complications":[],"symptom_service":"gateway","err_rate_baseline":0.002,"err_rate_incident":0.142,"err_rate_incident_without_cause":0.003}

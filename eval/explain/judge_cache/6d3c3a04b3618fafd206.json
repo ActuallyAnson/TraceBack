@@ -1,0 +1,1 @@
+{"tokens": [508, 910], "verdict": "partial", "why": "The records confirm ingest\u2019s upstream timeout, broker\u2019s upstream timeout to billing, and matching trace ID, but they do not explicitly show that the two timeouts occurred simultaneously."}

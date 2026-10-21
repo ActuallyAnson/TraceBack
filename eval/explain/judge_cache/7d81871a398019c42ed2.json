@@ -1,0 +1,1 @@
+{"tokens": [552, 630], "verdict": "partial", "why": "The records show shipping service returning 503 errors with the temporarily_unavailable message, but they do not explicitly state that these errors occurred under load (only queue times hint at waiting)."}

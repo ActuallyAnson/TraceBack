@@ -1,0 +1,1 @@
+{"tokens": [1527, 232], "verdict": "supported", "why": "The quoted records show orders making client calls to payments that returned error 'conn_refused' with status -1, indicating the calls failed and thus caused checkout requests to fail."}

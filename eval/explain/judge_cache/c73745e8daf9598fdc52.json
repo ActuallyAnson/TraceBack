@@ -1,0 +1,1 @@
+{"tokens": [435, 289], "verdict": "supported", "why": "The inventory record shows elevated latencies (p50\u22481134\u202fms, p99\u22482553\u202fms) and a high error count (29\u202ferr5xx out of 61 requests), confirming increased latency and errors."}

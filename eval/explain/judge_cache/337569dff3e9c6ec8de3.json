@@ -1,0 +1,1 @@
+{"tokens": [360, 317], "verdict": "partial", "why": "The record confirms an internal error on the API\u2019s POST\u202f/orders endpoint, but it contains no information about timeouts causing order\u2011processing failures."}

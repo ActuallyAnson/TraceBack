@@ -1,0 +1,1 @@
+{"tokens": [384, 378], "verdict": "partial", "why": "The records confirm a config change that lowered the payments timeout in orders, but they do not show that orders actually started timing out calls or that payments continued to answer."}

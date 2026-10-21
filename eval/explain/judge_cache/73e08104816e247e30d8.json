@@ -1,0 +1,1 @@
+{"tokens": [317, 388], "verdict": "partial", "why": "The record shows a broker retry to shipping with zero backoff and attempt\u202f=\u202f2, but it does not demonstrate that the retries occur repeatedly (multiple times)."}

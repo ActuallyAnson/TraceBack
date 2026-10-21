@@ -1,0 +1,1 @@
+{"tokens": [440, 150], "verdict": "supported", "why": "The quoted API logs show error events indicating that the dependency 'ingest' returned 503 and caused connection\u2011refused failures, directly matching the claim."}

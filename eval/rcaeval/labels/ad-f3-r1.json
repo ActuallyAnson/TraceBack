@@ -1,0 +1,11 @@
+{
+ "id": "ad-f3-r1",
+ "kind": "fault",
+ "source": "RCAEval RE3-OB",
+ "case": "adservice_f3/1",
+ "fault_type": "f3",
+ "root_cause": {
+  "service": "adservice",
+  "edge": null
+ }
+}

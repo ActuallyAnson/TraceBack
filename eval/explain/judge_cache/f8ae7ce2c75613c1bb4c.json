@@ -1,0 +1,1 @@
+{"tokens": [454, 383], "verdict": "supported", "why": "The broker error record and the API 500 internal_error record share the same trace_id, showing a broker internal_error associated with an API 500 internal_error response."}

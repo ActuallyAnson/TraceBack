@@ -1,0 +1,1 @@
+{"tokens": [411, 362], "verdict": "partial", "why": "The records confirm an OOM kill in billing, which implies the process stopped, but they do not explicitly show that metrics went silent afterward."}

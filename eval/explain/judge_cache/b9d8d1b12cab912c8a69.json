@@ -1,0 +1,1 @@
+{"tokens": [344, 353], "verdict": "partial", "why": "The record confirms ingest observed an upstream_error with 'delivery step failed', but it contains no information about broker retries or broker failure causing that error."}

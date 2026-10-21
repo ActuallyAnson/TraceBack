@@ -1,0 +1,1 @@
+{"tokens": [433, 288], "verdict": "supported", "why": "The api log entry shows an upstream_error caused by dependency ingest returning a 503 status, indicating that ingest propagated the 503 as an upstream error to api."}

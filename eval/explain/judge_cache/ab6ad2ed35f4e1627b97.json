@@ -1,0 +1,1 @@
+{"tokens": [742, 316], "verdict": "supported", "why": "The broker spans show a duration of 1,200,000\u202f\u00b5s (1200\u202fms) with a timeout error, and the broker log records indicate a deadline exceeded after a 1200\u202fms timeout when calling billing."}

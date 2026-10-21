@@ -1,0 +1,15 @@
+[
+ {"id":"q01","kind":"clean"},
+ {"id":"q02","kind":"fault","flag":"paymentFailure","variant":"90%","root_service":"payment","edge":null,"summary":"payment fails 90% of charge requests (new variant)"},
+ {"id":"q03","kind":"fault","flag":"cartFailure","variant":"90%","root_service":"cart","edge":null,"summary":"cart fails 90% of requests (new variant)"},
+ {"id":"q04","kind":"fault","flag":"productCatalogFailure","variant":"on","root_service":"product-catalog","edge":null,"summary":"GetProduct fails for one product id (repeat)"},
+ {"id":"q05","kind":"clean"},
+ {"id":"q06","kind":"fault","flag":"adFailure","variant":"on","root_service":"ad","edge":null,"summary":"GetAds errors about 1 in 10 calls (repeat)"},
+ {"id":"q07","kind":"fault","flag":"paymentUnreachable","variant":"on","root_service":"payment","edge":{"from":"checkout","to":"payment"},"summary":"checkout pointed at a bad payment address (repeat)"},
+ {"id":"q08","kind":"fault","flag":"productCatalogLockContention","variant":"on","root_service":"product-catalog","edge":null,"summary":"lock on catalog.products (repeat)"},
+ {"id":"q09","kind":"fault","flag":"intlShippingSlowdown","variant":"10sec","root_service":"shipping","edge":null,"summary":"non-US shipping delayed 10 s (repeat)"},
+ {"id":"q10","kind":"fault","flag":"recommendationCacheFailure","variant":"on","root_service":"recommendation","edge":null,"summary":"recommendation cache grows and leaks memory (repeat)"},
+ {"id":"q11","kind":"fault","flag":"paymentFailure","variant":"10%","root_service":"payment","edge":null,"summary":"payment fails 10% of charge requests (new, mild variant)"},
+ {"id":"q12","kind":"fault","flag":"adManualGc","variant":"on","root_service":"ad","edge":null,"summary":"full manual garbage collections in the ad service (repeat of m08)"},
+ {"id":"q13","kind":"clean"}
+]

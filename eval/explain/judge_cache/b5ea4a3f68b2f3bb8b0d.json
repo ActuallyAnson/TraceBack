@@ -1,0 +1,1 @@
+{"tokens": [355, 248], "verdict": "partial", "why": "The record shows elevated latency and a large queue depth for the orders service, but it provides no information about payment retries or a causal link between them."}

@@ -1,0 +1,1 @@
+{"tokens": [541, 516], "verdict": "partial", "why": "The records show orders calling payments and getting 503 errors, but they do not demonstrate repeated retry attempts, absence of backoff, or any amplification of load on payments."}

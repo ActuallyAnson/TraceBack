@@ -1,0 +1,1 @@
+{"tokens": [400, 402], "verdict": "partial", "why": "The record confirms a broker\u2011to\u2011billing call that returned a connection\u2011refused error, but it does not provide the +52.858\u202fs timestamp after the crash mentioned in the statement."}

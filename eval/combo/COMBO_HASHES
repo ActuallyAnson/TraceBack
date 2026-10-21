@@ -1,0 +1,13 @@
+# combination rule C4, its cached inputs and plan. Frozen before the rule was applied to any RE3 window. check: sh eval/combo/check.sh
+619771390c65a6f0621e93d6129d695def432bf6721aed37a78f2a8a0579bf31  eval/combo/combine.py
+61eca26d08787a1fe30f4e1c099f6ccedbbb20a43b7fd6977ce967d5a524f6f5  eval/combo/mscores.py
+33c1824012286d8ca3d67df259cd117e64077f7709a70a09bb67553676869657  eval/combo/h2dump.py
+0b5fdd71b0258179ef64cd5f64d4f16664d3dae52e288372940180759b35f715  eval/combo/PLAN.md
+4856e5438f132b3d37b1b1d85403f6162e2e1730f02d970bf53b2b56e06a018b  eval/combo/h2_re2ss.json
+4e848e75cf7beca611596d3a0026c3ce6b88032cb88cc041c5a3835e68f2a5ec  eval/combo/h2_re3ss.json
+03b78c3864ebec94bc4b0133664f6d6becc34060b069af941f0ee8e37c2351bb  eval/combo/h2_re3tt.json
+3f03713f2f765002a418ab9278771b90ce5f15dd9d809b48543e8bf2d513f395  eval/combo/h2u_re3ss.json
+bcbba30304366cddfbbc774be4badffce977ce5aad94dd14f62df4bd98dc5725  eval/combo/h2u_re3tt.json
+1e3b4c7497d44348a90853223eba299b81497c7bcca78f6f674adc5fa7081ee4  eval/combo/mscores_re2ss.json
+96efe42aa23d2064be452766a306509377a694a9484b1e72a786fb67610c78ee  eval/combo/mscores_re3ss.json
+6c56b591f49e35bcedf1220bd2b9ae77cb4acb2ed7f3ca076ee585a5d23ad650  eval/combo/mscores_re3tt.json

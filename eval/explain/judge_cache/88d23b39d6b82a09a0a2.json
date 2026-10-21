@@ -1,0 +1,1 @@
+{"tokens": [358, 419], "verdict": "partial", "why": "The record shows busy_max=1 and high latency values, supporting the claim about low worker availability and elevated latency, but it does not provide evidence of throttling occurring or a sharp latency increase relative to a prior state."}

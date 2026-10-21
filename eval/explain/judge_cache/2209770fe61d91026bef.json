@@ -1,0 +1,1 @@
+{"tokens": [433, 213], "verdict": "supported", "why": "The broker logs show error events (connection refused by billing and upstream error) indicating the broker reported errors while its dependency billing was experiencing failures."}

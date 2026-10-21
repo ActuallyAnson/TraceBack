@@ -1,0 +1,1 @@
+{"tokens": [364, 220], "verdict": "partial", "why": "The record confirms the gateway service returned a 500 error, but it does not indicate that this occurred as a sustained burst of failures began."}

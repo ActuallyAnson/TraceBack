@@ -1,0 +1,1 @@
+{"tokens": [443, 272], "verdict": "partial", "why": "The records show the broker logging an upstream error and then scheduling a retry, but they do not specify that the error came from shipping."}

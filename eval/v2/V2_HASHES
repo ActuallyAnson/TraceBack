@@ -1,0 +1,10 @@
+# v2 sources and prompts, frozen before the first system was run on the fresh sets. check: sh eval/v2/check_v2.sh
+456af97b1d67f38067accd6edef2fbedff6f77782634ae1ce2f81c44fd4bb141  src/analyzer_v2/main.cpp
+344f56ee5d87f8eb8d76e63eb908f3eef2b5058391956bb71fe046ac847f50b6  src/analyzer_v2/rerank.cpp
+452c5fbce2a6d79845668294d4dc37f4fd94960922170d44d23a999c5fa84ffb  include/tb/analyzer_v2.hpp
+c09ce7667670e27927718f7c59442f63a3b34ad0e02fe0b69f9091a334f3ce08  prompts_v2/output_format.txt
+885a1caccf46a7645de5e7592bb3cb5cbf93ab24334521db6bc2d3a622fa6bf4  prompts_v2/traceback_system.txt
+cdb51648969c42a790f2ea6c18590e5124ed36b762ecec7bd6073a22271aa946  src/llm/reasoner.cpp
+1580ddbca4981bf646525efb5ffe528562b23442b7d76934d1e71f3f5440bce1  include/tb/reasoner.hpp
+6a0133a2a5c2d052e4e4de6508e050a9531248d5257562e27a7225617478161e  src/sim/catalog.cpp
+24fef20e18c7903f1ec116f828f022487e99e2cbd4711847eb01d64f77c83bc4  src/sim2/fanout.cpp

@@ -1,0 +1,1 @@
+{"tokens": [432, 151], "verdict": "supported", "why": "The orders logs contain error events stating \"connection refused by payments,\" which shows orders reporting errors while its dependency payments was failing."}

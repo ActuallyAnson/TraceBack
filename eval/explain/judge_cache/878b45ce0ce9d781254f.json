@@ -1,0 +1,1 @@
+{"tokens": [403, 457], "verdict": "supported", "why": "The records show a payments deploy started at timestamp \u202646.584\u2026 and finished at \u202650.584\u2026, both with version change v1.0.0 \u2192 v1.6.9, matching the statement exactly."}

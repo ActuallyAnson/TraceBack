@@ -1,0 +1,1 @@
+{"tokens": [517, 226], "verdict": "partial", "why": "The records confirm failures originating in the inventory service, but they provide no information about callers surfacing those failures as generic errors."}

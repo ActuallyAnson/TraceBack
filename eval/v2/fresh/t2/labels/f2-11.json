@@ -1,0 +1,1 @@
+{"id":"f2-11","group":"plain","split":"fresh","topology":"fanout","seed":-6441082657480860904,"root_cause":{"type":"bad_deploy","service":"shipping","onset_us":1800010062830637,"end_us":1800010117021581},"decoys":[],"complications":[],"symptom_service":"api","err_rate_baseline":0.005,"err_rate_incident":0.353,"err_rate_incident_without_cause":0.005}

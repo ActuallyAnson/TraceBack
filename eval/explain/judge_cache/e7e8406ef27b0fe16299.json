@@ -1,0 +1,1 @@
+{"tokens": [511, 211], "verdict": "unsupported", "why": "The quoted records only show two successful billing charge spans with durations of about 2\u20133\u202fmilliseconds and no baseline comparison or indication of caller timeouts."}

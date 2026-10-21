@@ -1,0 +1,1 @@
+{"tokens": [361, 376], "verdict": "partial", "why": "The record shows the gateway experiencing an upstream timeout when calling the orders service, confirming the error and interaction, but it does not specify that the timeout corresponded to HTTP 504 errors nor verify the exact start time of +64.522\u202fs."}

@@ -1,0 +1,1 @@
+{"tokens": [360, 183], "verdict": "supported", "why": "The quoted records show two container_restarted events for the payments service at exactly the timestamps corresponding to +50.763s and +78.763s."}

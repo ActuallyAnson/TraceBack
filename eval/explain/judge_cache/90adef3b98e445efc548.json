@@ -1,0 +1,1 @@
+{"tokens": [300, 110], "verdict": "supported", "why": "The broker's error log explicitly states 'connection refused by shipping', confirming the broker observed connection\u2011refused errors when calling shipping."}

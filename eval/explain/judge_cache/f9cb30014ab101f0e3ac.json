@@ -1,0 +1,1 @@
+{"tokens": [531, 471], "verdict": "partial", "why": "The records show orders service create_order spans with large queue_us values, indicating requests queued, but they do not explicitly state that orders lost serving capacity or that there were too few workers."}

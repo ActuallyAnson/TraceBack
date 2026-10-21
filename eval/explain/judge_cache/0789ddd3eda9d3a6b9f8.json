@@ -1,0 +1,1 @@
+{"tokens": [441, 168], "verdict": "supported", "why": "The ingest service logged error events indicating the broker returned 500, showing ingest reported errors while the broker was failing."}

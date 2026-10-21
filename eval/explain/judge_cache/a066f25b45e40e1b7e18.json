@@ -1,0 +1,1 @@
+{"tokens": [375, 524], "verdict": "partial", "why": "The record shows the gateway experienced an internal_error resulting in a 500 response on POST\u202f/checkout, confirming the error and failure, but it does not indicate that the calls were to the orders service or that the failures began at the specific +63.363\u202fs offset."}

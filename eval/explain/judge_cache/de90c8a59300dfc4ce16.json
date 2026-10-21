@@ -1,0 +1,1 @@
+{"tokens": [376, 564], "verdict": "supported", "why": "The quoted log shows an upstream_error from the API service indicating that the dependency ingest returned a 500 status, which directly supports the claim that ingest errors caused the API to lose connectivity and log that error."}

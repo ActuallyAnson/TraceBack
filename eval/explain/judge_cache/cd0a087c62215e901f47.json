@@ -1,0 +1,1 @@
+{"tokens": [639, 550], "verdict": "supported", "why": "The records show the worker pool's busy count reached its limit (busy_max=workers_limit=12) while a non\u2011zero queue length was observed (queue_max=22), indicating exhaustion led to all workers being busy and requests queuing."}

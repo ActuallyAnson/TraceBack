@@ -1,0 +1,1 @@
+{"tokens": [355, 297], "verdict": "partial", "why": "The record shows the API service had non\u2011zero err5xx (27 out of 109 requests), confirming it was returning 5xx responses, but it does not provide prior data to demonstrate a rise in err5xx over time."}

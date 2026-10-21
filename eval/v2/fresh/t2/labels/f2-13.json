@@ -1,0 +1,1 @@
+{"id":"f2-13","group":"plain","split":"fresh","topology":"fanout","seed":-6126716553973691481,"root_cause":{"type":"connection_pool_exhaustion","service":"billing","onset_us":1800012051439296,"end_us":1800012120000000},"decoys":[],"complications":[],"symptom_service":"api","err_rate_baseline":0.010,"err_rate_incident":0.765,"err_rate_incident_without_cause":0.006}

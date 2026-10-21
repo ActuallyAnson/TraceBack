@@ -1,0 +1,5 @@
+# analyzer v3, written and frozen before the second real-telemetry batch was scored
+aa8795c8341abd77607b12e0aee1bfbad71a60a97b9819c8d691d17ffdd344b4  include/tb/analyzer_v3.hpp
+1fcf27d15c575902d578c8b633738b5614d1818f7396bd2ff78083d3256f7406  src/analyzer_v3/rerank.cpp
+6f22d67b3e2d9b0139815172118e10cad89a9fe69e79c5b4fa8d2374672eb930  src/analyzer_v3/main.cpp
+e843a45df0c2e3115125b3b70fb723bb3c2ad805bc1185aece4a8f2abd5184ea  eval/real/convert.py

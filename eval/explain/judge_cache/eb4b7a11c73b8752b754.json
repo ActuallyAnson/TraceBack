@@ -1,0 +1,1 @@
+{"tokens": [532, 309], "verdict": "partial", "why": "The records show order request queue wait times exceeding 200\u202fms (372\u202f969\u202f\u00b5s), but they do not indicate a capacity reduction or demonstrate a sharp increase over time."}

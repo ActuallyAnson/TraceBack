@@ -1,0 +1,1 @@
+{"id":"f2-16","group":"plain","split":"fresh","topology":"fanout","seed":6048481446393234480,"root_cause":{"type":"retry_storm","service":"broker","onset_us":1800015052402798,"end_us":1800015082402798,"trigger_service":"billing"},"decoys":[],"complications":[],"symptom_service":"api","err_rate_baseline":0.010,"err_rate_incident":0.212,"err_rate_incident_without_cause":0.006}

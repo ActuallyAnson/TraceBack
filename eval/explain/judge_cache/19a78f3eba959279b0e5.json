@@ -1,0 +1,1 @@
+{"tokens": [441, 170], "verdict": "supported", "why": "The inventory service error record shows event pool_exhausted with message 'db connection pool exhausted', directly indicating the DB connection pool was exhausted."}

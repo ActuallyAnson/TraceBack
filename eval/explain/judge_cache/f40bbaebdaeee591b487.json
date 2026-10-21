@@ -1,0 +1,1 @@
+{"tokens": [352, 298], "verdict": "partial", "why": "The record shows the gateway observed an upstream timeout when calling orders, but it does not explicitly state that orders became slow or unresponsive."}

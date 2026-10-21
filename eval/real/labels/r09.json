@@ -1,0 +1,16 @@
+{
+ "id": "r09",
+ "source": "opentelemetry-demo 85c2cb2 (3.1.0)",
+ "window_start_us": 1792427979412268,
+ "window_end_us": 1792428099412268,
+ "kind": "fault",
+ "flag": "productCatalogLockContention",
+ "variant": "on",
+ "flip_us": 1792428019425466,
+ "root_cause": {
+  "service": "product-catalog",
+  "edge": null,
+  "summary": "ACCESS EXCLUSIVE lock on catalog.products blocks queries",
+  "onset_us": 1792428019425466
+ }
+}

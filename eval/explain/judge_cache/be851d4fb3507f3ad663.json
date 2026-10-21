@@ -1,0 +1,1 @@
+{"tokens": [545, 340], "verdict": "partial", "why": "The records show Orders making two retry attempts to Payments within a short interval, indicating repeated calls, but they do not provide evidence about the absence of a backoff strategy or quantify the load amplification."}

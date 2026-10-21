@@ -1,0 +1,1 @@
+{"tokens": [370, 249], "verdict": "partial", "why": "The record shows the gateway experienced an order_failed error, but it does not mention the Orders service, inventory errors, or that those caused the gateway error."}

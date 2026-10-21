@@ -1,0 +1,1 @@
+{"tokens": [556, 611], "verdict": "partial", "why": "The records show the broker issuing two retry attempts to billing, but they do not provide explicit evidence that there was no backoff or that the retries amplified load on billing."}

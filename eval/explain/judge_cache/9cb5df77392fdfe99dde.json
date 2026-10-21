@@ -1,0 +1,1 @@
+{"tokens": [342, 335], "verdict": "partial", "why": "The record confirms that the API logged an upstream_error with status\u202f503 and message \u2018delivery step failed\u2019, supporting the occurrence of the error and its HTTP\u2011like status, but it does not specify that the error came from the ingest dependency or resulted from a failure to forward orders."}

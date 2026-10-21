@@ -1,0 +1,1 @@
+{"tokens": [630, 322], "verdict": "supported", "why": "The quoted records show the API server responding with HTTP 504, error upstream_timeout, and non\u2011zero queue_us values, confirming that queuing timeouts caused failed POST /orders (entry) requests."}

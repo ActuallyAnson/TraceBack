@@ -1,0 +1,1 @@
+{"tokens": [350, 276], "verdict": "partial", "why": "The record confirms that ingest returned a 503 error to the api service, but it does not mention that this occurred during order submission."}

@@ -1,0 +1,1 @@
+{"tokens": [699, 382], "verdict": "partial", "why": "The records confirm broker client calls to shipping timed out after ~7\u202fms with error=timeout, but they do not show the absolute start time offset of +52.533\u202fs, so that part of the statement cannot be verified."}

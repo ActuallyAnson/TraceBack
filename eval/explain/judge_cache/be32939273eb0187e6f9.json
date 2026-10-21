@@ -1,0 +1,1 @@
+{"tokens": [350, 119], "verdict": "supported", "why": "The record shows ingest service logged an error with message 'dependency broker returned 503', matching the statement."}

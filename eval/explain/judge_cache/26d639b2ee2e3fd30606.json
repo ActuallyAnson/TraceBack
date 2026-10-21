@@ -1,0 +1,1 @@
+{"tokens": [1052, 565], "verdict": "supported", "why": "The logs record billing's DB connection pool exhausted (pool_size=0) and, via matching trace_ids, link those events to charge spans that returned pool_exhausted errors, showing the exhaustion caused the charge service errors."}

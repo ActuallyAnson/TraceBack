@@ -1,0 +1,1 @@
+{"tokens": [714, 159], "verdict": "supported", "why": "Three container_restarted events for the shipping service with reason 'exited' and rising boots counts in the metrics show repeated crashes/restarts."}

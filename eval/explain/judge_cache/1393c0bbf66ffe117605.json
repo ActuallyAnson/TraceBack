@@ -1,0 +1,1 @@
+{"tokens": [376, 227], "verdict": "partial", "why": "The record shows a payments service operation returning an internal_error, but it does not provide any information about when a deploy finished, so the timing claim cannot be verified."}

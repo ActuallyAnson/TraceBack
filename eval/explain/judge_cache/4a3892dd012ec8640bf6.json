@@ -1,0 +1,1 @@
+{"tokens": [349, 239], "verdict": "partial", "why": "The record shows the broker's current workers_limit is 1, but it does not provide any information about a previous limit of 24 or a drop from that value."}

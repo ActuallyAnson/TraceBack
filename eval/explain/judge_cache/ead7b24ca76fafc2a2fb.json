@@ -1,0 +1,1 @@
+{"tokens": [396, 301], "verdict": "partial", "why": "The record shows an upstream timeout/error and a queue time for ingest, but it does not provide evidence that the request queue grew over time."}

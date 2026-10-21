@@ -1,0 +1,1 @@
+{"tokens": [339, 164], "verdict": "partial", "why": "The record confirms billing reported a connection pool exhaustion event, but it does not mention slow requests."}

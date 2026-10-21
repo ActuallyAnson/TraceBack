@@ -1,0 +1,1 @@
+{"tokens": [318, 145], "verdict": "supported", "why": "The record shows the orders service logging an upstream error because its dependency payments returned a 500 response."}

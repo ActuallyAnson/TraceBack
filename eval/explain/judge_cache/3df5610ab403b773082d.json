@@ -1,0 +1,1 @@
+{"tokens": [364, 264], "verdict": "partial", "why": "The record confirms the API returned a 503 status to the user, but it does not show that the API received a 503 from the ingest service."}

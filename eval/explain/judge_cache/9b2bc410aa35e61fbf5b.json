@@ -1,0 +1,1 @@
+{"tokens": [426, 302], "verdict": "partial", "why": "The quoted records show the gateway reporting errors related to order steps, but they do not provide any information about the orders service itself failing."}

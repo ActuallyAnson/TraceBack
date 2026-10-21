@@ -1,0 +1,1 @@
+{"tokens": [320, 195], "verdict": "partial", "why": "The record confirms the orders service deployment from v1.0.0 to v1.8.2, but it does not provide the start time offset (+49.870s) mentioned in the statement."}

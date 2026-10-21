@@ -1,0 +1,1 @@
+{"tokens": [464, 498], "verdict": "partial", "why": "The records show broker high latency and many 5xx errors including a 503 response, but they do not specify that the calls were to billing or that pool exhaustion caused the latency/errors."}

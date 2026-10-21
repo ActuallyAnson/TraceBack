@@ -1,0 +1,1 @@
+{"tokens": [360, 306], "verdict": "supported", "why": "The quoted record shows the gateway service logging an error with message 'error handling request: internal_error' and a status of 500, which matches the statement's claim of a 5xx internal error."}

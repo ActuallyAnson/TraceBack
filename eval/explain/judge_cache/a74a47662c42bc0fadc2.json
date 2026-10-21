@@ -1,0 +1,1 @@
+{"tokens": [384, 256], "verdict": "supported", "why": "The record shows an orders client call to payments (op: charge, peer: payments) that resulted in a timeout error, matching the statement."}

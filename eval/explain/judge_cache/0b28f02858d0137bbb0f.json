@@ -1,0 +1,1 @@
+{"tokens": [465, 423], "verdict": "partial", "why": "The records show payments experienced high error rates and latency, but they provide no evidence of retry amplification causing increased load or a worsening trend."}

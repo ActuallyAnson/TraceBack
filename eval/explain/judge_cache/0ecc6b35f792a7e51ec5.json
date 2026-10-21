@@ -1,0 +1,1 @@
+{"tokens": [384, 247], "verdict": "partial", "why": "The record shows an orders client call to payments resulting in a connection\u2011refused error, but it does not indicate that this occurred after a crash."}

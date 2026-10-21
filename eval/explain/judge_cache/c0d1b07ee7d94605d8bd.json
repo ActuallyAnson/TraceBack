@@ -1,0 +1,1 @@
+{"tokens": [357, 115], "verdict": "supported", "why": "The quoted log shows the broker emitting a retry_scheduled warning indicating it was retrying a call to the shipping service."}

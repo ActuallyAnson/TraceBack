@@ -16,7 +16,8 @@ using namespace tb::sim;
 namespace fs = std::filesystem;
 
 constexpr uint64_t kMasterSeed = 20261019;
-constexpr uint64_t kVariantSeed = 7770001;  // unseen variants have their own RNG stream
+constexpr uint64_t kVariantSeed = 7770001;
+constexpr uint64_t kV2DevSeed = 31415001, kV2FreshSeed = 27182002;  // v2 sets (eval/v2/PLAN.md)  // unseen variants have their own RNG stream
 
 namespace {
 
@@ -69,14 +70,20 @@ int main(int argc, char** argv) {
 
   std::vector<std::string> lines;
   int bad = 0;
-  std::vector<Spec> catalog = build_catalog(kMasterSeed);
-  for (auto& v : build_variants(kVariantSeed, catalog.size())) catalog.push_back(v);
+  std::vector<Spec> catalog;
+  const std::string set = arg(argc, argv, "--set", "v1");  // v1 (locked) | v2dev (development only) | v2fresh (evaluation, locked before use)
+  if (set == "v2dev") catalog = build_v2_set(kV2DevSeed, false, "d1");
+  else if (set == "v2fresh") catalog = build_v2_set(kV2FreshSeed, true, "f1");
+  else {
+    catalog = build_catalog(kMasterSeed);
+    for (auto& v : build_variants(kVariantSeed, catalog.size())) catalog.push_back(v);
+  }
   for (const Spec& s0 : catalog) {
     if (!only.empty() && s0.id != only) continue;
     int attempts = 0;
     Built b = build(s0, &attempts);
     if (!b.ok) {
-      std::fprintf(stderr, "%s [%s/%s]: no valid realization after %d attempts (err=%.3f cf=%.3f base=%.3f)\n", s0.id.c_str(), kind_name(s0.faults[0].kind), kSvcName[s0.faults[0].svc], attempts, b.real.err_incident, b.cf.err_incident, b.real.err_baseline);
+      std::fprintf(stderr, "%s [%s/%s i1=%d p1=%.2f p2=%.2f]: no valid realization after %d attempts (err=%.3f cf=%.3f base=%.3f)\n", s0.id.c_str(), kind_name(s0.faults[0].kind), kSvcName[s0.faults[0].svc], s0.faults[0].i1, s0.faults[0].p1, s0.faults[0].p2, attempts, b.real.err_incident, b.cf.err_incident, b.real.err_baseline);
       ++bad;
       continue;
     }

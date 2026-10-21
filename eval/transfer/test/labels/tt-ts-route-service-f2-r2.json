@@ -1,0 +1,12 @@
+{
+ "id": "tt-ts-route-service-f2-r2",
+ "kind": "fault",
+ "system": "tt",
+ "source": "RCAEval RE3",
+ "case": "ts-route-service_f2/2",
+ "fault_type": "f2",
+ "root_cause": {
+  "service": "ts-route-service",
+  "edge": null
+ }
+}

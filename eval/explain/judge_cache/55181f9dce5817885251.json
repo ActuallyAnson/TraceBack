@@ -1,0 +1,1 @@
+{"tokens": [366, 308], "verdict": "partial", "why": "The record confirms the gateway saw a 500\u2011status failed request, but no timestamp reference is provided to verify the '+62.636s' start time mentioned in the statement."}

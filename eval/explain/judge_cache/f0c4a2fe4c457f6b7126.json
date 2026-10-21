@@ -1,0 +1,1 @@
+{"tokens": [346, 235], "verdict": "partial", "why": "The record shows the API had an upstream error returning status\u202f504, confirming the 504 errors, but it does not specify that the upstream was the slow ingest service or mention latency."}

@@ -1,0 +1,1 @@
+{"tokens": [372, 996], "verdict": "supported", "why": "The record shows the gateway service with a high err5xx count (60 out of 107 requests) and elevated latency (p50\u2248305\u202fms, p99\u2248310\u202fms) at the given timestamp, indicating a spike in 5xx errors and latency as stated."}

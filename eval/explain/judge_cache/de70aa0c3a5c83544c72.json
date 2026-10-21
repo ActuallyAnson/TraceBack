@@ -1,0 +1,1 @@
+{"tokens": [322, 267], "verdict": "partial", "why": "The record confirms that ingest logged an upstream_error with the message 'dependency broker returned 500', but it does not provide evidence that this occurred after broker errors."}

@@ -1,0 +1,1 @@
+{"tokens": [366, 231], "verdict": "partial", "why": "The record confirms the API encountered a 'delivery_failed' error and responded with a 503 status, but it does not indicate that the error originated from the ingest service."}

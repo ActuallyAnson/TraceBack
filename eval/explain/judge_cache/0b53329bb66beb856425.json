@@ -1,0 +1,1 @@
+{"tokens": [386, 527], "verdict": "partial", "why": "The record shows an upstream timeout in the orders service but does not specify that the timeout occurred while waiting for inventory."}

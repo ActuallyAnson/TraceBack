@@ -1,0 +1,1 @@
+{"tokens": [357, 358], "verdict": "partial", "why": "The record shows the api service had err5xx errors, but it does not show that these errors represent an increase or a new onset compared to prior metrics."}

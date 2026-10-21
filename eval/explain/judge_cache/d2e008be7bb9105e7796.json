@@ -1,0 +1,1 @@
+{"tokens": [356, 232], "verdict": "unsupported", "why": "The quoted record shows the broker receiving a 500 from its 'notifier' dependency, with no mention of billing calls failing or of the broker returning delivery\u2011step\u2011failed errors to ingest."}

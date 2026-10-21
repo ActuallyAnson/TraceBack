@@ -1,0 +1,1 @@
+{"tokens": [479, 300], "verdict": "supported", "why": "The quoted span shows the shipping service returning HTTP\u202f500 with an internal_error, and the subsequent error event occurs only ~9\u202fms later, confirming that shipping began returning these errors shortly after start."}

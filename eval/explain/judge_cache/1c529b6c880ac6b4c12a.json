@@ -1,0 +1,1 @@
+{"tokens": [563, 475], "verdict": "supported", "why": "The records show rising latency (p50_ms from ~149\u202fms to ~720\u202fms) and an upstream_timeout event when calling ingest, matching the statement's claim of increased latency and upstream timeout errors."}

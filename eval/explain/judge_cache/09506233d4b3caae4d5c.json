@@ -1,0 +1,1 @@
+{"tokens": [467, 680], "verdict": "partial", "why": "The records show API ingest timeouts (504) and high 5xx errors with worker saturation, but they do not explicitly state that ingest latency caused the timeouts or that the timeouts caused the worker saturation and error spike."}

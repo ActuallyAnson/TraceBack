@@ -1,0 +1,1 @@
+{"tokens": [915, 242], "verdict": "partial", "why": "The records show the API returned 504 errors due to upstream timeouts, but they do not provide evidence that these errors contributed to failed entry requests."}

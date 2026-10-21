@@ -1,0 +1,1 @@
+{"tokens": [331, 331], "verdict": "partial", "why": "The record shows the orders service had a DB connection pool exhaustion, but it does not explicitly confirm the start time of +101.758s."}

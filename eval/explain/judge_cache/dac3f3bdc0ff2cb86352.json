@@ -1,0 +1,1 @@
+{"tokens": [338, 228], "verdict": "supported", "why": "The record shows the payments service logged an error event 'temporarily_unavailable' with status 503."}

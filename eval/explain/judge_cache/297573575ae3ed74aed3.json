@@ -1,0 +1,1 @@
+{"tokens": [363, 345], "verdict": "partial", "why": "The record confirms the broker scheduled a retry with zero backoff, but it does not provide the +45.064s timing mentioned in the statement."}

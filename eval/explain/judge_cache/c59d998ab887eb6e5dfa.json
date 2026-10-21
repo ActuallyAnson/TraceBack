@@ -1,0 +1,1 @@
+{"tokens": [449, 1667], "verdict": "partial", "why": "The records show a deploy of orders followed by an internal_error failure, but the time gap is about 3.55\u202fs, not the claimed +61.328\u202fs."}

@@ -1,0 +1,1 @@
+{"tokens": [359, 281], "verdict": "partial", "why": "The record shows the API had elevated latency (p50 ~2.6\u202fs, p99 ~3\u202fs) and 8\u202f5xx errors, supporting the claim of high latency and 5xx errors, but it does not mention upstream timeouts or waiting for ingest, so the causal detail is not evidenced."}

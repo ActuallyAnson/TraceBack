@@ -1,0 +1,1 @@
+{"tokens": [305, 300], "verdict": "partial", "why": "The record confirms the payments service experienced an OOM kill (process killed), supporting the crash cause, but it does not provide a timestamp to verify the '+47.110s' offset."}

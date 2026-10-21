@@ -1,0 +1,7 @@
+{
+ "id": "ss2-clean-carts-socket",
+ "kind": "clean",
+ "system": "ss2",
+ "source": "RCAEval RE2",
+ "case": "carts_socket/1"
+}

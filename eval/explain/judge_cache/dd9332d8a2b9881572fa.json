@@ -1,0 +1,1 @@
+{"tokens": [378, 328], "verdict": "partial", "why": "The record shows the gateway returning an upstream_timeout error, confirming the error type, but it does not provide the +53.072\u202fs offset that marks the start of the user\u2011visible failure burst."}

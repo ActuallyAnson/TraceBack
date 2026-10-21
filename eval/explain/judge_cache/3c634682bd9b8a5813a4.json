@@ -1,0 +1,1 @@
+{"tokens": [953, 147], "verdict": "supported", "why": "Each quoted span shows the orders service making a client call to payments and receiving a conn_refused error, confirming that orders encountered connection refused when attempting to call payments."}

@@ -1,0 +1,1 @@
+{"tokens": [350, 249], "verdict": "supported", "why": "The record shows payments p99 latency of about 1\u202fsecond (indicating high latency) and busy_max equals the worker limit of 12, indicating maxed worker utilization."}

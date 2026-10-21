@@ -1,0 +1,1 @@
+{"tokens": [362, 448], "verdict": "partial", "why": "The record confirms workers_limit dropped to 1 and shows high latency and queue_max, but it does not provide prior values to demonstrate that latency and queue length rose sharply."}

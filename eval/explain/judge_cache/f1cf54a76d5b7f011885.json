@@ -1,0 +1,1 @@
+{"tokens": [753, 362], "verdict": "supported", "why": "The quoted records show the orders service returning HTTP\u202f503 responses with the error field set to \u2018pool_exhausted\u2019, demonstrating that pool exhaustion caused those 503 errors."}

@@ -1,0 +1,1 @@
+{"tokens": [302, 373], "verdict": "partial", "why": "The record confirms a billing OOM kill, but it does not provide the +59.570\u202fs timing information needed to verify the exact moment of the crash."}

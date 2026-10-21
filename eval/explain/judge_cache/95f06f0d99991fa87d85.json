@@ -1,0 +1,1 @@
+{"tokens": [639, 446], "verdict": "partial", "why": "The records show order request queuing and elevated latency, but they do not provide evidence that retries or payments slowness caused the queuing."}

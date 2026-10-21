@@ -1,0 +1,1 @@
+{"tokens": [674, 140], "verdict": "supported", "why": "The quoted broker client spans show attempts to call billing's charge operation that returned status -1 with error 'conn_refused', indicating the broker received connection\u2011refused errors when calling billing."}

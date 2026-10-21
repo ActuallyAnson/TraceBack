@@ -1,0 +1,1 @@
+{"tokens": [542, 420], "verdict": "unsupported", "why": "The quoted records show only single attempts (attempt:1) with no evidence of repeated retries, lack of backoff, or amplified load on billing."}

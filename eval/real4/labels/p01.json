@@ -1,0 +1,7 @@
+{
+ "id": "p01",
+ "source": "opentelemetry-demo 85c2cb2 (3.1.0)",
+ "window_start_us": 1792464867102132,
+ "window_end_us": 1792464987102132,
+ "kind": "clean"
+}

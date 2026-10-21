@@ -192,4 +192,67 @@ std::vector<Spec> build_variants(uint64_t seed, size_t first_index) {
   return out;
 }
 
+namespace {
+Fault decoy_at(FaultKind dk, int svc, const Fault& cause, Rng& r) {
+  Fault f{dk, svc, std::clamp<int64_t>(cause.t0 + r.range(-25, 15) * kSec + r.range(0, 999999), 10 * kSec, 80 * kSec), 0};
+  f.t1 = f.t0 + r.range(30, 60) * kSec + r.range(0, 999999);
+  f.p1 = r.uni(15, 40);
+  return f;
+}
+// storm_variant: 1 = other callee, 2 = weaker trigger, 3 = stronger trigger
+void storm_variant(Fault& f, int v, Rng& r) {
+  if (v == 1) f.i1 = INVENTORY;
+  if (v == 2) { f.i1 = r.chance(0.5) ? INVENTORY : PAYMENTS; f.p1 = r.uni(260, 330); f.p2 = r.uni(0.55, 0.65); }
+  if (v == 3) { f.i1 = PAYMENTS; f.p1 = r.uni(600, 900); f.p2 = r.uni(0.75, 0.9); }
+}
+}  // namespace
+
+// 24 incidents (fresh) or 21 (dev, no storm variants): see eval/v2/PLAN.md section 4.
+std::vector<Spec> build_v2_set(uint64_t seed, bool fresh, const std::string& prefix) {
+  Rng r(seed);
+  struct P { FaultKind k; const char* group; int decoy; int decoy_svc; bool skew; int storm; bool unseen; };
+  // decoy_svc: -1 = a random other service; otherwise the service index (0 = the entry service)
+  std::vector<P> plan;
+  for (FaultKind k : kBase) plan.push_back({k, "plain", -1, -1, false, 0, false});
+  for (FaultKind k : {FaultKind::BadDeploy, FaultKind::CrashRestart, FaultKind::ConfigChange}) plan.push_back({k, "skew", -1, -1, true, 0, false});
+  if (fresh) for (int v = 1; v <= 3; ++v) plan.push_back({FaultKind::RetryStorm, "storm_variant", -1, -1, false, v, false});
+  const FaultKind HD = FaultKind::HarmlessDeploy, ML = FaultKind::MildLatency, CE = FaultKind::CosmeticErrors;
+  plan.push_back({FaultKind::SlowDependency, "decoy", static_cast<int>(HD), GATEWAY, false, 0, false});
+  plan.push_back({FaultKind::PoolExhaustion, "decoy", static_cast<int>(HD), GATEWAY, false, 0, false});
+  plan.push_back({FaultKind::BadDeploy, "decoy", static_cast<int>(HD), GATEWAY, false, 0, false});
+  plan.push_back({FaultKind::CrashRestart, "decoy", static_cast<int>(HD), -1, false, 0, false});
+  plan.push_back({FaultKind::CapacityReduction, "decoy", static_cast<int>(ML), -1, false, 0, false});
+  plan.push_back({FaultKind::ConfigChange, "decoy", static_cast<int>(CE), -1, false, 0, false});
+  plan.push_back({FaultKind::MaskedError, "decoy", static_cast<int>(HD), GATEWAY, false, 0, false});
+  plan.push_back({FaultKind::RetryStorm, "decoy", static_cast<int>(HD), -1, false, 0, false});
+  plan.push_back({FaultKind::NetworkPartition, "unseen", -1, -1, false, 0, true});
+  plan.push_back({FaultKind::CrashLoop, "unseen", -1, -1, false, 0, true});
+  std::vector<Spec> out;
+  for (const P& p : plan) {
+    Spec s;
+    s.group = p.group;
+    s.split = "fresh";
+    Fault f = p.unseen ? make_variant(p.k, r) : make_true(p.k, r);
+    if (p.k == FaultKind::RetryStorm) { f.p1 = std::max(f.p1, 330.0); f.p2 = std::max(f.p2, 0.6); }  // a storm must be visible
+    if (p.storm) storm_variant(f, p.storm, r);
+    s.faults.push_back(f);
+    if (p.decoy >= 0) {
+      int svc = p.decoy_svc;
+      if (svc < 0) do { svc = static_cast<int>(r.range(0, NSVC - 1)); } while (svc == f.svc);
+      s.faults.push_back(decoy_at(static_cast<FaultKind>(p.decoy), svc, f, r));
+    }
+    if (p.skew) add_skew(s, r);
+    out.push_back(s);
+  }
+  for (size_t i = out.size() - 1; i > 0; --i) std::swap(out[i], out[r.range(0, static_cast<int64_t>(i))]);
+  for (size_t i = 0; i < out.size(); ++i) {
+    char id[16];
+    std::snprintf(id, sizeof id, "%s-%02zu", prefix.c_str(), i + 1);
+    out[i].id = id;
+    out[i].seed = r.next();
+    out[i].epoch_us = (1780000000LL + (fresh ? 10000000LL : 0)) * kSec + static_cast<int64_t>(i) * 1000 * kSec;
+  }
+  return out;
+}
+
 }  // namespace tb::sim

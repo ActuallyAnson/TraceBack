@@ -1,0 +1,1 @@
+{"tokens": [357, 245], "verdict": "unsupported", "why": "The quoted record only shows the current workers_limit of 1; it provides no information about a previous limit of 24 or a timestamp offset of +60.242s."}

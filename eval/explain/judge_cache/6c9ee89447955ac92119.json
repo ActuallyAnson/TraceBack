@@ -1,0 +1,1 @@
+{"tokens": [504, 370], "verdict": "supported", "why": "The records show an error on the first payment attempt (status 503, temporarily_unavailable) and a retry scheduled for attempt\u202f2 with backoff_ms\u202f=\u202f0, indicating an immediate retry with zero backoff."}

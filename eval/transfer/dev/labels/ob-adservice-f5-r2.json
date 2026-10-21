@@ -1,0 +1,12 @@
+{
+ "id": "ob-adservice-f5-r2",
+ "kind": "fault",
+ "system": "ob",
+ "source": "RCAEval RE3",
+ "case": "adservice_f5/2",
+ "fault_type": "f5",
+ "root_cause": {
+  "service": "adservice",
+  "edge": null
+ }
+}

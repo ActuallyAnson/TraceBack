@@ -1,0 +1,1 @@
+{"tokens": [371, 343], "verdict": "partial", "why": "The record shows the gateway service returned an HTTP 500 order_failed error, but it does not include the timestamp offset (+62.636s) needed to confirm when the errors started."}

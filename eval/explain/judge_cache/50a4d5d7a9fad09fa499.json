@@ -1,0 +1,1 @@
+{"tokens": [300, 168], "verdict": "partial", "why": "The record confirms the shipping process was killed by an OOM condition, but it does not state that this caused the process to stop accepting connections."}

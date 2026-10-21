@@ -1,0 +1,1 @@
+{"tokens": [363, 1259], "verdict": "partial", "why": "The record shows shipping had err5xx>0 at a timestamp with a .347\u2011second fraction, confirming the error and timing, but it does not indicate that this occurred after a deploy."}

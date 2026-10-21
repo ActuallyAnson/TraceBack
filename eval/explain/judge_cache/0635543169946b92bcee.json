@@ -1,0 +1,1 @@
+{"tokens": [507, 445], "verdict": "supported", "why": "The records show a 503 response from payments (attempt\u202f1) and a subsequent retry scheduled with backoff_ms\u202f0 (attempt\u202f2), indicating an immediate retry."}

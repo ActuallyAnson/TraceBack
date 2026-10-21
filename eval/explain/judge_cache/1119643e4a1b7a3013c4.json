@@ -1,0 +1,1 @@
+{"tokens": [455, 158], "verdict": "supported", "why": "The orders service logged an upstream_timeout with peer=inventory, indicating a timeout when calling inventory."}

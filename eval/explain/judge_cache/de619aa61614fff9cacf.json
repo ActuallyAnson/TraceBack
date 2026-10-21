@@ -1,0 +1,1 @@
+{"tokens": [459, 463], "verdict": "partial", "why": "The records show Orders retrying a Payments call with a 100\u202fms backoff and then encountering an upstream timeout that results in a 504 error, but they do not explicitly show repeated timeouts as claimed."}

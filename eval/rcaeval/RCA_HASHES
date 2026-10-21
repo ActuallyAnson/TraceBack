@@ -1,0 +1,4 @@
+# RCAEval converter, builder and plan, frozen before any system ran on RE3-OB. check: sh eval/rcaeval/check.sh
+a23652198d9f6be782374736b6224dfdb447e584eb8795f6a1b01e5e2a436783  eval/rcaeval/convert.py
+d7a5bea1434a2f31c6c45002e7977ecd8991a5b118066f26b46a272a2c47cc00  eval/rcaeval/build.py
+e138ff2ffda203230877e6189c6c3cbe8c419f4ec7ddb212837399c11f19b937  eval/rcaeval/PLAN.md

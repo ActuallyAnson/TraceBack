@@ -1,0 +1,1 @@
+{"tokens": [360, 413], "verdict": "partial", "why": "The record shows the gateway had err5xx equal to all requests and high latency, confirming increased errors and latency, but it does not specify that the errors were 504."}

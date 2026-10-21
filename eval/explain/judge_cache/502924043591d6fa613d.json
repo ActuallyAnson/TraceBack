@@ -1,0 +1,1 @@
+{"tokens": [678, 158], "verdict": "supported", "why": "The quoted records show API client spans to ingest with error 'timeout', confirming that the API timed out when calling ingest."}

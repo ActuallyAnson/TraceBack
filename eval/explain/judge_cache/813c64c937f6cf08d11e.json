@@ -1,0 +1,1 @@
+{"tokens": [494, 319], "verdict": "partial", "why": "The quoted records show the API returning internal errors and upstream timeouts, but they do not explicitly indicate that these events marked the start of a sustained burst of failures."}

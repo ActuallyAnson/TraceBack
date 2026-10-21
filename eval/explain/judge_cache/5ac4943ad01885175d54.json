@@ -1,0 +1,1 @@
+{"tokens": [383, 332], "verdict": "partial", "why": "The record confirms that the billing service returned a pool_exhausted error, but it does not contain information showing that this occurred at +45.063\u202fs, so the timing claim cannot be verified."}

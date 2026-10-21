@@ -1,0 +1,1 @@
+{"tokens": [466, 827], "verdict": "partial", "why": "The quoted records show inventory stock_record_corrupt errors and a high err5xx count, but they do not provide evidence that these events occurred around +63\u202fs relative to any reference point."}

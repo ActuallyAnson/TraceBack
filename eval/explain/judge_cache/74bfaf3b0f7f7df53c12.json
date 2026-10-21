@@ -1,0 +1,1 @@
+{"tokens": [350, 192], "verdict": "unsupported", "why": "The quoted record shows the broker logging a dependency notifier error (status 500), with no mention of billing stopping connections or connection\u2011refused errors."}

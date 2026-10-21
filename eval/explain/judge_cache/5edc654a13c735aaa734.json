@@ -1,0 +1,1 @@
+{"tokens": [404, 149], "verdict": "supported", "why": "Ops events show container_restarted for the payments service with reason 'exited', indicating the service process exited."}

@@ -1,0 +1,1 @@
+{"tokens": [354, 230], "verdict": "partial", "why": "The record shows the API received a 503 error from ingest, supporting the first part of the statement, but it does not indicate that this caused 5xx responses to users or mention a timeout."}

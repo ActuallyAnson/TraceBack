@@ -1,0 +1,7 @@
+{
+ "id": "ss2-clean-catalogue-disk",
+ "kind": "clean",
+ "system": "ss2",
+ "source": "RCAEval RE2",
+ "case": "catalogue_disk/1"
+}

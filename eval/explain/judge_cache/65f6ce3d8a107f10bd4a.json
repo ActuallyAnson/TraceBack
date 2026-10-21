@@ -1,0 +1,1 @@
+{"tokens": [392, 304], "verdict": "partial", "why": "The record shows the shipping service returned an internal error, but it does not specify the error as label_record_invalid or confirm the +63.471s start time."}

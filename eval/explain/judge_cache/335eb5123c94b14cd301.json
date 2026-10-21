@@ -1,0 +1,1 @@
+{"tokens": [374, 291], "verdict": "partial", "why": "The record shows the API request failing with 503 and conn_refused, confirming the symptom, but contains no information about the broker, billing, or upstream propagation cited as the cause."}

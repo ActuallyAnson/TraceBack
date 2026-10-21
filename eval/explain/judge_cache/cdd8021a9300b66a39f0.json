@@ -1,0 +1,1 @@
+{"tokens": [350, 400], "verdict": "partial", "why": "The record shows elevated latency and a large request queue for the inventory service, but it does not provide evidence that throttling preceded these observations."}

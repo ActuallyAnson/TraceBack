@@ -1,0 +1,1 @@
+{"tokens": [349, 211], "verdict": "partial", "why": "The record confirms gateway timeouts when calling orders, but does not mention upstream_timeout errors or HTTP 504 status."}

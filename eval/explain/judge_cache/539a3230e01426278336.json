@@ -1,0 +1,1 @@
+{"tokens": [443, 187], "verdict": "supported", "why": "The quoted records show the orders service logging error messages that the dependency inventory returned 500, indicating inventory failure while orders reported errors."}

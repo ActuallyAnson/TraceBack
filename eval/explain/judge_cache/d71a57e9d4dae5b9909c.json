@@ -1,0 +1,1 @@
+{"tokens": [522, 393], "verdict": "partial", "why": "The records show inventory requests experienced non\u2011zero queue times, indicating some backlog, but they do not explicitly state that inventory lost serving capacity or that the backlog was due to too few workers."}

@@ -1,0 +1,1 @@
+{"tokens": [301, 97], "verdict": "supported", "why": "The record explicitly states a deploy operation for the orders service with phase 'started', matching the statement."}

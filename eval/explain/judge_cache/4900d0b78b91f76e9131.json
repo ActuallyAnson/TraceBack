@@ -1,0 +1,1 @@
+{"tokens": [309, 407], "verdict": "partial", "why": "The record confirms billing logged a pool_exhausted error, but does not show the +45.393s offset."}

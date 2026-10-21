@@ -1,0 +1,1 @@
+{"tokens": [340, 160], "verdict": "supported", "why": "The record shows the gateway logged an upstream error due to an order step failure and includes a status field set to 503, matching both parts of the statement."}

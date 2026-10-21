@@ -1,0 +1,1 @@
+{"tokens": [355, 283], "verdict": "partial", "why": "The quoted record confirms the payments service's workers_limit is now 1, but it does not provide any information about a prior limit of 12 or that the limit dropped from that value."}

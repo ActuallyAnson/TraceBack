@@ -1,0 +1,1 @@
+{"tokens": [359, 243], "verdict": "partial", "why": "The record confirms a gateway request failed with internal_error, but provides no information about orders returning failures or that they caused the gateway errors."}

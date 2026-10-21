@@ -1,0 +1,1 @@
+{"tokens": [382, 402], "verdict": "partial", "why": "The record confirms err5xx reached 40 in the 5\u2011second window, but it does not show the prior value of 0 or link the window to the deployment time."}

@@ -1,0 +1,1 @@
+{"tokens": [342, 177], "verdict": "supported", "why": "The record shows the orders service logging a timeout when calling the payments dependency with timeout_ms set to 6\u202fms."}

@@ -1,0 +1,1 @@
+{"tokens": [352, 266], "verdict": "partial", "why": "The record confirms the orders service received a 503 from inventory and logged an upstream error, but it does not explicitly show that retries were scheduled."}

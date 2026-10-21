@@ -1,0 +1,1 @@
+{"tokens": [349, 316], "verdict": "partial", "why": "The quoted record shows a 100\u202fms backoff for one retry, confirming the approximate backoff value, but it does not demonstrate that every refusal uses the same backoff."}

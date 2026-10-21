@@ -1,0 +1,1 @@
+{"tokens": [378, 209], "verdict": "supported", "why": "The record shows the orders service making a client call to inventory's reserve operation and receiving an error 'conn_refused', which directly matches the statement."}

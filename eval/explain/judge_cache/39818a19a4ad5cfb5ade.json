@@ -1,0 +1,1 @@
+{"tokens": [516, 262], "verdict": "supported", "why": "The records show a gateway client call to the orders service that timed out and a gateway server request that returned a 504 status with an upstream_timeout error, indicating the gateway timed out waiting for orders and produced 504 errors."}

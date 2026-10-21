@@ -1,0 +1,1 @@
+{"tokens": [694, 115], "verdict": "supported", "why": "The quoted records show Orders service making client calls to Payments with status 503 and error 'temporarily_unavailable', matching the statement."}

@@ -1,0 +1,1 @@
+{"tokens": [357, 196], "verdict": "partial", "why": "The record shows the API returned an internal_error, but it does not indicate that this was the final symptom observed."}

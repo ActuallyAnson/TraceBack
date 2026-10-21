@@ -1,0 +1,1 @@
+{"tokens": [792, 697], "verdict": "supported", "why": "The metrics record shows busy_max equals the worker limit (16) and queue_max is 35, indicating all workers were busy and requests were waiting in queue."}

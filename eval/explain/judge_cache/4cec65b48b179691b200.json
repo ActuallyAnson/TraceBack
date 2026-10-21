@@ -1,0 +1,1 @@
+{"tokens": [443, 182], "verdict": "supported", "why": "The API logs contain error entries stating that the dependency ingest returned a 503 status, showing that API reported errors while ingest was failing."}

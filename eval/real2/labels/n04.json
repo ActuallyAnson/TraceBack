@@ -1,0 +1,19 @@
+{
+ "id": "n04",
+ "source": "opentelemetry-demo 85c2cb2 (3.1.0)",
+ "window_start_us": 1792431208020611,
+ "window_end_us": 1792431328020611,
+ "kind": "fault",
+ "flag": "paymentUnreachable",
+ "variant": "on",
+ "flip_us": 1792431248030039,
+ "root_cause": {
+  "service": "payment",
+  "edge": {
+   "from": "checkout",
+   "to": "payment"
+  },
+  "summary": "checkout pointed at a bad payment address (repeat of r03)",
+  "onset_us": 1792431248030039
+ }
+}

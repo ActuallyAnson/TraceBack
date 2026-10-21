@@ -1,0 +1,7 @@
+{
+ "id": "ss2-clean-payment-delay",
+ "kind": "clean",
+ "system": "ss2",
+ "source": "RCAEval RE2",
+ "case": "payment_delay/1"
+}

@@ -1,0 +1,1 @@
+{"tokens": [301, 279], "verdict": "partial", "why": "The record confirms the billing service experienced an OOM kill (crash), but it does not explicitly state that this stopped it from answering requests."}

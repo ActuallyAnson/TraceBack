@@ -1,0 +1,1 @@
+{"tokens": [530, 150], "verdict": "supported", "why": "Both quoted records show the broker service making a client call to billing that resulted in a timeout error."}

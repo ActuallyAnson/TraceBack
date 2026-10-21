@@ -1,0 +1,1 @@
+{"tokens": [339, 233], "verdict": "partial", "why": "The record confirms a broker slow request (818\u202fms), supporting the claim of a slow request, but it does not show increased latency overall or attribute it to amplified load."}

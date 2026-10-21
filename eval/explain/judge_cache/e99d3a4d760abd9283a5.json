@@ -1,0 +1,1 @@
+{"tokens": [394, 270], "verdict": "supported", "why": "The order span shows queue_us=7049262\u202f\u00b5s (>7\u202fs), indicating a request waited over 7\u202fseconds."}

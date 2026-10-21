@@ -1,0 +1,1 @@
+{"tokens": [391, 633], "verdict": "partial", "why": "The records confirm the broker\u2019s timeout.shipping_ms config changed from 1000\u202fms to 7\u202fms, but they do not show that calls actually timed out or that shipping continued to answer."}

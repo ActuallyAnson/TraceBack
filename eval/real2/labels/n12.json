@@ -1,0 +1,16 @@
+{
+ "id": "n12",
+ "source": "opentelemetry-demo 85c2cb2 (3.1.0)",
+ "window_start_us": 1792432288164295,
+ "window_end_us": 1792432408164295,
+ "kind": "fault",
+ "flag": "recommendationCacheFailure",
+ "variant": "on",
+ "flip_us": 1792432328167731,
+ "root_cause": {
+  "service": "recommendation",
+  "edge": null,
+  "summary": "recommendation cache grows and leaks memory (new flag)",
+  "onset_us": 1792432328167731
+ }
+}

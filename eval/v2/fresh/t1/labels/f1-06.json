@@ -1,0 +1,1 @@
+{"id":"f1-06","group":"plain","split":"fresh","seed":215846565354172302,"root_cause":{"type":"masked_downstream_error","service":"inventory","onset_us":1790005047616466,"end_us":1790005087722644},"decoys":[],"complications":[],"symptom_service":"gateway","err_rate_baseline":0.005,"err_rate_incident":0.239,"err_rate_incident_without_cause":0.006}

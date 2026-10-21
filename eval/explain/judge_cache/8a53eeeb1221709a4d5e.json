@@ -1,0 +1,1 @@
+{"tokens": [371, 307], "verdict": "partial", "why": "The record confirms the gateway saw a 503 error, but it provides no information about orders returning errors or payment failures."}

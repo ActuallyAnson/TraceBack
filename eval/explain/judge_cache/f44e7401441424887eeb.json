@@ -1,0 +1,1 @@
+{"tokens": [685, 135], "verdict": "supported", "why": "The quoted broker client spans show duration of 6312\u202f\u00b5s (~6.3\u202fms) with status 'timeout' when calling shipping, matching the statement."}

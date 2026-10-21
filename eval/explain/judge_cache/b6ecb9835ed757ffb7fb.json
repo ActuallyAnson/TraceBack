@@ -1,0 +1,1 @@
+{"tokens": [394, 215], "verdict": "partial", "why": "The record confirms that ingest returned a delivery_failed error, but it contains no information about broker errors or their propagation to ingest."}

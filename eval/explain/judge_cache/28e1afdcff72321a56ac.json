@@ -1,0 +1,1 @@
+{"tokens": [411, 298], "verdict": "supported", "why": "The quoted logs show ingest emitting two error messages (upstream_error and delivery_failed) that directly reference the broker returning a 500 status, indicating the broker was failing at the same time."}

@@ -1,0 +1,1 @@
+{"tokens": [309, 149], "verdict": "unsupported", "why": "The quoted record does not contain any information about when the deployment completed (+54.996s), so the timing claim cannot be verified."}

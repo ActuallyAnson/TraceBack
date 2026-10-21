@@ -1,0 +1,1 @@
+{"tokens": [454, 350], "verdict": "partial", "why": "The records show Orders experienced a timeout to payments and a 503 error, but they do not indicate that the retries were immediate or occurred without any backoff."}

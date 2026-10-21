@@ -1,0 +1,1 @@
+{"id":"f2-01","group":"unseen","split":"fresh","topology":"fanout","seed":-8359384482278576303,"root_cause":{"type":"crash_loop","service":"shipping","onset_us":1800000053957343,"end_us":1800000095957343},"decoys":[],"complications":[],"symptom_service":"api","err_rate_baseline":0.004,"err_rate_incident":0.120,"err_rate_incident_without_cause":0.003}

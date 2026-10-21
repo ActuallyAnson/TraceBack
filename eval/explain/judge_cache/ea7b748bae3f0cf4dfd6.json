@@ -1,0 +1,1 @@
+{"tokens": [390, 162], "verdict": "supported", "why": "The quoted record shows a broker client call to billing that failed with a connection\u2011refused error, directly attributing the API error to the broker\u2019s failed call to billing."}

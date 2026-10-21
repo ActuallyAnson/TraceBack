@@ -1,0 +1,1 @@
+{"tokens": [384, 590], "verdict": "partial", "why": "The records show orders changed the timeout for payments from 1200\u202fms to 5\u202fms after a config change, but they do not show that orders actually timed out calls or that payments was answering."}

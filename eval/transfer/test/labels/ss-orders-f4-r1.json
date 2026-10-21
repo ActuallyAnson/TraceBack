@@ -1,0 +1,12 @@
+{
+ "id": "ss-orders-f4-r1",
+ "kind": "fault",
+ "system": "ss",
+ "source": "RCAEval RE3",
+ "case": "orders_f4/1",
+ "fault_type": "f4",
+ "root_cause": {
+  "service": "orders",
+  "edge": null
+ }
+}

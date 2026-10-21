@@ -1,0 +1,1 @@
+{"tokens": [566, 323], "verdict": "supported", "why": "The records show ingest upstream timeouts to broker, elevated ingest latency metrics, and an API upstream error with status 504 (timeout), matching each part of the statement."}

@@ -1,0 +1,1 @@
+{"tokens": [382, 243], "verdict": "unsupported", "why": "The quoted record provides a start timestamp and error details but does not include any information about the payment service beginning to return internal_error responses at +48.676\u202fs, so the statement cannot be verified from the given data."}

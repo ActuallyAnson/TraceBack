@@ -1,0 +1,1 @@
+{"tokens": [634, 563], "verdict": "partial", "why": "The quoted records show the API's queued request times (queue_us) and latency (dur_us), but they do not directly demonstrate that the queue builds as backed\u2011up traffic increases."}

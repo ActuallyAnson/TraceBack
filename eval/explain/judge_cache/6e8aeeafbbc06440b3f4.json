@@ -1,0 +1,1 @@
+{"tokens": [454, 404], "verdict": "unsupported", "why": "The quoted records show orders receiving a 500 error from inventory, not connection\u2011refused errors, and contain no indication that inventory stopped accepting connections after a restart."}

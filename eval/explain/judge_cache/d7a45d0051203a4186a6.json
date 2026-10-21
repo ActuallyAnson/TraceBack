@@ -1,0 +1,1 @@
+{"tokens": [547, 434], "verdict": "partial", "why": "The records show orders making calls to payments that fail, but they do not indicate repeated retries, absence of backoff, or resulting load amplification."}

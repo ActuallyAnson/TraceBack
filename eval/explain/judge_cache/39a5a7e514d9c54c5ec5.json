@@ -1,0 +1,1 @@
+{"tokens": [392, 463], "verdict": "partial", "why": "The record shows a timeout on the orders side when calling inventory, confirming that inventory did not respond, but it does not explicitly state that inventory failed to record the reservation."}

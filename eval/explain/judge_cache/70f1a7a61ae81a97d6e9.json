@@ -1,0 +1,1 @@
+{"tokens": [1531, 319], "verdict": "partial", "why": "The quoted records show orders receiving 'conn_refused' errors when calling inventory, which supports the claim that calls were refused, but they do not provide evidence of a crash or that inventory stopped accepting connections as a result of such a crash."}

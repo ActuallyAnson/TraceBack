@@ -1,0 +1,1 @@
+{"tokens": [392, 211], "verdict": "partial", "why": "The record confirms a broker-to-billing call resulted in a connection\u2011refused error, but it does not indicate that this occurred immediately after a crash."}

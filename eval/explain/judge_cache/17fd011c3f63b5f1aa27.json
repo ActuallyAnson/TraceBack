@@ -1,0 +1,1 @@
+{"tokens": [352, 253], "verdict": "partial", "why": "The record shows the broker received a 503 from billing on attempt\u202f1, confirming the first part, but it does not indicate that the broker retried the calls."}

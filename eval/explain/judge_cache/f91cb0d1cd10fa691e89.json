@@ -1,0 +1,1 @@
+{"tokens": [354, 665], "verdict": "partial", "why": "The record shows a high number of 5xx errors (74 out of 99 requests), indicating a high error rate, but it does not provide a baseline to confirm a spike or explicitly state that these errors were visible to users as failed requests."}

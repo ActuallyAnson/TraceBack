@@ -1,0 +1,1 @@
+{"tokens": [371, 214], "verdict": "partial", "why": "The record confirms the gateway returned HTTP\u202f500, but it does not show that this marked the start of a sustained burst of failures."}

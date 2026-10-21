@@ -1,0 +1,1 @@
+{"tokens": [533, 308], "verdict": "partial", "why": "The records show orders client calls to payments timing out after ~1.2\u202fs, but they do not indicate that slowness at payments caused those timeouts."}

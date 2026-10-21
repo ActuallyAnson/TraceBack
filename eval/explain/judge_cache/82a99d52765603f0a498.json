@@ -1,0 +1,1 @@
+{"tokens": [630, 251], "verdict": "partial", "why": "The records confirm that the API service returned 504 upstream_timeout errors with non\u2011zero queue times, but they do not explicitly state that API\u2019s own workers were saturated."}

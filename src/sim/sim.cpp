@@ -218,7 +218,7 @@ class World {
     }
     // Retry storm: the trigger is a short burst of degradation in payments (f.svc is the amplifier, orders).
     for (auto& f : faults_)
-      if (f.kind == FaultKind::RetryStorm && svc == PAYMENTS && now_ >= f.t0 && now_ <= f.t0 + 12 * kSec) e += f.p1 * rng_.lognormal(0.3);
+      if (f.kind == FaultKind::RetryStorm && svc == storm_callee(f) && now_ >= f.t0 && now_ <= f.t0 + 12 * kSec) e += f.p1 * rng_.lognormal(0.3);
     return e;
   }
   // Returns status (0 = no failure) and sets code.
@@ -231,7 +231,7 @@ class World {
       if (f.kind == FaultKind::SilentRegression && rng_.chance(f.p1)) { code = "internal_error"; return 500; }
     }
     for (auto& f : faults_)
-      if (f.kind == FaultKind::RetryStorm && svc == PAYMENTS && now_ >= f.t0 && now_ <= f.t0 + 12 * kSec && rng_.chance(f.p2)) { code = "temporarily_unavailable"; return 503; }
+      if (f.kind == FaultKind::RetryStorm && svc == storm_callee(f) && now_ >= f.t0 && now_ <= f.t0 + 12 * kSec && rng_.chance(f.p2)) { code = "temporarily_unavailable"; return 503; }
     if (rng_.chance(0.002)) { code = "internal_error"; return 500; }
     if (svc == GATEWAY && rng_.chance(0.01)) { code = "invalid_request"; return 400; }
     return 0;
@@ -257,7 +257,7 @@ class World {
     for (auto& f : faults_) {
       if (f.kind == FaultKind::ConfigChange && caller == ORDERS && f.i1 == callee && now_ >= f.t0)
         c.timeout_us = static_cast<int64_t>(f.p1 * kMs);
-      if (f.kind == FaultKind::RetryStorm && caller == ORDERS && callee == PAYMENTS && now_ >= f.t0) {
+      if (f.kind == FaultKind::RetryStorm && caller == ORDERS && callee == storm_callee(f) && now_ >= f.t0) {
         c.retries = 6;
         c.backoff_us = 0;
       }
@@ -747,7 +747,7 @@ std::string label_json(const Spec& spec, const Output& real, const Output& cf) {
   Obj root;
   root.s("type", kind_name(t.kind)).s("service", kSvcName[t.svc]).i("onset_us", spec.epoch_us + t.t0).i("end_us", spec.epoch_us + t.t1);
   if (t.kind == FaultKind::ConfigChange) root.s("target_dependency", kSvcName[t.i1]);
-  if (t.kind == FaultKind::RetryStorm) root.s("trigger_service", kSvcName[PAYMENTS]);
+  if (t.kind == FaultKind::RetryStorm) root.s("trigger_service", kSvcName[storm_callee(t)]);
   if (t.kind == FaultKind::NetworkPartition) root.raw("edge", Obj().s("from", kSvcName[t.i1]).s("to", kSvcName[t.svc]).str());
   if (t.kind == FaultKind::DnsFailure) root.raw("edge", Obj().s("from", kSvcName[t.svc]).s("to", kSvcName[t.i1]).str());
   std::string decoys = "[";

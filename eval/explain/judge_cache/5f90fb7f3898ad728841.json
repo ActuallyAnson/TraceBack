@@ -1,0 +1,1 @@
+{"tokens": [349, 285], "verdict": "partial", "why": "The record confirms API received a 500 status and logged an upstream_error with message 'delivery step failed', but it does not show that the 500 originated from ingest or that ingest returned 500."}

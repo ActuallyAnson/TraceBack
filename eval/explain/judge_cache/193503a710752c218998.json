@@ -1,0 +1,1 @@
+{"tokens": [357, 324], "verdict": "partial", "why": "The record shows the broker's workers_limit set to 1 at the given timestamp, confirming the limit value, but it does not show that the limit was reduced to 1 at that time."}

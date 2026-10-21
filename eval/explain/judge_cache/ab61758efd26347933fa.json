@@ -1,0 +1,1 @@
+{"tokens": [482, 157], "verdict": "supported", "why": "The quoted span shows a reserve request returned status 503 with error 'pool_exhausted', and the quoted event states the db connection pool was exhausted, directly supporting the statement."}

@@ -1,0 +1,1 @@
+{"tokens": [331, 321], "verdict": "partial", "why": "The record shows an upstream error in the API service, but it does not indicate that the error came from broker errors propagated by Ingest."}

@@ -1,0 +1,16 @@
+{
+ "id": "m03",
+ "source": "opentelemetry-demo 85c2cb2 (3.1.0)",
+ "window_start_us": 1792461464131707,
+ "window_end_us": 1792461584131707,
+ "kind": "fault",
+ "flag": "cartFailure",
+ "variant": "50%",
+ "flip_us": 1792461504136328,
+ "root_cause": {
+  "service": "cart",
+  "edge": null,
+  "summary": "cart fails half of its requests (new variant)",
+  "onset_us": 1792461504136328
+ }
+}

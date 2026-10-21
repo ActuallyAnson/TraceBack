@@ -1,0 +1,1 @@
+{"tokens": [360, 118], "verdict": "supported", "why": "The record shows the broker scheduling a retry to shipping with a backoff of 100\u202fms."}

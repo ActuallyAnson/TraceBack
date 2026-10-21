@@ -1,0 +1,1 @@
+{"tokens": [427, 201], "verdict": "supported", "why": "The orders service logs show error-level 'connection refused by inventory' events, indicating orders reported errors while its dependency inventory was failing."}

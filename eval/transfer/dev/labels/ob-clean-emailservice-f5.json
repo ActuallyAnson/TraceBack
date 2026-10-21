@@ -1,0 +1,7 @@
+{
+ "id": "ob-clean-emailservice-f5",
+ "kind": "clean",
+ "system": "ob",
+ "source": "RCAEval RE3",
+ "case": "emailservice_f5/1"
+}

@@ -1,0 +1,1 @@
+{"tokens": [546, 478], "verdict": "partial", "why": "The records indicate a restart (boots increment from 1 to 2 and a service_started event) but do not explicitly show a crash, stopped answering connections, or a metrics gap."}

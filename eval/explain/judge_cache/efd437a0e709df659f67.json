@@ -1,0 +1,1 @@
+{"tokens": [479, 380], "verdict": "supported", "why": "Broker logs contain upstream_timeout warnings caused by deadline\u2011exceeded waits, and the API span shows a 504 response with an upstream_timeout error, confirming the described propagation."}

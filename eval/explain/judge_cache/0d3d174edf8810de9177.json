@@ -1,0 +1,1 @@
+{"tokens": [346, 261], "verdict": "partial", "why": "The record confirms Orders returned upstream_timeout errors with HTTP\u202f504, but it does not indicate that these were caused by inventory timeouts."}

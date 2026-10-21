@@ -1,0 +1,1 @@
+{"tokens": [363, 374], "verdict": "partial", "why": "The record confirms that at the given timestamp the orders service had workers_limit=1, but it does not show the prior value of 16 needed to verify the drop from 16 to 1."}

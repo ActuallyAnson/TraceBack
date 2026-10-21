@@ -1,0 +1,1 @@
+{"tokens": [328, 236], "verdict": "supported", "why": "The record shows the billing service logged an error event 'pool_exhausted' with the message 'db connection pool exhausted' and a pool size of zero, indicating DB connection pool exhaustion."}

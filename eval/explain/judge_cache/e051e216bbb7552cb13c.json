@@ -1,0 +1,1 @@
+{"tokens": [479, 706], "verdict": "supported", "why": "The records show ingest experienced upstream timeouts to the broker, high request latencies (p50\u22482.6\u202fs, p99\u22484.6\u202fs), and worker busyness hitting the limit, which together support the statement that broker\u2011related timeouts/slowness led to worker saturation and high latency."}

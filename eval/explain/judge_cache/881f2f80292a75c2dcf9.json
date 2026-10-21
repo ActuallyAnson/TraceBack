@@ -1,0 +1,1 @@
+{"tokens": [446, 190], "verdict": "supported", "why": "The logs show ingest reporting errors (upstream_error, conn_refused) directly linked to broker returning 503/status\u202f503, indicating the broker was failing."}

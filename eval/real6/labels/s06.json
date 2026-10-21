@@ -1,0 +1,16 @@
+{
+ "id": "s06",
+ "source": "opentelemetry-demo 85c2cb2 (3.1.0)",
+ "window_start_us": 1792478168600002,
+ "window_end_us": 1792478288600002,
+ "kind": "fault",
+ "flag": "adFailure",
+ "variant": "on",
+ "flip_us": 1792478208603891,
+ "root_cause": {
+  "service": "ad",
+  "edge": null,
+  "summary": "GetAds errors about 1 in 10 calls (repeat)",
+  "onset_us": 1792478208603891
+ }
+}

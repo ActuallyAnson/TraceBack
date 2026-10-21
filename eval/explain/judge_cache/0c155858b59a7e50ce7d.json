@@ -1,0 +1,1 @@
+{"tokens": [435, 204], "verdict": "supported", "why": "The orders service logged connection\u2011refused errors pointing to payments, showing orders reported errors while payments was failing."}

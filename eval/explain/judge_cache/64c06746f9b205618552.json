@@ -1,0 +1,1 @@
+{"tokens": [691, 273], "verdict": "supported", "why": "The orders service spans show status 504 with error upstream_timeout, indicating they returned that error to the caller (gateway) while processing create_order requests."}

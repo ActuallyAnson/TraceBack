@@ -1,0 +1,1 @@
+{"tokens": [674, 219], "verdict": "supported", "why": "The three payment spans show monotonically increasing queue_us values (116\u202fk \u2192 305\u202fk \u2192 585\u202fk), indicating rising queue times."}

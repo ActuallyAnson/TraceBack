@@ -1,0 +1,1 @@
+{"tokens": [530, 849], "verdict": "partial", "why": "The records show the gateway returning 504 upstream_timeout errors, but they do not confirm the specific start time of +61.360s or a causal link to orders' slow responses."}

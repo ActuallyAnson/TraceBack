@@ -1,0 +1,1 @@
+{"tokens": [381, 212], "verdict": "partial", "why": "The record shows that the orders service had queue time (queue_us), indicating queued requests, but it does not provide evidence that this queuing was due to lost serving capacity."}

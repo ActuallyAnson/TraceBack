@@ -1,0 +1,12 @@
+{
+ "id": "ss-carts-f1-r3",
+ "kind": "fault",
+ "system": "ss",
+ "source": "RCAEval RE3",
+ "case": "carts_f1/3",
+ "fault_type": "f1",
+ "root_cause": {
+  "service": "carts",
+  "edge": null
+ }
+}

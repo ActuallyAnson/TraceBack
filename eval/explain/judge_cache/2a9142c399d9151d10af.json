@@ -1,0 +1,1 @@
+{"tokens": [358, 151], "verdict": "supported", "why": "The record shows the gateway service returning status 500 with error internal_error."}

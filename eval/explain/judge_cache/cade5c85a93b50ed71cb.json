@@ -1,0 +1,1 @@
+{"tokens": [441, 194], "verdict": "supported", "why": "The broker logs contain error entries stating that dependency shipping returned 500, showing that broker reported errors while its dependency shipping was failing."}

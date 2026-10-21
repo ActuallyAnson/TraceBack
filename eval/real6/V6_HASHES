@@ -1,0 +1,6 @@
+# analyzer v6 and the batch-6 scenarios, frozen before batch 6 was collected. check: sh eval/real6/check_v6.sh
+686aca2f72300bc94ccb8c1a7be617ed1aa3400b860e4be42f3954ea694ac779  include/tb/analyzer_v6.hpp
+c975b115ff1183707e890f56f0fc969f22baac3aef5805e4cfaaf323599213a1  src/analyzer_v6/rerank.cpp
+9e65e3dae2c4bef566e2c042181a0fed50c7621d5bb93ccf4ac7f961e9949ab8  src/analyzer_v6/main.cpp
+b804e70af20510f0ee8c5b5f34b03e1d13acee9db02111257e8dee529cfb04da  eval/real6/scenarios.json
+c57e8c3f3ec66e725d7b37b40fcb738d235d872cd325b10cf013ec994e16f959  eval/real6/dev_check.py

@@ -1,0 +1,1 @@
+{"tokens": [526, 791], "verdict": "supported", "why": "The broker span records a timeout error, the api span records an upstream_timeout error, both share the same trace_id, and the broker's timestamp occurs after the api's start, showing the broker timeout preceded the api error."}

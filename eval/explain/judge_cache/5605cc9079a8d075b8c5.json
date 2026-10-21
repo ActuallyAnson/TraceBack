@@ -1,0 +1,1 @@
+{"tokens": [436, 359], "verdict": "partial", "why": "The records show the orders service returning internal errors (5xx), but they do not mention a deploy or indicate that the errors occurred after a deploy."}

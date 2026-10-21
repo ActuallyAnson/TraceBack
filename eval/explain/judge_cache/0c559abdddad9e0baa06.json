@@ -1,0 +1,1 @@
+{"tokens": [539, 416], "verdict": "partial", "why": "The records confirm that gateway calls to orders timed out, but they provide no evidence of queued requests increasing latency or of an upstream_error."}

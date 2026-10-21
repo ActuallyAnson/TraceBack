@@ -1,0 +1,1 @@
+{"tokens": [672, 192], "verdict": "supported", "why": "The quoted records show multiple client calls from the orders service to the payments peer failing with conn_refused errors, indicating that payments were refusing new connections."}

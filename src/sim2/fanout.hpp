@@ -14,6 +14,9 @@ namespace tb::sim2 {
 enum Svc { API, INGEST, BROKER, BILLING, SHIPPING, NOTIFIER, NSVC };
 extern const char* const kSvcName[NSVC];
 
+// Retry-storm callee: Fault::i1 names it; 0 (the original catalog) means billing.
+inline int storm_callee2(const sim::Fault& f) { return f.i1 ? f.i1 : BILLING; }
+
 struct Spec {
   std::string id, group, split;
   uint64_t seed = 1;
@@ -38,5 +41,7 @@ std::string replay_env_json(const Spec& spec);  // includes "topology":"fanout" 
 double replay_error_rate(const ReplayEnv& env, const std::vector<bool>& enabled);
 std::vector<double> replay_failure_series(const ReplayEnv& env, const std::vector<bool>& enabled);
 std::vector<Spec> build_catalog(uint64_t seed);
+// v2 evaluation sets (eval/v2/PLAN.md); same structure as the topology-1 set.
+std::vector<Spec> build_v2_set(uint64_t seed, bool fresh, const std::string& prefix);
 
 }  // namespace tb::sim2

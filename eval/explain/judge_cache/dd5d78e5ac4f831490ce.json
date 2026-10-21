@@ -1,0 +1,1 @@
+{"tokens": [615, 199], "verdict": "supported", "why": "Each quoted record shows an API server span handling a POST /orders request that returned HTTP\u202f504 with an upstream_timeout error, matching the description of timeouts appearing as failed entry requests at the API entry point."}

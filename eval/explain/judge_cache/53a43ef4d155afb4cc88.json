@@ -1,0 +1,1 @@
+{"tokens": [529, 222], "verdict": "supported", "why": "Both quoted broker\u2192billing spans have dur_us=1200000 (~1.2\u202fs) and error='timeout', matching the claim."}

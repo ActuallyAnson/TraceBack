@@ -1,0 +1,1 @@
+{"tokens": [668, 383], "verdict": "partial", "why": "The records show ingest experiencing queuing (high queue_us and queue_max) and delivery_failed errors, but they do not provide evidence that a broker's inability to complete delivery caused this backpressure."}

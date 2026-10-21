@@ -1,0 +1,1 @@
+{"tokens": [368, 428], "verdict": "partial", "why": "The record confirms the current p50 latency is over 4\u202fseconds and shows a high queue_max, but it does not provide the earlier ~28\u202fms p50 or prior queue depth needed to verify the increase described."}

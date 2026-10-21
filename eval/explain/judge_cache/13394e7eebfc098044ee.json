@@ -1,0 +1,1 @@
+{"tokens": [668, 156], "verdict": "supported", "why": "Each quoted span shows the orders service attempting a client call to inventory and receiving error 'conn_refused', confirming that orders received a connection refused when trying to call inventory."}

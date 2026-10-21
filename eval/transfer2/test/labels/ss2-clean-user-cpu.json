@@ -1,0 +1,7 @@
+{
+ "id": "ss2-clean-user-cpu",
+ "kind": "clean",
+ "system": "ss2",
+ "source": "RCAEval RE2",
+ "case": "user_cpu/1"
+}

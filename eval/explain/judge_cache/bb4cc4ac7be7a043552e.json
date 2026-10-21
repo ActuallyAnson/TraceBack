@@ -1,0 +1,1 @@
+{"tokens": [692, 353], "verdict": "partial", "why": "The records show broker client calls to shipping timing out with ~7\u202fms durations, supporting the timeout and duration claim, but they provide no information about a change or whether shipping was still responding."}

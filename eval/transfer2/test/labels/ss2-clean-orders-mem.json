@@ -1,0 +1,7 @@
+{
+ "id": "ss2-clean-orders-mem",
+ "kind": "clean",
+ "system": "ss2",
+ "source": "RCAEval RE2",
+ "case": "orders_mem/1"
+}

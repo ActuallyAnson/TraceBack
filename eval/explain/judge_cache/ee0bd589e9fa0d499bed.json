@@ -1,0 +1,1 @@
+{"tokens": [366, 357], "verdict": "partial", "why": "The record confirms a gateway request returned 500 internal_error, but does not show the timestamp offset +50.198s."}

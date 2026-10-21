@@ -1,0 +1,1 @@
+{"tokens": [387, 762], "verdict": "supported", "why": "The quoted ops records show a shipping deployment start at timestamp 1800006051522938\u202f\u00b5s and finish at 1800006055522938\u202f\u00b5s, a 4\u2011second interval that matches the statement\u2019s start (+51.523\u202fs) and finish (+55.523\u202fs) times."}

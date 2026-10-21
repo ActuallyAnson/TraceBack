@@ -1,0 +1,1 @@
+{"tokens": [384, 461], "verdict": "partial", "why": "The record shows the API call returned 504 with upstream_timeout after a queue wait, confirming the timeout behavior, but it does not provide the +58.125s start time mentioned in the statement."}

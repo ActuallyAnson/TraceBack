@@ -1,0 +1,1 @@
+{"tokens": [302, 224], "verdict": "partial", "why": "The record confirms an unhandled exception in the orders analytics hook but does not show that it caused internal errors."}

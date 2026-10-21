@@ -1,0 +1,1 @@
+{"tokens": [377, 377], "verdict": "partial", "why": "The record confirms the gateway encountered an order_failed error and returned HTTP\u202f500, but it does not provide the +47.409\u202fs timing information mentioned in the statement."}

@@ -1,0 +1,1 @@
+{"tokens": [371, 216], "verdict": "partial", "why": "The record confirms the gateway saw a 504 upstream timeout on an entry request, but it does not state that this was due to calls to payments failing."}

@@ -1,0 +1,1 @@
+{"tokens": [440, 200], "verdict": "supported", "why": "The API logs show error events where the dependency 'ingest' returned a 500 status, indicating ingest was failing while API reported errors."}

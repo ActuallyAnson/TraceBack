@@ -1,0 +1,1 @@
+{"tokens": [495, 356], "verdict": "supported", "why": "The orders\u2011M000d record shows a high queue_max of 61 and busy_max of 16, which equals the workers_limit of 16, indicating all workers were busy and the queue was long."}

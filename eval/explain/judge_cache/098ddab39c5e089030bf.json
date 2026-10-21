@@ -1,0 +1,1 @@
+{"tokens": [479, 222], "verdict": "partial", "why": "The records confirm that the payments service returned HTTP 500 with internal_error, but they do not indicate that this occurred after a deployment."}

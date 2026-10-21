@@ -1,0 +1,1 @@
+{"tokens": [449, 198], "verdict": "supported", "why": "The orders service logged upstream_error events indicating inventory returned 500, showing orders reported errors due to inventory failure."}

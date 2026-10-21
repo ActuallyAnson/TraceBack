@@ -1,0 +1,1 @@
+{"tokens": [358, 194], "verdict": "supported", "why": "The broker record shows an upstream_error event with message 'dependency billing returned 503' and peer billing status 503, confirming the broker detected and logged the billing 503 error."}

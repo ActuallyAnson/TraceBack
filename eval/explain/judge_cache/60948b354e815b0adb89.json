@@ -1,0 +1,1 @@
+{"tokens": [353, 138], "verdict": "supported", "why": "The broker log entry explicitly records an upstream error stating that the dependency notifier returned a 500 status."}

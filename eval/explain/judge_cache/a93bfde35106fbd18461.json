@@ -1,0 +1,1 @@
+{"tokens": [351, 333], "verdict": "partial", "why": "The record shows the gateway had 15\u202f5xx errors out of 87 requests, confirming elevated 5xx errors, but it does not provide a baseline or trend to demonstrate that the rate has increased."}

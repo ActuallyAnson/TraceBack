@@ -1,0 +1,1 @@
+{"tokens": [352, 199], "verdict": "supported", "why": "The record shows the broker scheduling a retry for attempt\u202f2 with backoff_ms set to\u202f0, indicating an immediate retry with zero backoff."}

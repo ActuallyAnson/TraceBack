@@ -1,0 +1,1 @@
+{"tokens": [384, 212], "verdict": "partial", "why": "The record shows shipping returned a 500 internal_error response, but there is no information about when this occurred relative to a deploy, so the timing claim cannot be verified."}

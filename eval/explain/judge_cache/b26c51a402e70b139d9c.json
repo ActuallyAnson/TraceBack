@@ -1,0 +1,1 @@
+{"tokens": [503, 532], "verdict": "partial", "why": "The records show ingest experienced delivery failures and elevated queue times, but they do not mention forwarding to a broker, so that part of the statement is not supported."}

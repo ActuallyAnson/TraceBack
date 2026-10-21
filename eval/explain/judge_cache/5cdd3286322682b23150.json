@@ -1,0 +1,1 @@
+{"tokens": [578, 196], "verdict": "supported", "why": "The billing span record includes an error field \"pool_exhausted\", directly indicating that the billing service exhausted its DB connection pool."}

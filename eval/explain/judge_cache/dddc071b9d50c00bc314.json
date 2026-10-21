@@ -1,0 +1,1 @@
+{"tokens": [346, 347], "verdict": "partial", "why": "The record confirms an API call to ingest failed with the error 'dependency ingest returned 500', but it does not indicate that this marked the beginning of a series of failures."}

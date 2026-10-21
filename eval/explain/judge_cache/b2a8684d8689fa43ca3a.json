@@ -1,0 +1,1 @@
+{"tokens": [349, 265], "verdict": "unsupported", "why": "The quoted record shows a retry to billing but does not mention an upstream_timeout."}

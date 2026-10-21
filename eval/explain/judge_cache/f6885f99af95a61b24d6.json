@@ -1,0 +1,1 @@
+{"tokens": [353, 248], "verdict": "partial", "why": "The record shows the Orders service scheduling a retry to Payments with zero backoff, but it does not indicate that the retry was triggered by receiving a 503 response."}

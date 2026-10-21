@@ -1,0 +1,1 @@
+{"tokens": [360, 227], "verdict": "partial", "why": "The record shows the API service returned an internal_error failure, but it does not indicate that this failure marked the start of a sustained burst."}

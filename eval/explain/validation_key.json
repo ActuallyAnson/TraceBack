@@ -1,0 +1,242 @@
+[
+ {
+  "q": 1,
+  "iid": "d2-01",
+  "sys": "bl",
+  "step": 0,
+  "judge": "partial",
+  "why": "The record shows the broker's workers_limit set to 1 at the given timestamp, confirming the limit value, but it does not show that the limit was reduced to 1 at that time."
+ },
+ {
+  "q": 2,
+  "iid": "d2-01",
+  "sys": "tpl",
+  "step": 0,
+  "judge": "supported",
+  "why": "The record shows workers_limit=1 and a non\u2011zero queue_max=3, indicating the broker had limited worker capacity and requests were queued behind too few workers."
+ },
+ {
+  "q": 3,
+  "iid": "d2-16",
+  "sys": "tpl",
+  "step": 0,
+  "judge": "supported",
+  "why": "The record shows workers_limit=1 and queue_max=15, indicating requests queued due to insufficient workers."
+ },
+ {
+  "q": 4,
+  "iid": "d2-18",
+  "sys": "tpl",
+  "step": 0,
+  "judge": "supported",
+  "why": "The record shows workers_limit=1 and queue_max=8, indicating limited worker capacity caused requests to queue."
+ },
+ {
+  "q": 5,
+  "iid": "d2-13",
+  "sys": "bl",
+  "step": 4,
+  "judge": "partial",
+  "why": "The record confirms an API call to ingest failed with the error 'dependency ingest returned 500', but it does not indicate that this marked the beginning of a series of failures."
+ },
+ {
+  "q": 6,
+  "iid": "d2-08",
+  "sys": "bl",
+  "step": 5,
+  "judge": "partial",
+  "why": "The records confirm that the Api service logged an upstream_error with message 'delivery step failed' and a delivery_failed event, but they do not show that these errors were received from ingest or that the Api returned delivery_failed to users."
+ },
+ {
+  "q": 7,
+  "iid": "d2-02",
+  "sys": "tb2",
+  "step": 2,
+  "judge": "supported",
+  "why": "The broker log entry shows a retry being scheduled with a backoff of exactly 100\u202fms, matching the claim about short backoff."
+ },
+ {
+  "q": 8,
+  "iid": "d2-20",
+  "sys": "bl",
+  "step": 3,
+  "judge": "partial",
+  "why": "The record confirms Ingest logged an upstream_error with message 'delivery step failed' and status 504, but it does not explicitly state that the 504 was received from a broker."
+ },
+ {
+  "q": 9,
+  "iid": "d2-09",
+  "sys": "bl",
+  "step": 1,
+  "judge": "partial",
+  "why": "The record shows a broker retry to billing (attempt\u202f2) but does not provide evidence of repeated retries, failures or latency as the cause, broker worker saturation, or increased latency."
+ },
+ {
+  "q": 10,
+  "iid": "d1-10",
+  "sys": "tb1",
+  "step": 0,
+  "judge": "partial",
+  "why": "The quoted record confirms the payments service's workers_limit is now 1, but it does not provide any information about a prior limit of 12 or that the limit dropped from that value."
+ },
+ {
+  "q": 11,
+  "iid": "d1-21",
+  "sys": "tb2",
+  "step": 1,
+  "judge": "supported",
+  "why": "Each quoted span shows the orders service attempting a client call to inventory and receiving error 'conn_refused', confirming that orders received a connection refused when trying to call inventory."
+ },
+ {
+  "q": 12,
+  "iid": "d2-16",
+  "sys": "bl",
+  "step": 3,
+  "judge": "supported",
+  "why": "The quoted records show an API upstream_timeout error with HTTP status 504 (a 5xx error) and aggregated 5xx error counts, confirming that timeout errors were returned as 5xx responses."
+ },
+ {
+  "q": 13,
+  "iid": "d1-15",
+  "sys": "bl",
+  "step": 4,
+  "judge": "supported",
+  "why": "The logs show the gateway recorded an upstream_error from orders with status 500 and, using the same trace ID, later logged an order_failed error, indicating it returned that failure to users."
+ },
+ {
+  "q": 14,
+  "iid": "d2-11",
+  "sys": "tb2",
+  "step": 1,
+  "judge": "supported",
+  "why": "Both records share the same trace_id, showing the request that caused an error in shipping also produced a 500 error at the API entry point."
+ },
+ {
+  "q": 15,
+  "iid": "d2-08",
+  "sys": "tb1",
+  "step": 2,
+  "judge": "supported",
+  "why": "The broker log entry explicitly records an upstream_error caused by the shipping service returning status 500."
+ },
+ {
+  "q": 16,
+  "iid": "d2-16",
+  "sys": "tb2",
+  "step": 0,
+  "judge": "partial",
+  "why": "The record confirms the broker's current workers_limit is 1, but it does not show the nominal value of 24 or indicate a reduction from that value."
+ },
+ {
+  "q": 17,
+  "iid": "d2-12",
+  "sys": "bl",
+  "step": 3,
+  "judge": "supported",
+  "why": "The record shows the ingest service logged an upstream error where the broker returned a 503 status."
+ },
+ {
+  "q": 18,
+  "iid": "d1-10",
+  "sys": "tb2",
+  "step": 1,
+  "judge": "partial",
+  "why": "The records show Orders' client calls to Payments timing out after approximately 1.2\u202fseconds, but they do not provide evidence that Payments was slow or queued as the cause."
+ },
+ {
+  "q": 19,
+  "iid": "d1-05",
+  "sys": "bl",
+  "step": 0,
+  "judge": "supported",
+  "why": "The quoted record shows the payments service emitted an error event 'temporarily_unavailable' with status 503, matching the statement."
+ },
+ {
+  "q": 20,
+  "iid": "d1-03",
+  "sys": "bl",
+  "step": 3,
+  "judge": "supported",
+  "why": "The gateway record shows a high count of 5xx errors (62 out of 91 requests) and elevated latency (p50\u2248238\u202fms, p99\u2248303\u202fms), indicating a rise in errors and latency as a user\u2011visible symptom."
+ },
+ {
+  "q": 21,
+  "iid": "d1-18",
+  "sys": "bl",
+  "step": 1,
+  "judge": "supported",
+  "why": "The gateway log shows an upstream_error with status 503 and message 'order step failed', indicating that the order service returned a 503 error to the gateway, matching the statement."
+ },
+ {
+  "q": 22,
+  "iid": "d2-10",
+  "sys": "tb1",
+  "step": 0,
+  "judge": "partial",
+  "why": "The record confirms the billing service experienced an OOM kill (crash), but it does not explicitly state that this stopped it from answering requests."
+ },
+ {
+  "q": 23,
+  "iid": "d1-07",
+  "sys": "bl",
+  "step": 0,
+  "judge": "partial",
+  "why": "The record confirms the inventory service returned HTTP\u202f500 due to an internal error, but it does not specify that the error was caused by stock_record_corrupt."
+ },
+ {
+  "q": 24,
+  "iid": "d2-14",
+  "sys": "tb2",
+  "step": 0,
+  "judge": "supported",
+  "why": "The logs record billing's DB connection pool exhausted (pool_size=0) and, via matching trace_ids, link those events to charge spans that returned pool_exhausted errors, showing the exhaustion caused the charge service errors."
+ },
+ {
+  "q": 25,
+  "iid": "d1-11",
+  "sys": "tb1",
+  "step": 1,
+  "judge": "partial",
+  "why": "The records show Orders making repeated calls to Payments that returned connection\u2011refused errors with incrementing attempt numbers, confirming retries, but they do not provide information about whether a backoff strategy was used or absent."
+ },
+ {
+  "q": 26,
+  "iid": "d2-20",
+  "sys": "tb1",
+  "step": 0,
+  "judge": "supported",
+  "why": "The quoted records show a broker configuration change that set timeout.shipping_ms from 1000 to 7."
+ },
+ {
+  "q": 27,
+  "iid": "d2-03",
+  "sys": "tpl",
+  "step": 0,
+  "judge": "partial",
+  "why": "The records show billing charge durations but provide no baseline for comparison or evidence of timeouts."
+ },
+ {
+  "q": 28,
+  "iid": "d2-12",
+  "sys": "tpl",
+  "step": 0,
+  "judge": "partial",
+  "why": "Records show billing charge durations around 2\u202fseconds but provide no baseline for comparison or evidence of caller timeouts."
+ },
+ {
+  "q": 29,
+  "iid": "d2-19",
+  "sys": "tpl",
+  "step": 0,
+  "judge": "partial",
+  "why": "The records show billing charge durations but give no baseline for comparison or evidence that callers timed out."
+ },
+ {
+  "q": 30,
+  "iid": "d2-17",
+  "sys": "tb1",
+  "step": 3,
+  "judge": "partial",
+  "why": "The records confirm that the ingest service experienced an upstream_timeout error, but they do not show that this timeout was due to waiting for a broker or that it was returned to the api service."
+ }
+]

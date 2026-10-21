@@ -1,0 +1,1 @@
+{"tokens": [399, 306], "verdict": "partial", "why": "The record confirms the broker saw a connection\u2011refused error when calling billing, but it does not contain any information about the error occurring +59.098\u202fseconds after a billing crash."}

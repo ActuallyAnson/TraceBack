@@ -1,0 +1,1 @@
+{"tokens": [362, 433], "verdict": "partial", "why": "The record shows current latency in the multi\u2011second range and a filled request queue, but it does not provide evidence of a prior normal latency level to confirm the rise."}

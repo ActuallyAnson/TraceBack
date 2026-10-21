@@ -105,7 +105,7 @@ class World {
       if (f.kind == FaultKind::MildLatency) e += rng_.uni(0.7 * f.p1, 1.3 * f.p1);
     }
     for (auto& f : faults_)  // retry storm: trigger is a short burst of degradation in billing; f.svc is the amplifier (broker)
-      if (f.kind == FaultKind::RetryStorm && svc == BILLING && now_ >= f.t0 && now_ <= f.t0 + 12 * kSec) e += f.p1 * rng_.lognormal(0.3);
+      if (f.kind == FaultKind::RetryStorm && svc == storm_callee2(f) && now_ >= f.t0 && now_ <= f.t0 + 12 * kSec) e += f.p1 * rng_.lognormal(0.3);
     return e;
   }
   int maybe_fail(int svc, const Req& r, std::string& code) {
@@ -117,7 +117,7 @@ class World {
       if (f.kind == FaultKind::SilentRegression && rng_.chance(f.p1)) { code = "internal_error"; return 500; }
     }
     for (auto& f : faults_)
-      if (f.kind == FaultKind::RetryStorm && svc == BILLING && now_ >= f.t0 && now_ <= f.t0 + 12 * kSec && rng_.chance(f.p2)) { code = "temporarily_unavailable"; return 503; }
+      if (f.kind == FaultKind::RetryStorm && svc == storm_callee2(f) && now_ >= f.t0 && now_ <= f.t0 + 12 * kSec && rng_.chance(f.p2)) { code = "temporarily_unavailable"; return 503; }
     if (rng_.chance(0.002)) { code = "internal_error"; return 500; }
     if (svc == API && rng_.chance(0.01)) { code = "invalid_request"; return 400; }
     return 0;
@@ -141,7 +141,7 @@ class World {
     if (caller == BROKER && callee == NOTIFIER) c = {800 * kMs, 0, 0};
     for (auto& f : faults_) {
       if (f.kind == FaultKind::ConfigChange && caller == BROKER && f.i1 == callee && now_ >= f.t0) c.timeout_us = static_cast<int64_t>(f.p1 * kMs);
-      if (f.kind == FaultKind::RetryStorm && caller == BROKER && callee == BILLING && now_ >= f.t0) { c.retries = 6; c.backoff_us = 0; }
+      if (f.kind == FaultKind::RetryStorm && caller == BROKER && callee == storm_callee2(f) && now_ >= f.t0) { c.retries = 6; c.backoff_us = 0; }
     }
     return c;
   }
@@ -543,7 +543,7 @@ std::string label_json(const Spec& spec, const sim::Output& real, const sim::Out
   Obj root;
   root.s("type", sim::kind_name(t.kind)).s("service", kSvcName[t.svc]).i("onset_us", spec.epoch_us + t.t0).i("end_us", spec.epoch_us + t.t1);
   if (t.kind == FaultKind::ConfigChange) root.s("target_dependency", kSvcName[t.i1]);
-  if (t.kind == FaultKind::RetryStorm) root.s("trigger_service", kSvcName[BILLING]);
+  if (t.kind == FaultKind::RetryStorm) root.s("trigger_service", kSvcName[storm_callee2(t)]);
   if (t.kind == FaultKind::NetworkPartition) root.raw("edge", Obj().s("from", kSvcName[t.i1]).s("to", kSvcName[t.svc]).str());
   std::string decoys = "[";
   for (size_t i = 1; i < spec.faults.size(); ++i) {
@@ -630,6 +630,72 @@ std::vector<Spec> build_catalog(uint64_t seed) {
     s.seed = r.next();
     s.epoch_us = 1770000000LL * kSec + static_cast<int64_t>(i - 1) * 1000 * kSec;
     out.push_back(s);
+  }
+  return out;
+}
+
+namespace {
+Fault decoy_at(FaultKind dk, int svc, const Fault& cause, Rng& r) {
+  Fault f{dk, svc, std::clamp<int64_t>(cause.t0 + r.range(-25, 15) * kSec + r.range(0, 999999), 10 * kSec, 80 * kSec), 0};
+  f.t1 = f.t0 + r.range(30, 60) * kSec + r.range(0, 999999);
+  f.p1 = r.uni(15, 40);
+  return f;
+}
+}  // namespace
+
+// 24 incidents (fresh) or 21 (dev, no storm variants): see eval/v2/PLAN.md section 4.
+std::vector<Spec> build_v2_set(uint64_t seed, bool fresh, const std::string& prefix) {
+  Rng r(seed);
+  // decoy: 0 none, 1 harmless deploy (at decoy_svc), 2 notifier deploy, 3 mild latency, 4 cosmetic errors; decoy_svc -1 = random other (not broker)
+  struct P { FaultKind k; const char* group; int decoy; int decoy_svc; bool skew; int storm; bool unseen; };
+  std::vector<P> plan;
+  for (FaultKind k : {FaultKind::SlowDependency, FaultKind::BadDeploy, FaultKind::CrashRestart, FaultKind::PoolExhaustion, FaultKind::ConfigChange,
+                      FaultKind::CapacityReduction, FaultKind::RetryStorm, FaultKind::MaskedError})
+    plan.push_back({k, "plain", 0, -1, false, 0, false});
+  for (FaultKind k : {FaultKind::BadDeploy, FaultKind::SlowDependency, FaultKind::CapacityReduction}) plan.push_back({k, "skew", 0, -1, true, 0, false});
+  if (fresh) for (int v = 1; v <= 3; ++v) plan.push_back({FaultKind::RetryStorm, "storm_variant", 0, -1, false, v, false});
+  plan.push_back({FaultKind::SlowDependency, "decoy", 1, API, false, 0, false});
+  plan.push_back({FaultKind::PoolExhaustion, "decoy", 1, API, false, 0, false});
+  plan.push_back({FaultKind::BadDeploy, "decoy", 1, API, false, 0, false});
+  plan.push_back({FaultKind::SlowDependency, "decoy", 2, NOTIFIER, false, 0, false});
+  plan.push_back({FaultKind::CrashRestart, "decoy", 2, NOTIFIER, false, 0, false});
+  plan.push_back({FaultKind::CapacityReduction, "decoy", 3, NOTIFIER, false, 0, false});
+  plan.push_back({FaultKind::ConfigChange, "decoy", 4, NOTIFIER, false, 0, false});
+  plan.push_back({FaultKind::RetryStorm, "decoy", 1, -1, false, 0, false});
+  plan.push_back({FaultKind::NetworkPartition, "unseen", 0, -1, false, 0, true});
+  plan.push_back({FaultKind::CrashLoop, "unseen", 0, -1, false, 0, true});
+  std::vector<Spec> out;
+  for (const P& p : plan) {
+    Spec s;
+    s.group = p.group;
+    s.split = "fresh";
+    Fault f = make(p.k, r);
+    if (p.k == FaultKind::RetryStorm) { f.p1 = std::max(f.p1, 330.0); f.p2 = std::max(f.p2, 0.6); }  // a storm must be visible
+    if (p.unseen && p.k == FaultKind::NetworkPartition) { f.svc = BILLING; f.i1 = BROKER; }
+    if (p.storm == 1) f.i1 = SHIPPING;
+    if (p.storm == 2) { f.i1 = r.chance(0.5) ? SHIPPING : BILLING; f.p1 = r.uni(260, 330); f.p2 = r.uni(0.55, 0.65); }
+    if (p.storm == 3) { f.i1 = BILLING; f.p1 = r.uni(600, 900); f.p2 = r.uni(0.75, 0.9); }
+    s.faults.push_back(f);
+    if (p.decoy == 2) s.faults.push_back(decoy_notifier_deploy(f, r));
+    else if (p.decoy) {
+      int svc = p.decoy_svc;
+      if (svc < 0) do { svc = static_cast<int>(r.range(0, NSVC - 1)); } while (svc == f.svc || svc == BROKER);
+      s.faults.push_back(decoy_at(p.decoy == 1 ? FaultKind::HarmlessDeploy : p.decoy == 3 ? FaultKind::MildLatency : FaultKind::CosmeticErrors, svc, f, r));
+    }
+    if (p.skew) {
+      int a = static_cast<int>(r.range(0, NSVC - 1)), b;
+      do { b = static_cast<int>(r.range(0, NSVC - 1)); } while (b == a);
+      for (int x : {a, b}) s.skew_s[x] = (r.chance(0.5) ? 1 : -1) * r.uni(0.4, 3.0);
+    }
+    out.push_back(s);
+  }
+  for (size_t i = out.size() - 1; i > 0; --i) std::swap(out[i], out[r.range(0, static_cast<int64_t>(i))]);
+  for (size_t i = 0; i < out.size(); ++i) {
+    char id[16];
+    std::snprintf(id, sizeof id, "%s-%02zu", prefix.c_str(), i + 1);
+    out[i].id = id;
+    out[i].seed = r.next();
+    out[i].epoch_us = (1790000000LL + (fresh ? 10000000LL : 0)) * kSec + static_cast<int64_t>(i) * 1000 * kSec;
   }
   return out;
 }

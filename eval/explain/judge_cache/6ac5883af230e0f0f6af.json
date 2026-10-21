@@ -1,0 +1,1 @@
+{"tokens": [458, 277], "verdict": "supported", "why": "The records show a billing pool_exhausted event with a 'timed out waiting for db connection' message and billing metrics indicating high latency (p99\u202f\u2248\u202f2.7\u202fs), matching the statement."}

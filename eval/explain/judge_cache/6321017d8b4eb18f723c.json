@@ -1,0 +1,1 @@
+{"tokens": [456, 297], "verdict": "supported", "why": "The records show Orders service latency (p50 and p99) rising from ~773/1512\u202fms to ~1845/2506\u202fms and the request queue max growing from 23 to 43, indicating increased latency and queue size that would cause slow responses."}

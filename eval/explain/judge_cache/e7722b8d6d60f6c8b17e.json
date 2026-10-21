@@ -1,0 +1,1 @@
+{"tokens": [348, 491], "verdict": "partial", "why": "The record shows a low workers_limit (1) and a queue_max of 4, indicating requests queued behind few workers, but it does not explicitly state that the broker lost serving capacity."}

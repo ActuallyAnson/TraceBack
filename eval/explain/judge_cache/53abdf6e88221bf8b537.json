@@ -1,0 +1,1 @@
+{"tokens": [367, 637], "verdict": "supported", "why": "The record shows busy_max equals workers_limit (12), queue_max>0 (7), err5xx>0 (87), and elevated latency (p50\u2248401\u202fms, p99\u2248730\u202fms), which matches the statement\u2019s claims."}

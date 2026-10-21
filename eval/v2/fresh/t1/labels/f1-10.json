@@ -1,0 +1,1 @@
+{"id":"f1-10","group":"plain","split":"fresh","seed":8500452028033941948,"root_cause":{"type":"capacity_reduction","service":"orders","onset_us":1790009056200881,"end_us":1790009108621866},"decoys":[],"complications":[],"symptom_service":"gateway","err_rate_baseline":0.001,"err_rate_incident":0.789,"err_rate_incident_without_cause":0.003}

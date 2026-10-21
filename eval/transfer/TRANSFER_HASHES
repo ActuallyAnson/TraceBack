@@ -1,0 +1,8 @@
+# hybrid 2, transfer converter, builder and plan, frozen before the test windows were run. check: sh eval/transfer/check.sh
+3f21aba2d2ebe5619b606dad4eb70923feff5b54fc3f27794dfd0bab80ad726b  include/tb/hybrid2.hpp
+cb6b36407048b981389b95f61f9ce01df8caaddd12de75c3eb080dee6455a120  src/hybrid2/hybrid2.cpp
+e5ac92d87730325998779c22f2157da56b1e204830a995b13d93a01e67ae8d08  src/hybrid2/main.cpp
+80da9a212b063be20ecb8113b3b60915cde09de6a8c431ee9102b612dd7c0cd1  eval/transfer/convert.py
+21d7c4dfa1e8a2691a7671c1c4295e5cffc3610ed0ff0f22efdc6b30f11e9aa1  eval/transfer/build.py
+88686148cf3f6f8017be04b068a6b5e8ad206cc00c1a1fb4c9c0ac7dc991b89b  eval/transfer/PLAN.md
+d0a4b6fbd2ea41430e595b3fa5eaba718a53449cb53bc96ed3dbac69554c6299  eval/transfer/dev_eval.py

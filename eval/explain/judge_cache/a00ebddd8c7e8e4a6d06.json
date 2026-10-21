@@ -1,0 +1,1 @@
+{"tokens": [479, 703], "verdict": "partial", "why": "The records confirm that the billing service returned 503 errors with pool_exhausted, but they do not provide a timestamp offset of ~+59.992\u202fs to verify the claimed start time."}

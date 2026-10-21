@@ -1,0 +1,1 @@
+{"tokens": [375, 131], "verdict": "supported", "why": "The record shows the shipping service operation returning status 500 with error 'internal_error', matching the statement."}

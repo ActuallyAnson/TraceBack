@@ -1,0 +1,1 @@
+{"tokens": [356, 200], "verdict": "supported", "why": "The record shows elevated latencies (p50\u202f\u2248\u202f606\u202fms, p99\u202f\u2248\u202f3293\u202fms), non\u2011zero errors (err5xx\u202f=\u202f1), a large queue_max (39), and busy_max reaching the workers_limit (16), matching the claim."}

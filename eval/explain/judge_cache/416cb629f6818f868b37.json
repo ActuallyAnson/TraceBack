@@ -1,0 +1,1 @@
+{"tokens": [531, 391], "verdict": "partial", "why": "The records show an inventory pool_exhausted error and an orders order_failed error, but they do not demonstrate that the orders error was caused by the inventory failure or that orders returned errors to a gateway."}

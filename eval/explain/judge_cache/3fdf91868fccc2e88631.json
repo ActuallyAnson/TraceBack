@@ -1,0 +1,1 @@
+{"tokens": [379, 600], "verdict": "unsupported", "why": "The records show a deploy start followed by a service start about 4 seconds later, with no indication of failure, so they do not support the claim that the notifier began failing 0 seconds after the deploy."}

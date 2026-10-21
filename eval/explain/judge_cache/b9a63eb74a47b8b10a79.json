@@ -1,0 +1,1 @@
+{"tokens": [293, 111], "verdict": "supported", "why": "The record explicitly states that the inventory service experienced an oom_kill event with the message 'out of memory: process killed', confirming the inventory process was killed due to OOM."}

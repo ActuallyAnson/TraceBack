@@ -1,0 +1,1 @@
+{"tokens": [441, 399], "verdict": "partial", "why": "The records confirm that the Api service logged an upstream_error with message 'delivery step failed' and a delivery_failed event, but they do not show that these errors were received from ingest or that the Api returned delivery_failed to users."}

@@ -1,0 +1,16 @@
+{
+ "id": "s04",
+ "source": "opentelemetry-demo 85c2cb2 (3.1.0)",
+ "window_start_us": 1792477898566181,
+ "window_end_us": 1792478018566181,
+ "kind": "fault",
+ "flag": "productCatalogFailure",
+ "variant": "on",
+ "flip_us": 1792477938571770,
+ "root_cause": {
+  "service": "product-catalog",
+  "edge": null,
+  "summary": "GetProduct fails for one product id (repeat)",
+  "onset_us": 1792477938571770
+ }
+}

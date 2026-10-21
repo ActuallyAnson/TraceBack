@@ -1,0 +1,1 @@
+{"tokens": [373, 358], "verdict": "partial", "why": "The record confirms the API returned an internal_error (500) response, but it does not show that this occurred at the start of the sustained burst (+47.835\u202fs)."}

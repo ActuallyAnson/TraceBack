@@ -1,0 +1,1 @@
+{"tokens": [511, 267], "verdict": "unsupported", "why": "The records show payment response latencies but provide no baseline for comparison or evidence of caller timeouts."}

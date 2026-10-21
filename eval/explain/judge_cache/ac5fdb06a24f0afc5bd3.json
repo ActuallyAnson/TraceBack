@@ -1,0 +1,1 @@
+{"tokens": [362, 338], "verdict": "partial", "why": "The record shows ingest's upstream call to broker timed out after 2500\u202fms and produced an upstream_timeout error, but it does not indicate that increased broker latency caused the timeout."}

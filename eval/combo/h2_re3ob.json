@@ -1,0 +1,202 @@
+{
+"ob-adservice-f3-r1": {
+"conf": "medium",
+"src": "model alternative, measured",
+"svc": "frontend"
+},
+"ob-adservice-f3-r2": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "frontend"
+},
+"ob-adservice-f3-r3": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "frontend"
+},
+"ob-adservice-f4-r1": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "adservice"
+},
+"ob-adservice-f4-r2": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "adservice"
+},
+"ob-adservice-f4-r3": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "adservice"
+},
+"ob-adservice-f5-r1": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "adservice"
+},
+"ob-adservice-f5-r2": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "adservice"
+},
+"ob-adservice-f5-r3": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "adservice"
+},
+"ob-cartservice-f1-r1": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "cartservice"
+},
+"ob-cartservice-f1-r2": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "cartservice"
+},
+"ob-cartservice-f1-r3": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "cartservice"
+},
+"ob-clean-adservice-f3": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ob-clean-adservice-f4": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ob-clean-adservice-f5": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ob-clean-cartservice-f1": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ob-clean-currencyservice-f1": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ob-clean-emailservice-f1": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ob-clean-emailservice-f2": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ob-clean-emailservice-f3": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ob-clean-emailservice-f4": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ob-clean-emailservice-f5": {
+"conf": "low",
+"src": "none",
+"svc": "none"
+},
+"ob-currencyservice-f1-r1": {
+"conf": "medium",
+"src": "model alternative, measured",
+"svc": "frontend"
+},
+"ob-currencyservice-f1-r2": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "frontend"
+},
+"ob-currencyservice-f1-r3": {
+"conf": "medium",
+"src": "model alternative, measured",
+"svc": "frontend"
+},
+"ob-emailservice-f1-r1": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "emailservice"
+},
+"ob-emailservice-f1-r2": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "emailservice"
+},
+"ob-emailservice-f1-r3": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "emailservice"
+},
+"ob-emailservice-f2-r1": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "emailservice"
+},
+"ob-emailservice-f2-r2": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "emailservice"
+},
+"ob-emailservice-f2-r3": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "emailservice"
+},
+"ob-emailservice-f3-r1": {
+"conf": "medium",
+"src": "model alternative, measured",
+"svc": "checkoutservice"
+},
+"ob-emailservice-f3-r2": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "checkoutservice"
+},
+"ob-emailservice-f3-r3": {
+"conf": "medium",
+"src": "measurement only",
+"svc": "checkoutservice"
+},
+"ob-emailservice-f4-r1": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "checkoutservice"
+},
+"ob-emailservice-f4-r2": {
+"conf": "medium",
+"src": "model top, measured",
+"svc": "checkoutservice"
+},
+"ob-emailservice-f4-r3": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "checkoutservice"
+},
+"ob-emailservice-f5-r1": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "emailservice"
+},
+"ob-emailservice-f5-r2": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "emailservice"
+},
+"ob-emailservice-f5-r3": {
+"conf": "high",
+"src": "model top, measured",
+"svc": "emailservice"
+}
+}

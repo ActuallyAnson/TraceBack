@@ -1,0 +1,1 @@
+{"tokens": [561, 633], "verdict": "partial", "why": "The records show the API experienced upstream_timeout errors from ingest and a failed POST /orders request, but they do not explicitly mention 'entry requests', so that part of the statement is not directly supported."}

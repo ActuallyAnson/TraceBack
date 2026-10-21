@@ -1,0 +1,16 @@
+{
+ "id": "m08",
+ "source": "opentelemetry-demo 85c2cb2 (3.1.0)",
+ "window_start_us": 1792462139203995,
+ "window_end_us": 1792462259203995,
+ "kind": "fault",
+ "flag": "adManualGc",
+ "variant": "on",
+ "flip_us": 1792462179213005,
+ "root_cause": {
+  "service": "ad",
+  "edge": null,
+  "summary": "full manual garbage collections in the ad service (new flag)",
+  "onset_us": 1792462179213005
+ }
+}

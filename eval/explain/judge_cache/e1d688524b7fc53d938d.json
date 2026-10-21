@@ -1,0 +1,1 @@
+{"tokens": [360, 232], "verdict": "partial", "why": "The record confirms that Ingest logged an upstream_error from broker with status 503, but it does not indicate that the broker's failure was due to inability to reach billing."}

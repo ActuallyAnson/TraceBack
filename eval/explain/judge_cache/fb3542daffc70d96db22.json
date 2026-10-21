@@ -1,0 +1,1 @@
+{"tokens": [446, 264], "verdict": "supported", "why": "The ingest logs contain error entries citing the broker returning a 504 status, showing that ingest reported errors while its dependency broker was experiencing failures."}

@@ -1,0 +1,1 @@
+{"tokens": [498, 333], "verdict": "supported", "why": "The records show a non\u2011zero queue_max (39) and busy_max equal to the workers_limit (16), indicating that all workers were pinned and requests were queued, which reflects capacity saturation."}

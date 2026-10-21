@@ -1,0 +1,1 @@
+{"tokens": [430, 234], "verdict": "partial", "why": "The records show ingest reporting errors, but they do not explicitly indicate that its dependency broker was failing."}

@@ -1,0 +1,1 @@
+{"tokens": [534, 219], "verdict": "partial", "why": "The records show payments service emitting temporarily_unavailable errors, but they do not indicate that this occurred under increased load."}

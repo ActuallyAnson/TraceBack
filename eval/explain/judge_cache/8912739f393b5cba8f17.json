@@ -1,0 +1,1 @@
+{"tokens": [334, 219], "verdict": "partial", "why": "The record shows the orders service returned an internal error with HTTP status 500, but it does not indicate that this occurred after a deploy."}

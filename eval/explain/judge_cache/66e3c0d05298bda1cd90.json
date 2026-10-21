@@ -1,0 +1,1 @@
+{"tokens": [471, 519], "verdict": "partial", "why": "The records show ingest latency is high and its worker pool reached the limit (busy_max == workers_limit), but they do not demonstrate that increased broker latency caused ingest's publish calls to block or that broker latency was the cause of the ingest latency increase."}

@@ -1,0 +1,1 @@
+{"tokens": [358, 392], "verdict": "partial", "why": "The gateway log shows an upstream_timeout to orders, but it does not provide evidence that orders themselves were timing out, so the causal claim is not supported."}

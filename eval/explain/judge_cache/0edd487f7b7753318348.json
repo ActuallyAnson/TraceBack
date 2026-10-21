@@ -1,0 +1,1 @@
+{"tokens": [357, 175], "verdict": "supported", "why": "The quoted record shows the ingest service logging an upstream_error with the message 'dependency broker returned 500', which directly matches the statement."}

@@ -1,0 +1,16 @@
+{
+ "id": "s09",
+ "source": "opentelemetry-demo 85c2cb2 (3.1.0)",
+ "window_start_us": 1792478573658012,
+ "window_end_us": 1792478693658012,
+ "kind": "fault",
+ "flag": "emailMemoryLeak",
+ "variant": "1000x",
+ "flip_us": 1792478613668283,
+ "root_cause": {
+  "service": "email",
+  "edge": null,
+  "summary": "memory leak in the email service, stronger (new variant)",
+  "onset_us": 1792478613668283
+ }
+}

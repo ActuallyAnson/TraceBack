@@ -1,0 +1,1 @@
+{"tokens": [343, 299], "verdict": "partial", "why": "The record confirms the broker experienced an upstream timeout returning status 504, but it does not mention retries or explicitly state that the timed\u2011out calls were to billing."}

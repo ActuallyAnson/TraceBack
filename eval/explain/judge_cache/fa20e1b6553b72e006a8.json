@@ -1,0 +1,1 @@
+{"tokens": [524, 511], "verdict": "partial", "why": "The records show orders experiencing 5xx errors, high queue lengths, and workers at their limit, but they do not explicitly mention inventory calls, pool_exhausted errors, or retries."}

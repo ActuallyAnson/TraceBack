@@ -1,0 +1,1 @@
+{"tokens": [390, 933], "verdict": "partial", "why": "The records confirm the payments deployment started and finished with a 4\u2011second interval and matching .667\u2011second fractions, but the specific offset times +47.667s and +51.667s are not shown in the quoted timestamps."}

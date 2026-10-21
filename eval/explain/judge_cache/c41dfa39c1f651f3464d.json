@@ -1,0 +1,1 @@
+{"tokens": [460, 348], "verdict": "partial", "why": "The records show a gateway upstream error where orders returned a 504, supporting the 504 part of the claim, but there is no evidence of a 503 error from orders."}

@@ -1,0 +1,1 @@
+{"tokens": [391, 540], "verdict": "partial", "why": "The records show the broker\u2019s timeout.shipping_ms config dropped from 1000\u202fms to 6\u202fms, indicating a change that could cause timeouts, but they do not show actual timeout events or confirm that shipping was still answering."}

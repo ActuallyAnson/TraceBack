@@ -1,0 +1,12 @@
+[
+ {"id":"r01","kind":"clean"},
+ {"id":"r02","kind":"fault","flag":"paymentFailure","variant":"100%","root_service":"payment","edge":null,"summary":"payment fails every charge request"},
+ {"id":"r03","kind":"fault","flag":"paymentUnreachable","variant":"on","root_service":"payment","edge":{"from":"checkout","to":"payment"},"summary":"checkout is pointed at a bad payment address; payment unavailable"},
+ {"id":"r04","kind":"fault","flag":"productCatalogFailure","variant":"on","root_service":"product-catalog","edge":null,"summary":"GetProduct fails for one product id"},
+ {"id":"r05","kind":"clean"},
+ {"id":"r06","kind":"fault","flag":"cartFailure","variant":"100%","root_service":"cart","edge":null,"summary":"cart EmptyCart calls go to a failing store"},
+ {"id":"r07","kind":"fault","flag":"adFailure","variant":"on","root_service":"ad","edge":null,"summary":"GetAds returns an error about 1 in 10 calls"},
+ {"id":"r08","kind":"fault","flag":"intlShippingSlowdown","variant":"10sec","root_service":"shipping","edge":null,"summary":"non-US shipping requests delayed 10 s"},
+ {"id":"r09","kind":"fault","flag":"productCatalogLockContention","variant":"on","root_service":"product-catalog","edge":null,"summary":"ACCESS EXCLUSIVE lock on catalog.products blocks queries"},
+ {"id":"r10","kind":"clean"}
+]

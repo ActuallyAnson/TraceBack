@@ -8,3 +8,15 @@ __pycache__/
 tests/ui/node_modules/
 tests/ui/package*.json
 submission/traceback_demo.mp4
+eval/real/v0/
+eval/real/v1/
+eval/real2/data/
+eval/real3/data/
+eval/real4/data/
+eval/real5/data/
+eval/real6/data/
+eval/rcaeval/data/
+eval/rcaeval/data2/
+eval/transfer/test/data/
+eval/transfer/dev/data/
+eval/transfer2/test/data/

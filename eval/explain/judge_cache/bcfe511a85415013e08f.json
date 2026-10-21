@@ -1,0 +1,1 @@
+{"tokens": [377, 171], "verdict": "partial", "why": "The record shows Shipping returned an internal_error, but there is no information about when the deploy occurred or that the error started shortly after it."}

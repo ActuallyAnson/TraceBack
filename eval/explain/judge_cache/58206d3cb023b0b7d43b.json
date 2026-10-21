@@ -1,0 +1,1 @@
+{"tokens": [537, 631], "verdict": "supported", "why": "The records show inventory metrics before a gap, a service_started event indicating a restart, and subsequent metrics with an increased boot count, matching the claim of a crash, silent metrics, and later restart."}

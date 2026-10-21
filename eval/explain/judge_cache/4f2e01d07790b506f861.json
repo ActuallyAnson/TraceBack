@@ -1,0 +1,1 @@
+{"tokens": [313, 354], "verdict": "partial", "why": "The record shows the shipping service emitted a label_record_invalid error, but it does not indicate the elapsed time of +46.140\u202fs, so the timing claim cannot be verified."}

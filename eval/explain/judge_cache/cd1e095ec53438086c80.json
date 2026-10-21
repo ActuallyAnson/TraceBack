@@ -1,0 +1,1 @@
+{"tokens": [312, 179], "verdict": "unsupported", "why": "The quoted record confirms a payments deploy started, but does not provide the time offset '+45.140s', so the timing claim cannot be verified."}

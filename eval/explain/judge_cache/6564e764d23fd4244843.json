@@ -1,0 +1,1 @@
+{"tokens": [368, 285], "verdict": "partial", "why": "The record confirms the gateway experienced an upstream_timeout error, but it does not specify that the error originated from orders or that it marked the start of a sustained burst of failures."}

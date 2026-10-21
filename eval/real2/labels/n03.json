@@ -1,0 +1,16 @@
+{
+ "id": "n03",
+ "source": "opentelemetry-demo 85c2cb2 (3.1.0)",
+ "window_start_us": 1792431073009270,
+ "window_end_us": 1792431193009270,
+ "kind": "fault",
+ "flag": "paymentFailure",
+ "variant": "50%",
+ "flip_us": 1792431113012620,
+ "root_cause": {
+  "service": "payment",
+  "edge": null,
+  "summary": "payment fails half of charge requests (new variant)",
+  "onset_us": 1792431113012620
+ }
+}

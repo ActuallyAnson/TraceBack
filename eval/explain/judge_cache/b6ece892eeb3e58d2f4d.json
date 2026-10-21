@@ -1,0 +1,1 @@
+{"tokens": [449, 427], "verdict": "partial", "why": "The records show orders receiving a 503 from inventory and scheduling a retry, but they do not mention a timeout or provide evidence that inventory load increased."}

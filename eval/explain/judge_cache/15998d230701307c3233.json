@@ -1,0 +1,1 @@
+{"tokens": [457, 461], "verdict": "partial", "why": "The records show a retry scheduled toward inventory followed shortly by a pool\u2011exhausted error, indicating a possible link, but they do not demonstrate repeated retries, explicitly state increased load, or confirm the +55.360\u202fs timing mentioned in the statement."}

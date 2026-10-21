@@ -1,0 +1,1 @@
+{"tokens": [534, 226], "verdict": "partial", "why": "The records show broker calls to billing receiving connection\u2011refused errors, indicating billing was not answering, but they contain no information about a metrics gap or a restart."}

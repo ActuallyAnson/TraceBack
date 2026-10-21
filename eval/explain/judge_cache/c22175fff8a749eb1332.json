@@ -1,0 +1,1 @@
+{"tokens": [474, 260], "verdict": "supported", "why": "The records show the broker logged a temporary unavailable error and then scheduled a retry to shipping with backoff_ms set to 0."}

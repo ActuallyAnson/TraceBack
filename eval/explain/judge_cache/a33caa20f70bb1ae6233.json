@@ -1,0 +1,1 @@
+{"tokens": [423, 830], "verdict": "partial", "why": "The records confirm an ops CPU\u2011throttle event on the orders service and a later workers_limit of 1, but they do not show the +59.81\u202fs timing or the prior limit of 16."}

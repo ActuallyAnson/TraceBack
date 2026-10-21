@@ -1,0 +1,1 @@
+{"tokens": [372, 377], "verdict": "partial", "why": "The record confirms the API returned a 503 conn_refused error, but it does not provide the timestamp offset +61.442s needed to verify when the errors began."}

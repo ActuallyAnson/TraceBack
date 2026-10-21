@@ -1,0 +1,1 @@
+{"tokens": [429, 198], "verdict": "supported", "why": "The records show the api service logging an internal error and also logging that its dependency ingest returned a 504 error, indicating the api reported errors while ingest was failing."}

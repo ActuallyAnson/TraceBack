@@ -1,0 +1,1 @@
+{"tokens": [943, 771], "verdict": "partial", "why": "The quoted records show broker request latencies in the 400\u2011500\u202fms range (hundreds of milliseconds), but they do not contain any information indicating that this increase happened after an +80\u202fs offset."}

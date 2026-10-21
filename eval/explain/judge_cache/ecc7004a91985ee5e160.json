@@ -1,0 +1,1 @@
+{"tokens": [670, 230], "verdict": "supported", "why": "All three quoted spans show orders\u2192payments charge calls timing out, indicating the payments service is not responding to those requests."}
