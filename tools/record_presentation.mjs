@@ -21,7 +21,7 @@ for (; n < MAXSEC * FPS; n++) {
   if (n % 30 === 0) {
     const done = await p.evaluate(() => document.getElementById('play').textContent.includes('Play'));
     if (done && n > 60) { if (endAt < 0) endAt = n; }
-    if (endAt >= 0 && n - endAt > 75) break;
+    if (endAt >= 0 && n - endAt > (+process.env.TAIL || 75)) break;
     if (n % 300 === 0) console.log('t=', n / FPS);
   }
 }

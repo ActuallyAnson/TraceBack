@@ -3,7 +3,7 @@
 const P = PD['inc-026'], Q = PD['inc-003'];
 const stage = document.getElementById('stage');
 let tok = 0, cur = -1, playing = false;
-const URLQ = new URLSearchParams(location.search), HOLD = URLQ.has('hold') ? +URLQ.get('hold') : 2200, MINDUR = (URLQ.get('dur') || '').split(',').map(Number);  // ?dur=s,s,... floors each scene's length (seconds) so narration fits; ?hold=ms between scenes
+const URLQ = new URLSearchParams(location.search), HOLD = URLQ.has('hold') ? +URLQ.get('hold') : 2200, MINDUR = (URLQ.get('dur') || '').split(',').map(Number), ONLY = URLQ.has('only');  // ?only plays just the starting scene (#N); ?dur=s,s,... floors each scene's length (seconds) so narration fits; ?hold=ms between scenes
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const lab = s => String(s).replace(/_/g, ' ');
 const pct = (x, d = 1) => (x * 100).toFixed(d) + '%';
@@ -136,7 +136,7 @@ async function go(i) {
   const sc = document.createElement('section'); sc.className = 'scene'; stage.appendChild(sc); paintChapters(i);
   requestAnimationFrame(() => sc.classList.add('on'));
   const t0 = performance.now(); (window.__starts = window.__starts || [])[i] = t0;
-  try { await scenes[i].run(sc); const need = (MINDUR[i] || 0) * 1000 - (performance.now() - t0); if (need > 0) await sleep(need); if (playing) { await sleep(HOLD); go(i + 1); } else { playBtn.textContent = '▶ Play'; } } catch (e) { if (!(e instanceof Stop)) throw e; }
+  try { await scenes[i].run(sc); const need = (MINDUR[i] || 0) * 1000 - (performance.now() - t0); if (need > 0) await sleep(need); if (playing && !ONLY) { await sleep(HOLD); go(i + 1); } else { playBtn.textContent = '▶ Play'; } } catch (e) { if (!(e instanceof Stop)) throw e; }
 }
 function toggle() { playing = !playing; playBtn.textContent = playing ? '❚❚ Pause' : '▶ Play'; if (playing && (cur < 0 || cur >= scenes.length - 1 && false)) go(0); else if (playing) go(Math.max(0, cur)); else { tok++; } }
 function fit() { const s = Math.min(innerWidth / 1920, innerHeight / 1080); stage.style.transform = `scale(${s})`; }
